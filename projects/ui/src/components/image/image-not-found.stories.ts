@@ -53,7 +53,7 @@ export const ValidImage: Story = {
 export const InvalidImage: Story = {
   render: () => ({
     template: `
-    <div class="pe-background-white-light" style="height: 300px; width: 200px;">  
+    <div class="ul-background-white-light" style="height: 300px; width: 200px;">  
         <img 
             peCatchImageNotFound 
             src="invalid-image-url.jpg" 
@@ -76,7 +76,7 @@ export const InvalidImage: Story = {
 export const WithoutPlaceholder: Story = {
   render: () => ({
     template: `
-    <div class="pe-background-white-light" style="height: 300px; width: 200px;">  
+    <div class="ul-background-white-light" style="height: 300px; width: 200px;">  
         <img 
             peCatchImageNotFound
             [showPlaceholder]="false"

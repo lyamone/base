@@ -84,7 +84,7 @@ export const DateOnly: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [size]="size"
@@ -114,7 +114,7 @@ export const TimeOnly: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [size]="size"
@@ -144,7 +144,7 @@ export const DateTime: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [size]="size"
@@ -180,7 +180,7 @@ export const WithConstraints: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [size]="size"
@@ -206,7 +206,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [error]="error"
@@ -229,7 +229,7 @@ export const Disabled: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [disabled]="disabled"
@@ -244,10 +244,10 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-calendar mode="date" size="sm" label="Small" />
-        <pe-calendar mode="date" size="md" label="Medium" />
-        <pe-calendar mode="date" size="lg" label="Large" />
-        <pe-calendar mode="date" size="xl" label="Extra large" />
+        <ul-calendar mode="date" size="sm" label="Small" />
+        <ul-calendar mode="date" size="md" label="Medium" />
+        <ul-calendar mode="date" size="lg" label="Large" />
+        <ul-calendar mode="date" size="xl" label="Extra large" />
       </div>
     `,
   }),
@@ -262,7 +262,7 @@ export const WithoutIcon: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-calendar
+      <ul-calendar
         [(value)]="value"
         [mode]="mode"
         [showCalendarIcon]="showCalendarIcon"

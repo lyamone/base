@@ -65,7 +65,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"
@@ -88,7 +88,7 @@ export const WithImage: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"
@@ -109,7 +109,7 @@ export const WithInitials: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"
@@ -130,7 +130,7 @@ export const WithIcon: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"
@@ -151,10 +151,10 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <pe-avatar [size]="'sm'" [initials]="'SM'" />
-        <pe-avatar [size]="'md'" [initials]="'MD'" />
-        <pe-avatar [size]="'lg'" [initials]="'LG'" />
-        <pe-avatar [size]="'xl'" [initials]="'XL'" />
+        <ul-avatar [size]="'sm'" [initials]="'SM'" />
+        <ul-avatar [size]="'md'" [initials]="'MD'" />
+        <ul-avatar [size]="'lg'" [initials]="'LG'" />
+        <ul-avatar [size]="'xl'" [initials]="'XL'" />
       </div>
     `,
   }),
@@ -169,9 +169,9 @@ export const AllVariants: Story = {
     props: args,
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <pe-avatar [size]="'md'" [src]="'https://i.pravatar.cc/150?img=12'" [alt]="'User avatar'" />
-        <pe-avatar [size]="'md'" [initials]="'JD'" />
-        <pe-avatar [size]="'md'" [icon]="'user'" />
+        <ul-avatar [size]="'md'" [src]="'https://i.pravatar.cc/150?img=12'" [alt]="'User avatar'" />
+        <ul-avatar [size]="'md'" [initials]="'JD'" />
+        <ul-avatar [size]="'md'" [icon]="'user'" />
       </div>
     `,
   }),
@@ -185,7 +185,7 @@ export const Loading: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"
@@ -209,7 +209,7 @@ export const ImageWithFallback: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar
+      <ul-avatar
         [size]="size"
         [src]="src"
         [initials]="initials"

@@ -79,8 +79,8 @@ export const AllIcons: Story = {
               background: rgba(255, 255, 255, 0.03);
             "
           >
-            <pe-icon [icon]="icon" size="8"></pe-icon>
-            <span style="font-size: 12px; text-align: center; word-break: break-all;" class="pe-text-tertiary">
+            <ul-icon [icon]="icon" size="8"></ul-icon>
+            <span style="font-size: 12px; text-align: center; word-break: break-all;" class="ul-text-tertiary">
               {{ icon }}
             </span>
             <button
@@ -111,7 +111,7 @@ export const AllSizes: Story = {
     template: `
       <div style="display: flex; min-height: 100vh; gap: 16px; align-items: center; flex-wrap: wrap;">
         ${Object.keys(variables.iconography.font.size)
-          .map((size) => `<pe-icon [size]="'${size}'" [weight]="'medium'" [icon]="'ultra_games'"></pe-icon>`)
+          .map((size) => `<ul-icon [size]="'${size}'" [weight]="'medium'" [icon]="'ultra_games'"></ul-icon>`)
           .join('\n')}
       </div>
     `,
@@ -123,7 +123,7 @@ export const AllWeights: Story = {
     template: `
       <div style="display: flex; gap: 16px; align-items: center;">
         ${Object.keys(variables.iconography.font.weight)
-          .map((weight) => `<pe-icon [size]="'8'" [weight]="'${weight}'" [icon]="'ultra_games'"></pe-icon>`)
+          .map((weight) => `<ul-icon [size]="'8'" [weight]="'${weight}'" [icon]="'ultra_games'"></ul-icon>`)
           .join('\n')}
       </div>
     `,

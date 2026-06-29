@@ -1,65 +1,65 @@
-<div class="pe-sidebar">
+<div class="ul-sidebar">
   <div
-    class="pe-sidebar__overlay"
-    [class.pe-sidebar__overlay--visible]="open()"
+    class="ul-sidebar__overlay"
+    [class.ul-sidebar__overlay--visible]="open()"
     [attr.aria-hidden]="!open()"
     (click)="onOverlayClick()"
   ></div>
 
   <aside
-    class="pe-sidebar__drawer"
-    [class.pe-sidebar__drawer--open]="open()"
+    class="ul-sidebar__drawer"
+    [class.ul-sidebar__drawer--open]="open()"
     role="navigation"
     [attr.aria-hidden]="!open()"
   >
-    <div class="pe-sidebar__inner">
-      <header class="pe-sidebar__header">
+    <div class="ul-sidebar__inner">
+      <header class="ul-sidebar__header">
         @if (open()) {
-          <pe-button
+          <ul-button
             theme="ghost-white"
             [iconOnly]="true"
-            class="pe-sidebar__close"
+            class="ul-sidebar__close"
             ariaLabel="Close menu"
             (buttonClick)="close()"
           >
-            <pe-icon icon="close" size="6" />
-          </pe-button>
+            <ul-icon icon="close" size="6" />
+          </ul-button>
         }
-        <ng-content select="[pe-sidebar-header]" />
+        <ng-content select="[ul-sidebar-header]" />
       </header>
-      <nav class="pe-sidebar__nav pe-scrollable">
+      <nav class="ul-sidebar__nav ul-scrollable">
         @if (items().length > 0) {
           @for (item of items(); track $index) {
-            <pe-list-item
+            <ul-list-item
               [theme]="theme()"
               [disabled]="!!item.disabled"
               [selected]="selectedIndex() === $index"
               [hideFocusOutline]="hideItemFocusOutline()"
               (click)="onItemClick(item, $index)"
             >
-              <ng-container pe-list-item-before-label>
+              <ng-container ul-list-item-before-label>
                 @if (item.leftIcons) {
                   @for (icon of item.leftIcons; track icon) {
-                    <pe-icon size="5" [icon]="icon" />
+                    <ul-icon size="5" [icon]="icon" />
                   }
                 }
               </ng-container>
-              <ng-container pe-list-item-label>{{ item.label }}</ng-container>
-              <ng-container pe-list-item-after-label>
+              <ng-container ul-list-item-label>{{ item.label }}</ng-container>
+              <ng-container ul-list-item-after-label>
                 @if (item.rightIcons) {
                   @for (icon of item.rightIcons; track icon) {
-                    <pe-icon size="5" [icon]="icon" />
+                    <ul-icon size="5" [icon]="icon" />
                   }
                 }
               </ng-container>
-            </pe-list-item>
+            </ul-list-item>
           }
         } @else {
-          <ng-content select="[pe-sidebar-nav]" />
+          <ng-content select="[ul-sidebar-nav]" />
         }
       </nav>
-      <footer class="pe-sidebar__footer">
-        <ng-content select="[pe-sidebar-footer]" />
+      <footer class="ul-sidebar__footer">
+        <ng-content select="[ul-sidebar-footer]" />
       </footer>
     </div>
   </aside>

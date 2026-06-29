@@ -116,7 +116,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-select
+      <ul-select
         [size]="size"
         [theme]="theme"
         [label]="label"
@@ -145,7 +145,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-select
+      <ul-select
         [size]="size"
         [theme]="theme"
         [label]="label"
@@ -173,25 +173,25 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 420px;">
-        <pe-select
+        <ul-select
           size="sm"
           label="Small"
           [options]="options"
           helperText="Small select"
         />
-        <pe-select
+        <ul-select
           size="md"
           label="Medium"
           [options]="options"
           helperText="Medium select"
         />
-        <pe-select
+        <ul-select
           size="lg"
           label="Large"
           [options]="options"
           helperText="Large select"
         />
-        <pe-select
+        <ul-select
           size="xl"
           label="Extra large"
           [options]="options"
@@ -215,13 +215,13 @@ export const States: Story = {
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 420px;">
-        <pe-select
+        <ul-select
           [options]="options"
           label="Disabled select"
           helperText="This select is disabled"
           [disabled]="true"
         />
-        <pe-select
+        <ul-select
           [options]="options"
           label="Required select"
           helperText="This field is required"

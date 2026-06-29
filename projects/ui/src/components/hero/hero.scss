@@ -1,6 +1,6 @@
 @use '../../foundations/toolkit' as *;
 
-// Hero BEM: pe-hero, pe-hero__title, pe-hero__subtitle, pe-hero__badges, pe-hero__actions, pe-hero__extra.
+// Hero BEM: ul-hero, ul-hero__title, ul-hero__subtitle, ul-hero__badges, ul-hero__actions, ul-hero__extra.
 // Consumers can override or extend these in app Sass (e.g. ::ng-deep or view encapsulation off in their component).
 
 .#{$prefix}hero {
@@ -193,11 +193,11 @@
     }
 
     .#{$prefix}hero__action-link,
-    .#{$prefix}hero__actions > pe-button {
+    .#{$prefix}hero__actions > ul-button {
       width: 100%;
     }
 
-    .#{$prefix}hero__action-link pe-button {
+    .#{$prefix}hero__action-link ul-button {
       width: 100%;
     }
   }

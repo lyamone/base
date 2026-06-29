@@ -9,7 +9,7 @@ export type SalePosition = 'left' | 'right';
 export type Currency = 'UOS' | string;
 
 @Component({
-  selector: 'pe-price-button',
+  selector: 'ul-price-button',
   standalone: true,
   imports: [ButtonComponent, CustomCurrencyPipe],
   templateUrl: './price-button.html',
@@ -17,8 +17,8 @@ export type Currency = 'UOS' | string;
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'pe-price-button',
-    '[class.pe-price-button--sale-left]': 'salePosition() === "left"',
+    class: 'ul-price-button',
+    '[class.ul-price-button--sale-left]': 'salePosition() === "left"',
   },
 })
 export class PriceButtonComponent {

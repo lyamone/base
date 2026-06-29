@@ -7,18 +7,18 @@ import type { UiSize } from '../ui-types';
  * Renders label text and optional required indicator.
  */
 @Component({
-  selector: 'pe-form-field-label',
+  selector: 'ul-form-field-label',
   standalone: true,
   template: `
     @if (label()) {
       <label
         [attr.for]="for()"
-        class="pe-form-field__label pe-form-field__label--{{size()}}"
-        [class.pe-form-field__label--required]="required()"
+        class="ul-form-field__label ul-form-field__label--{{size()}}"
+        [class.ul-form-field__label--required]="required()"
       >
         {{ label() }}
         @if (required()) {
-          <span class="pe-form-field__required-indicator" aria-hidden="true" title="Required"> * </span>
+          <span class="ul-form-field__required-indicator" aria-hidden="true" title="Required"> * </span>
         }
       </label>
     }

@@ -1,14 +1,14 @@
 <div
-  class="pe-search-select pe-search-select--{{ size() }}"
-  [class.pe-search-select--open]="isOpen()"
-  [class.pe-search-select--error]="hasError()"
-  [class.pe-search-select--disabled]="disabled()"
-  [class.pe-search-select--required]="required()"
+  class="ul-search-select ul-search-select--{{ size() }}"
+  [class.ul-search-select--open]="isOpen()"
+  [class.ul-search-select--error]="hasError()"
+  [class.ul-search-select--disabled]="disabled()"
+  [class.ul-search-select--required]="required()"
   [attr.aria-invalid]="hasError()"
   [attr.aria-required]="required()"
   [attr.aria-describedby]="describedBy()"
 >
-  <pe-form-field-label
+  <ul-form-field-label
     [label]="label()"
     [required]="required()"
     [for]="ids.controlId"
@@ -16,15 +16,15 @@
   />
 
   <div
-    class="pe-search-select__control"
-    [class.pe-search-select__control--focused]="isFocused()"
+    class="ul-search-select__control"
+    [class.ul-search-select__control--focused]="isFocused()"
     role="combobox"
     [attr.aria-expanded]="isOpen()"
     [attr.aria-controls]="listId"
     [attr.aria-activedescendant]="activeDescendantId()"
     (keydown)="onKeydown($event)"
   >
-    <pe-input
+    <ul-input
       [controlId]="ids.controlId"
       [value]="displayText()"
       (valueChange)="onInputValueChange($event)"
@@ -37,37 +37,37 @@
       [helperText]="null"
       [autocomplete]="'off'"
     >
-      <ng-container pe-input-right-elements>
-        <pe-icon size="5" icon="search" />
+      <ng-container ul-input-right-elements>
+        <ul-icon size="5" icon="search" />
       </ng-container>
-    </pe-input>
+    </ul-input>
 
     @if (shouldShowPanel()) {
       <div
-        class="pe-search-select__list pe-scrollable"
-        [class.pe-search-select__list--empty]="hasNoResults()"
+        class="ul-search-select__list ul-scrollable"
+        [class.ul-search-select__list--empty]="hasNoResults()"
         [id]="listId"
         role="listbox"
       >
         @if (hasNoResults()) {
-          <div class="pe-search-select__empty" role="status">No results</div>
+          <div class="ul-search-select__empty" role="status">No results</div>
         } @else {
           @for (opt of filteredOptions(); track opt.value; let i = $index) {
             <div
-              class="pe-search-select__option"
-              [class.pe-search-select__option--highlighted]="highlightedIndex() === i"
+              class="ul-search-select__option"
+              [class.ul-search-select__option--highlighted]="highlightedIndex() === i"
               [id]="optionId(i)"
               role="option"
               [attr.aria-selected]="value() === opt.value"
               (mousedown)="selectOption(opt)"
             >
-              <pe-list-item
+              <ul-list-item
                 theme="ghost-white"
                 [selected]="value() === opt.value"
                 [hideFocusOutline]="true"
               >
-                <ng-container pe-list-item-label>{{ opt.label }}</ng-container>
-              </pe-list-item>
+                <ng-container ul-list-item-label>{{ opt.label }}</ng-container>
+              </ul-list-item>
             </div>
           }
         }
@@ -75,7 +75,7 @@
     }
   </div>
 
-  <pe-form-field-helper
+  <ul-form-field-helper
     [id]="ids.helperId"
     [helperText]="helperText()"
     [errorText]="errorText() || (hasError() && errors().length ? errors()[0].message : '') || null"

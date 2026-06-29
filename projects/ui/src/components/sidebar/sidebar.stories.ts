@@ -75,13 +75,13 @@ export const Default: Story = {
       onItemSelected: (item: SidebarItem) => console.log('Selected', item),
     },
     template: `
-      <pe-sidebar
+      <ul-sidebar
         [items]="items"
         [theme]="theme"
         [selectedIndex]="selectedIndex"
         [closeOnBackdropClick]="closeOnBackdropClick"
         (itemSelected)="onItemSelected($event)">
-      </pe-sidebar>
+      </ul-sidebar>
     `,
   }),
 };
@@ -94,14 +94,14 @@ export const WithHeaderAndFooter: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-sidebar [items]="items" [theme]="theme">
-        <div pe-sidebar-header style="padding-bottom: 0.5rem; font-weight: 600; color: rgba(255,255,255,0.9);">
+      <ul-sidebar [items]="items" [theme]="theme">
+        <div ul-sidebar-header style="padding-bottom: 0.5rem; font-weight: 600; color: rgba(255,255,255,0.9);">
           App Menu
         </div>
-        <div pe-sidebar-footer style="color: rgba(255,255,255,0.5); font-size: 12px;">
+        <div ul-sidebar-footer style="color: rgba(255,255,255,0.5); font-size: 12px;">
           © Example App
         </div>
-      </pe-sidebar>
+      </ul-sidebar>
     `,
   }),
 };
@@ -119,8 +119,8 @@ export const MobileViewport: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-sidebar [items]="items" [theme]="theme">
-      </pe-sidebar>
+      <ul-sidebar [items]="items" [theme]="theme">
+      </ul-sidebar>
     `,
   }),
 };

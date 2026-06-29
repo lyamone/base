@@ -120,7 +120,7 @@ const baseArgs = {
 const cardTemplate = (args: any) => ({
   props: args,
   template: `
-    <pe-card
+    <ul-card
       [cardDirection]="cardDirection"
       [focused]="focused"
       [disabled]="disabled"
@@ -142,14 +142,14 @@ const cardTemplate = (args: any) => ({
         alt="Sample image"
       />
       <div udsCardMediaAction>
-        <pe-button [iconOnly]="true" theme="transparent-black">
-          <i class="pe-icon pe-icon-heart"></i>
-        </pe-button>
+        <ul-button [iconOnly]="true" theme="transparent-black">
+          <i class="ul-icon ul-icon-heart"></i>
+        </ul-button>
       </div>
       <ng-container udsCardFooter>
-        <pe-button theme="fill-purple">Action</pe-button>
+        <ul-button theme="fill-purple">Action</ul-button>
       </ng-container>
-    </pe-card>
+    </ul-card>
   `,
 });
 
@@ -207,7 +207,7 @@ export const MediaOverlay: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-card
+      <ul-card
         [mediaAspectRatio]="'portrait'"
         [mediaBlur]="mediaBlur"
         [mediaGrayscale]="mediaGrayscale"
@@ -221,18 +221,18 @@ export const MediaOverlay: Story = {
           alt="Sample image"
         />
         <div udsCardMediaAction>
-          <pe-button [iconOnly]="true" theme="transparent-black">
-            <i class="pe-icon pe-icon-heart"></i>
-          </pe-button>
+          <ul-button [iconOnly]="true" theme="transparent-black">
+            <i class="ul-icon ul-icon-heart"></i>
+          </ul-button>
         </div>
-        <div udsCardMediaOverlay class="pe-gap-2">
-          <div class="pe-icon pe-icon-size-12 pe-icon-uninstall"></div>
+        <div udsCardMediaOverlay class="ul-gap-2">
+          <div class="ul-icon ul-icon-size-12 ul-icon-uninstall"></div>
           Game missing
         </div>
         <ng-container udsCardFooter>
-          <pe-button theme="fill-purple">Action</pe-button>
+          <ul-button theme="fill-purple">Action</ul-button>
         </ng-container>
-      </pe-card>
+      </ul-card>
     `,
   }),
 };

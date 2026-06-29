@@ -66,9 +66,9 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Pill Label</span>
-      </pe-pill>
+      </ul-pill>
     `,
   }),
 };
@@ -81,11 +81,11 @@ export const WithIcons: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
-        <span class="pe-icon pe-icon-ultra_games"></span>
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+        <span class="ul-icon ul-icon-ultra_games"></span>
         <span>Pill with Icons</span>
-        <span class="pe-icon pe-icon-chevron_right"></span>
-      </pe-pill>
+        <span class="ul-icon ul-icon-chevron_right"></span>
+      </ul-pill>
     `,
   }),
 };
@@ -100,9 +100,9 @@ export const Dismissible: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Dismissible Pill</span>
-      </pe-pill>
+      </ul-pill>
     `,
   }),
 };
@@ -117,9 +117,9 @@ export const ReadOnly: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Read Only Pill</span>
-      </pe-pill>
+      </ul-pill>
     `,
   }),
 };
@@ -134,9 +134,9 @@ export const Selectable: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Selectable Pill</span>
-      </pe-pill>
+      </ul-pill>
     `,
   }),
 };
@@ -151,9 +151,9 @@ export const Disabled: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
+      <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Disabled Pill</span>
-      </pe-pill>
+      </ul-pill>
     `,
   }),
 };

@@ -13,7 +13,7 @@ const lineWidths = {
 };
 
 @Component({
-  selector: 'pe-radial',
+  selector: 'ul-radial',
   standalone: true,
   templateUrl: './radial.html',
   styleUrl: './radial.scss',

@@ -17,16 +17,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
  * and accessibility features.
  */
 @Component({
-  selector: 'pe-accordion-item',
+  selector: 'ul-accordion-item',
   standalone: true,
   template: `
     <div
-      class="pe-accordion__item"
-      [class.pe-accordion__item--expanded]="cdkAccordionItem.expanded"
-      [class.pe-accordion__item--disabled]="cdkAccordionItem.disabled">
+      class="ul-accordion__item"
+      [class.ul-accordion__item--expanded]="cdkAccordionItem.expanded"
+      [class.ul-accordion__item--disabled]="cdkAccordionItem.disabled">
       <button
         (click)="onToggle()"
-        class="pe-accordion__trigger"
+        class="ul-accordion__trigger"
         [id]="triggerId"
         [attr.aria-expanded]="cdkAccordionItem.expanded"
         [attr.aria-controls]="contentId"
@@ -34,26 +34,26 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         [disabled]="cdkAccordionItem.disabled"
         (keydown)="onKeydown($event)"
         type="button">
-        <div class="pe-accordion__icon">
-          <ng-content select="[pe-accordion-icon]"></ng-content>
+        <div class="ul-accordion__icon">
+          <ng-content select="[ul-accordion-icon]"></ng-content>
         </div>
-        <div class="pe-accordion__label">
-          <ng-content select="[pe-accordion-label]"></ng-content>
+        <div class="ul-accordion__label">
+          <ng-content select="[ul-accordion-label]"></ng-content>
         </div>
-        <div class="pe-accordion__status">
-          <ng-content select="[pe-accordion-status]"></ng-content>
+        <div class="ul-accordion__status">
+          <ng-content select="[ul-accordion-status]"></ng-content>
         </div>
-        <span class="pe-accordion__indicator">
-          <i class="pe-icon pe-icon-size-8 pe-icon-weight-bold pe-icon-chevron_down"></i>
+        <span class="ul-accordion__indicator">
+          <i class="ul-icon ul-icon-size-8 ul-icon-weight-bold ul-icon-chevron_down"></i>
         </span>
       </button>
       <div
         role="region"
-        class="pe-accordion__content"
+        class="ul-accordion__content"
         [id]="contentId"
         [attr.aria-labelledby]="triggerId"
         [attr.aria-hidden]="!cdkAccordionItem.expanded">
-        <ng-content select="[pe-accordion-content]"></ng-content>
+        <ng-content select="[ul-accordion-content]"></ng-content>
       </div>
     </div>
   `,
@@ -74,12 +74,12 @@ export class AccordionItemComponent {
   /**
    * Stable ID for the content region, used for aria-controls linkage.
    */
-  readonly contentId = `pe-accordion-content-${Math.random().toString(36).slice(2, 11)}`;
+  readonly contentId = `ul-accordion-content-${Math.random().toString(36).slice(2, 11)}`;
 
   /**
    * Stable ID for the trigger button, used for aria-labelledby linkage.
    */
-  readonly triggerId = `pe-accordion-trigger-${Math.random().toString(36).slice(2, 11)}`;
+  readonly triggerId = `ul-accordion-trigger-${Math.random().toString(36).slice(2, 11)}`;
 
   onToggle(): void {
     if (this.cdkAccordionItem.disabled) {
@@ -100,13 +100,13 @@ export class AccordionItemComponent {
     }
 
     // Handle Arrow keys, Home, and End for navigation between accordion items
-    const accordion = this.elementRef.nativeElement.closest('.pe-accordion');
+    const accordion = this.elementRef.nativeElement.closest('.ul-accordion');
     if (!accordion) {
       return;
     }
 
     const triggers = Array.from(
-      accordion.querySelectorAll('.pe-accordion__trigger:not([disabled])'),
+      accordion.querySelectorAll('.ul-accordion__trigger:not([disabled])'),
     ) as HTMLButtonElement[];
     const currentIndex = triggers.findIndex((t) => t.id === this.triggerId);
 
@@ -147,10 +147,10 @@ export class AccordionItemComponent {
  * multi-expansion behavior and manages the state of its child accordion items.
  */
 @Component({
-  selector: 'pe-accordion',
+  selector: 'ul-accordion',
   standalone: true,
   template: `
-    <cdk-accordion #accordion [multi]="multi()" class="pe-accordion" [class.pe-accordion--divider]="showDivider()">
+    <cdk-accordion #accordion [multi]="multi()" class="ul-accordion" [class.ul-accordion--divider]="showDivider()">
       <ng-content />
     </cdk-accordion>
   `,

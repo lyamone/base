@@ -85,7 +85,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-textarea
+      <ul-textarea
         [(value)]="value"
         [size]="size"
         [error]="error"
@@ -113,7 +113,7 @@ export const WithLabelAndHelper: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-textarea
+      <ul-textarea
         [(value)]="value"
         [size]="size"
         [placeholder]="placeholder"
@@ -136,7 +136,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-textarea
+      <ul-textarea
         [(value)]="value"
         [size]="size"
         [error]="error"
@@ -154,10 +154,10 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-textarea size="sm" placeholder="Small textarea" [rows]="2" />
-        <pe-textarea size="md" placeholder="Medium textarea" [rows]="3" />
-        <pe-textarea size="lg" placeholder="Large textarea" [rows]="4" />
-        <pe-textarea size="xl" placeholder="Extra large textarea" [rows]="3" />
+        <ul-textarea size="sm" placeholder="Small textarea" [rows]="2" />
+        <ul-textarea size="md" placeholder="Medium textarea" [rows]="3" />
+        <ul-textarea size="lg" placeholder="Large textarea" [rows]="4" />
+        <ul-textarea size="xl" placeholder="Extra large textarea" [rows]="3" />
       </div>
     `,
   }),
@@ -168,13 +168,13 @@ export const States: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-textarea
+        <ul-textarea
           [disabled]="true"
           label="Disabled textarea"
           value="This textarea is disabled"
           [rows]="3"
         />
-        <pe-textarea
+        <ul-textarea
           [readOnly]="true"
           label="Readonly textarea"
           value="This textarea is readonly"
@@ -189,20 +189,20 @@ export const WithSlots: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-textarea
+      <ul-textarea
         [(value)]="value"
         [size]="size"
         [label]="label"
         [helperText]="helperText"
         [rows]="rows"
         [maxLength]="200">
-        <ng-container pe-textarea-left-elements>
-          <i class="pe-icon pe-icon-size-6 pe-icon-message"></i>
+        <ng-container ul-textarea-left-elements>
+          <i class="ul-icon ul-icon-size-6 ul-icon-message"></i>
         </ng-container>
-        <ng-container pe-textarea-right-elements>
+        <ng-container ul-textarea-right-elements>
           <span>{{ value?.length ?? 0 }}/200</span>
         </ng-container>
-      </pe-textarea>
+      </ul-textarea>
     `,
   }),
   args: {
@@ -217,19 +217,19 @@ export const Resize: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-textarea
+        <ul-textarea
           resize="none"
           label="Resize: none"
           placeholder="Cannot resize"
           [rows]="3"
         />
-        <pe-textarea
+        <ul-textarea
           resize="vertical"
           label="Resize: vertical (default)"
           placeholder="Resize vertically"
           [rows]="3"
         />
-        <pe-textarea
+        <ul-textarea
           resize="both"
           label="Resize: both"
           placeholder="Resize both directions"

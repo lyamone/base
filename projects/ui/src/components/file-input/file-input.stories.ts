@@ -85,7 +85,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-file-input
+      <ul-file-input
         [size]="size"
         [appearance]="appearance"
         [accept]="accept"
@@ -111,7 +111,7 @@ export const WithLabelAndHelper: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-file-input
+      <ul-file-input
         [size]="size"
         [appearance]="appearance"
         [label]="label"
@@ -132,7 +132,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-file-input
+      <ul-file-input
         [size]="size"
         [appearance]="appearance"
         [error]="error"
@@ -148,10 +148,10 @@ export const AllSizes: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-file-input size="sm" label="Small" />
-        <pe-file-input size="md" label="Medium" />
-        <pe-file-input size="lg" label="Large" />
-        <pe-file-input size="xl" label="Extra large" />
+        <ul-file-input size="sm" label="Small" />
+        <ul-file-input size="md" label="Medium" />
+        <ul-file-input size="lg" label="Large" />
+        <ul-file-input size="xl" label="Extra large" />
       </div>
     `,
   }),
@@ -165,7 +165,7 @@ export const Disabled: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-file-input
+      <ul-file-input
         [disabled]="disabled"
         [label]="label"
       />
@@ -183,7 +183,7 @@ export const Multiple: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-file-input
+      <ul-file-input
         [multiple]="multiple"
         [label]="label"
         [placeholderText]="placeholderText"
@@ -197,11 +197,11 @@ export const BorderAndHoverOptions: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 24rem;">
-        <pe-file-input
+        <ul-file-input
           appearance="border-only"
           label="Border only"
         />
-        <pe-file-input
+        <ul-file-input
           appearance="subtle-tint"
           label="Subtle tint"
         />

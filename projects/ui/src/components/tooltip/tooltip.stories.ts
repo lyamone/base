@@ -19,7 +19,7 @@ const meta: Meta<TooltipComponent> = {
     docs: {
       description: {
         component:
-          'Simple hover/focus tooltip for inline controls. Wrap any trigger content in `pe-tooltip` and provide the text. Positions: top, bottom, left, right. Tooltips are non-interactive and use ARIA `role="tooltip"`.',
+          'Simple hover/focus tooltip for inline controls. Wrap any trigger content in `ul-tooltip` and provide the text. Positions: top, bottom, left, right. Tooltips are non-interactive and use ARIA `role="tooltip"`.',
       },
     },
   },
@@ -63,17 +63,17 @@ export const Default: Story = {
     props: args,
     template: `
       <div style="padding: 40px; display: flex; justify-content: center;">
-        <pe-tooltip
+        <ul-tooltip
           [text]="text"
           [position]="position"
           [showDelay]="showDelay"
           [hideDelay]="hideDelay"
           [disabled]="disabled"
         >
-          <pe-button theme="fill-purple">
+          <ul-button theme="fill-purple">
             Hover or focus me
-          </pe-button>
-        </pe-tooltip>
+          </ul-button>
+        </ul-tooltip>
       </div>
     `,
   }),
@@ -84,21 +84,21 @@ export const Positions: Story = {
     props: args,
     template: `
       <div style="padding: 40px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
-        <pe-tooltip [text]="text + ' (top)'" position="top">
-          <pe-button theme="fill-purple">Top</pe-button>
-        </pe-tooltip>
+        <ul-tooltip [text]="text + ' (top)'" position="top">
+          <ul-button theme="fill-purple">Top</ul-button>
+        </ul-tooltip>
 
-        <pe-tooltip [text]="text + ' (right)'" position="right">
-          <pe-button theme="fill-purple">Right</pe-button>
-        </pe-tooltip>
+        <ul-tooltip [text]="text + ' (right)'" position="right">
+          <ul-button theme="fill-purple">Right</ul-button>
+        </ul-tooltip>
 
-        <pe-tooltip [text]="text + ' (bottom)'" position="bottom">
-          <pe-button theme="fill-purple">Bottom</pe-button>
-        </pe-tooltip>
+        <ul-tooltip [text]="text + ' (bottom)'" position="bottom">
+          <ul-button theme="fill-purple">Bottom</ul-button>
+        </ul-tooltip>
 
-        <pe-tooltip [text]="text + ' (left)'" position="left">
-          <pe-button theme="fill-purple">Left</pe-button>
-        </pe-tooltip>
+        <ul-tooltip [text]="text + ' (left)'" position="left">
+          <ul-button theme="fill-purple">Left</ul-button>
+        </ul-tooltip>
       </div>
     `,
   }),

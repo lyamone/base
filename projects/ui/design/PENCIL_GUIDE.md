@@ -15,24 +15,24 @@ Reference for AI-assisted code generation from Pencil designs. Use this guide wh
 
 ## Component → Class Mapping
 
-### Button (`pe-button` / `pe-btn`)
+### Button (`ul-button` / `ul-btn`)
 
-**Usage:** `<pe-button size="md" theme="fill-purple">Primary Action</pe-button>`
+**Usage:** `<ul-button size="md" theme="fill-purple">Primary Action</ul-button>`
 
 | Prop | Values | Maps to Class |
 |------|--------|----------------|
-| `size` | `sm`, `md`, `lg`, `xl` | `pe-btn--sm`, `pe-btn--md`, `pe-btn--lg`, `pe-btn--xl` |
-| `theme` | See below | `pe-btn--fill-purple`, etc. |
-| `iconOnly` | `true` | `pe-btn--icon-only` |
-| `vertical` | `true` (lg only) | `pe-btn--vertical` |
+| `size` | `sm`, `md`, `lg`, `xl` | `ul-btn--sm`, `ul-btn--md`, `ul-btn--lg`, `ul-btn--xl` |
+| `theme` | See below | `ul-btn--fill-purple`, etc. |
+| `iconOnly` | `true` | `ul-btn--icon-only` |
+| `vertical` | `true` (lg only) | `ul-btn--vertical` |
 
 **Theme values:** `fill-purple`, `fill-white`, `fill-yellow`, `fill-red`, `transparent-purple`, `transparent-white`, `transparent-red`, `transparent-black`, `ghost-purple`, `ghost-white`, `ghost-red`, `ghost-green`, `outline-white`, `outline-purple`, `outline-red`, `outline-green`
 
-### Card (`pe-card`)
+### Card (`ul-card`)
 
 **Usage:**
 ```html
-<pe-card
+<ul-card
   cardCaption="Caption"
   cardTitle="Title"
   cardSubtitle="Subtitle">
@@ -40,51 +40,51 @@ Reference for AI-assisted code generation from Pencil designs. Use this guide wh
   <div udsCardMediaOverlay>...</div>
   <div udsCardMediaAction>...</div>
   <ng-container udsCardFooter>...</ng-container>
-</pe-card>
+</ul-card>
 ```
 
 | Input | Values | Notes |
 |-------|--------|-------|
 | `cardCaption`, `cardTitle`, `cardSubtitle` | string | Content |
-| `cardDirection` | `horizontal` \| `vertical` | `pe-card--horizontal` |
+| `cardDirection` | `horizontal` \| `vertical` | `ul-card--horizontal` |
 | `mediaAspectRatio` | `default` \| `square` \| `portrait` | Media shape |
 | `footerDist` | `default` \| `equal` | Footer layout |
 | `focused`, `disabled` | boolean | State classes |
 
 **Slots:** `udsCardMedia`, `udsCardMediaOverlay`, `udsCardMediaAction`, `udsCardFooter`
 
-### Input (`pe-input`)
+### Input (`ul-input`)
 
 **Usage:**
 ```html
-<pe-input
+<ul-input
   label="Email"
   placeholder="Enter your email"
   [value]="email()"
   (valueChange)="email.set($event)">
-</pe-input>
+</ul-input>
 ```
 
 | Input | Values | Notes |
 |-------|--------|-------|
-| `size` | `sm`, `md`, `lg` | `pe-input--sm`, etc. |
+| `size` | `sm`, `md`, `lg` | `ul-input--sm`, etc. |
 | `appearance` | `border-only` \| `subtle-tint` | Hover style |
 | `error`, `disabled`, `readOnly` | boolean | State classes |
 | `label`, `placeholder`, `helperText` | string | Labels |
 | `type` | `text` \| `email` \| `password` | Input type |
 
-**Projected content:** `[pe-input-left-elements]`, `[pe-input-right-elements]`
+**Projected content:** `[ul-input-left-elements]`, `[ul-input-right-elements]`
 
 ### Form Field Label / Helper
 
-- `pe-form-field-label` (internal)
-- `pe-form-field-helper` (internal)
+- `ul-form-field-label` (internal)
+- `ul-form-field-helper` (internal)
 
-### Navbar (`pe-navbar`)
+### Navbar (`ul-navbar`)
 
 **Usage:**
 ```html
-<pe-navbar
+<ul-navbar
   logoHref="/"
   [logoSrc]="logoUrl"
   [avatarSrc]="avatarUrl"
@@ -92,31 +92,31 @@ Reference for AI-assisted code generation from Pencil designs. Use this guide wh
   <ng-container *peNavbarLogo>...</ng-container>
   <ng-container *peNavbarSearch>...</ng-container>
   <ng-container *peNavbarAvatar>...</ng-container>
-</pe-navbar>
+</ul-navbar>
 ```
 
 ### Other Components
 
 | Component | Selector | Import Path |
 |-----------|----------|-------------|
-| Avatar | `pe-avatar` | `@base/ui` |
-| Breadcrumb | `pe-breadcrumb` | `@base/ui` |
-| Calendar | `pe-calendar` | `@base/ui` |
-| Checkbox | `pe-checkbox` | `@base/ui` |
-| Collapse | `pe-collapse` | `@base/ui` |
-| Dropdown | `pe-dropdown` | `@base/ui` |
-| Footer | `pe-footer` | `@base/ui` |
-| Hero | `pe-hero` | `@base/ui` |
-| Icon | `pe-icon` | `@base/ui` |
-| Modal | `pe-modal` | `@base/ui` |
-| Pill | `pe-pill` | `@base/ui` |
-| Radio | `pe-radio`, `pe-radio-group` | `@base/ui` |
-| Select | `pe-select` | `@base/ui` |
-| SearchSelect | `pe-search-select` | `@base/ui` |
-| Sidebar | `pe-sidebar` | `@base/ui` |
-| Status | `pe-status` | `@base/ui` |
-| Table | `pe-table` | `@base/ui` |
-| Textarea | `pe-textarea` | `@base/ui` |
+| Avatar | `ul-avatar` | `@base/ui` |
+| Breadcrumb | `ul-breadcrumb` | `@base/ui` |
+| Calendar | `ul-calendar` | `@base/ui` |
+| Checkbox | `ul-checkbox` | `@base/ui` |
+| Collapse | `ul-collapse` | `@base/ui` |
+| Dropdown | `ul-dropdown` | `@base/ui` |
+| Footer | `ul-footer` | `@base/ui` |
+| Hero | `ul-hero` | `@base/ui` |
+| Icon | `ul-icon` | `@base/ui` |
+| Modal | `ul-modal` | `@base/ui` |
+| Pill | `ul-pill` | `@base/ui` |
+| Radio | `ul-radio`, `ul-radio-group` | `@base/ui` |
+| Select | `ul-select` | `@base/ui` |
+| SearchSelect | `ul-search-select` | `@base/ui` |
+| Sidebar | `ul-sidebar` | `@base/ui` |
+| Status | `ul-status` | `@base/ui` |
+| Table | `ul-table` | `@base/ui` |
+| Textarea | `ul-textarea` | `@base/ui` |
 
 ---
 
@@ -124,13 +124,13 @@ Reference for AI-assisted code generation from Pencil designs. Use this guide wh
 
 | Class | Use |
 |-------|-----|
-| `pe-typography-headline-s-extrabold` | 24px, headings |
-| `pe-typography-headline-m-extrabold` | 28px |
-| `pe-typography-headline-l-regular` | 32px |
-| `pe-typography-body-m-regular` | 16px body |
-| `pe-typography-body-l-regular` | 18px |
-| `pe-typography-caption-l-regular` | 14px labels |
-| `pe-typography-caption-mono-regular` | 14px mono |
+| `ul-typography-headline-s-extrabold` | 24px, headings |
+| `ul-typography-headline-m-extrabold` | 28px |
+| `ul-typography-headline-l-regular` | 32px |
+| `ul-typography-body-m-regular` | 16px body |
+| `ul-typography-body-l-regular` | 18px |
+| `ul-typography-caption-l-regular` | 14px labels |
+| `ul-typography-caption-mono-regular` | 14px mono |
 
 **Weight variants:** `regular`, `medium`, `extrabold`, `extrablack`
 
@@ -140,12 +140,12 @@ Reference for AI-assisted code generation from Pencil designs. Use this guide wh
 
 | Category | Pattern | Example |
 |----------|---------|---------|
-| Text color | `pe-text-{color}` | `pe-text-primary`, `pe-text-tertiary` |
-| Background | `pe-bg-{color}` | `pe-bg-main`, `pe-bg-grey-lvl-1`, `pe-bg-purple` |
-| Border | `pe-border-{color}` | `pe-border-white-light` |
-| Radius | `pe-rounded-{size}` | `pe-rounded-2`, `pe-rounded-3` |
-| Spacing | `pe-p-{n}`, `pe-m-{n}`, `pe-gap-{n}` | `pe-p-4`, `pe-gap-4`, `pe-mb-4` |
-| Shadow | `pe-shadow-sm`, `pe-shadow-md` | |
+| Text color | `ul-text-{color}` | `ul-text-primary`, `ul-text-tertiary` |
+| Background | `ul-bg-{color}` | `ul-bg-main`, `ul-bg-grey-lvl-1`, `ul-bg-purple` |
+| Border | `ul-border-{color}` | `ul-border-white-light` |
+| Radius | `ul-rounded-{size}` | `ul-rounded-2`, `ul-rounded-3` |
+| Spacing | `ul-p-{n}`, `ul-m-{n}`, `ul-gap-{n}` | `ul-p-4`, `ul-gap-4`, `ul-mb-4` |
+| Shadow | `ul-shadow-sm`, `ul-shadow-md` | |
 
 **Spacing scale:** 1 (4px), 2 (8px), 3 (12px), 4 (16px), 6 (24px), 8 (32px)  
 **Radius scale:** 1 (4px), 2 (8px), 3 (12px), 4 (16px)
@@ -158,12 +158,12 @@ Use these when generating code from Pencil designs:
 
 **Component:**
 ```
-Generate an Angular standalone component for this design. Use the ui library at projects/ui. Import components from @base/ui (pe-button, pe-card, pe-input). Use SCSS with design tokens from projects/ui/src/design-tokens/variables.css. Apply pe-typography-*, pe-bg-*, pe-rounded-* classes where appropriate.
+Generate an Angular standalone component for this design. Use the ui library at projects/ui. Import components from @base/ui (ul-button, ul-card, ul-input). Use SCSS with design tokens from projects/ui/src/design-tokens/variables.css. Apply ul-typography-*, ul-bg-*, ul-rounded-* classes where appropriate.
 ```
 
 **Page:**
 ```
-Create an Angular page from this Pencil frame. Use components from projects/ui: pe-card, pe-button, pe-navbar, pe-input. Follow patterns in projects/ui/src/components. Use the pe- prefix for all utility classes. Import from @base/ui.
+Create an Angular page from this Pencil frame. Use components from projects/ui: ul-card, ul-button, ul-navbar, ul-input. Follow patterns in projects/ui/src/components. Use the ul- prefix for all utility classes. Import from @base/ui.
 ```
 
 **Full token import (all 800+ variables):**
@@ -182,12 +182,12 @@ Create Pencil variables from projects/ui/design/tokens-for-pencil.css
 
 | Component | Slot Attribute | Purpose |
 |-----------|----------------|---------|
-| `pe-card` | `udsCardMedia` | Main media (image, etc.) |
-| `pe-card` | `udsCardMediaOverlay` | Overlay on media |
-| `pe-card` | `udsCardMediaAction` | Action button on media |
-| `pe-card` | `udsCardFooter` | Footer actions |
-| `pe-input` | `pe-input-left-elements` | Left slot |
-| `pe-input` | `pe-input-right-elements` | Right slot |
+| `ul-card` | `udsCardMedia` | Main media (image, etc.) |
+| `ul-card` | `udsCardMediaOverlay` | Overlay on media |
+| `ul-card` | `udsCardMediaAction` | Action button on media |
+| `ul-card` | `udsCardFooter` | Footer actions |
+| `ul-input` | `ul-input-left-elements` | Left slot |
+| `ul-input` | `ul-input-right-elements` | Right slot |
 
 ---
 
@@ -225,7 +225,7 @@ When you change a design in Pencil:
 1. Design the page in Pencil using component symbols from the design system.
 2. Select the page frame.
 3. Press **Cmd/Ctrl + K**.
-4. Prompt: *"Generate an Angular standalone component for this design. Use projects/ui library. Import pe-card, pe-button, pe-navbar, pe-input from @base/ui. Use SCSS with tokens. See design/PENCIL_GUIDE.md for component mapping."*
+4. Prompt: *"Generate an Angular standalone component for this design. Use projects/ui library. Import ul-card, ul-button, ul-navbar, ul-input from @base/ui. Use SCSS with tokens. See design/PENCIL_GUIDE.md for component mapping."*
 5. Save to your app (e.g. `src/app/pages/my-page/`).
 
 ### 5. Sync Checklist

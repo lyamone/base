@@ -28,32 +28,32 @@ const searchOptions = [
 ];
 
 @Component({
-  selector: 'pe-demo-app-layout',
+  selector: 'ul-demo-app-layout',
   standalone: true,
   imports: [NavbarComponent, SidebarComponent],
   template: `
-    <div class="pe-demo-app-layout">
-      <pe-sidebar
+    <div class="ul-demo-app-layout">
+      <ul-sidebar
         [items]="sidebarItems()"
         [theme]="sidebarTheme()"
         [selectedIndex]="selectedIndex()"
         [(open)]="sidebarOpen"
         (itemSelected)="onItemSelected($event)">
-      </pe-sidebar>
-      <div class="pe-demo-app-layout__body">
-        <header class="pe-demo-app-layout__navbar">
-          <pe-navbar
+      </ul-sidebar>
+      <div class="ul-demo-app-layout__body">
+        <header class="ul-demo-app-layout__navbar">
+          <ul-navbar
             logoHref="/"
             [avatarInitials]="avatarInitials()"
             [sidebarOpen]="sidebarOpen()"
             [showSidebarToggle]="true"
             (sidebarToggle)="onSidebarToggle()">
-            <ng-content select="[pe-navbar-logo]" />
-            <ng-content select="[pe-navbar-search]" />
-            <ng-content select="[pe-navbar-avatar]" />
-          </pe-navbar>
+            <ng-content select="[ul-navbar-logo]" />
+            <ng-content select="[ul-navbar-search]" />
+            <ng-content select="[ul-navbar-avatar]" />
+          </ul-navbar>
         </header>
-        <main class="pe-demo-app-layout__main">
+        <main class="ul-demo-app-layout__main">
           <ng-content />
         </main>
       </div>
@@ -61,21 +61,21 @@ const searchOptions = [
   `,
   styles: [
     `
-      .pe-demo-app-layout {
+      .ul-demo-app-layout {
         display: flex;
         min-height: 100vh;
         background: #0a0a0a;
       }
-      .pe-demo-app-layout__body {
+      .ul-demo-app-layout__body {
         flex: 1;
         display: flex;
         flex-direction: column;
         min-width: 0;
       }
-      .pe-demo-app-layout__navbar {
+      .ul-demo-app-layout__navbar {
         flex-shrink: 0;
       }
-      .pe-demo-app-layout__main {
+      .ul-demo-app-layout__main {
         flex: 1;
         padding: 1.5rem 2rem;
         overflow: auto;
@@ -105,7 +105,7 @@ export class DemoAppLayoutComponent {
 }
 
 @Component({
-  selector: 'pe-demo-app-layout-story',
+  selector: 'ul-demo-app-layout-story',
   standalone: true,
   imports: [
     DemoAppLayoutComponent,
@@ -116,46 +116,46 @@ export class DemoAppLayoutComponent {
     AvatarComponent,
   ],
   template: `
-    <pe-demo-app-layout>
-      <a pe-navbar-logo href="/" class="pe-text-primary pe-typography-brand-headline-m-extrablack">
+    <ul-demo-app-layout>
+      <a ul-navbar-logo href="/" class="ul-text-primary ul-typography-brand-headline-m-extrablack">
         Perpetua
       </a>
-      <div pe-navbar-search>
-        <pe-search-select placeholder="Search games..." [options]="searchOptions" size="md" />
+      <div ul-navbar-search>
+        <ul-search-select placeholder="Search games..." [options]="searchOptions" size="md" />
       </div>
-      <pe-avatar pe-navbar-avatar initials="JD" size="md" />
+      <ul-avatar ul-navbar-avatar initials="JD" size="md" />
 
-      <div class="pe-demo-app-layout-story__content">
-        <h1 class="pe-demo-app-layout-story__title">App Layout Demo</h1>
-        <p class="pe-demo-app-layout-story__desc">
+      <div class="ul-demo-app-layout-story__content">
+        <h1 class="ul-demo-app-layout-story__title">App Layout Demo</h1>
+        <p class="ul-demo-app-layout-story__desc">
           This layout coordinates the navbar and sidebar. On mobile, use the hamburger menu in the navbar
           to open the sidebar drawer. On desktop, the sidebar stays visible.
         </p>
-        <p class="pe-demo-app-layout-story__hint">
+        <p class="ul-demo-app-layout-story__hint">
           Resize the viewport to mobile width to see the toggle behavior.
         </p>
       </div>
-    </pe-demo-app-layout>
+    </ul-demo-app-layout>
   `,
   styles: [
     `
-      .pe-demo-app-layout-story__content {
+      .ul-demo-app-layout-story__content {
         max-width: 560px;
       }
-      .pe-demo-app-layout-story__title {
+      .ul-demo-app-layout-story__title {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.5rem;
         font-weight: 700;
         margin: 0 0 1rem 0;
       }
-      .pe-demo-app-layout-story__desc,
-      .pe-demo-app-layout-story__hint {
+      .ul-demo-app-layout-story__desc,
+      .ul-demo-app-layout-story__hint {
         color: rgba(255, 255, 255, 0.7);
         font-size: 1rem;
         line-height: 1.5;
         margin: 0 0 0.75rem 0;
       }
-      .pe-demo-app-layout-story__hint {
+      .ul-demo-app-layout-story__hint {
         font-size: 0.875rem;
         color: rgba(255, 255, 255, 0.5);
       }
@@ -199,7 +199,7 @@ type Story = StoryObj<DemoAppLayoutComponent>;
 
 export const Default: Story = {
   render: () => ({
-    template: '<pe-demo-app-layout-story></pe-demo-app-layout-story>',
+    template: '<ul-demo-app-layout-story></ul-demo-app-layout-story>',
     moduleMetadata: {
       imports: [DemoAppLayoutStoryComponent],
     },

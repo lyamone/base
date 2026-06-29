@@ -77,7 +77,7 @@ export const Basic: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-checkbox
+      <ul-checkbox
         [checked]="checked"
         [disabled]="disabled"
         [indeterminate]="indeterminate"
@@ -86,7 +86,7 @@ export const Basic: Story = {
         [error]="error"
       >
         Basic Checkbox
-      </pe-checkbox>
+      </ul-checkbox>
     `,
   }),
 };
@@ -99,14 +99,14 @@ export const NoLabel: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-checkbox
+      <ul-checkbox
         [checked]="checked"
         [disabled]="disabled"
         [indeterminate]="indeterminate"
         [zone]="zone"
         [size]="size"
         [error]="error"
-      ></pe-checkbox>
+      ></ul-checkbox>
     `,
   }),
 };
@@ -121,15 +121,15 @@ export const DisabledStates: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-checkbox [checked]="checked" [disabled]="true">
+        <ul-checkbox [checked]="checked" [disabled]="true">
           Disabled Unchecked
-        </pe-checkbox>
-        <pe-checkbox [checked]="false" [disabled]="true">
+        </ul-checkbox>
+        <ul-checkbox [checked]="false" [disabled]="true">
           Disabled Checked
-        </pe-checkbox>
-        <pe-checkbox [checked]="checked" [disabled]="true" [indeterminate]="true">
+        </ul-checkbox>
+        <ul-checkbox [checked]="checked" [disabled]="true" [indeterminate]="true">
           Disabled Indeterminate
-        </pe-checkbox>
+        </ul-checkbox>
       </div>
     `,
   }),
@@ -144,15 +144,15 @@ export const ZoneVariants: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-checkbox [checked]="checked" zone="accessible">
+        <ul-checkbox [checked]="checked" zone="accessible">
           Accessible Zone
-        </pe-checkbox>
-        <pe-checkbox [checked]="checked" zone="visible">
+        </ul-checkbox>
+        <ul-checkbox [checked]="checked" zone="visible">
           Visible Zone
-        </pe-checkbox>
-        <pe-checkbox [checked]="checked" zone="checked-visible">
+        </ul-checkbox>
+        <ul-checkbox [checked]="checked" zone="checked-visible">
           Checked Visible Zone
-        </pe-checkbox>
+        </ul-checkbox>
       </div>
     `,
   }),
@@ -167,12 +167,12 @@ export const SizeVariants: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-checkbox [checked]="checked" size="default">
+        <ul-checkbox [checked]="checked" size="default">
           Default Size
-        </pe-checkbox>
-        <pe-checkbox [checked]="checked" size="sm">
+        </ul-checkbox>
+        <ul-checkbox [checked]="checked" size="sm">
           Small Size
-        </pe-checkbox>
+        </ul-checkbox>
       </div>
     `,
   }),
@@ -189,7 +189,7 @@ export const FormField: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-checkbox
+      <ul-checkbox
         [checked]="checked"
         [label]="label"
         [helperText]="helperText"
@@ -198,7 +198,7 @@ export const FormField: Story = {
         [size]="size"
       >
         I agree to the terms
-      </pe-checkbox>
+      </ul-checkbox>
     `,
   }),
 };
@@ -213,9 +213,9 @@ export const ErrorState: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-checkbox [checked]="checked" [error]="true" [errorText]="errorText">
+      <ul-checkbox [checked]="checked" [error]="true" [errorText]="errorText">
         Error State Checkbox
-      </pe-checkbox>
+      </ul-checkbox>
     `,
   }),
 };
@@ -228,11 +228,11 @@ export const LongLabel: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-checkbox [checked]="checked" zone="visible">
+      <ul-checkbox [checked]="checked" zone="visible">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque delectus 
         dignissimos, ducimus eligendi esse eveniet, facilis laudantium minus natus 
         nobis quaerat quasi quos sint soluta suscipit tenetur ut voluptatum.
-      </pe-checkbox>
+      </ul-checkbox>
     `,
   }),
 };

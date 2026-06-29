@@ -7,7 +7,7 @@ import { Directive, input, signal } from '@angular/core';
   host: {
     '(load)': 'handleLoad()',
     '(error)': 'handleError()',
-    '[class.pe-image--not-found]': 'imageNotFound()',
+    '[class.ul-image--not-found]': 'imageNotFound()',
     '[style.visibility]': 'visibility()',
   },
 })

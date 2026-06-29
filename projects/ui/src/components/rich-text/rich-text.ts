@@ -14,30 +14,30 @@ export type RichTextSize = 'body-m' | 'body-l';
 
 /**
  * Display-only rich text component. Renders sanitized HTML from the API (or from
- * pe-rich-text-editor) with no Quill dependency. HTML is sanitized before rendering.
+ * ul-rich-text-editor) with no Quill dependency. HTML is sanitized before rendering.
  *
  * Use [content] for HTML strings (e.g. from API or editor), or project markup via
  * ng-content when content is empty.
  */
 @Component({
-  selector: 'pe-rich-text',
+  selector: 'ul-rich-text',
   template: `
     @if (content()) {
       <div
-        class="pe-rich-text"
-        [class.pe-rich-text--body-m]="size() === 'body-m'"
+        class="ul-rich-text"
+        [class.ul-rich-text--body-m]="size() === 'body-m'"
         [innerHTML]="sanitizedContent()"
       ></div>
     } @else {
       <div
-        class="pe-rich-text"
-        [class.pe-rich-text--body-m]="size() === 'body-m'"
+        class="ul-rich-text"
+        [class.ul-rich-text--body-m]="size() === 'body-m'"
       >
         <ng-content />
       </div>
     }`,
   host: {
-    class: 'pe-rich-text-host',
+    class: 'ul-rich-text-host',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

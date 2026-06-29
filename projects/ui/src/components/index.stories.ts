@@ -55,7 +55,7 @@ type Story = StoryObj;
 export const ComponentLibrary: Story = {
   render: () => ({
     template: `
-      <pe-hero
+      <ul-hero
         title="Base UI Component Library"
         subtitle="A design system built with Angular: reusable components, design tokens, and accessibility built in. Browse by category below."
         [badges]="['Angular', 'Design tokens', 'Accessible']"
@@ -81,13 +81,13 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Form Elements</h2>
             <p class="index-section-desc">Inputs, selection controls, and date picking. Build forms with consistent styling and validation.</p>
             <div class="index-section-links">
-              <a href="?path=/docs/components-form-elements-input--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Input</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-textarea--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Textarea</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-checkbox--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Checkbox</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-radio--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Radio</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-select--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Select</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-searchselect--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Search Select</pe-pill></a>
-              <a href="?path=/docs/components-form-elements-calendar--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Calendar</pe-pill></a>
+              <a href="?path=/docs/components-form-elements-input--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Input</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-textarea--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Textarea</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-checkbox--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Checkbox</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-radio--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Radio</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-select--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Select</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-searchselect--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Search Select</ul-pill></a>
+              <a href="?path=/docs/components-form-elements-calendar--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Calendar</ul-pill></a>
             </div>
           </section>
 
@@ -95,9 +95,9 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Actions</h2>
             <p class="index-section-desc">Buttons, pills, and breadcrumbs. Trigger actions and guide navigation.</p>
             <div class="index-section-preview">
-              <a href="?path=/docs/components-actions-button--docs" class="index-component-link"><pe-button theme="fill-purple" size="md">Button</pe-button></a>
-              <a href="?path=/docs/components-actions-pill--docs" class="index-component-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Pill</pe-pill></a>
-              <a href="?path=/docs/components-actions-breadcrumb--docs" class="index-component-link"><pe-button theme="ghost-white" size="md">Breadcrumb</pe-button></a>
+              <a href="?path=/docs/components-actions-button--docs" class="index-component-link"><ul-button theme="fill-purple" size="md">Button</ul-button></a>
+              <a href="?path=/docs/components-actions-pill--docs" class="index-component-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Pill</ul-pill></a>
+              <a href="?path=/docs/components-actions-breadcrumb--docs" class="index-component-link"><ul-button theme="ghost-white" size="md">Breadcrumb</ul-button></a>
             </div>
           </section>
 
@@ -105,15 +105,15 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Layout</h2>
             <p class="index-section-desc">Structure your app: cards, tables, modals, navbars, and page sections like the hero above.</p>
             <div class="index-section-links">
-              <a href="?path=/docs/components-layout-card--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Card</pe-pill></a>
-              <a href="?path=/docs/components-layout-table--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Table</pe-pill></a>
-              <a href="?path=/docs/components-layout-accordion--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Accordion</pe-pill></a>
-              <a href="?path=/docs/components-layout-collapse--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Collapse</pe-pill></a>
-              <a href="?path=/docs/components-layout-modal--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Modal</pe-pill></a>
-              <a href="?path=/docs/components-layout-sidebar--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Sidebar</pe-pill></a>
-              <a href="?path=/docs/components-layout-navbar--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Navbar</pe-pill></a>
-              <a href="?path=/docs/components-layout-footer--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Footer</pe-pill></a>
-              <a href="?path=/docs/components-layout-hero--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Hero</pe-pill></a>
+              <a href="?path=/docs/components-layout-card--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Card</ul-pill></a>
+              <a href="?path=/docs/components-layout-table--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Table</ul-pill></a>
+              <a href="?path=/docs/components-layout-accordion--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Accordion</ul-pill></a>
+              <a href="?path=/docs/components-layout-collapse--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Collapse</ul-pill></a>
+              <a href="?path=/docs/components-layout-modal--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Modal</ul-pill></a>
+              <a href="?path=/docs/components-layout-sidebar--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Sidebar</ul-pill></a>
+              <a href="?path=/docs/components-layout-navbar--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Navbar</ul-pill></a>
+              <a href="?path=/docs/components-layout-footer--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Footer</ul-pill></a>
+              <a href="?path=/docs/components-layout-hero--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Hero</ul-pill></a>
             </div>
           </section>
 
@@ -121,17 +121,17 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Media</h2>
             <p class="index-section-desc">Avatars, icons, status indicators, and list items. Represent people and content.</p>
             <div class="index-section-preview index-section-preview--media">
-              <a href="?path=/docs/components-media-avatar--docs" class="index-icon-link" title="Avatar"><pe-icon icon="person" size="10" /></a>
-              <a href="?path=/docs/components-media-icon--docs" class="index-icon-link" title="Icon"><pe-icon icon="icon" size="10" /></a>
-              <a href="?path=/docs/components-media-status--docs" class="index-icon-link" title="Status"><pe-icon icon="check_circle" size="10" /></a>
+              <a href="?path=/docs/components-media-avatar--docs" class="index-icon-link" title="Avatar"><ul-icon icon="person" size="10" /></a>
+              <a href="?path=/docs/components-media-icon--docs" class="index-icon-link" title="Icon"><ul-icon icon="icon" size="10" /></a>
+              <a href="?path=/docs/components-media-status--docs" class="index-icon-link" title="Status"><ul-icon icon="check_circle" size="10" /></a>
             </div>
             <div class="index-section-links">
-              <a href="?path=/docs/components-media-avatar--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Avatar</pe-pill></a>
-              <a href="?path=/docs/components-media-avatar-group--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Avatar Group</pe-pill></a>
-              <a href="?path=/docs/components-media-icon--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Icon</pe-pill></a>
-              <a href="?path=/docs/components-media-status--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Status</pe-pill></a>
-              <a href="?path=/docs/components-media-list-item--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">List Item</pe-pill></a>
-              <a href="?path=/docs/components-media-imagenotfound--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">ImageNotFound</pe-pill></a>
+              <a href="?path=/docs/components-media-avatar--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Avatar</ul-pill></a>
+              <a href="?path=/docs/components-media-avatar-group--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Avatar Group</ul-pill></a>
+              <a href="?path=/docs/components-media-icon--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Icon</ul-pill></a>
+              <a href="?path=/docs/components-media-status--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Status</ul-pill></a>
+              <a href="?path=/docs/components-media-list-item--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">List Item</ul-pill></a>
+              <a href="?path=/docs/components-media-imagenotfound--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">ImageNotFound</ul-pill></a>
             </div>
           </section>
 
@@ -139,8 +139,8 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Overlays & Pickers</h2>
             <p class="index-section-desc">Dropdowns and specialized pickers. Layer content and capture structured input.</p>
             <div class="index-section-links">
-              <a href="?path=/docs/components-overlays-pickers-dropdown--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Dropdown</pe-pill></a>
-              <a href="?path=/docs/components-overlays-pickers-areacode--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Area Code</pe-pill></a>
+              <a href="?path=/docs/components-overlays-pickers-dropdown--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Dropdown</ul-pill></a>
+              <a href="?path=/docs/components-overlays-pickers-areacode--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Area Code</ul-pill></a>
             </div>
           </section>
 
@@ -148,42 +148,42 @@ export const ComponentLibrary: Story = {
             <h2 class="index-section-title">Advanced</h2>
             <p class="index-section-desc">Carousels, radial progress, and composite controls like the price button.</p>
             <div class="index-section-links">
-              <a href="?path=/docs/components-advanced-carousel--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Carousel</pe-pill></a>
-              <a href="?path=/docs/components-advanced-radial--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Radial</pe-pill></a>
-              <a href="?path=/docs/components-advanced-price-button--docs" class="index-pill-link"><pe-pill variant="read-only" theme="transparent-white" size="md">Price Button</pe-pill></a>
+              <a href="?path=/docs/components-advanced-carousel--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Carousel</ul-pill></a>
+              <a href="?path=/docs/components-advanced-radial--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Radial</ul-pill></a>
+              <a href="?path=/docs/components-advanced-price-button--docs" class="index-pill-link"><ul-pill variant="read-only" theme="transparent-white" size="md">Price Button</ul-pill></a>
             </div>
           </section>
         </div>
 
         <div class="index-foundations" id="design-foundations">
           <div class="index-foundations-header">
-            <pe-icon icon="palette" size="10" />
+            <ul-icon icon="palette" size="10" />
             <h2 class="index-foundations-title">Design Foundations</h2>
           </div>
           <p class="index-foundations-description">
             The component library is built on a solid foundation of design tokens including typography, colors, spacing, breakpoints, and icons.
           </p>
           <div class="index-foundations-pills">
-            <pe-pill variant="read-only" theme="transparent-white" size="lg">
-              <pe-icon icon="text" size="5" />
+            <ul-pill variant="read-only" theme="transparent-white" size="lg">
+              <ul-icon icon="text" size="5" />
               Typography
-            </pe-pill>
-            <pe-pill variant="read-only" theme="transparent-white" size="lg">
-              <pe-icon icon="palette" size="5" />
+            </ul-pill>
+            <ul-pill variant="read-only" theme="transparent-white" size="lg">
+              <ul-icon icon="palette" size="5" />
               Colors
-            </pe-pill>
-            <pe-pill variant="read-only" theme="transparent-white" size="lg">
-              <pe-icon icon="grid" size="5" />
+            </ul-pill>
+            <ul-pill variant="read-only" theme="transparent-white" size="lg">
+              <ul-icon icon="grid" size="5" />
               Spacing
-            </pe-pill>
-            <pe-pill variant="read-only" theme="transparent-white" size="lg">
-              <pe-icon icon="responsive" size="5" />
+            </ul-pill>
+            <ul-pill variant="read-only" theme="transparent-white" size="lg">
+              <ul-icon icon="responsive" size="5" />
               Breakpoints
-            </pe-pill>
-            <pe-pill variant="read-only" theme="transparent-white" size="lg">
-              <pe-icon icon="icon" size="5" />
+            </ul-pill>
+            <ul-pill variant="read-only" theme="transparent-white" size="lg">
+              <ul-icon icon="icon" size="5" />
               Icons
-            </pe-pill>
+            </ul-pill>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ export const ComponentLibrary: Story = {
           gap: 1rem;
           margin-bottom: 1rem;
         }
-        .index-foundations-header pe-icon {
+        .index-foundations-header ul-icon {
           color: rgba(111, 61, 224, 1);
         }
         .index-foundations-title {
@@ -333,7 +333,7 @@ export const ComponentLibrary: Story = {
           gap: 1rem;
           flex-wrap: wrap;
         }
-        .index-foundations-pills pe-pill {
+        .index-foundations-pills ul-pill {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;

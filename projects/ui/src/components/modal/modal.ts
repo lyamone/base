@@ -22,7 +22,7 @@ export type ModalVariant =
   | 'confirmation';
 
 @Component({
-  selector: 'pe-modal',
+  selector: 'ul-modal',
   standalone: true,
   imports: [CdkTrapFocus, ButtonComponent, IconComponent],
   templateUrl: './modal.html',
@@ -70,7 +70,7 @@ export class ModalComponent {
   readonly panelClass = computed(() => {
     const variant = this.variant();
     const custom = this.customClass();
-    const classes = ['pe-modal__panel', `pe-modal__panel--${variant}`];
+    const classes = ['ul-modal__panel', `ul-modal__panel--${variant}`];
     if (custom) {
       classes.push(custom);
     }
@@ -85,8 +85,8 @@ export class ModalComponent {
     (this.isSuccess() || this.isError()) ? '' : this.title()
   );
 
-  readonly titleId = `pe-modal-title-${Math.random().toString(36).slice(2, 11)}`;
-  readonly bodyId = `pe-modal-body-${Math.random().toString(36).slice(2, 11)}`;
+  readonly titleId = `ul-modal-title-${Math.random().toString(36).slice(2, 11)}`;
+  readonly bodyId = `ul-modal-body-${Math.random().toString(36).slice(2, 11)}`;
 
   close(): void {
     this.open.set(false);

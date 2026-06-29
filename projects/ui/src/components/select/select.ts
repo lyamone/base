@@ -21,10 +21,10 @@ export interface SelectOption extends DropdownItem {
  * Use [(value)] or [formField]="myForm().country".
  *
  * @example
- * <pe-select label="Sort by" [options]="options" [(value)]="selected" />
+ * <ul-select label="Sort by" [options]="options" [(value)]="selected" />
  */
 @Component({
-  selector: 'pe-select',
+  selector: 'ul-select',
   standalone: true,
   imports: [DropdownComponent, FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './select.html',
@@ -50,7 +50,7 @@ export class SelectComponent implements FormValueControl<string | null> {
   readonly value = model<string | null>(null);
   protected readonly selectedIndex = model<number>(0);
 
-  protected readonly ids = createFormFieldIds('pe-select');
+  protected readonly ids = createFormFieldIds('ul-select');
 
   protected readonly items = computed<DropdownItem[]>(() => {
     const opts = this.options();

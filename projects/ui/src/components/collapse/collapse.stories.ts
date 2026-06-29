@@ -44,7 +44,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-collapse
+      <ul-collapse
         [variant]="variant"
         [maxHeight]="maxHeight"
         [collapsed]="collapsed"
@@ -62,7 +62,7 @@ export const Default: Story = {
           <p>Fusce facilisis erat id magna varius, nec sodales ex congue.</p>
           <p>Sed eget turpis nec mi bibendum vehicula ut nec velit.</p>
         </div>
-      </pe-collapse>
+      </ul-collapse>
     `,
   }),
 };
@@ -76,7 +76,7 @@ export const InitiallyExpanded: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-collapse
+      <ul-collapse
         [variant]="variant"
         [maxHeight]="maxHeight"
         [collapsed]="collapsed"
@@ -87,7 +87,7 @@ export const InitiallyExpanded: Story = {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           <p>Vestibulum euismod, nunc ut fermentum elementum, augue nunc laoreet justo.</p>
         </div>
-      </pe-collapse>
+      </ul-collapse>
     `,
   }),
 };
@@ -102,7 +102,7 @@ export const IconVariant: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-collapse
+      <ul-collapse
         [variant]="variant"
         [maxHeight]="maxHeight"
         [collapsed]="collapsed"
@@ -113,7 +113,7 @@ export const IconVariant: Story = {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
-      </pe-collapse>
+      </ul-collapse>
     `,
   }),
 };

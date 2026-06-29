@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { booleanAttribute, Component, computed, input, model, output, signal, ViewEncapsulation } from '@angular/core';
 
 /**
- * Radio button for use inside a group. For Signal Forms use pe-radio-group with [formField].
- * Use [(checked)] when controlling each radio manually, or place inside pe-radio-group for [formField] binding.
+ * Radio button for use inside a group. For Signal Forms use ul-radio-group with [formField].
+ * Use [(checked)] when controlling each radio manually, or place inside ul-radio-group for [formField] binding.
  *
  * @example
- * <pe-radio value="option1" name="my-group" [checked]="isSelected">Option 1</pe-radio>
+ * <ul-radio value="option1" name="my-group" [checked]="isSelected">Option 1</ul-radio>
  */
 @Component({
-  selector: 'pe-radio',
+  selector: 'ul-radio',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './radio.html',
@@ -55,14 +55,14 @@ export class RadioComponent {
 
   /**
    * Emitted when this radio is selected (checked becomes true).
-   * Used by pe-radio-group to sync the group value.
+   * Used by ul-radio-group to sync the group value.
    */
   selected = output<string>();
 
   /**
    * Internal signal for the unique ID
    */
-  private readonly uniqueId = signal(`pe-radio-${Math.random().toString(36).substr(2, 9)}`);
+  private readonly uniqueId = signal(`ul-radio-${Math.random().toString(36).substr(2, 9)}`);
 
   /**
    * Computed ID that uses provided ID or falls back to generated unique ID

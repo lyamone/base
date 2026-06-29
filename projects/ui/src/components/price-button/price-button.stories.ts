@@ -11,7 +11,7 @@ const meta: Meta<PriceButtonComponent> = {
     docs: {
       description: {
         component:
-          'Button that shows a price (or "Free" when 0), with optional original price and sale badge. Supports label override, size, theme (same as pe-button), sale position (left/right), and currency. Use for purchase or download actions.',
+          'Button that shows a price (or "Free" when 0), with optional original price and sale badge. Supports label override, size, theme (same as ul-button), sale position (left/right), and currency. Use for purchase or download actions.',
       },
     },
   },
@@ -93,7 +93,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-price-button
+      <ul-price-button
         [label]="label"
         [size]="size"
         [theme]="theme"
@@ -103,7 +103,7 @@ export const Default: Story = {
         [originalPrice]="originalPrice"
         [discountBasis]="discountBasis"
         [currency]="currency"
-      ></pe-price-button>
+      ></ul-price-button>
     `,
   }),
 };

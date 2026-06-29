@@ -52,7 +52,7 @@ const searchOptions = [
 ];
 
 @Component({
-  selector: 'pe-demo-product-page',
+  selector: 'ul-demo-product-page',
   standalone: true,
   imports: [
     NavbarComponent,
@@ -77,79 +77,79 @@ const searchOptions = [
     AvatarComponent,
   ],
   template: `
-    <div class="pe-demo-product-page">
-      <pe-navbar logoHref="/" [avatarInitials]="'JD'">
-        <a pe-navbar-logo href="/" class="pe-text-primary pe-typography-brand-headline-m-extrablack">
-          <img src="assets/img/logo.png" alt="Player Eleven" class="pe-demo-product-page__logo" />
+    <div class="ul-demo-product-page">
+      <ul-navbar logoHref="/" [avatarInitials]="'JD'">
+        <a ul-navbar-logo href="/" class="ul-text-primary ul-typography-brand-headline-m-extrablack">
+          <img src="assets/img/logo.png" alt="Player Eleven" class="ul-demo-product-page__logo" />
         </a>
-        <div pe-navbar-search>
-          <pe-search-select
+        <div ul-navbar-search>
+          <ul-search-select
             placeholder="Search games..."
             [options]="searchOptions"
             size="md" />
         </div>
-        <pe-avatar pe-navbar-avatar initials="JD" size="md" />
-      </pe-navbar>
+        <ul-avatar ul-navbar-avatar initials="JD" size="md" />
+      </ul-navbar>
 
-      <main class="pe-demo-product-page__main">
-        <pe-breadcrumb [items]="breadcrumbItems" class="pe-demo-product-page__breadcrumb" />
+      <main class="ul-demo-product-page__main">
+        <ul-breadcrumb [items]="breadcrumbItems" class="ul-demo-product-page__breadcrumb" />
 
-        <div class="pe-demo-product-page__product-grid">
-          <div class="pe-demo-product-page__gallery">
-            <pe-carousel [options]="carouselOptions">
-              <pe-carousel-item>
-                <div class="pe-demo-product-page__gallery-slide">
+        <div class="ul-demo-product-page__product-grid">
+          <div class="ul-demo-product-page__gallery">
+            <ul-carousel [options]="carouselOptions">
+              <ul-carousel-item>
+                <div class="ul-demo-product-page__gallery-slide">
                   <img
                     peCatchImageNotFound
                     src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop"
                     alt="Chrono Nexus - Game artwork"
                   />
                 </div>
-              </pe-carousel-item>
-              <pe-carousel-item>
-                <div class="pe-demo-product-page__gallery-slide">
+              </ul-carousel-item>
+              <ul-carousel-item>
+                <div class="ul-demo-product-page__gallery-slide">
                   <img
                     peCatchImageNotFound
                     src="https://images.unsplash.com/photo-1511882150382-421056eb6909?w=800&h=450&fit=crop"
                     alt="Chrono Nexus - Gameplay screenshot"
                   />
                 </div>
-              </pe-carousel-item>
-              <pe-carousel-item>
-                <div class="pe-demo-product-page__gallery-slide">
+              </ul-carousel-item>
+              <ul-carousel-item>
+                <div class="ul-demo-product-page__gallery-slide">
                   <img
                     peCatchImageNotFound
                     src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=800&h=450&fit=crop"
                     alt="Chrono Nexus - In-game view"
                   />
                 </div>
-              </pe-carousel-item>
-            </pe-carousel>
+              </ul-carousel-item>
+            </ul-carousel>
           </div>
 
-          <aside class="pe-demo-product-page__info">
+          <aside class="ul-demo-product-page__info">
           
-              <div class="pe-demo-product-page__badges">
-            <p class="pe-demo-product-page__category">Action RPG</p>
-              <pe-pill theme="transparent-red" variant="read-only">Sale</pe-pill>
-              <pe-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="pe-demo-product-page__wishlist-btn">
-                <pe-icon icon="heart" size="6" />
-              </pe-button>
+              <div class="ul-demo-product-page__badges">
+            <p class="ul-demo-product-page__category">Action RPG</p>
+              <ul-pill theme="transparent-red" variant="read-only">Sale</ul-pill>
+              <ul-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="ul-demo-product-page__wishlist-btn">
+                <ul-icon icon="heart" size="6" />
+              </ul-button>
             </div>
-            <h1 class="pe-demo-product-page__title">Chrono Nexus</h1>
-            <p class="pe-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
+            <h1 class="ul-demo-product-page__title">Chrono Nexus</h1>
+            <p class="ul-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
 
 
 
-            <div class="pe-demo-product-page__form-block">
-              <pe-select
+            <div class="ul-demo-product-page__form-block">
+              <ul-select
                 label="Platform"
                 [options]="platformOptions"
                 [(value)]="selectedPlatform"
                 theme="transparent-white"
                 size="md"
               />
-                <pe-select
+                <ul-select
                   [options]="quantityDropdownItems"
                   theme="transparent-white"
                   label="Quantity"
@@ -158,8 +158,8 @@ const searchOptions = [
 
             </div>
             
-            <div class="pe-demo-product-page__price-block">
-              <pe-price-button
+            <div class="ul-demo-product-page__price-block">
+              <ul-price-button
                 label="Add to cart"
                 [price]="24.99"
                 [originalPrice]="34.99"
@@ -171,18 +171,18 @@ const searchOptions = [
           </aside>
         </div>
 
-        <div class="pe-demo-product-page__details">
-          <pe-accordion [showDivider]="true">
-            <pe-accordion-item [expanded]="true">
-              <ng-container pe-accordion-label>Description</ng-container>
-              <ng-container pe-accordion-content>
-                <pe-rich-text [content]="descriptionHtml" />
+        <div class="ul-demo-product-page__details">
+          <ul-accordion [showDivider]="true">
+            <ul-accordion-item [expanded]="true">
+              <ng-container ul-accordion-label>Description</ng-container>
+              <ng-container ul-accordion-content>
+                <ul-rich-text [content]="descriptionHtml" />
               </ng-container>
-            </pe-accordion-item>
-            <pe-accordion-item>
-              <ng-container pe-accordion-label>Specifications</ng-container>
-              <ng-container pe-accordion-content>
-                <ul class="pe-demo-product-page__spec-list">
+            </ul-accordion-item>
+            <ul-accordion-item>
+              <ng-container ul-accordion-label>Specifications</ng-container>
+              <ng-container ul-accordion-content>
+                <ul class="ul-demo-product-page__spec-list">
                   <li><strong>Genre:</strong> Action RPG</li>
                   <li><strong>Developer:</strong> Nexus Studios</li>
                   <li><strong>Release Date:</strong> 2025</li>
@@ -190,41 +190,41 @@ const searchOptions = [
                   <li><strong>Multiplayer:</strong> Co-op (2–4 players)</li>
                 </ul>
               </ng-container>
-            </pe-accordion-item>
-            <pe-accordion-item>
-              <ng-container pe-accordion-label>System Requirements</ng-container>
-              <ng-container pe-accordion-content>
+            </ul-accordion-item>
+            <ul-accordion-item>
+              <ng-container ul-accordion-label>System Requirements</ng-container>
+              <ng-container ul-accordion-content>
                 <p><strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX 1060</p>
                 <p><strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM, NVIDIA RTX 3060</p>
               </ng-container>
-            </pe-accordion-item>
-            <pe-accordion-item>
-              <ng-container pe-accordion-label>Shipping & Returns</ng-container>
-              <ng-container pe-accordion-content>
+            </ul-accordion-item>
+            <ul-accordion-item>
+              <ng-container ul-accordion-label>Shipping & Returns</ng-container>
+              <ng-container ul-accordion-content>
                 <p>Digital products are delivered instantly. Full refund within 14 days if not satisfied.</p>
               </ng-container>
-            </pe-accordion-item>
-          </pe-accordion>
+            </ul-accordion-item>
+          </ul-accordion>
         </div>
       </main>
 
-      <pe-footer
+      <ul-footer
         [copyrightText]="copyrightText"
         [socialLinks]="socialLinks"
         [links]="footerLinks"
-        class="pe-demo-product-page__footer"
+        class="ul-demo-product-page__footer"
       />
     </div>
   `,
   styles: [
     `
-      .pe-demo-product-page {
+      .ul-demo-product-page {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         background: #0a0a0a;
       }
-      .pe-demo-product-page__main {
+      .ul-demo-product-page__main {
         flex: 1;
         padding: 1.5rem 2rem 2rem;
         max-width: 1200px;
@@ -232,11 +232,11 @@ const searchOptions = [
         width: 100%;
       }
 
-      .pe-demo-product-page__logo {
+      .ul-demo-product-page__logo {
         display: block;
         height: 32px;
       }
-      .pe-demo-product-page__product-grid {
+      .ul-demo-product-page__product-grid {
         display: grid;
         grid-template-columns: 55fr 45fr;
         gap: 2rem;
@@ -244,97 +244,97 @@ const searchOptions = [
         margin-bottom: 1.5rem;
       }
       @media (max-width: 768px) {
-        .pe-demo-product-page__product-grid {
+        .ul-demo-product-page__product-grid {
           grid-template-columns: 1fr;
         }
       }
-      .pe-demo-product-page__gallery {
+      .ul-demo-product-page__gallery {
         border-radius: 8px;
         overflow: hidden;
       }
-      .pe-demo-product-page__gallery-slide {
+      .ul-demo-product-page__gallery-slide {
         aspect-ratio: 16/9;
         position: relative;
         overflow: hidden;
       }
-      .pe-demo-product-page__gallery-slide img {
+      .ul-demo-product-page__gallery-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      .pe-demo-product-page__info {
+      .ul-demo-product-page__info {
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
       }
-      .pe-demo-product-page__category {
+      .ul-demo-product-page__category {
         margin: 0;
         font-size: 0.875rem;
         color: rgba(255, 255, 255, 0.6);
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
-      .pe-demo-product-page__title {
+      .ul-demo-product-page__title {
         margin: 0;
         font-size: 1.75rem;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.95);
         line-height: 1.2;
       }
-      .pe-demo-product-page__subtitle {
+      .ul-demo-product-page__subtitle {
         margin: 0;
         font-size: 1rem;
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.5;
       }
-      .pe-demo-product-page__badges {
+      .ul-demo-product-page__badges {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
       }
-      .pe-demo-product-page__price-block {
+      .ul-demo-product-page__price-block {
         margin-top: 0.25rem;
       }
-      .pe-demo-product-page__form-block {
+      .ul-demo-product-page__form-block {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
       }
-      .pe-demo-product-page__form-block pe-dropdown,
-      .pe-demo-product-page__form-block .pe-demo-product-page__qty-wrap pe-dropdown {
+      .ul-demo-product-page__form-block ul-dropdown,
+      .ul-demo-product-page__form-block .ul-demo-product-page__qty-wrap ul-dropdown {
         min-width: 80px;
       }
-      .pe-demo-product-page__wishlist-btn {
+      .ul-demo-product-page__wishlist-btn {
         margin-left: auto;
       }
-      .pe-demo-product-page__qty-wrap {
+      .ul-demo-product-page__qty-wrap {
         display: flex;
         flex-direction: column;
         gap: 0.375rem;
       }
-      .pe-demo-product-page__qty-label {
+      .ul-demo-product-page__qty-label {
         font-size: 0.875rem;
         color: rgba(255, 255, 255, 0.7);
       }
-      .pe-demo-product-page__details {
+      .ul-demo-product-page__details {
         margin-bottom: 2rem;
       }
-      .pe-demo-product-page__spec-list {
+      .ul-demo-product-page__spec-list {
         margin: 0;
         padding-left: 1.25rem;
         color: rgba(255, 255, 255, 0.85);
       }
-      .pe-demo-product-page__spec-list li {
+      .ul-demo-product-page__spec-list li {
         margin-bottom: 0.5rem;
       }
-      .pe-demo-product-page__details p {
+      .ul-demo-product-page__details p {
         margin: 0 0 0.75rem 0;
         color: rgba(255, 255, 255, 0.85);
       }
-      .pe-demo-product-page__details p:last-child {
+      .ul-demo-product-page__details p:last-child {
         margin-bottom: 0;
       }
-      .pe-demo-product-page__footer {
+      .ul-demo-product-page__footer {
         margin-top: auto;
       }
     `,
@@ -364,7 +364,7 @@ class DemoProductPageComponent {
 }
 
 @Component({
-  selector: 'pe-demo-product-page-with-layout',
+  selector: 'ul-demo-product-page-with-layout',
   standalone: true,
   imports: [
     DemoAppLayoutComponent,
@@ -388,75 +388,75 @@ class DemoProductPageComponent {
     AvatarComponent,
   ],
   template: `
-    <pe-demo-app-layout>
-      <a pe-navbar-logo href="/" class="pe-text-primary pe-typography-brand-headline-m-extrablack">
-        <img src="assets/img/logo.png" alt="Player Eleven" class="pe-demo-product-page__logo" />
+    <ul-demo-app-layout>
+      <a ul-navbar-logo href="/" class="ul-text-primary ul-typography-brand-headline-m-extrablack">
+        <img src="assets/img/logo.png" alt="Player Eleven" class="ul-demo-product-page__logo" />
       </a>
-      <div pe-navbar-search>
-        <pe-search-select
+      <div ul-navbar-search>
+        <ul-search-select
           placeholder="Search games..."
           [options]="searchOptions"
           size="md" />
       </div>
-      <pe-avatar pe-navbar-avatar initials="JD" size="md" />
+      <ul-avatar ul-navbar-avatar initials="JD" size="md" />
 
-      <div class="pe-demo-product-page__wrapper">
-        <main class="pe-demo-product-page__main">
-          <pe-breadcrumb [items]="breadcrumbItems" class="pe-demo-product-page__breadcrumb" />
+      <div class="ul-demo-product-page__wrapper">
+        <main class="ul-demo-product-page__main">
+          <ul-breadcrumb [items]="breadcrumbItems" class="ul-demo-product-page__breadcrumb" />
 
-          <div class="pe-demo-product-page__product-grid">
-            <div class="pe-demo-product-page__gallery">
-              <pe-carousel [options]="carouselOptions">
-                <pe-carousel-item>
-                  <div class="pe-demo-product-page__gallery-slide">
+          <div class="ul-demo-product-page__product-grid">
+            <div class="ul-demo-product-page__gallery">
+              <ul-carousel [options]="carouselOptions">
+                <ul-carousel-item>
+                  <div class="ul-demo-product-page__gallery-slide">
                     <img
                       peCatchImageNotFound
                       src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=450&fit=crop"
                       alt="Chrono Nexus - Game artwork"
                     />
                   </div>
-                </pe-carousel-item>
-                <pe-carousel-item>
-                  <div class="pe-demo-product-page__gallery-slide">
+                </ul-carousel-item>
+                <ul-carousel-item>
+                  <div class="ul-demo-product-page__gallery-slide">
                     <img
                       peCatchImageNotFound
                       src="https://images.unsplash.com/photo-1511882150382-421056eb6909?w=800&h=450&fit=crop"
                       alt="Chrono Nexus - Gameplay screenshot"
                     />
                   </div>
-                </pe-carousel-item>
-                <pe-carousel-item>
-                  <div class="pe-demo-product-page__gallery-slide">
+                </ul-carousel-item>
+                <ul-carousel-item>
+                  <div class="ul-demo-product-page__gallery-slide">
                     <img
                       peCatchImageNotFound
                       src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=800&h=450&fit=crop"
                       alt="Chrono Nexus - In-game view"
                     />
                   </div>
-                </pe-carousel-item>
-              </pe-carousel>
+                </ul-carousel-item>
+              </ul-carousel>
             </div>
 
-            <aside class="pe-demo-product-page__info">
-              <div class="pe-demo-product-page__badges">
-                <p class="pe-demo-product-page__category">Action RPG</p>
-                <pe-pill theme="transparent-red" variant="read-only">Sale</pe-pill>
-                <pe-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="pe-demo-product-page__wishlist-btn">
-                  <pe-icon icon="heart" size="6" />
-                </pe-button>
+            <aside class="ul-demo-product-page__info">
+              <div class="ul-demo-product-page__badges">
+                <p class="ul-demo-product-page__category">Action RPG</p>
+                <ul-pill theme="transparent-red" variant="read-only">Sale</ul-pill>
+                <ul-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="ul-demo-product-page__wishlist-btn">
+                  <ul-icon icon="heart" size="6" />
+                </ul-button>
               </div>
-              <h1 class="pe-demo-product-page__title">Chrono Nexus</h1>
-              <p class="pe-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
+              <h1 class="ul-demo-product-page__title">Chrono Nexus</h1>
+              <p class="ul-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
 
-              <div class="pe-demo-product-page__form-block">
-                <pe-select
+              <div class="ul-demo-product-page__form-block">
+                <ul-select
                   label="Platform"
                   [options]="platformOptions"
                   [(value)]="selectedPlatform"
                   theme="transparent-white"
                   size="md"
                 />
-                <pe-select
+                <ul-select
                   [options]="quantityDropdownItems"
                   theme="transparent-white"
                   label="Quantity"
@@ -464,8 +464,8 @@ class DemoProductPageComponent {
                 />
               </div>
 
-              <div class="pe-demo-product-page__price-block">
-                <pe-price-button
+              <div class="ul-demo-product-page__price-block">
+                <ul-price-button
                   label="Add to cart"
                   [price]="24.99"
                   [originalPrice]="34.99"
@@ -477,11 +477,11 @@ class DemoProductPageComponent {
             </aside>
           </div>
 
-          <div class="pe-demo-product-page__details">
-            <pe-accordion [showDivider]="true">
-              <pe-accordion-item [expanded]="true">
-                <ng-container pe-accordion-label>Description</ng-container>
-                <ng-container pe-accordion-content>
+          <div class="ul-demo-product-page__details">
+            <ul-accordion [showDivider]="true">
+              <ul-accordion-item [expanded]="true">
+                <ng-container ul-accordion-label>Description</ng-container>
+                <ng-container ul-accordion-content>
                   <p>
                     Chrono Nexus is a stunning action RPG where you wield the power of time itself.
                     Navigate through fractured timelines, battle temporal anomalies, and forge alliances
@@ -489,11 +489,11 @@ class DemoProductPageComponent {
                     visuals powered by next-gen technology.
                   </p>
                 </ng-container>
-              </pe-accordion-item>
-              <pe-accordion-item>
-                <ng-container pe-accordion-label>Specifications</ng-container>
-                <ng-container pe-accordion-content>
-                  <ul class="pe-demo-product-page__spec-list">
+              </ul-accordion-item>
+              <ul-accordion-item>
+                <ng-container ul-accordion-label>Specifications</ng-container>
+                <ng-container ul-accordion-content>
+                  <ul class="ul-demo-product-page__spec-list">
                     <li><strong>Genre:</strong> Action RPG</li>
                     <li><strong>Developer:</strong> Nexus Studios</li>
                     <li><strong>Release Date:</strong> 2025</li>
@@ -501,49 +501,49 @@ class DemoProductPageComponent {
                     <li><strong>Multiplayer:</strong> Co-op (2–4 players)</li>
                   </ul>
                 </ng-container>
-              </pe-accordion-item>
-              <pe-accordion-item>
-                <ng-container pe-accordion-label>System Requirements</ng-container>
-                <ng-container pe-accordion-content>
+              </ul-accordion-item>
+              <ul-accordion-item>
+                <ng-container ul-accordion-label>System Requirements</ng-container>
+                <ng-container ul-accordion-content>
                   <p><strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX 1060</p>
                   <p><strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM, NVIDIA RTX 3060</p>
                 </ng-container>
-              </pe-accordion-item>
-              <pe-accordion-item>
-                <ng-container pe-accordion-label>Shipping & Returns</ng-container>
-                <ng-container pe-accordion-content>
+              </ul-accordion-item>
+              <ul-accordion-item>
+                <ng-container ul-accordion-label>Shipping & Returns</ng-container>
+                <ng-container ul-accordion-content>
                   <p>Digital products are delivered instantly. Full refund within 14 days if not satisfied.</p>
                 </ng-container>
-              </pe-accordion-item>
-            </pe-accordion>
+              </ul-accordion-item>
+            </ul-accordion>
           </div>
         </main>
 
-        <pe-footer
+        <ul-footer
           [copyrightText]="copyrightText"
           [socialLinks]="socialLinks"
           [links]="footerLinks"
-          class="pe-demo-product-page__footer"
+          class="ul-demo-product-page__footer"
         />
       </div>
-    </pe-demo-app-layout>
+    </ul-demo-app-layout>
   `,
   styles: [
     `
-      .pe-demo-product-page__wrapper {
+      .ul-demo-product-page__wrapper {
         display: flex;
         flex-direction: column;
         flex: 1;
         min-height: 0;
       }
-      .pe-demo-product-page__main {
+      .ul-demo-product-page__main {
         flex: 1;
         padding: 0 0 2rem;
         max-width: 1200px;
         margin: 0 auto;
         width: 100%;
       }
-      .pe-demo-product-page__product-grid {
+      .ul-demo-product-page__product-grid {
         display: grid;
         grid-template-columns: 55fr 45fr;
         gap: 2rem;
@@ -551,84 +551,84 @@ class DemoProductPageComponent {
         margin-bottom: 1.5rem;
       }
       @media (max-width: 768px) {
-        .pe-demo-product-page__product-grid {
+        .ul-demo-product-page__product-grid {
           grid-template-columns: 1fr;
         }
       }
-      .pe-demo-product-page__gallery {
+      .ul-demo-product-page__gallery {
         border-radius: 8px;
         overflow: hidden;
       }
-      .pe-demo-product-page__gallery-slide {
+      .ul-demo-product-page__gallery-slide {
         aspect-ratio: 16/9;
         position: relative;
         overflow: hidden;
       }
-      .pe-demo-product-page__gallery-slide img {
+      .ul-demo-product-page__gallery-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      .pe-demo-product-page__info {
+      .ul-demo-product-page__info {
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
       }
-      .pe-demo-product-page__category {
+      .ul-demo-product-page__category {
         margin: 0;
         font-size: 0.875rem;
         color: rgba(255, 255, 255, 0.6);
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
-      .pe-demo-product-page__title {
+      .ul-demo-product-page__title {
         margin: 0;
         font-size: 1.75rem;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.95);
         line-height: 1.2;
       }
-      .pe-demo-product-page__subtitle {
+      .ul-demo-product-page__subtitle {
         margin: 0;
         font-size: 1rem;
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.5;
       }
-      .pe-demo-product-page__badges {
+      .ul-demo-product-page__badges {
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
       }
-      .pe-demo-product-page__price-block {
+      .ul-demo-product-page__price-block {
         margin-top: 0.25rem;
       }
-      .pe-demo-product-page__form-block {
+      .ul-demo-product-page__form-block {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
       }
-      .pe-demo-product-page__wishlist-btn {
+      .ul-demo-product-page__wishlist-btn {
         margin-left: auto;
       }
-      .pe-demo-product-page__details {
+      .ul-demo-product-page__details {
         margin-bottom: 2rem;
       }
-      .pe-demo-product-page__spec-list {
+      .ul-demo-product-page__spec-list {
         margin: 0;
         padding-left: 1.25rem;
         color: rgba(255, 255, 255, 0.85);
       }
-      .pe-demo-product-page__spec-list li {
+      .ul-demo-product-page__spec-list li {
         margin-bottom: 0.5rem;
       }
-      .pe-demo-product-page__details p {
+      .ul-demo-product-page__details p {
         margin: 0 0 0.75rem 0;
         color: rgba(255, 255, 255, 0.85);
       }
-      .pe-demo-product-page__details p:last-child {
+      .ul-demo-product-page__details p:last-child {
         margin-bottom: 0;
       }
-      .pe-demo-product-page__footer {
+      .ul-demo-product-page__footer {
         margin-top: auto;
       }
     `,
@@ -699,7 +699,7 @@ type Story = StoryObj<DemoProductPageComponent>;
 
 export const Default: Story = {
   render: () => ({
-    template: '<pe-demo-product-page-with-layout></pe-demo-product-page-with-layout>',
+    template: '<ul-demo-product-page-with-layout></ul-demo-product-page-with-layout>',
     moduleMetadata: {
       imports: [DemoProductPageWithLayoutComponent],
     },
@@ -708,7 +708,7 @@ export const Default: Story = {
 
 export const NavbarOnly: Story = {
   render: () => ({
-    template: '<pe-demo-product-page></pe-demo-product-page>',
+    template: '<ul-demo-product-page></ul-demo-product-page>',
     moduleMetadata: {
       imports: [DemoProductPageComponent],
     },

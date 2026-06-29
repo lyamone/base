@@ -17,23 +17,23 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
  * Uses shared form field label and helper for alignment with input, textarea, radio-group.
  */
 @Component({
-  selector: 'pe-checkbox',
+  selector: 'ul-checkbox',
   standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   template: `
     <div
-      class="pe-checkbox pe-checkbox--{{ size() }}"
-      [class.pe-checkbox--accessible-zone]="zone() === 'accessible'"
-      [class.pe-checkbox--visible-zone]="zone() === 'visible'"
-      [class.pe-checkbox--checked-visible-zone]="zone() === 'checked-visible'"
-      [class.pe-checkbox--error]="hasError()"
-      [class.pe-checkbox--disabled]="disabled()"
-      [class.pe-checkbox--required]="required()"
+      class="ul-checkbox ul-checkbox--{{ size() }}"
+      [class.ul-checkbox--accessible-zone]="zone() === 'accessible'"
+      [class.ul-checkbox--visible-zone]="zone() === 'visible'"
+      [class.ul-checkbox--checked-visible-zone]="zone() === 'checked-visible'"
+      [class.ul-checkbox--error]="hasError()"
+      [class.ul-checkbox--disabled]="disabled()"
+      [class.ul-checkbox--required]="required()"
       [attr.aria-invalid]="hasError()"
       [attr.aria-required]="required()"
       [attr.aria-describedby]="describedBy()"
     >
-      <pe-form-field-label
+      <ul-form-field-label
         [label]="label()"
         [required]="required()"
         [for]="ids.controlId"
@@ -41,17 +41,17 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
       />
 
       <label
-        class="pe-checkbox__row"
-        [class.pe-checkbox__row--accessible-zone]="zone() === 'accessible'"
-        [class.pe-checkbox__row--visible-zone]="zone() === 'visible'"
-        [class.pe-checkbox__row--checked-visible-zone]="zone() === 'checked-visible'"
-        [class.pe-checkbox__row--sm]="size() === 'sm'"
-        [class.pe-checkbox__row--error]="hasError()"
+        class="ul-checkbox__row"
+        [class.ul-checkbox__row--accessible-zone]="zone() === 'accessible'"
+        [class.ul-checkbox__row--visible-zone]="zone() === 'visible'"
+        [class.ul-checkbox__row--checked-visible-zone]="zone() === 'checked-visible'"
+        [class.ul-checkbox__row--sm]="size() === 'sm'"
+        [class.ul-checkbox__row--error]="hasError()"
         [attr.for]="ids.controlId"
       >
         <input
           type="checkbox"
-          class="pe-checkbox__input"
+          class="ul-checkbox__input"
           [id]="ids.controlId"
           [checked]="checked()"
           [disabled]="disabled()"
@@ -61,13 +61,13 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
           [attr.aria-required]="required()"
           (change)="onChange($event)"
         />
-        <span class="pe-checkbox__pseudo-input"></span>
-        <span class="pe-checkbox__label">
+        <span class="ul-checkbox__pseudo-input"></span>
+        <span class="ul-checkbox__label">
           <ng-content />
         </span>
       </label>
 
-      <pe-form-field-helper
+      <ul-form-field-helper
         [id]="ids.helperId"
         [helperText]="helperText()"
         [errorText]="resolvedErrorText()"
@@ -93,7 +93,7 @@ export class CheckboxComponent implements FormCheckboxControl {
   invalid = input<boolean>(false);
   errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
 
-  protected readonly ids = createFormFieldIds('pe-checkbox');
+  protected readonly ids = createFormFieldIds('ul-checkbox');
   protected readonly hasError = computed(() => this.error() || this.invalid());
 
   protected readonly resolvedErrorText = computed(

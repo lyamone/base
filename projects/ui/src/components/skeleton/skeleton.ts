@@ -6,7 +6,7 @@ export type SkeletonVariant = 'rect' | 'text';
 export type SkeletonBorderRadius = 'xs' | 'sm' | 'md' | 'lg' | 'full';
 
 @Component({
-  selector: 'pe-skeleton',
+  selector: 'ul-skeleton',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './skeleton.html',
@@ -48,7 +48,7 @@ export class SkeletonComponent {
 
   readonly radiusClass = computed(() => {
     const radius = this.borderRadius();
-    return radius ? `pe-skeleton--radius-${radius}` : null;
+    return radius ? `ul-skeleton--radius-${radius}` : null;
   });
 
   trackByIndex(index: number): number {

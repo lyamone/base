@@ -1,25 +1,25 @@
 <div
-  class="pe-calendar pe-calendar--{{ mode() }} pe-calendar--{{ size() }}"
-  [class.pe-calendar--error]="hasError()"
-  [class.pe-calendar--disabled]="disabled()"
-  [class.pe-calendar--read-only]="readOnly()"
-  [class.pe-calendar--required]="required()"
+  class="ul-calendar ul-calendar--{{ mode() }} ul-calendar--{{ size() }}"
+  [class.ul-calendar--error]="hasError()"
+  [class.ul-calendar--disabled]="disabled()"
+  [class.ul-calendar--read-only]="readOnly()"
+  [class.ul-calendar--required]="required()"
   [attr.aria-invalid]="hasError()"
   [attr.aria-required]="required()"
   [attr.aria-describedby]="describedBy()"
 >
-  <pe-form-field-label
+  <ul-form-field-label
     [label]="label()"
     [required]="required()"
     [for]="ids.controlId"
     [size]="size()"
   />
 
-  <div class="pe-calendar__trigger-group" [class.pe-calendar__trigger-group--focused]="isOpen()">
+  <div class="ul-calendar__trigger-group" [class.ul-calendar__trigger-group--focused]="isOpen()">
     <button
       type="button"
       [id]="ids.controlId"
-      class="pe-calendar__trigger"
+      class="ul-calendar__trigger"
       [disabled]="disabled()"
       [cdkMenuTriggerFor]="calendarMenu"
       [attr.aria-invalid]="hasError()"
@@ -31,8 +31,8 @@
       (cdkMenuClosed)="onMenuClosed()"
     >
       <span
-        class="pe-calendar__trigger-text"
-        [class.pe-calendar__trigger-text--placeholder]="!displayValue()"
+        class="ul-calendar__trigger-text"
+        [class.ul-calendar__trigger-text--placeholder]="!displayValue()"
       >
         @if (displayValue()) {
           {{ displayValue() }}
@@ -43,24 +43,24 @@
     </button>
 
     @if (showCalendarIcon()) {
-      <pe-button
+      <ul-button
         type="button"
         theme="ghost-white"
         [size]="buttonSize()"
         [iconOnly]="true"
         [disabled]="disabled()"
         [cdkMenuTriggerFor]="calendarMenu"
-        class="pe-calendar__icon-button"
+        class="ul-calendar__icon-button"
         ariaLabel="Open calendar"
         (cdkMenuOpened)="onMenuOpened()"
         (cdkMenuClosed)="onMenuClosed()"
       >
-        <pe-icon icon="calendar" [size]="iconSize()" />
-      </pe-button>
+        <ul-icon icon="calendar" [size]="iconSize()" />
+      </ul-button>
     }
   </div>
 
-  <pe-form-field-helper
+  <ul-form-field-helper
     [id]="ids.helperId"
     [helperText]="helperText()"
     [errorText]="resolvedErrorText()"
@@ -68,46 +68,46 @@
   />
 
   <ng-template #calendarMenu>
-    <div cdkMenu class="pe-calendar__popup" [id]="ids.controlId + '-menu'">
+    <div cdkMenu class="ul-calendar__popup" [id]="ids.controlId + '-menu'">
       @if (mode() === 'date' || mode() === 'datetime') {
-        <div class="pe-calendar__date-picker">
-          <div class="pe-calendar__header">
-            <pe-button
+        <div class="ul-calendar__date-picker">
+          <div class="ul-calendar__header">
+            <ul-button
               type="button"
               theme="ghost-white"
               [iconOnly]="true"
               ariaLabel="Previous month"
               (buttonClick)="previousMonth()"
             >
-              <pe-icon icon="chevron_left" size="6" />
-            </pe-button>
-            <div class="pe-calendar__month-year">{{ monthYearLabel() }}</div>
-            <pe-button
+              <ul-icon icon="chevron_left" size="6" />
+            </ul-button>
+            <div class="ul-calendar__month-year">{{ monthYearLabel() }}</div>
+            <ul-button
               type="button"
               theme="ghost-white"
               [iconOnly]="true"
               ariaLabel="Next month"
               (buttonClick)="nextMonth()"
             >
-              <pe-icon icon="chevron_right" size="6" />
-            </pe-button>
+              <ul-icon icon="chevron_right" size="6" />
+            </ul-button>
           </div>
 
-          <div class="pe-calendar__weekdays">
+          <div class="ul-calendar__weekdays">
             @for (day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']; track $index) {
-              <div class="pe-calendar__weekday">{{ day }}</div>
+              <div class="ul-calendar__weekday">{{ day }}</div>
             }
           </div>
 
-          <div class="pe-calendar__days">
+          <div class="ul-calendar__days">
             @for (day of calendarDays(); track day.date.getTime()) {
               <button
                 type="button"
-                class="pe-calendar__day"
-                [class.pe-calendar__day--current-month]="day.isCurrentMonth"
-                [class.pe-calendar__day--today]="day.isToday"
-                [class.pe-calendar__day--selected]="day.isSelected"
-                [class.pe-calendar__day--disabled]="day.isDisabled"
+                class="ul-calendar__day"
+                [class.ul-calendar__day--current-month]="day.isCurrentMonth"
+                [class.ul-calendar__day--today]="day.isToday"
+                [class.ul-calendar__day--selected]="day.isSelected"
+                [class.ul-calendar__day--disabled]="day.isDisabled"
                 [disabled]="day.isDisabled"
                 (click)="selectDate(day.date)"
               >
@@ -119,10 +119,10 @@
       }
 
       @if (mode() === 'time' || mode() === 'datetime') {
-        <div class="pe-calendar__time-picker">
-          <div class="pe-calendar__time-controls">
+        <div class="ul-calendar__time-picker">
+          <div class="ul-calendar__time-controls">
             <select
-              class="pe-calendar__time-select"
+              class="ul-calendar__time-select"
               [value]="selectedHour()"
               (change)="selectTime(+$any($event.target).value, selectedMinute())"
             >
@@ -132,9 +132,9 @@
                 </option>
               }
             </select>
-            <span class="pe-calendar__time-separator">:</span>
+            <span class="ul-calendar__time-separator">:</span>
             <select
-              class="pe-calendar__time-select"
+              class="ul-calendar__time-select"
               [value]="selectedMinute()"
               (change)="selectTime(selectedHour(), +$any($event.target).value)"
             >
@@ -148,16 +148,16 @@
         </div>
       }
 
-      <div class="pe-calendar__actions">
+      <div class="ul-calendar__actions">
         @if (mode() === 'date' || mode() === 'datetime') {
-          <pe-button type="button" theme="transparent-white" (buttonClick)="selectToday()">
+          <ul-button type="button" theme="transparent-white" (buttonClick)="selectToday()">
             Today
-          </pe-button>
+          </ul-button>
         }
         @if (value()) {
-          <pe-button type="button" theme="transparent-white" (buttonClick)="clear()">
+          <ul-button type="button" theme="transparent-white" (buttonClick)="clear()">
             Clear
-          </pe-button>
+          </ul-button>
         }
       </div>
     </div>

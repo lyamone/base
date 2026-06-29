@@ -73,8 +73,8 @@ export const Default: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" type="button" (click)="isOpen = true">Open modal</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" type="button" (click)="isOpen = true">Open modal</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -82,7 +82,7 @@ export const Default: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>This is the default modal variant. Use it for generic dialogs and confirmations.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -101,8 +101,8 @@ export const Success: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white"   (click)="isOpen = true">Show success</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white"   (click)="isOpen = true">Show success</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -110,7 +110,7 @@ export const Success: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>Your changes have been saved successfully.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -129,8 +129,8 @@ export const Error: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Show error</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Show error</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -138,7 +138,7 @@ export const Error: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>Something went wrong. Please try again later.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -157,8 +157,8 @@ export const Custom: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Open custom modal</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Open custom modal</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -166,7 +166,7 @@ export const Custom: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>Custom variant with no extra styling. Add your own content and optional <code>customClass</code> for overrides.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -188,8 +188,8 @@ export const BottomSheet: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Open bottom sheet</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Open bottom sheet</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -197,7 +197,7 @@ export const BottomSheet: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>On viewports below the <code>sm</code> breakpoint, this variant appears as a bottom sheet (anchored to the bottom, rounded top corners).</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -218,8 +218,8 @@ export const Confirmation: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button #trigger theme="transparent-white" (click)="isOpen = true">Open confirmation</pe-button>
-      <pe-modal
+      <ul-button #trigger theme="transparent-white" (click)="isOpen = true">Open confirmation</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -230,7 +230,7 @@ export const Confirmation: Story = {
         (confirmed)="isOpen = false; trigger.focus()"
         (cancelled)="isOpen = false; trigger.focus()">
         <p>Use the confirmation variant when you need the user to explicitly confirm or cancel an important action.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -254,8 +254,8 @@ export const SuccessConfirmation: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Show success confirmation</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Show success confirmation</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -266,7 +266,7 @@ export const SuccessConfirmation: Story = {
         (confirmed)="isOpen = false"
         (cancelled)="isOpen = false">
         <p>Your changes have been saved successfully. You can undo if this was a mistake.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -290,8 +290,8 @@ export const ErrorConfirmation: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Show error confirmation</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Show error confirmation</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -302,7 +302,7 @@ export const ErrorConfirmation: Story = {
         (confirmed)="isOpen = false"
         (cancelled)="isOpen = false">
         <p>We couldn&apos;t complete your request. You can try again or cancel and come back later.</p>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),
@@ -321,8 +321,8 @@ export const WithFooter: Story = {
     },
     template: `
     <div style="width: 512px; height: 512px;">
-      <pe-button theme="transparent-white" (click)="isOpen = true">Open modal with footer</pe-button>
-      <pe-modal
+      <ul-button theme="transparent-white" (click)="isOpen = true">Open modal with footer</ul-button>
+      <ul-modal
         [(open)]="isOpen"
         [variant]="variant"
         [title]="title"
@@ -330,11 +330,11 @@ export const WithFooter: Story = {
         [showCloseButton]="showCloseButton"
         (closed)="isOpen = false">
         <p>Do you want to proceed with this action?</p>
-        <ng-container pe-modal-footer>
-          <pe-button theme="ghost-white" (buttonClick)="isOpen = false">Cancel</pe-button>
-          <pe-button theme="fill-purple" (buttonClick)="isOpen = false">Confirm</pe-button>
+        <ng-container ul-modal-footer>
+          <ul-button theme="ghost-white" (buttonClick)="isOpen = false">Cancel</ul-button>
+          <ul-button theme="fill-purple" (buttonClick)="isOpen = false">Confirm</ul-button>
         </ng-container>
-      </pe-modal>
+      </ul-modal>
     </div>
     `,
   }),

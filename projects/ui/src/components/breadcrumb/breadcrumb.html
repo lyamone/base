@@ -1,38 +1,38 @@
-<nav class="pe-breadcrumb" aria-label="Breadcrumb">
-  <ol class="pe-breadcrumb__list">
+<nav class="ul-breadcrumb" aria-label="Breadcrumb">
+  <ol class="ul-breadcrumb__list">
     @for (item of items(); track $index) {
       <li
-        class="pe-breadcrumb__item"
-        [class.pe-breadcrumb__item--current]="isLastItem($index)"
-        [class.pe-breadcrumb__item--with-icon]="item.icon"
-        [class.pe-breadcrumb__item--hidden-mobile]="maxItems() && !shouldShowOnMobile($index)"
+        class="ul-breadcrumb__item"
+        [class.ul-breadcrumb__item--current]="isLastItem($index)"
+        [class.ul-breadcrumb__item--with-icon]="item.icon"
+        [class.ul-breadcrumb__item--hidden-mobile]="maxItems() && !shouldShowOnMobile($index)"
       >
         @if (isLastItem($index)) {
-          <span class="pe-breadcrumb__text" aria-current="page">
+          <span class="ul-breadcrumb__text" aria-current="page">
             @if (item.icon) {
-              <pe-icon [icon]="item.icon" size="5" class="pe-breadcrumb__icon" />
+              <ul-icon [icon]="item.icon" size="5" class="ul-breadcrumb__icon" />
             }
             {{ item.label }}
           </span>
         } @else {
           @if (item.href) {
-            <a [href]="item.href" class="pe-breadcrumb__link">
+            <a [href]="item.href" class="ul-breadcrumb__link">
               @if (item.icon) {
-                <pe-icon [icon]="item.icon" size="5" class="pe-breadcrumb__icon" />
+                <ul-icon [icon]="item.icon" size="5" class="ul-breadcrumb__icon" />
               }
               {{ item.label }}
             </a>
           } @else if (item.routerLink) {
-            <a [routerLink]="item.routerLink" class="pe-breadcrumb__link">
+            <a [routerLink]="item.routerLink" class="ul-breadcrumb__link">
               @if (item.icon) {
-                <pe-icon [icon]="item.icon" size="5" class="pe-breadcrumb__icon" />
+                <ul-icon [icon]="item.icon" size="5" class="ul-breadcrumb__icon" />
               }
               {{ item.label }}
             </a>
           } @else {
-            <span class="pe-breadcrumb__text">
+            <span class="ul-breadcrumb__text">
               @if (item.icon) {
-                <pe-icon [icon]="item.icon" size="5" class="pe-breadcrumb__icon" />
+                <ul-icon [icon]="item.icon" size="5" class="ul-breadcrumb__icon" />
               }
               {{ item.label }}
             </span>
@@ -40,13 +40,13 @@
         }
 
         @if (!isLastItem($index)) {
-          <span class="pe-breadcrumb__separator" aria-hidden="true">
+          <span class="ul-breadcrumb__separator" aria-hidden="true">
             @if (separator() === 'chevron_right') {
-              <pe-icon icon="chevron_right" size="5" />
+              <ul-icon icon="chevron_right" size="5" />
             } @else if (separator() === 'slash') {
-              <span class="pe-breadcrumb__separator-text">/</span>
+              <span class="ul-breadcrumb__separator-text">/</span>
             } @else if (separator() === 'dot') {
-              <span class="pe-breadcrumb__separator-text">·</span>
+              <span class="ul-breadcrumb__separator-text">·</span>
             }
           </span>
         }
@@ -54,15 +54,15 @@
     }
 
     @if (shouldShowEllipsisOnMobile()) {
-      <li class="pe-breadcrumb__item pe-breadcrumb__item--ellipsis" aria-hidden="true">
-        <span class="pe-breadcrumb__ellipsis">...</span>
-        <span class="pe-breadcrumb__separator" aria-hidden="true">
+      <li class="ul-breadcrumb__item ul-breadcrumb__item--ellipsis" aria-hidden="true">
+        <span class="ul-breadcrumb__ellipsis">...</span>
+        <span class="ul-breadcrumb__separator" aria-hidden="true">
           @if (separator() === 'chevron_right') {
-            <pe-icon icon="chevron_right" size="5" />
+            <ul-icon icon="chevron_right" size="5" />
           } @else if (separator() === 'slash') {
-            <span class="pe-breadcrumb__separator-text">/</span>
+            <span class="ul-breadcrumb__separator-text">/</span>
           } @else if (separator() === 'dot') {
-            <span class="pe-breadcrumb__separator-text">·</span>
+            <span class="ul-breadcrumb__separator-text">·</span>
           }
         </span>
       </li>

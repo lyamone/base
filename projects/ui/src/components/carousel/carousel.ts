@@ -14,23 +14,23 @@ import {
 import Splide, { Options } from '@splidejs/splide';
 
 @Component({
-  selector: 'pe-carousel-item',
+  selector: 'ul-carousel-item',
   standalone: true,
   template: ` <ng-content /> `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'splide__slide pe-carousel__item',
+    class: 'splide__slide ul-carousel__item',
   },
 })
 export class CarouselItemComponent {}
 
 @Component({
-  selector: 'pe-carousel',
+  selector: 'ul-carousel',
   standalone: true,
   template: `
-    <div class="splide pe-carousel" #carousel role="region" aria-roledescription="carousel">
-      <div class="splide__track pe-carousel__track">
+    <div class="splide ul-carousel" #carousel role="region" aria-roledescription="carousel">
+      <div class="splide__track ul-carousel__track">
         <div class="splide__list">
           <ng-content />
         </div>
@@ -103,7 +103,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     this.instance = new Splide(carousel.nativeElement, {
       arrows: false,
       classes: {
-        page: 'splide__pagination__page pe-carousel__pagination-dot',
+        page: 'splide__pagination__page ul-carousel__pagination-dot',
       },
       ...this.options(),
     });

@@ -73,7 +73,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-search-select
+      <ul-search-select
         [size]="size"
         [label]="label"
         [helperText]="helperText"
@@ -99,7 +99,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-search-select
+      <ul-search-select
         [size]="size"
         [label]="label"
         [helperText]="helperText"
@@ -123,7 +123,7 @@ export const Disabled: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-search-select
+      <ul-search-select
         [size]="size" 
         [label]="label"
         [helperText]="helperText"
@@ -144,25 +144,25 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 420px;">
-        <pe-search-select
+        <ul-search-select
           size="sm"
           label="Small"
           [options]="options"
           helperText="Small"
         />
-        <pe-search-select
+        <ul-search-select
           size="md"
           label="Medium"
           [options]="options"
           helperText="Medium"
         />
-        <pe-search-select
+        <ul-search-select
           size="lg"
           label="Large"
           [options]="options"
           helperText="Large"
         />
-        <pe-search-select
+        <ul-search-select
           size="xl"
           label="Extra large"
           [options]="options"
@@ -186,7 +186,7 @@ export const Responsive: Story = {
     props: args,
     template: `
       <div style="width: 100%; max-width: 480px; padding: 1rem;">
-        <pe-search-select
+        <ul-search-select
           [size]="size"
           [label]="label"
           [helperText]="helperText"

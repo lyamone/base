@@ -20,10 +20,10 @@ export type InputAppearance = 'border-only' | 'subtle-tint';
  *
  * Use [(value)] for two-way binding, or bind with [formField]="myForm().email" for Signal Forms.
  *
- * Content projection: [pe-input-left-elements], [pe-input-right-elements].
+ * Content projection: [ul-input-left-elements], [ul-input-right-elements].
  */
 @Component({
-  selector: 'pe-input',
+  selector: 'ul-input',
   standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './input.html',
@@ -59,7 +59,7 @@ export class InputComponent implements FormValueControl<string> {
 
   readonly value = model<string>('');
 
-  protected readonly ids = createFormFieldIds('pe-input');
+  protected readonly ids = createFormFieldIds('ul-input');
   protected readonly effectiveControlId = computed(() => this.controlId() ?? this.ids.controlId);
   protected readonly effectiveHelperId = computed(() => (this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId));
   protected readonly effectiveErrorId = computed(() => (this.controlId() ? `${this.controlId()}-error` : this.ids.errorId));

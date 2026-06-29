@@ -10,7 +10,7 @@ const meta: Meta<StatusComponent> = {
     docs: {
       description: {
         component:
-          'Status message block with icon, title, subtitle, and description. Status types: confirm, alert, error, pending, info. Optional custom icon and loading animation. Content is projected via pe-status-title, pe-status-subtitle, pe-status-description.',
+          'Status message block with icon, title, subtitle, and description. Status types: confirm, alert, error, pending, info. Optional custom icon and loading animation. Content is projected via ul-status-title, ul-status-subtitle, ul-status-description.',
       },
     },
   },
@@ -32,11 +32,11 @@ const meta: Meta<StatusComponent> = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-status [status]="status" [customIcon]="customIcon" [loadingAnimation]="loadingAnimation">
-        <div pe-status-title>Status Title</div>
-        <div pe-status-subtitle>Status Subtitle</div>
-        <div pe-status-description>Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis..</div>
-      </pe-status>
+      <ul-status [status]="status" [customIcon]="customIcon" [loadingAnimation]="loadingAnimation">
+        <div ul-status-title>Status Title</div>
+        <div ul-status-subtitle>Status Subtitle</div>
+        <div ul-status-description>Korem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis..</div>
+      </ul-status>
     `,
   }),
 };

@@ -31,8 +31,8 @@ export default {
 
 const OverviewTemplate = () => ({
   template: `
-    <pe-footer
-      copyrightText="&copy; {{ currentYear }} Player Eleven. All rights reserved. All trademarks or product names are the property of their respective owners."
+    <ul-footer
+      copyrightText="&copy; {{ currentYear }} Underlayer. All rights reserved. All trademarks or product names are the property of their respective owners."
       [socialLinks]="socialLinks"
       [links]="links"/>`,
   props: {

@@ -28,10 +28,10 @@ export type FileInputAppearance = 'border-only' | 'subtle-tint';
  * Implements FormValueControl<FileList | null> for use with Signal Forms [formField].
  *
  * Uses hidden native file input + visible trigger + selected file label.
- * Content projection: [pe-file-input-left-elements], [pe-file-input-right-elements].
+ * Content projection: [ul-file-input-left-elements], [ul-file-input-right-elements].
  */
 @Component({
-  selector: 'pe-file-input',
+  selector: 'ul-file-input',
   standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './file-input.html',
@@ -61,7 +61,7 @@ export class FileInputComponent implements FormValueControl<FileList | null> {
 
   protected readonly fileInputRef = viewChild<ElementRef<HTMLInputElement>>('fileInput');
 
-  protected readonly ids = createFormFieldIds('pe-file-input');
+  protected readonly ids = createFormFieldIds('ul-file-input');
   protected readonly effectiveControlId = computed(() => this.controlId() ?? this.ids.controlId);
   protected readonly effectiveHelperId = computed(() =>
     this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId

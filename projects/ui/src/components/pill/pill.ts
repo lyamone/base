@@ -25,7 +25,7 @@ export type PillTheme =
   | 'outline-green';
 
 @Component({
-  selector: 'pe-pill',
+  selector: 'ul-pill',
   standalone: true,
   imports: [CommonModule, ButtonComponent, IconComponent],
   templateUrl: './pill.html',
@@ -49,10 +49,10 @@ export class PillComponent {
   });
 
   modifierClass = computed(() => {
-    const classes = ['pe-pill', `pe-pill--${this.variant()}`, `pe-pill--${this.theme()}`, `pe-pill--${this.size()}`];
+    const classes = ['ul-pill', `ul-pill--${this.variant()}`, `ul-pill--${this.theme()}`, `ul-pill--${this.size()}`];
 
     if (this.disabled()) {
-      classes.push('pe-pill--disabled');
+      classes.push('ul-pill--disabled');
     }
 
     return classes;

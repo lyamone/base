@@ -14,7 +14,7 @@ const meta: Meta<DropdownComponent> = {
     docs: {
       description: {
         component:
-          'Trigger-based dropdown menu. Pass `items` (label, value, optional leftIcons, rightIcons, disabled) and bind `[(selectedIndex)]` for the chosen item. Themes: ghost-white, transparent-white. Used by pe-select; can be used standalone for custom menus.',
+          'Trigger-based dropdown menu. Pass `items` (label, value, optional leftIcons, rightIcons, disabled) and bind `[(selectedIndex)]` for the chosen item. Themes: ghost-white, transparent-white. Used by ul-select; can be used standalone for custom menus.',
       },
     },
   },
@@ -131,12 +131,12 @@ export const Basic: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-dropdown 
+        <ul-dropdown 
           [theme]="theme" 
           [items]="items"
           [menuTriggerIcons]="menuTriggerIcons"
           [disabled]="disabled">
-        </pe-dropdown>
+        </ul-dropdown>
       </div>
     `,
   }),
@@ -158,11 +158,11 @@ export const WithLeftMenuTriggerIcons: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-dropdown 
+        <ul-dropdown 
           [theme]="theme" 
           [items]="items"
           [menuTriggerIcons]="menuTriggerIcons">
-        </pe-dropdown>
+        </ul-dropdown>
       </div>
     `,
   }),
@@ -184,11 +184,11 @@ export const WithRightMenuTriggerIcons: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-dropdown 
+        <ul-dropdown 
           [theme]="theme" 
           [items]="items"
           [menuTriggerIcons]="menuTriggerIcons">
-        </pe-dropdown>
+        </ul-dropdown>
       </div>
     `,
   }),
@@ -230,11 +230,11 @@ export const WithTriggerIconOnly: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-dropdown 
+        <ul-dropdown 
           [theme]="theme" 
           [items]="items"
           [triggerIconOnly]="triggerIconOnly">
-        </pe-dropdown>
+        </ul-dropdown>
       </div>
     `,
   }),

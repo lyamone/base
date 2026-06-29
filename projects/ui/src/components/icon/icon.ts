@@ -9,9 +9,9 @@ export type IconWeight = 'medium' | 'bold';
 /** Icon name / glyph key from design tokens (content['icon-glyph']). Valid values match token keys. */
 export type IconName = string;
 
-// <pe-icon class="pe-icon pe-icon-size-${size} pe-icon-weight-${weight} pe-icon-${icon}" />
+// <ul-icon class="ul-icon ul-icon-size-${size} ul-icon-weight-${weight} ul-icon-${icon}" />
 @Component({
-  selector: 'pe-icon',
+  selector: 'ul-icon',
   standalone: true,
   template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +26,6 @@ export class IconComponent {
   icon = input.required<IconName>();
 
   readonly hostClasses = computed(() => {
-    return `pe-icon pe-icon-size-${this.size()} pe-icon-weight-${this.weight()} pe-icon-${this.icon()}`;
+    return `ul-icon ul-icon-size-${this.size()} ul-icon-weight-${this.weight()} ul-icon-${this.icon()}`;
   });
 }

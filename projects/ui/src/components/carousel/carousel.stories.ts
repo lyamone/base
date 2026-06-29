@@ -23,7 +23,7 @@ const meta: Meta<CarouselComponent> = {
     docs: {
       description: {
         component:
-          'Carousel/slider powered by Splide. Add `pe-carousel-item` children; pass Splide `options` and optional `autoMount`. Emits `mounted` with the Splide instance for custom configuration.',
+          'Carousel/slider powered by Splide. Add `ul-carousel-item` children; pass Splide `options` and optional `autoMount`. Emits `mounted` with the Splide instance for custom configuration.',
       },
     },
   },
@@ -49,17 +49,17 @@ export const Basic: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-carousel [options]="options" [autoMount]="autoMount">
-        <pe-carousel-item>
+      <ul-carousel [options]="options" [autoMount]="autoMount">
+        <ul-carousel-item>
           <img src="https://picsum.photos/800/400?random=1" alt="Slide 1" style="width: 100%; height: 400px; object-fit: cover;">
-        </pe-carousel-item>
-        <pe-carousel-item>
+        </ul-carousel-item>
+        <ul-carousel-item>
           <img src="https://picsum.photos/800/400?random=2" alt="Slide 2" style="width: 100%; height: 400px; object-fit: cover;">
-        </pe-carousel-item>
-        <pe-carousel-item>
+        </ul-carousel-item>
+        <ul-carousel-item>
           <img src="https://picsum.photos/800/400?random=3" alt="Slide 3" style="width: 100%; height: 400px; object-fit: cover;">
-        </pe-carousel-item>
-      </pe-carousel>
+        </ul-carousel-item>
+      </ul-carousel>
     `,
   }),
   args: {

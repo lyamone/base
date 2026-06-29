@@ -1,136 +1,136 @@
 <section
-  class="pe-hero pe-hero-alignment-{{ alignment() }} pe-hero-size-{{ size() }}"
+  class="ul-hero ul-hero-alignment-{{ alignment() }} ul-hero-size-{{ size() }}"
   role="banner"
   [attr.aria-label]="title()"
-  [class.pe-hero--full-height]="fullHeight()"
-  [class.pe-hero--has-background]="!!backgroundImage()"
+  [class.ul-hero--full-height]="fullHeight()"
+  [class.ul-hero--has-background]="!!backgroundImage()"
 >
   @if (backgroundImage()) {
     <div
-      class="pe-hero__background"
+      class="ul-hero__background"
       [style.background-image]="'url(' + backgroundImage() + ')'"
       [style.filter]="backgroundFilter() || null"
       aria-hidden="true"
     ></div>
     <div
-      class="pe-hero__overlay"
+      class="ul-hero__overlay"
       [style.background]="backgroundOverlayGradient() || 'rgba(0, 0, 0, 0.4)'"
       aria-hidden="true"
     ></div>
   }
 
-  <div class="pe-hero__content">
+  <div class="ul-hero__content">
     @if (hasBadgesSlot()) {
-      <div class="pe-hero__badges">
-        <ng-content select="[pe-hero-badges]" />
+      <div class="ul-hero__badges">
+        <ng-content select="[ul-hero-badges]" />
       </div>
     } @else if (badges().length) {
-      <div class="pe-hero__badges">
+      <div class="ul-hero__badges">
         @for (badge of badges(); track badge) {
-          <pe-pill variant="read-only" theme="transparent-white" size="md">
+          <ul-pill variant="read-only" theme="transparent-white" size="md">
             {{ badge }}
-          </pe-pill>
+          </ul-pill>
         }
       </div>
     }
 
     @if (hasTitleSlot()) {
-      <div class="pe-hero__title">
-        <ng-content select="[pe-hero-title]" />
+      <div class="ul-hero__title">
+        <ng-content select="[ul-hero-title]" />
       </div>
     } @else {
-      <h1 class="pe-hero__title">{{ title() }}</h1>
+      <h1 class="ul-hero__title">{{ title() }}</h1>
     }
 
     @if (hasSubtitleSlot()) {
-      <div class="pe-hero__subtitle">
-        <ng-content select="[pe-hero-subtitle]" />
+      <div class="ul-hero__subtitle">
+        <ng-content select="[ul-hero-subtitle]" />
       </div>
     } @else if (subtitle()) {
-      <p class="pe-hero__subtitle">{{ subtitle() }}</p>
+      <p class="ul-hero__subtitle">{{ subtitle() }}</p>
     }
 
     @if (hasContentSlot()) {
-      <div class="pe-hero__extra">
-        <ng-content select="[pe-hero-content]" />
+      <div class="ul-hero__extra">
+        <ng-content select="[ul-hero-content]" />
       </div>
     }
 
     @if (hasActionsSlot()) {
-      <div class="pe-hero__actions">
-        <ng-content select="[pe-hero-actions]" />
+      <div class="ul-hero__actions">
+        <ng-content select="[ul-hero-actions]" />
       </div>
     } @else if (primaryAction() || secondaryAction()) {
-      <div class="pe-hero__actions">
+      <div class="ul-hero__actions">
         @if (primaryAction()) {
           @if (primaryAction()!.href) {
-            <a [href]="primaryAction()!.href" class="pe-hero__action-link">
-              <pe-button
+            <a [href]="primaryAction()!.href" class="ul-hero__action-link">
+              <ul-button
                 [theme]="primaryAction()!.theme ?? 'fill-purple'"
                 [size]="primaryAction()!.size ?? 'md'"
               >
                 @if (primaryAction()!.icon) {
-                  <pe-icon [icon]="primaryAction()!.icon!" size="6" />
+                  <ul-icon [icon]="primaryAction()!.icon!" size="6" />
                 }
                 {{ primaryAction()!.label }}
-              </pe-button>
+              </ul-button>
             </a>
           } @else if (primaryAction()!.routerLink) {
-            <a [routerLink]="primaryAction()!.routerLink" class="pe-hero__action-link">
-              <pe-button
+            <a [routerLink]="primaryAction()!.routerLink" class="ul-hero__action-link">
+              <ul-button
                 [theme]="primaryAction()!.theme ?? 'fill-purple'"
                 [size]="primaryAction()!.size ?? 'md'"
               >
                 @if (primaryAction()!.icon) {
-                  <pe-icon [icon]="primaryAction()!.icon!" size="6" />
+                  <ul-icon [icon]="primaryAction()!.icon!" size="6" />
                 }
                 {{ primaryAction()!.label }}
-              </pe-button>
+              </ul-button>
             </a>
           } @else {
-            <pe-button
+            <ul-button
               [theme]="primaryAction()!.theme ?? 'fill-purple'"
               [size]="primaryAction()!.size ?? 'md'"
             >
               @if (primaryAction()!.icon) {
-                <pe-icon [icon]="primaryAction()!.icon!" size="6" />
+                <ul-icon [icon]="primaryAction()!.icon!" size="6" />
               }
               {{ primaryAction()!.label }}
-            </pe-button>
+            </ul-button>
           }
         }
         @if (secondaryAction()) {
           @if (secondaryAction()!.href) {
-            <a [href]="secondaryAction()!.href" class="pe-hero__action-link">
-              <pe-button theme="ghost-white" [size]="secondaryAction()!.size ?? 'md'">
+            <a [href]="secondaryAction()!.href" class="ul-hero__action-link">
+              <ul-button theme="ghost-white" [size]="secondaryAction()!.size ?? 'md'">
                 @if (secondaryAction()!.icon) {
-                  <pe-icon [icon]="secondaryAction()!.icon!" size="6" />
+                  <ul-icon [icon]="secondaryAction()!.icon!" size="6" />
                 }
                 {{ secondaryAction()!.label }}
-              </pe-button>
+              </ul-button>
             </a>
           } @else if (secondaryAction()!.routerLink) {
-            <a [routerLink]="secondaryAction()!.routerLink" class="pe-hero__action-link">
-              <pe-button
+            <a [routerLink]="secondaryAction()!.routerLink" class="ul-hero__action-link">
+              <ul-button
                 [theme]="secondaryAction()!.theme ?? 'ghost-white'"
                 [size]="secondaryAction()!.size ?? 'md'"
               >
                 @if (secondaryAction()!.icon) {
-                  <pe-icon [icon]="secondaryAction()!.icon!" size="6" />
+                  <ul-icon [icon]="secondaryAction()!.icon!" size="6" />
                 }
                 {{ secondaryAction()!.label }}
-              </pe-button>
+              </ul-button>
             </a>
           } @else {
-            <pe-button
+            <ul-button
               [theme]="secondaryAction()!.theme ?? 'ghost-white'"
               [size]="secondaryAction()!.size ?? 'md'"
             >
               @if (secondaryAction()!.icon) {
-                <pe-icon [icon]="secondaryAction()!.icon!" size="6" />
+                <ul-icon [icon]="secondaryAction()!.icon!" size="6" />
               }
               {{ secondaryAction()!.label }}
-            </pe-button>
+            </ul-button>
           }
         }
       </div>

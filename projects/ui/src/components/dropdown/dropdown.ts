@@ -58,7 +58,7 @@ export type DropdownItem = {
  * ```
  */
 @Component({
-  selector: 'pe-dropdown',
+  selector: 'ul-dropdown',
   standalone: true,
   imports: [CdkMenuTrigger, CdkMenu, CdkMenuItem, NgTemplateOutlet, ListItemComponent, IconComponent, ButtonComponent],
   templateUrl: './dropdown.html',
@@ -168,7 +168,7 @@ export class DropdownComponent {
   /**
    * Stable id used to link the trigger to the menu container.
    */
-  readonly menuId = `pe-dropdown-menu-${Math.random().toString(36).slice(2, 11)}`;
+  readonly menuId = `ul-dropdown-menu-${Math.random().toString(36).slice(2, 11)}`;
 
   /**
    * Emitted when a new item is selected from the dropdown.

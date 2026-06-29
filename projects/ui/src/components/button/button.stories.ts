@@ -75,9 +75,9 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-button [size]="size" [theme]="theme" [iconOnly]="iconOnly" [disabled]="disabled">
+      <ul-button [size]="size" [theme]="theme" [iconOnly]="iconOnly" [disabled]="disabled">
         Button
-      </pe-button>
+      </ul-button>
     `,
   }),
 };
@@ -90,11 +90,11 @@ export const WithIcons: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-button [size]="size" [theme]="theme">
-        <i class="pe-icon pe-icon-store"></i>
+      <ul-button [size]="size" [theme]="theme">
+        <i class="ul-icon ul-icon-store"></i>
         Button
-        <i class="pe-icon pe-icon-chevron_right"></i>
-      </pe-button>
+        <i class="ul-icon ul-icon-chevron_right"></i>
+      </ul-button>
     `,
   }),
 };
@@ -110,9 +110,9 @@ export const IconOnly: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-button [size]="size" [theme]="theme" [iconOnly]="iconOnly">
-        <i class="pe-icon pe-icon-cloud"></i>
-      </pe-button>
+      <ul-button [size]="size" [theme]="theme" [iconOnly]="iconOnly">
+        <i class="ul-icon ul-icon-cloud"></i>
+      </ul-button>
     `,
   }),
 };
@@ -129,10 +129,10 @@ export const VerticalLarge: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-button [size]="size" [theme]="theme" [vertical]="vertical">
-        <i class="pe-icon pe-icon-cloud"></i>
+      <ul-button [size]="size" [theme]="theme" [vertical]="vertical">
+        <i class="ul-icon ul-icon-cloud"></i>
         <span>Vertical Button</span>
-      </pe-button>
+      </ul-button>
     `,
   }),
 };
@@ -147,18 +147,18 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <pe-button [size]="'sm'" [theme]="theme">
+        <ul-button [size]="'sm'" [theme]="theme">
           Small Button
-        </pe-button>
-        <pe-button [size]="'md'" [theme]="theme">
+        </ul-button>
+        <ul-button [size]="'md'" [theme]="theme">
           Medium Button
-        </pe-button>
-        <pe-button [size]="'lg'" [theme]="theme">
+        </ul-button>
+        <ul-button [size]="'lg'" [theme]="theme">
           Large Button
-        </pe-button>
-        <pe-button [size]="'xl'" [theme]="theme">
+        </ul-button>
+        <ul-button [size]="'xl'" [theme]="theme">
           Extra Large Button
-        </pe-button>
+        </ul-button>
       </div>
     `,
   }),
@@ -176,10 +176,10 @@ export const Outline: Story = {
     props: args,
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <pe-button theme="outline-white">Outline White</pe-button>
-        <pe-button theme="outline-purple">Outline Purple</pe-button>
-        <pe-button theme="outline-red">Outline Red</pe-button>
-        <pe-button theme="outline-green">Outline Green</pe-button>
+        <ul-button theme="outline-white">Outline White</ul-button>
+        <ul-button theme="outline-purple">Outline Purple</ul-button>
+        <ul-button theme="outline-red">Outline Red</ul-button>
+        <ul-button theme="outline-green">Outline Green</ul-button>
       </div>
     `,
   }),

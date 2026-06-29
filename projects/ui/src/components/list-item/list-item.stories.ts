@@ -14,7 +14,7 @@ const meta: Meta<ListItemComponent> = {
     docs: {
       description: {
         component:
-          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside pe-dropdown and pe-select.',
+          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select.',
       },
     },
   },
@@ -46,9 +46,9 @@ export const Basic: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-list-item [theme]="theme" [disabled]="disabled" [loading]="loading">
-          <ng-container pe-list-item-label>Basic List Item</ng-container>
-        </pe-list-item>
+        <ul-list-item [theme]="theme" [disabled]="disabled" [loading]="loading">
+          <ng-container ul-list-item-label>Basic List Item</ng-container>
+        </ul-list-item>
       </div>
     `,
   }),
@@ -58,19 +58,19 @@ export const WithBeforeAndAfterContent: Story = {
   render: () => ({
     template: `
     <div style="max-width: 400px">
-      <pe-list-item>
-        <ng-container pe-list-item-before-label>
-          <pe-checkbox />
-          <pe-icon size="5" icon="placeholder" />
-          <pe-icon size="5" icon="ultra_games" />
+      <ul-list-item>
+        <ng-container ul-list-item-before-label>
+          <ul-checkbox />
+          <ul-icon size="5" icon="placeholder" />
+          <ul-icon size="5" icon="ultra_games" />
         </ng-container>
-        <ng-container pe-list-item-label>Basic List Item</ng-container>
-        <ng-container pe-list-item-after-label>
+        <ng-container ul-list-item-label>Basic List Item</ng-container>
+        <ng-container ul-list-item-after-label>
           <span>+80</span>
-          <pe-icon size="5" icon="ultra_marketplace" />
-          <pe-icon size="5" icon="placeholder" />
+          <ul-icon size="5" icon="ultra_marketplace" />
+          <ul-icon size="5" icon="placeholder" />
         </ng-container>
-      </pe-list-item>
+      </ul-list-item>
     </div>
     `,
   }),
@@ -86,9 +86,9 @@ export const Loading: Story = {
     props: args,
     template: `
       <div style="max-width: 400px">
-        <pe-list-item [theme]="theme" [disabled]="disabled" [loading]="loading">
-          <ng-container pe-list-item-label>Loading list item</ng-container>
-        </pe-list-item>
+        <ul-list-item [theme]="theme" [disabled]="disabled" [loading]="loading">
+          <ng-container ul-list-item-label>Loading list item</ng-container>
+        </ul-list-item>
       </div>
     `,
   }),

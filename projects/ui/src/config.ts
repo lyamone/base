@@ -1,1 +1,1 @@
-export const CSS_PREFIX = 'pe-';
+export const CSS_PREFIX = 'ul-';

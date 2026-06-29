@@ -1,18 +1,18 @@
 <div
-  class="pe-textarea pe-textarea--{{ size() }}"
-  [class.pe-textarea--error]="hasError()"
-  [class.pe-textarea--disabled]="disabled()"
-  [class.pe-textarea--read-only]="readOnly()"
-  [class.pe-textarea--required]="required()"
-  [class.pe-textarea--resize-none]="resize() === 'none'"
-  [class.pe-textarea--resize-vertical]="resize() === 'vertical'"
-  [class.pe-textarea--resize-horizontal]="resize() === 'horizontal'"
-  [class.pe-textarea--resize-both]="resize() === 'both'"
+  class="ul-textarea ul-textarea--{{ size() }}"
+  [class.ul-textarea--error]="hasError()"
+  [class.ul-textarea--disabled]="disabled()"
+  [class.ul-textarea--read-only]="readOnly()"
+  [class.ul-textarea--required]="required()"
+  [class.ul-textarea--resize-none]="resize() === 'none'"
+  [class.ul-textarea--resize-vertical]="resize() === 'vertical'"
+  [class.ul-textarea--resize-horizontal]="resize() === 'horizontal'"
+  [class.ul-textarea--resize-both]="resize() === 'both'"
   [attr.aria-invalid]="hasError()"
   [attr.aria-required]="required()"
   [attr.aria-describedby]="describedBy()"
 >
-  <pe-form-field-label
+  <ul-form-field-label
     [label]="label()"
     [required]="required()"
     [for]="ids.controlId"
@@ -20,19 +20,19 @@
   />
 
   <div
-    class="pe-textarea__group"
-    [class.pe-textarea__group--focused]="groupFocusedState()"
-    [style.--pe-textarea-rows]="rows()"
+    class="ul-textarea__group"
+    [class.ul-textarea__group--focused]="groupFocusedState()"
+    [style.--ul-textarea-rows]="rows()"
   >
-    <div class="pe-textarea__left-elements">
-      <ng-content select="[pe-textarea-left-elements]" />
+    <div class="ul-textarea__left-elements">
+      <ng-content select="[ul-textarea-left-elements]" />
     </div>
 
-    <ng-content select="[pe-textarea-field]" />
+    <ng-content select="[ul-textarea-field]" />
     @if (!customField()) {
       <textarea
         [id]="ids.controlId"
-        class="pe-textarea__field"
+        class="ul-textarea__field"
         [placeholder]="placeholder()"
         [value]="value()"
         (input)="onInput($event)"
@@ -51,12 +51,12 @@
       ></textarea>
     }
 
-    <div class="pe-textarea__right-elements">
-      <ng-content select="[pe-textarea-right-elements]" />
+    <div class="ul-textarea__right-elements">
+      <ng-content select="[ul-textarea-right-elements]" />
     </div>
   </div>
 
-  <pe-form-field-helper
+  <ul-form-field-helper
     [id]="ids.helperId"
     [helperText]="helperText()"
     [errorText]="(errorText() || (hasError() && errors().length ? errors()[0].message : null)) ?? null"

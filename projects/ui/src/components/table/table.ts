@@ -18,7 +18,7 @@ export type SortDirection = 'asc' | 'desc';
  * Uses semantic table markup; responsive with horizontal scroll on small viewports.
  */
 @Component({
-  selector: 'pe-table',
+  selector: 'ul-table',
   standalone: true,
   imports: [InputComponent, IconComponent, SkeletonComponent],
   templateUrl: './table.html',
@@ -74,7 +74,7 @@ export class TableComponent {
     });
   });
 
-  protected readonly filterId = `pe-table-filter-${Math.random().toString(36).slice(2, 9)}`;
+  protected readonly filterId = `ul-table-filter-${Math.random().toString(36).slice(2, 9)}`;
 
   getCellValue(row: Record<string, unknown>, columnId: string): unknown {
     return row[columnId];

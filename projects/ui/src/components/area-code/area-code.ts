@@ -5,13 +5,13 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
  * Features a clean two-column layout following PE design guidelines.
  *
  * @example
- * <pe-area-code
+ * <ul-area-code
  *   [content]="codeContent"
  *   [showLineNumbers]="true"
  * />
  */
 @Component({
-  selector: 'pe-area-code',
+  selector: 'ul-area-code',
   standalone: true,
   templateUrl: './area-code.html',
   styleUrls: ['./area-code.scss'],
@@ -38,5 +38,5 @@ export class AreaCodeComponent {
   });
 
   // Component properties
-  readonly codeId = `pe-area-code-${Math.random().toString(36).slice(2, 11)}`;
+  readonly codeId = `ul-area-code-${Math.random().toString(36).slice(2, 11)}`;
 }

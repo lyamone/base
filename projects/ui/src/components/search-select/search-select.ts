@@ -22,7 +22,7 @@ export interface SearchSelectOption {
  * Implements FormValueControl for use with Signal Forms [formField]. Use [(value)] for two-way binding.
  */
 @Component({
-  selector: 'pe-search-select',
+  selector: 'ul-search-select',
   standalone: true,
   imports: [
     InputComponent,
@@ -52,7 +52,7 @@ export class SearchSelectComponent implements FormValueControl<string | null> {
 
   readonly value = model<string | null>(null);
 
-  protected readonly ids = createFormFieldIds('pe-search-select');
+  protected readonly ids = createFormFieldIds('ul-search-select');
   protected readonly query = signal('');
   protected readonly isOpen = signal(false);
   protected readonly isFocused = signal(false);

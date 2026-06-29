@@ -114,7 +114,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-input
+      <ul-input
         [value]="value"
         [type]="type"
         [size]="size"
@@ -143,12 +143,12 @@ export const BorderAndHoverOptions: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 24rem;">
-        <pe-input
+        <ul-input
           appearance="border-only"
           label="Border only"
           placeholder="Hover = border only, focus = stronger border"
         />
-        <pe-input
+        <ul-input
           appearance="subtle-tint"
           label="Subtle tint"
           placeholder="Hover = border + 5% fill"
@@ -170,7 +170,7 @@ export const WithLabelAndHelper: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-input
+      <ul-input
         [size]="size"
         [appearance]="appearance"
         [error]="error"
@@ -199,7 +199,7 @@ export const WithError: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-input
+      <ul-input
         [size]="size"
         [appearance]="appearance"
         [error]="error"
@@ -223,10 +223,10 @@ export const AllSizes: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-input size="sm" placeholder="Small input" />
-        <pe-input size="md" placeholder="Medium input" />
-        <pe-input size="lg" placeholder="Large input" />
-        <pe-input size="xl" placeholder="Extra large input" />
+        <ul-input size="sm" placeholder="Small input" />
+        <ul-input size="md" placeholder="Medium input" />
+        <ul-input size="lg" placeholder="Large input" />
+        <ul-input size="xl" placeholder="Extra large input" />
       </div>
     `,
   }),
@@ -240,12 +240,12 @@ export const States: Story = {
     props: args,
     template: `
       <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <pe-input
+        <ul-input
           [disabled]="true"
           label="Disabled input"
           value="This input is disabled"
         />
-        <pe-input
+        <ul-input
           [readOnly]="true"
           label="Readonly input"
           value="This input is readonly"
@@ -262,7 +262,7 @@ export const WithElements: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-input
+      <ul-input
         [size]="size"
         [appearance]="appearance"
         [error]="error"
@@ -273,15 +273,15 @@ export const WithElements: Story = {
         [helperText]="helperText"
         [value]="value"
       >
-        <ng-container pe-input-left-elements>
-          <i class="pe-icon pe-icon-ultra_games"></i>
+        <ng-container ul-input-left-elements>
+          <i class="ul-icon ul-icon-ultra_games"></i>
         </ng-container>
-        <ng-container pe-input-right-elements>
+        <ng-container ul-input-right-elements>
           <span>47</span>
-          <i class="pe-icon pe-icon-trash"></i>
-          <i class="pe-icon pe-icon-search"></i>
+          <i class="ul-icon ul-icon-trash"></i>
+          <i class="ul-icon ul-icon-search"></i>
         </ng-container>
-      </pe-input>
+      </ul-input>
     `,
   }),
 };

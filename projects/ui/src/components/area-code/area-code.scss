@@ -1,6 +1,6 @@
 @use '../../foundations/toolkit' as *;
 
-.pe-area-code {
+.ul-area-code {
   position: relative;
   display: block;
   @include typography('caption-l');
@@ -64,7 +64,7 @@
 
   // State: No line numbers
   &--no-line-numbers {
-    .pe-area-code__code {
+    .ul-area-code__code {
       padding-left: $spacing-spacing-4;
     }
   }

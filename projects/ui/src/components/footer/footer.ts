@@ -3,7 +3,7 @@ import { ButtonComponent } from '../button/button';
 import { IconComponent, IconName } from '../icon/icon';
 
 @Component({
-  selector: 'pe-footer',
+  selector: 'ul-footer',
   templateUrl: 'footer.html',
   styleUrls: ['./footer.scss'],
   imports: [ButtonComponent, IconComponent],

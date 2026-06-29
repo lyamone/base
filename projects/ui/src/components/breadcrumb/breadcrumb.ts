@@ -18,7 +18,7 @@ export type BreadcrumbSeparator = 'chevron_right' | 'slash' | 'dot';
  *
  * @example
  * ```html
- * <pe-breadcrumb
+ * <ul-breadcrumb
  *   [items]="[
  *     { label: 'Home', href: '/' },
  *     { label: 'Products', href: '/products' },
@@ -28,7 +28,7 @@ export type BreadcrumbSeparator = 'chevron_right' | 'slash' | 'dot';
  * ```
  */
 @Component({
-  selector: 'pe-breadcrumb',
+  selector: 'ul-breadcrumb',
   standalone: true,
   imports: [IconComponent, RouterLink],
   templateUrl: './breadcrumb.html',

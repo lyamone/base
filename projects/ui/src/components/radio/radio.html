@@ -1,4 +1,4 @@
-<label class="pe-radio-container" [for]="radioId()" [class.pe-radio-disabled]="disabled()">
+<label class="ul-radio-container" [for]="radioId()" [class.ul-radio-disabled]="disabled()">
   <input
     type="radio"
     [id]="radioId()"
@@ -12,9 +12,9 @@
     (change)="onRadioChange($event)"
     (click)="onRadioClick($event)"
     (keydown)="onKeyDown($event)"
-    class="pe-radio-input"
+    class="ul-radio-input"
   />
-  <span class="pe-radio-label">
+  <span class="ul-radio-label">
     <ng-content />
   </span>
 </label>

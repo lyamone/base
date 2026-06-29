@@ -9,7 +9,7 @@ import type { UiSize, UiTheme } from '../shared/ui-types';
  * <uds-button size="md" theme="fill-purple">Click me</uds-button>
  */
 @Component({
-  selector: 'pe-button',
+  selector: 'ul-button',
   standalone: true,
   imports: [ButtonDirective],
   template: `

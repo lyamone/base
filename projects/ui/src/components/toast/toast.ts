@@ -6,7 +6,7 @@ import { IconComponent } from '../icon/icon';
 import { ToastService, ToastWithRole } from './toast.service';
 
 @Component({
-  selector: 'pe-toast-container',
+  selector: 'ul-toast-container',
   standalone: true,
   imports: [ButtonComponent, IconComponent],
   templateUrl: './toast.html',

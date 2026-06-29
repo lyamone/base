@@ -26,10 +26,10 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  * Reusable textarea. Implements FormValueControl for Signal Forms [formField].
  * Use [(value)] for two-way binding or [formField]="myForm().message".
  *
- * Content projection: [pe-textarea-field] (replaces native textarea), [pe-textarea-left-elements], [pe-textarea-right-elements].
+ * Content projection: [ul-textarea-field] (replaces native textarea), [ul-textarea-left-elements], [ul-textarea-right-elements].
  */
 @Component({
-  selector: 'pe-textarea',
+  selector: 'ul-textarea',
   standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './textarea.html',
@@ -52,7 +52,7 @@ export class TextareaComponent implements FormValueControl<string> {
   readonly rows = input<number>(3);
   readonly resize = input<TextareaResize>('vertical');
 
-  /** When using [pe-textarea-field], pass focus state so the group border reflects it. */
+  /** When using [ul-textarea-field], pass focus state so the group border reflects it. */
   readonly groupFocused = input<boolean | null>(null);
 
   readonly invalid = input<boolean>(false);
@@ -62,7 +62,7 @@ export class TextareaComponent implements FormValueControl<string> {
   readonly value = model<string>('');
 
   protected readonly customField = contentChild(TextareaFieldDirective);
-  protected readonly ids = createFormFieldIds('pe-textarea');
+  protected readonly ids = createFormFieldIds('ul-textarea');
   protected readonly isFocused = signal(false);
   protected readonly groupFocusedState = computed(() => this.groupFocused() ?? this.isFocused());
 

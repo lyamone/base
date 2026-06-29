@@ -21,7 +21,7 @@ const meta: Meta<NavbarComponent> = {
     docs: {
       description: {
         component:
-          'Responsive navbar with logo, optional search, and avatar. Use content projection: [pe-navbar-logo], [pe-navbar-search], [pe-navbar-avatar]. Import the slot directives when using slots so the navbar can detect them. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used.',
+          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar]. Import the slot directives when using slots so the navbar can detect them. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used.',
       },
     },
   },
@@ -68,14 +68,14 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-navbar
+      <ul-navbar
         [logoHref]="logoHref"
         [logoAlt]="logoAlt"
         [avatarInitials]="avatarInitials"
       >
-        <a pe-navbar-logo href="/" style="font-weight: 700; color: inherit; text-decoration: none;">PERPETUA</a>
-        <div pe-navbar-search>
-          <pe-search-select
+        <a ul-navbar-logo href="/" style="font-weight: 700; color: inherit; text-decoration: none;">PERPETUA</a>
+        <div ul-navbar-search>
+          <ul-search-select
             placeholder="Search..." 
             [options]="[
               { label: 'Apple', value: 'apple' },
@@ -85,8 +85,8 @@ export const Default: Story = {
             size="md"
           />
         </div>
-        <pe-avatar pe-navbar-avatar initials="JD" size="md" />
-      </pe-navbar>
+        <ul-avatar ul-navbar-avatar initials="JD" size="md" />
+      </ul-navbar>
     `,
   }),
 };
@@ -102,7 +102,7 @@ export const WithDefaultLogoAndAvatar: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-navbar
+      <ul-navbar
         [logoHref]="logoHref"
         [logoSrc]="logoSrc"
         [logoAlt]="logoAlt"
@@ -121,12 +121,12 @@ export const WithoutSearch: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-navbar
+      <ul-navbar
         [logoHref]="logoHref"
         [avatarInitials]="avatarInitials"
       >
-                <pe-avatar pe-navbar-avatar initials="U" size="md" />
-      </pe-navbar>
+                <ul-avatar ul-navbar-avatar initials="U" size="md" />
+      </ul-navbar>
     `,
   }),
 };

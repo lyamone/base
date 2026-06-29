@@ -21,7 +21,7 @@ const meta: Meta<HeroComponent> = {
     docs: {
       description: {
         component:
-          'Hero component for prominent sections with title, subtitle, call-to-action buttons, optional badges, and background image. Responsive across mobile, tablet, and desktop. Supports alignment (left, center, right), size variants (sm, md, lg), and full-height option. Content projection slots: pe-hero-badges, pe-hero-title, pe-hero-subtitle, pe-hero-actions, pe-hero-content. When a slot is not projected, the corresponding input is used (e.g. title, subtitle, badges, primaryAction, secondaryAction). Import the slot directives when using slots.',
+          'Hero component for prominent sections with title, subtitle, call-to-action buttons, optional badges, and background image. Responsive across mobile, tablet, and desktop. Supports alignment (left, center, right), size variants (sm, md, lg), and full-height option. Content projection slots: ul-hero-badges, ul-hero-title, ul-hero-subtitle, ul-hero-actions, ul-hero-content. When a slot is not projected, the corresponding input is used (e.g. title, subtitle, badges, primaryAction, secondaryAction). Import the slot directives when using slots.',
       },
     },
   },
@@ -84,7 +84,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -115,7 +115,7 @@ export const WithPrimaryAndSecondaryActions: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -142,7 +142,7 @@ export const WithBadges: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [badges]="badges"
@@ -174,7 +174,7 @@ export const WithBackgroundImage: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [backgroundImage]="backgroundImage"
@@ -203,7 +203,7 @@ export const CustomOverlayGradient: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [backgroundImage]="backgroundImage"
@@ -230,7 +230,7 @@ export const BackgroundWithFilters: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [backgroundImage]="backgroundImage"
@@ -259,7 +259,7 @@ export const GradientAndFilters: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [backgroundImage]="backgroundImage"
@@ -286,7 +286,7 @@ export const AlignmentLeft: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -309,7 +309,7 @@ export const AlignmentRight: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -331,7 +331,7 @@ export const SizeSmall: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -354,7 +354,7 @@ export const SizeLarge: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -378,7 +378,7 @@ export const FullHeight: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
@@ -415,7 +415,7 @@ export const AllFeatures: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [badges]="badges"
@@ -444,7 +444,7 @@ export const TitleOnly: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [alignment]="alignment"
@@ -460,19 +460,19 @@ export const TitleOnly: Story = {
 export const WithProjectedContent: Story = {
   render: () => ({
     template: `
-      <pe-hero title="Projected Title" alignment="center" size="md">
-        <div pe-hero-badges>
-          <pe-pill variant="read-only" theme="transparent-white" size="md">Custom</pe-pill>
-          <pe-pill variant="read-only" theme="transparent-white" size="md">Slots</pe-pill>
+      <ul-hero title="Projected Title" alignment="center" size="md">
+        <div ul-hero-badges>
+          <ul-pill variant="read-only" theme="transparent-white" size="md">Custom</ul-pill>
+          <ul-pill variant="read-only" theme="transparent-white" size="md">Slots</ul-pill>
         </div>
-        <h1 pe-hero-title style="margin: 0;">Projected Title</h1>
-        <p pe-hero-subtitle style="margin: 0;">Custom subtitle and actions via content projection.</p>
-        <div pe-hero-actions>
-          <pe-button theme="fill-purple">Primary</pe-button>
-          <pe-button theme="ghost-white">Secondary</pe-button>
-          <pe-button theme="outline-purple">Tertiary</pe-button>
+        <h1 ul-hero-title style="margin: 0;">Projected Title</h1>
+        <p ul-hero-subtitle style="margin: 0;">Custom subtitle and actions via content projection.</p>
+        <div ul-hero-actions>
+          <ul-button theme="fill-purple">Primary</ul-button>
+          <ul-button theme="ghost-white">Secondary</ul-button>
+          <ul-button theme="outline-purple">Tertiary</ul-button>
         </div>
-      </pe-hero>
+      </ul-hero>
     `,
     moduleMetadata: {
       imports: [
@@ -501,18 +501,18 @@ export const HybridInputsAndProjectedActions: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [alignment]="alignment"
         [size]="size"
       >
-        <div pe-hero-actions>
-          <pe-button theme="fill-purple">Get Started</pe-button>
-          <pe-button theme="ghost-white">Docs</pe-button>
-          <pe-button theme="outline-purple">Contact</pe-button>
+        <div ul-hero-actions>
+          <ul-button theme="fill-purple">Get Started</ul-button>
+          <ul-button theme="ghost-white">Docs</ul-button>
+          <ul-button theme="outline-purple">Contact</ul-button>
         </div>
-      </pe-hero>
+      </ul-hero>
     `,
     moduleMetadata: {
       imports: [
@@ -525,12 +525,12 @@ export const HybridInputsAndProjectedActions: Story = {
 };
 
 /**
- * Hero with pe-hero-content slot for extra content between subtitle and actions.
+ * Hero with ul-hero-content slot for extra content between subtitle and actions.
  */
 export const WithExtraContentSlot: Story = {
   args: {
     title: 'Hero With Extra Slot',
-    subtitle: 'The line below is in pe-hero-content.',
+    subtitle: 'The line below is in ul-hero-content.',
     alignment: 'center',
     size: 'md',
     primaryAction: { label: 'Get Started', href: '#', theme: 'fill-purple' },
@@ -538,15 +538,15 @@ export const WithExtraContentSlot: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-hero
+      <ul-hero
         [title]="title"
         [subtitle]="subtitle"
         [primaryAction]="primaryAction"
         [alignment]="alignment"
         [size]="size"
       >
-        <p pe-hero-content style="margin: 0; opacity: 0.9;">Optional CTA or extra content between subtitle and actions.</p>
-      </pe-hero>
+        <p ul-hero-content style="margin: 0; opacity: 0.9;">Optional CTA or extra content between subtitle and actions.</p>
+      </ul-hero>
     `,
     moduleMetadata: {
       imports: [

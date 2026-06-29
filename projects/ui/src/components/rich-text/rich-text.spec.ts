@@ -24,7 +24,7 @@ describe('RichTextComponent', () => {
     fixture.componentRef.setInput('content', '<p>Hello</p>');
     fixture.detectChanges();
     const el = fixture.nativeElement as HTMLElement;
-    const paragraph = el.querySelector('.pe-rich-text p');
+    const paragraph = el.querySelector('.ul-rich-text p');
     expect(paragraph).toBeTruthy();
     expect(paragraph?.textContent?.trim()).toBe('Hello');
   });
@@ -33,6 +33,6 @@ describe('RichTextComponent', () => {
     fixture.componentRef.setInput('size', 'body-m');
     fixture.detectChanges();
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.querySelector('.pe-rich-text--body-m')).toBeTruthy();
+    expect(el.querySelector('.ul-rich-text--body-m')).toBeTruthy();
   });
 });

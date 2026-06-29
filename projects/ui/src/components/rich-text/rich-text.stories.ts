@@ -63,7 +63,7 @@ export const BodyM: Story = {
 
 export const CompactExample: Story = {
   args: {
-    content: '<h3>Short content</h3><p>Use <code>pe-rich-text</code> with <code>content</code> for HTML from CMS or editor, or project markup with <code>ng-content</code> when content is empty.</p>',
+    content: '<h3>Short content</h3><p>Use <code>ul-rich-text</code> with <code>content</code> for HTML from CMS or editor, or project markup with <code>ng-content</code> when content is empty.</p>',
     size: 'body-m',
   },
 };

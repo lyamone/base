@@ -60,7 +60,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" [maxItems]="maxItems" />
+      <ul-breadcrumb [items]="items" [separator]="separator" [maxItems]="maxItems" />
     `,
   }),
 };
@@ -81,7 +81,7 @@ export const WithIcons: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };
@@ -97,7 +97,7 @@ export const SlashSeparator: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };
@@ -113,7 +113,7 @@ export const DotSeparator: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };
@@ -138,7 +138,7 @@ export const ManyItems: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" [maxItems]="maxItems" />
+      <ul-breadcrumb [items]="items" [separator]="separator" [maxItems]="maxItems" />
     `,
   }),
 };
@@ -157,7 +157,7 @@ export const Simple: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };
@@ -173,7 +173,7 @@ export const SingleItem: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };
@@ -193,7 +193,7 @@ export const WithRouterLinks: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-breadcrumb [items]="items" [separator]="separator" />
+      <ul-breadcrumb [items]="items" [separator]="separator" />
     `,
   }),
 };

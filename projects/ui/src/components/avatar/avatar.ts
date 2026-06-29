@@ -8,29 +8,29 @@ type IconSize = '5' | '6' | '7' | '8';
  * A reusable avatar component that displays user images, initials, or icons.
  * Supports multiple sizes and fallback options when an image is not available.
  * @example
- * <pe-avatar size="md" [src]="userImageUrl" [initials]="'JD'" />
+ * <ul-avatar size="md" [src]="userImageUrl" [initials]="'JD'" />
  */
 @Component({
-  selector: 'pe-avatar',
+  selector: 'ul-avatar',
   standalone: true,
   imports: [IconComponent, SkeletonComponent],
   template: `
-    <pe-skeleton class="pe-avatar pe-avatar--{{ size() }}" [show]="loading()" variant="rect" borderRadius="full">
-      <div class="pe-avatar pe-avatar--{{ size() }}">
+    <ul-skeleton class="ul-avatar ul-avatar--{{ size() }}" [show]="loading()" variant="rect" borderRadius="full">
+      <div class="ul-avatar ul-avatar--{{ size() }}">
         @if (src() && !imageError()) {
           <img
             [src]="src()"
             [alt]="alt()"
             (error)="handleImageError()"
-            class="pe-avatar__image"
+            class="ul-avatar__image"
           />
         } @else if (initials()) {
-          <span class="pe-avatar__initials">{{ initials() }}</span>
+          <span class="ul-avatar__initials">{{ initials() }}</span>
         } @else if (icon()) {
-          <pe-icon [icon]="icon()!" [size]="iconSize()" />
+          <ul-icon [icon]="icon()!" [size]="iconSize()" />
         }
       </div>
-    </pe-skeleton>
+    </ul-skeleton>
   `,
   styleUrls: ['./avatar.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

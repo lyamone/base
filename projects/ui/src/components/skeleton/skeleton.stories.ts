@@ -71,35 +71,35 @@ export const Primitive: Story = {
     props: args,
     template: `
       <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
-        <pe-skeleton
+        <ul-skeleton
           [variant]="variant"
           [width]="width"
           [height]="height"
           [lines]="lines"
           [borderRadius]="borderRadius"
           [show]="show">
-        </pe-skeleton>
+        </ul-skeleton>
 
-        <pe-skeleton
+        <ul-skeleton
           variant="text"
           [lines]="lines"
           [show]="show">
-        </pe-skeleton>
+        </ul-skeleton>
 
         <div style="display: flex; align-items: center; gap: 16px;">
-          <pe-skeleton
+          <ul-skeleton
             variant="rect"
             width="40px"
             height="40px"
             borderRadius="full"
             [show]="show">
-          </pe-skeleton>
-          <pe-skeleton
+          </ul-skeleton>
+          <ul-skeleton
             variant="text"
             [lines]="2"
             [show]="show"
             style="flex: 1;">
-          </pe-skeleton>
+          </ul-skeleton>
         </div>
       </div>
     `,
@@ -114,11 +114,11 @@ export const OverlayOnButton: Story = {
     props: args,
     template: `
       <div style="padding: 24px; display: flex; justify-content: center;">
-        <pe-skeleton [show]="show" variant="rect">
-          <pe-button theme="fill-purple">
+        <ul-skeleton [show]="show" variant="rect">
+          <ul-button theme="fill-purple">
             Primary action
-          </pe-button>
-        </pe-skeleton>
+          </ul-button>
+        </ul-skeleton>
       </div>
     `,
   }),
@@ -134,25 +134,25 @@ export const ListRowSkeleton: Story = {
       <div style="padding: 24px; max-width: 520px;">
         <div style="display: flex; flex-direction: column; gap: 12px;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <pe-skeleton
+            <ul-skeleton
               variant="rect"
               width="40px"
               height="40px"
               borderRadius="full"
               [show]="show">
-            </pe-skeleton>
-            <pe-skeleton variant="text" [lines]="2" [show]="show" style="flex: 1;"></pe-skeleton>
+            </ul-skeleton>
+            <ul-skeleton variant="text" [lines]="2" [show]="show" style="flex: 1;"></ul-skeleton>
           </div>
 
           <div style="display: flex; align-items: center; gap: 12px;">
-            <pe-skeleton
+            <ul-skeleton
               variant="rect"
               width="40px"
               height="40px"
               borderRadius="full"
               [show]="show">
-            </pe-skeleton>
-            <pe-skeleton variant="text" [lines]="2" [show]="show" style="flex: 1;"></pe-skeleton>
+            </ul-skeleton>
+            <ul-skeleton variant="text" [lines]="2" [show]="show" style="flex: 1;"></ul-skeleton>
           </div>
         </div>
       </div>

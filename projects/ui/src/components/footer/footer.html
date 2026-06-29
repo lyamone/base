@@ -1,19 +1,19 @@
-<div class="pe-footer">
-  <p class="pe-footer__copyright">
+<div class="ul-footer">
+  <p class="ul-footer__copyright">
     {{ copyrightText() }}
   </p>
   @if (socialLinks()) {
-    <ul class="pe-footer__social-links">
+    <ul class="ul-footer__social-links">
       @for (link of socialLinks(); track link.url) {
         <li>
-          <pe-button [theme]="'ghost-white'" [iconOnly]="true" [disabled]="false">
-            <pe-icon [icon]="link.icon" />
-          </pe-button>
+          <ul-button [theme]="'ghost-white'" [iconOnly]="true" [disabled]="false">
+            <ul-icon [icon]="link.icon" />
+          </ul-button>
         </li>
       }
     </ul>
   }
   @for (link of links(); track link.url) {
-    <a [href]="link.url" class="pe-link pe-body-m--medium">{{ link.text }}</a>
+    <a [href]="link.url" class="ul-link ul-body-m--medium">{{ link.text }}</a>
   }
 </div>

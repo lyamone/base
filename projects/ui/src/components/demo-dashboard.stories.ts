@@ -25,7 +25,7 @@ const sidebarItems: SidebarItem[] = [
 ];
 
 @Component({
-  selector: 'pe-demo-dashboard',
+  selector: 'ul-demo-dashboard',
   standalone: true,
   imports: [
     SidebarComponent,
@@ -37,87 +37,87 @@ const sidebarItems: SidebarItem[] = [
     ListItemComponent,
   ],
   template: `
-    <div class="pe-demo-dashboard">
-      <pe-sidebar
+    <div class="ul-demo-dashboard">
+      <ul-sidebar
         [items]="sidebarItems"
         theme="ghost-white"
         [selectedIndex]="selectedIndex()"
         (itemSelected)="onItemSelected($event)">
-      </pe-sidebar>
-      <main class="pe-demo-dashboard__main">
-        <h1 class="pe-demo-dashboard__title">Dashboard</h1>
-        <div class="pe-demo-dashboard__grid">
-          <pe-card
+      </ul-sidebar>
+      <main class="ul-demo-dashboard__main">
+        <h1 class="ul-demo-dashboard__title">Dashboard</h1>
+        <div class="ul-demo-dashboard__grid">
+          <ul-card
             cardCaption="Storage"
             cardTitle="75% used"
             cardSubtitle="12.4 GB of 16 GB">
-            <div udsCardFooter class="pe-demo-dashboard__card-footer">
-              <pe-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
-              <pe-button theme="ghost-white">View</pe-button>
+            <div udsCardFooter class="ul-demo-dashboard__card-footer">
+              <ul-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
+              <ul-button theme="ghost-white">View</ul-button>
             </div>
-          </pe-card>
-          <pe-card
+          </ul-card>
+          <ul-card
             cardCaption="Status"
             cardTitle="Active"
             cardSubtitle="All systems operational">
-            <div udsCardFooter class="pe-demo-dashboard__card-footer">
-              <pe-status status="confirm">
-                <span pe-status-title>Running</span>
-              </pe-status>
-              <pe-button theme="ghost-white">Details</pe-button>
+            <div udsCardFooter class="ul-demo-dashboard__card-footer">
+              <ul-status status="confirm">
+                <span ul-status-title>Running</span>
+              </ul-status>
+              <ul-button theme="ghost-white">Details</ul-button>
             </div>
-          </pe-card>
-          <pe-card
+          </ul-card>
+          <ul-card
             cardCaption="Tasks"
             cardTitle="8 of 10 complete"
             cardSubtitle="2 pending">
-            <div udsCardFooter class="pe-demo-dashboard__card-footer">
-              <pe-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
-              <pe-button theme="fill-purple">Continue</pe-button>
+            <div udsCardFooter class="ul-demo-dashboard__card-footer">
+              <ul-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
+              <ul-button theme="fill-purple">Continue</ul-button>
             </div>
-          </pe-card>
-          <pe-card
+          </ul-card>
+          <ul-card
             cardCaption="Alerts"
             cardTitle="1 pending"
             cardSubtitle="Review required">
-            <div udsCardFooter class="pe-demo-dashboard__card-footer">
-              <pe-status status="alert">
-                <span pe-status-title>Action needed</span>
-              </pe-status>
-              <pe-button theme="ghost-white">Review</pe-button>
+            <div udsCardFooter class="ul-demo-dashboard__card-footer">
+              <ul-status status="alert">
+                <span ul-status-title>Action needed</span>
+              </ul-status>
+              <ul-button theme="ghost-white">Review</ul-button>
             </div>
-          </pe-card>
+          </ul-card>
         </div>
       </main>
     </div>
   `,
   styles: [
     `
-      .pe-demo-dashboard {
+      .ul-demo-dashboard {
         display: flex;
         min-height: 100vh;
       }
-      .pe-demo-dashboard__main {
+      .ul-demo-dashboard__main {
         flex: 1;
         padding: 1.5rem 2rem;
         background: #0a0a0a;
         overflow: auto;
       }
-      .pe-demo-dashboard__title {
+      .ul-demo-dashboard__title {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.5rem;
         font-weight: 700;
         margin: 0 0 1.5rem 0;
       }
-      .pe-demo-dashboard__grid {
+      .ul-demo-dashboard__grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1rem;
       }
-      .pe-demo-dashboard__grid pe-card {
+      .ul-demo-dashboard__grid ul-card {
         display: block;
       }
-      .pe-demo-dashboard__card-footer {
+      .ul-demo-dashboard__card-footer {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -139,7 +139,7 @@ class DemoDashboardComponent {
 }
 
 @Component({
-  selector: 'pe-demo-dashboard-with-layout',
+  selector: 'ul-demo-dashboard-with-layout',
   standalone: true,
   imports: [
     DemoAppLayoutComponent,
@@ -155,74 +155,74 @@ class DemoDashboardComponent {
     AvatarComponent,
   ],
   template: `
-    <pe-demo-app-layout [sidebarItems]="sidebarItems">
-      <a pe-navbar-logo href="/" class="pe-text-primary" style="font-weight: 700; color: inherit; text-decoration: none;">
+    <ul-demo-app-layout [sidebarItems]="sidebarItems">
+      <a ul-navbar-logo href="/" class="ul-text-primary" style="font-weight: 700; color: inherit; text-decoration: none;">
         Player Eleven
       </a>
-      <pe-avatar pe-navbar-avatar initials="JD" size="md" />
+      <ul-avatar ul-navbar-avatar initials="JD" size="md" />
 
-      <h1 class="pe-demo-dashboard__title">Dashboard</h1>
-      <div class="pe-demo-dashboard__grid">
-        <pe-card
+      <h1 class="ul-demo-dashboard__title">Dashboard</h1>
+      <div class="ul-demo-dashboard__grid">
+        <ul-card
           cardCaption="Storage"
           cardTitle="75% used"
           cardSubtitle="12.4 GB of 16 GB">
-          <div udsCardFooter class="pe-demo-dashboard__card-footer">
-            <pe-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
-            <pe-button theme="ghost-white">View</pe-button>
+          <div udsCardFooter class="ul-demo-dashboard__card-footer">
+            <ul-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
+            <ul-button theme="ghost-white">View</ul-button>
           </div>
-        </pe-card>
-        <pe-card
+        </ul-card>
+        <ul-card
           cardCaption="Status"
           cardTitle="Active"
           cardSubtitle="All systems operational">
-          <div udsCardFooter class="pe-demo-dashboard__card-footer">
-            <pe-status status="confirm">
-              <span pe-status-title>Running</span>
-            </pe-status>
-            <pe-button theme="ghost-white">Details</pe-button>
+          <div udsCardFooter class="ul-demo-dashboard__card-footer">
+            <ul-status status="confirm">
+              <span ul-status-title>Running</span>
+            </ul-status>
+            <ul-button theme="ghost-white">Details</ul-button>
           </div>
-        </pe-card>
-        <pe-card
+        </ul-card>
+        <ul-card
           cardCaption="Tasks"
           cardTitle="8 of 10 complete"
           cardSubtitle="2 pending">
-          <div udsCardFooter class="pe-demo-dashboard__card-footer">
-            <pe-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
-            <pe-button theme="fill-purple">Continue</pe-button>
+          <div udsCardFooter class="ul-demo-dashboard__card-footer">
+            <ul-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
+            <ul-button theme="fill-purple">Continue</ul-button>
           </div>
-        </pe-card>
-        <pe-card
+        </ul-card>
+        <ul-card
           cardCaption="Alerts"
           cardTitle="1 pending"
           cardSubtitle="Review required">
-          <div udsCardFooter class="pe-demo-dashboard__card-footer">
-            <pe-status status="alert">
-              <span pe-status-title>Action needed</span>
-            </pe-status>
-            <pe-button theme="ghost-white">Review</pe-button>
+          <div udsCardFooter class="ul-demo-dashboard__card-footer">
+            <ul-status status="alert">
+              <span ul-status-title>Action needed</span>
+            </ul-status>
+            <ul-button theme="ghost-white">Review</ul-button>
           </div>
-        </pe-card>
+        </ul-card>
       </div>
-    </pe-demo-app-layout>
+    </ul-demo-app-layout>
   `,
   styles: [
     `
-      .pe-demo-dashboard__title {
+      .ul-demo-dashboard__title {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.5rem;
         font-weight: 700;
         margin: 0 0 1.5rem 0;
       }
-      .pe-demo-dashboard__grid {
+      .ul-demo-dashboard__grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1rem;
       }
-      .pe-demo-dashboard__grid pe-card {
+      .ul-demo-dashboard__grid ul-card {
         display: block;
       }
-      .pe-demo-dashboard__card-footer {
+      .ul-demo-dashboard__card-footer {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -266,7 +266,7 @@ type Story = StoryObj<DemoDashboardComponent>;
 
 export const Default: Story = {
   render: () => ({
-    template: '<pe-demo-dashboard></pe-demo-dashboard>',
+    template: '<ul-demo-dashboard></ul-demo-dashboard>',
     moduleMetadata: {
       imports: [DemoDashboardComponent],
     },
@@ -275,7 +275,7 @@ export const Default: Story = {
 
 export const WithAppLayout: Story = {
   render: () => ({
-    template: '<pe-demo-dashboard-with-layout></pe-demo-dashboard-with-layout>',
+    template: '<ul-demo-dashboard-with-layout></ul-demo-dashboard-with-layout>',
     moduleMetadata: {
       imports: [DemoDashboardWithLayoutComponent],
     },

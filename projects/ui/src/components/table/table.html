@@ -1,11 +1,11 @@
 <div
-  class="pe-table"
-  [class.pe-table--sortable]="hasSortableColumn()"
-  [class.pe-table--filterable]="showGlobalFilter()"
+  class="ul-table"
+  [class.ul-table--sortable]="hasSortableColumn()"
+  [class.ul-table--filterable]="showGlobalFilter()"
 >
   @if (showGlobalFilter()) {
-    <div class="pe-table__toolbar">
-      <pe-input
+    <div class="ul-table__toolbar">
+      <ul-input
         [controlId]="filterId"
         [label]="filterLabel()"
         [placeholder]="filterPlaceholder()"
@@ -13,68 +13,68 @@
         (valueChange)="onFilterInput($event)"
         size="sm"
       >
-        <ng-container pe-input-left-elements>
-          <pe-icon size="5" icon="search" />
+        <ng-container ul-input-left-elements>
+          <ul-icon size="5" icon="search" />
         </ng-container>
-      </pe-input>
+      </ul-input>
     </div>
   }
 
-  <div class="pe-table__scroll pe-scrollable">
-    <pe-skeleton [show]="loading()" variant="rect">
-      <table class="pe-table__table">
-        <thead class="pe-table__head">
-          <tr class="pe-table__row pe-table__row--head">
+  <div class="ul-table__scroll ul-scrollable">
+    <ul-skeleton [show]="loading()" variant="rect">
+      <table class="ul-table__table">
+        <thead class="ul-table__head">
+          <tr class="ul-table__row ul-table__row--head">
             @for (col of columns(); track col.id) {
               <th
-                class="pe-table__th"
-                [class.pe-table__th--sortable]="col.sortable"
-                [class.pe-table__th--sort-asc]="sortColumn() === col.id && sortDirection() === 'asc'"
-                [class.pe-table__th--sort-desc]="sortColumn() === col.id && sortDirection() === 'desc'"
+                class="ul-table__th"
+                [class.ul-table__th--sortable]="col.sortable"
+                [class.ul-table__th--sort-asc]="sortColumn() === col.id && sortDirection() === 'asc'"
+                [class.ul-table__th--sort-desc]="sortColumn() === col.id && sortDirection() === 'desc'"
                 [attr.scope]="'col'"
                 [attr.aria-sort]="col.sortable ? getSortAriaSort(col.id) : null"
               >
                 @if (col.sortable) {
                   <button
                     type="button"
-                    class="pe-table__th-button"
+                    class="ul-table__th-button"
                     [attr.aria-label]="'Sort by ' + col.label"
                     (click)="toggleSort(col.id)"
                   >
-                    <span class="pe-table__th-label">{{ col.label }}</span>
+                    <span class="ul-table__th-label">{{ col.label }}</span>
                     @if (sortColumn() === col.id && sortDirection() === 'asc') {
-                      <pe-icon size="5" icon="arrow_up" />
+                      <ul-icon size="5" icon="arrow_up" />
                     } @else if (sortColumn() === col.id && sortDirection() === 'desc') {
-                      <pe-icon size="5" icon="arrow_down" />
+                      <ul-icon size="5" icon="arrow_down" />
                     } @else {
-                      <pe-icon size="5" icon="sort" />
+                      <ul-icon size="5" icon="sort" />
                     }
                   </button>
                 } @else {
-                  <span class="pe-table__th-label">{{ col.label }}</span>
+                  <span class="ul-table__th-label">{{ col.label }}</span>
                 }
               </th>
             }
           </tr>
         </thead>
-        <tbody class="pe-table__body">
+        <tbody class="ul-table__body">
           @if (sortedData().length === 0) {
-            <tr class="pe-table__row pe-table__row--empty">
-              <td class="pe-table__cell pe-table__cell--empty" [attr.colspan]="columns().length || 1">
+            <tr class="ul-table__row ul-table__row--empty">
+              <td class="ul-table__cell ul-table__cell--empty" [attr.colspan]="columns().length || 1">
                 {{ emptyMessage() }}
               </td>
             </tr>
           } @else {
             @for (row of sortedData(); track $index) {
-              <tr class="pe-table__row">
+              <tr class="ul-table__row">
                 @for (col of columns(); track col.id) {
-                  <td class="pe-table__cell">{{ getCellValue(row, col.id) }}</td>
+                  <td class="ul-table__cell">{{ getCellValue(row, col.id) }}</td>
                 }
               </tr>
             }
           }
         </tbody>
       </table>
-    </pe-skeleton>
+    </ul-skeleton>
   </div>
 </div>

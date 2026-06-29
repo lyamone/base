@@ -43,7 +43,7 @@ export interface TimeSelection {
  * Use [(value)] or [formField]="myForm().date". Form model field should be Date | null.
  */
 @Component({
-  selector: 'pe-calendar',
+  selector: 'ul-calendar',
   standalone: true,
   imports: [
     CdkMenuTrigger,
@@ -80,7 +80,7 @@ export class CalendarComponent implements FormValueControl<Date | null> {
   readonly invalid = input<boolean>(false);
   readonly errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
 
-  protected readonly ids = createFormFieldIds('pe-calendar');
+  protected readonly ids = createFormFieldIds('ul-calendar');
 
   readonly isOpen = signal(false);
   readonly currentMonth = signal<Date>(new Date());

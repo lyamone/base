@@ -24,7 +24,7 @@ interface DemoFormModel {
 }
 
 @Component({
-  selector: 'pe-forms-signal-forms-demo',
+  selector: 'ul-forms-signal-forms-demo',
   standalone: true,
   imports: [
     FormsModule,
@@ -39,53 +39,53 @@ interface DemoFormModel {
     AreaCodeComponent,
   ],
   template: `
-    <div class="pe-signal-forms-demo">
-      <form (ngSubmit)="onSubmit($event)" class="pe-signal-forms-demo__form">
-        <pe-input
+    <div class="ul-signal-forms-demo">
+      <form (ngSubmit)="onSubmit($event)" class="ul-signal-forms-demo__form">
+        <ul-input
           [formField]="demoForm.email"
           label="Email"
           type="email"
           helperText="We'll never share your email."
         />
-        <pe-textarea
+        <ul-textarea
           [formField]="demoForm.message"
           label="Message"
           [rows]="4"
           helperText="Enter your message."
         />
-        <pe-select
+        <ul-select
           [formField]="demoForm.country"
           label="Country"
           [options]="countryOptions"
           placeholder="Select country"
         />
-        <pe-checkbox [formField]="demoForm.acceptTerms">
+        <ul-checkbox [formField]="demoForm.acceptTerms">
           I accept the terms and conditions
-        </pe-checkbox>
-        <pe-calendar
+        </ul-checkbox>
+        <ul-calendar
           [formField]="demoForm.date"
           label="Date"
           placeholder="Select date"
         />
-        <pe-radio-group
+        <ul-radio-group
           [formField]="demoForm.choice"
           name="choice"
           label="Choice"
           [options]="choiceOptions"
         />
-        <div class="pe-signal-forms-demo__actions">
-          <pe-button
+        <div class="ul-signal-forms-demo__actions">
+          <ul-button
             type="submit"
             theme="primary"
             [disabled]="!demoForm().valid()"
           >
             Submit
-          </pe-button>
+          </ul-button>
         </div>
       </form>
-      <aside class="pe-signal-forms-demo__values">
-        <h3 class="pe-signal-forms-demo__values-title">Form value</h3>
-        <pe-area-code
+      <aside class="ul-signal-forms-demo__values">
+        <h3 class="ul-signal-forms-demo__values-title">Form value</h3>
+        <ul-area-code
           [content]="demoValues()"
           [showLineNumbers]="false"
         />
@@ -94,27 +94,27 @@ interface DemoFormModel {
   `,
   styles: [
     `
-      .pe-signal-forms-demo {
+      .ul-signal-forms-demo {
         display: flex;
         flex-direction: row;
         gap: 2rem;
         align-items: flex-start;
         max-width: 900px;
       }
-      .pe-signal-forms-demo__form {
+      .ul-signal-forms-demo__form {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         flex: 0 1 400px;
       }
-      .pe-signal-forms-demo__actions {
+      .ul-signal-forms-demo__actions {
         margin-top: 0.5rem;
       }
-      .pe-signal-forms-demo__values {
+      .ul-signal-forms-demo__values {
         flex: 0 1 400px;
         min-width: 0;
       }
-      .pe-signal-forms-demo__values-title {
+      .ul-signal-forms-demo__values-title {
         margin: 0 0 0.5rem 0;
         font-size: 0.875rem;
         font-weight: 600;
@@ -181,7 +181,7 @@ export default {
 
 export const SignalFormsDemo: StoryObj<SignalFormsDemoComponent> = {
   render: () => ({
-    template: '<pe-forms-signal-forms-demo></pe-forms-signal-forms-demo>',
+    template: '<ul-forms-signal-forms-demo></ul-forms-signal-forms-demo>',
     moduleMetadata: {
       imports: [SignalFormsDemoComponent],
     },

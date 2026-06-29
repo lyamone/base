@@ -5,13 +5,13 @@ import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@a
  * Shows error text when in error state, otherwise helper text.
  */
 @Component({
-  selector: 'pe-form-field-helper',
+  selector: 'ul-form-field-helper',
   standalone: true,
   template: `
     <span
       [id]="id()"
-      class="pe-form-field__helper-text"
-      [class.pe-form-field__helper-text--error]="error()"
+      class="ul-form-field__helper-text"
+      [class.ul-form-field__helper-text--error]="error()"
     >
       @if (error() && errorText()) {
         {{ errorText() }}

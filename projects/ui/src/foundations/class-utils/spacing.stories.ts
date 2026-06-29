@@ -7,7 +7,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Spacing scale and utility classes for margins, padding, and gap. Use `.pe-m-*`, `.pe-p-*`, `.pe-gap-*` with scale values (1–9, etc.) for consistent layout.',
+          'Spacing scale and utility classes for margins, padding, and gap. Use `.ul-m-*`, `.ul-p-*`, `.ul-gap-*` with scale values (1–9, etc.) for consistent layout.',
       },
     },
   },
@@ -19,18 +19,18 @@ type Story = StoryObj;
 export const Margins: Story = {
   render: () => ({
     template: `
-      <div class="pe-p-4">
-        <h2 class="pe-typography-headline-l-regular pe-mb-8">Margins</h2>
+      <div class="ul-p-4">
+        <h2 class="ul-typography-headline-l-regular ul-mb-8">Margins</h2>
         
-        <div class="pe-gap-8" style="display: flex; flex-direction: column;">
+        <div class="ul-gap-8" style="display: flex; flex-direction: column;">
           <div *ngFor="let size of sizes">
-            <h3 class="pe-typography-body-l-regular pe-mb-4">Margin {{size.name}}</h3>
-            <div class="pe-bg-grey-lvl-1" style="width: fit-content;">
-              <div [class]="'pe-m-' + size.value" class="pe-bg-purple" style="width: 100px; height: 100px;">
+            <h3 class="ul-typography-body-l-regular ul-mb-4">Margin {{size.name}}</h3>
+            <div class="ul-bg-grey-lvl-1" style="width: fit-content;">
+              <div [class]="'ul-m-' + size.value" class="ul-bg-purple" style="width: 100px; height: 100px;">
               </div>
             </div>
-            <code>.pe-m-{{size.value}}</code>
-            <p class="pe-typography-body-m-regular">{{size.pixels}}px</p>
+            <code>.ul-m-{{size.value}}</code>
+            <p class="ul-typography-body-m-regular">{{size.pixels}}px</p>
           </div>
         </div>
       </div>
@@ -64,18 +64,18 @@ export const Margins: Story = {
 export const Padding: Story = {
   render: () => ({
     template: `
-      <div class="pe-p-4">
-        <h2 class="pe-typography-headline-l-regular pe-mb-8">Padding</h2>
+      <div class="ul-p-4">
+        <h2 class="ul-typography-headline-l-regular ul-mb-8">Padding</h2>
         
-        <div class="pe-gap-8" style="display: flex; flex-direction: column;">
+        <div class="ul-gap-8" style="display: flex; flex-direction: column;">
           <div *ngFor="let size of sizes">
-            <h3 class="pe-typography-body-l-regular pe-mb-4">Padding {{size.name}}</h3>
-            <div [class]="'pe-p-' + size.value" class="pe-bg-purple" style="width: fit-content;">
-              <div class="pe-bg-grey-lvl-1" style="width: 100px; height: 100px;">
+            <h3 class="ul-typography-body-l-regular ul-mb-4">Padding {{size.name}}</h3>
+            <div [class]="'ul-p-' + size.value" class="ul-bg-purple" style="width: fit-content;">
+              <div class="ul-bg-grey-lvl-1" style="width: 100px; height: 100px;">
               </div>
             </div>
-            <code>.pe-p-{{size.value}}</code>
-            <p class="pe-typography-body-m-regular">{{size.pixels}}px</p>
+            <code>.ul-p-{{size.value}}</code>
+            <p class="ul-typography-body-m-regular">{{size.pixels}}px</p>
           </div>
         </div>
       </div>
@@ -109,19 +109,19 @@ export const Padding: Story = {
 export const Gaps: Story = {
   render: () => ({
     template: `
-      <div class="pe-p-4">
-        <h2 class="pe-typography-headline-l-regular pe-mb-8">Gaps</h2>
+      <div class="ul-p-4">
+        <h2 class="ul-typography-headline-l-regular ul-mb-8">Gaps</h2>
         
-        <div class="pe-gap-8" style="display: flex; flex-direction: column;">
+        <div class="ul-gap-8" style="display: flex; flex-direction: column;">
           <div *ngFor="let size of sizes">
-            <h3 class="pe-typography-body-l-regular pe-mb-4">Gap {{size.name}}</h3>
-            <div [class]="'pe-gap-' + size.value" style="display: flex;">
-              <div class="pe-bg-purple" style="width: 100px; height: 100px;"></div>
-              <div class="pe-bg-purple" style="width: 100px; height: 100px;"></div>
-              <div class="pe-bg-purple" style="width: 100px; height: 100px;"></div>
+            <h3 class="ul-typography-body-l-regular ul-mb-4">Gap {{size.name}}</h3>
+            <div [class]="'ul-gap-' + size.value" style="display: flex;">
+              <div class="ul-bg-purple" style="width: 100px; height: 100px;"></div>
+              <div class="ul-bg-purple" style="width: 100px; height: 100px;"></div>
+              <div class="ul-bg-purple" style="width: 100px; height: 100px;"></div>
             </div>
-            <code>.pe-gap-{{size.value}}</code>
-            <p class="pe-typography-body-m-regular">{{size.pixels}}px</p>
+            <code>.ul-gap-{{size.value}}</code>
+            <p class="ul-typography-body-m-regular">{{size.pixels}}px</p>
           </div>
         </div>
       </div>
@@ -155,18 +155,18 @@ export const Gaps: Story = {
 export const DirectionalSpacing: Story = {
   render: () => ({
     template: `
-      <div class="pe-p-4">
-        <h2 class="pe-typography-headline-l-regular pe-mb-8">Directional Spacing</h2>
+      <div class="ul-p-4">
+        <h2 class="ul-typography-headline-l-regular ul-mb-8">Directional Spacing</h2>
         
-        <div class="pe-gap-8" style="display: flex; flex-direction: column;">
+        <div class="ul-gap-8" style="display: flex; flex-direction: column;">
           <div *ngFor="let type of types">
-            <h3 class="pe-typography-body-l-regular pe-mb-4">{{type.name}}</h3>
-            <div class="pe-bg-grey-lvl-1 pe-p-4">
-              <div [class]="type.class" class="pe-bg-purple" style="width: 100px; height: 100px;">
+            <h3 class="ul-typography-body-l-regular ul-mb-4">{{type.name}}</h3>
+            <div class="ul-bg-grey-lvl-1 ul-p-4">
+              <div [class]="type.class" class="ul-bg-purple" style="width: 100px; height: 100px;">
               </div>
             </div>
             <code>.{{type.class}}</code>
-            <p class="pe-typography-body-m-regular">{{type.description}}</p>
+            <p class="ul-typography-body-m-regular">{{type.description}}</p>
           </div>
         </div>
       </div>
@@ -175,62 +175,62 @@ export const DirectionalSpacing: Story = {
       types: [
         {
           name: 'Margin X',
-          class: 'pe-mx-4',
+          class: 'ul-mx-4',
           description: 'Horizontal margin (left and right)',
         },
         {
           name: 'Margin Y',
-          class: 'pe-my-4',
+          class: 'ul-my-4',
           description: 'Vertical margin (top and bottom)',
         },
         {
           name: 'Margin Top',
-          class: 'pe-mt-4',
+          class: 'ul-mt-4',
           description: 'Top margin only',
         },
         {
           name: 'Margin Right',
-          class: 'pe-mr-4',
+          class: 'ul-mr-4',
           description: 'Right margin only',
         },
         {
           name: 'Margin Bottom',
-          class: 'pe-mb-4',
+          class: 'ul-mb-4',
           description: 'Bottom margin only',
         },
         {
           name: 'Margin Left',
-          class: 'pe-ml-4',
+          class: 'ul-ml-4',
           description: 'Left margin only',
         },
         {
           name: 'Padding X',
-          class: 'pe-px-4',
+          class: 'ul-px-4',
           description: 'Horizontal padding (left and right)',
         },
         {
           name: 'Padding Y',
-          class: 'pe-py-4',
+          class: 'ul-py-4',
           description: 'Vertical padding (top and bottom)',
         },
         {
           name: 'Padding Top',
-          class: 'pe-pt-4',
+          class: 'ul-pt-4',
           description: 'Top padding only',
         },
         {
           name: 'Padding Right',
-          class: 'pe-pr-4',
+          class: 'ul-pr-4',
           description: 'Right padding only',
         },
         {
           name: 'Padding Bottom',
-          class: 'pe-pb-4',
+          class: 'ul-pb-4',
           description: 'Bottom padding only',
         },
         {
           name: 'Padding Left',
-          class: 'pe-pl-4',
+          class: 'ul-pl-4',
           description: 'Left padding only',
         },
       ],

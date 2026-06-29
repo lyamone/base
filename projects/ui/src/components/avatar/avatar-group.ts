@@ -15,30 +15,30 @@ export interface AvatarData {
  * A reusable avatar group component that displays multiple avatars with overflow handling.
  * Supports maximum visible count and shows a "+X" indicator for remaining avatars.
  * @example
- * <pe-avatar-group [avatars]="userAvatars" [maxVisible]="3" size="md" />
+ * <ul-avatar-group [avatars]="userAvatars" [maxVisible]="3" size="md" />
  */
 @Component({
-  selector: 'pe-avatar-group',
+  selector: 'ul-avatar-group',
   standalone: true,
   imports: [AvatarComponent],
   template: `
-    <div class="pe-avatar-group pe-avatar-group--{{this.size()}}"
-      [class.pe-avatar-group--stacked]="stacked()"
+    <div class="ul-avatar-group ul-avatar-group--{{this.size()}}"
+      [class.ul-avatar-group--stacked]="stacked()"
     >
       @for (avatar of visibleAvatars(); track $index) {
-        <pe-avatar
+        <ul-avatar
           [size]="size()"
           [src]="avatar.src"
           [initials]="avatar.initials"
           [icon]="avatar.icon"
           [alt]="avatar.alt || ''"
-          [class.pe-avatar-group__avatar]="!stacked() && $index > 0"
+          [class.ul-avatar-group__avatar]="!stacked() && $index > 0"
         />
       }
       @if (remainingCount() > 0) {
-        <div class="pe-avatar-group__overflow pe-avatar-group__overflow--{{this.size()}}" 
-          [class.pe-avatar-group__overflow-avatar]="!stacked()">
-          <span class="pe-avatar-group__overflow-text">+{{ remainingCount() }}</span>
+        <div class="ul-avatar-group__overflow ul-avatar-group__overflow--{{this.size()}}" 
+          [class.ul-avatar-group__overflow-avatar]="!stacked()">
+          <span class="ul-avatar-group__overflow-text">+{{ remainingCount() }}</span>
         </div>
       }
     </div>

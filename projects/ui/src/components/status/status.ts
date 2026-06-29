@@ -6,7 +6,7 @@ import { RadialComponent } from '../radial/radial';
 export type Status = 'confirm' | 'alert' | 'error' | 'pending' | 'info';
 
 @Component({
-  selector: 'pe-status',
+  selector: 'ul-status',
   standalone: true,
   imports: [IconComponent, RadialComponent],
   templateUrl: './status.html',
@@ -36,11 +36,11 @@ export class StatusComponent {
   }
 
   computedClasses = computed(() => ({
-    'pe-status': true,
-    'pe-status--confirm': this.status() === 'confirm',
-    'pe-status--alert': this.status() === 'alert',
-    'pe-status--error': this.status() === 'error',
-    'pe-status--pending': this.status() === 'pending',
-    'pe-status--info': this.status() === 'info',
+    'ul-status': true,
+    'ul-status--confirm': this.status() === 'confirm',
+    'ul-status--alert': this.status() === 'alert',
+    'ul-status--error': this.status() === 'error',
+    'ul-status--pending': this.status() === 'pending',
+    'ul-status--info': this.status() === 'info',
   }));
 }

@@ -56,7 +56,7 @@ export const Default: Story = {
     props: args,
     template: `
       <div style="width: 100%">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [filterPlaceholder]="filterPlaceholder"
@@ -78,7 +78,7 @@ export const WithSort: Story = {
     props: args,
     template: `
       <div style="width: 100%;">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [emptyMessage]="emptyMessage"
@@ -99,7 +99,7 @@ export const WithFilter: Story = {
     props: args,
     template: `
       <div style="width: 100%;  ">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [showGlobalFilter]="showGlobalFilter"
@@ -122,7 +122,7 @@ export const WithSortAndFilter: Story = {
     props: args,
     template: `
       <div style="width: 100%">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [showGlobalFilter]="showGlobalFilter"
@@ -144,7 +144,7 @@ export const EmptyState: Story = {
     props: args,
     template: `
       <div style="width: 100%">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [emptyMessage]="emptyMessage"
@@ -172,7 +172,7 @@ export const Responsive: Story = {
     props: args,
     template: `
       <div style="width: 100%; padding: 1rem;">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [showGlobalFilter]="showGlobalFilter"
@@ -194,7 +194,7 @@ export const Loading: Story = {
     props: args,
     template: `
       <div style="width: 100%">
-        <pe-table
+        <ul-table
           [columns]="columns"
           [data]="data"
           [filterPlaceholder]="filterPlaceholder"

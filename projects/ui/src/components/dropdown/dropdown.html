@@ -1,18 +1,18 @@
-<div class="pe-dropdown">
+<div class="ul-dropdown">
   <!-- Template for rendering icon arrays -->
   <ng-template #renderIcons let-icons>
     @for (icon of icons; track icon) {
-      <pe-icon size="5" [icon]="icon" />
+      <ul-icon size="5" [icon]="icon" />
     }
   </ng-template>
 
   @if (triggerIconOnly(); as iconName) {
-    <pe-button
+    <ul-button
       [theme]="theme()"
       [iconOnly]="true"
       [disabled]="disabled()"
       [cdkMenuTriggerFor]="menu"
-      class="pe-dropdown__trigger"
+      class="ul-dropdown__trigger"
       aria-haspopup="menu"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-controls]="menuId"
@@ -20,61 +20,61 @@
       (cdkMenuOpened)="onMenuOpened()"
       (cdkMenuClosed)="onMenuClosed()"
     >
-      <pe-icon [icon]="iconName" />
-    </pe-button>
+      <ul-icon [icon]="iconName" />
+    </ul-button>
   } @else {
-    <pe-list-item
+    <ul-list-item
       [theme]="theme()"
       [disabled]="disabled()"
       [cdkMenuTriggerFor]="menu"
-      class="pe-dropdown__trigger"
+      class="ul-dropdown__trigger"
       aria-haspopup="menu"
       [attr.aria-expanded]="isOpen()"
       [attr.aria-controls]="menuId"
       (cdkMenuOpened)="onMenuOpened()"
       (cdkMenuClosed)="onMenuClosed()"
     >
-      <ng-container pe-list-item-before-label>
+      <ng-container ul-list-item-before-label>
         @if (selectedItem().leftIcons) {
           <ng-container
             *ngTemplateOutlet="renderIcons; context: { $implicit: selectedItem().leftIcons }"
           />
         }
       </ng-container>
-      <ng-container pe-list-item-label>
+      <ng-container ul-list-item-label>
         {{ selectedItem().label }}
       </ng-container>
-      <ng-container pe-list-item-after-label>
+      <ng-container ul-list-item-after-label>
         <ng-container
           *ngTemplateOutlet="renderIcons; context: { $implicit: triggerRightIcons() }"
         />
       </ng-container>
-    </pe-list-item>
+    </ul-list-item>
   }
 
   <ng-template #menu>
-    <div cdkMenu class="pe-dropdown__content pe-scrollable" [id]="menuId">
+    <div cdkMenu class="ul-dropdown__content ul-scrollable" [id]="menuId">
       @for (item of items(); track $index) {
-        <pe-list-item
+        <ul-list-item
           cdkMenuItem
           (cdkMenuItemTriggered)="handleItemTriggered($index)"
           [disabled]="!!item.disabled"
           role="menuitemradio"
           [attr.aria-checked]="selectedIndex() === $index ? 'true' : 'false'"
         >
-          <ng-container pe-list-item-before-label>
+          <ng-container ul-list-item-before-label>
             <ng-container *ngTemplateOutlet="renderIcons; context: { $implicit: item.leftIcons }" />
           </ng-container>
-          <ng-container pe-list-item-label>{{ item.label }}</ng-container>
-          <ng-container pe-list-item-after-label>
+          <ng-container ul-list-item-label>{{ item.label }}</ng-container>
+          <ng-container ul-list-item-after-label>
             <ng-container
               *ngTemplateOutlet="renderIcons; context: { $implicit: item.rightIcons }"
             />
             @if (selectedIndex() === $index) {
-              <pe-icon size="5" icon="check" />
+              <ul-icon size="5" icon="check" />
             }
           </ng-container>
-        </pe-list-item>
+        </ul-list-item>
       }
     </div>
   </ng-template>

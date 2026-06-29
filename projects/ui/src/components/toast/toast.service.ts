@@ -114,7 +114,7 @@ export class ToastService {
       return crypto.randomUUID();
     }
 
-    return `pe-toast-${Math.random().toString(36).slice(2, 11)}`;
+    return `ul-toast-${Math.random().toString(36).slice(2, 11)}`;
   }
 }
 

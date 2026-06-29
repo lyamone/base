@@ -49,7 +49,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-area-code
+      <ul-area-code
         [content]="content"
         [showLineNumbers]="showLineNumbers"
         [maxHeight]="maxHeight"
@@ -82,7 +82,7 @@ export const JSONCode: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-area-code
+      <ul-area-code
         [content]="content"
         [showLineNumbers]="showLineNumbers"
       />
@@ -102,7 +102,7 @@ console.log(greeting);`,
   render: (args) => ({
     props: args,
     template: `
-      <pe-area-code
+      <ul-area-code
         [content]="content"
         [showLineNumbers]="showLineNumbers"
       />
@@ -158,7 +158,7 @@ console.log(\`Result: \${result}, Time: \${end - start}ms\`);`,
   render: (args) => ({
     props: args,
     template: `
-      <pe-area-code
+      <ul-area-code
         [content]="content"
         [showLineNumbers]="showLineNumbers"
         [maxHeight]="maxHeight"

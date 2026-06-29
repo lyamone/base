@@ -36,7 +36,7 @@
       rgba(255, 255, 255, 0) 100%
     );
     background-size: 200% 100%;
-    animation: pe-skeleton-shimmer 1.2s infinite linear;
+    animation: ul-skeleton-shimmer 1.2s infinite linear;
   }
 
   &__block--line {
@@ -68,7 +68,7 @@
   }
 }
 
-@keyframes pe-skeleton-shimmer {
+@keyframes ul-skeleton-shimmer {
   0% {
     background-position: -100% 0;
   }

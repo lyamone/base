@@ -18,7 +18,7 @@ const quantityDropdownItems: DropdownItem[] = [
 ];
 
 @Component({
-  selector: 'pe-demo-product-strip',
+  selector: 'ul-demo-product-strip',
   standalone: true,
   imports: [
     CardComponent,
@@ -31,54 +31,54 @@ const quantityDropdownItems: DropdownItem[] = [
     ListItemComponent,
   ],
   template: `
-    <div class="pe-demo-product-strip">
-      <h1 class="pe-typography-headline-l-extrablack pe-pb-4">Featured</h1>
-      <div class="pe-demo-product-strip__grid">
-        <pe-card
+    <div class="ul-demo-product-strip">
+      <h1 class="ul-typography-headline-l-extrablack ul-pb-4">Featured</h1>
+      <div class="ul-demo-product-strip__grid">
+        <ul-card
           cardCaption="Game"
           cardTitle="Adventure Quest"
           cardSubtitle="Action RPG">
             <img
             udsCardMedia
-              class="pe-h-full"
+              class="ul-h-full"
               peCatchImageNotFound
               src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop"
               alt="Adventure Quest"
             />
-          <div udsCardFooter class="pe-demo-product-strip__footer">
-            <pe-price-button
+          <div udsCardFooter class="ul-demo-product-strip__footer">
+            <ul-price-button
               label="Add to cart"
               [price]="9.99"
               currency="USD"
               theme="fill-purple"
             />
           </div>
-        </pe-card>
-        <pe-card
+        </ul-card>
+        <ul-card
           cardCaption="Game"
           cardTitle="Space Racer"
           cardSubtitle="Racing">
           <div udsCardMedia>
             <img
-              class="pe-h-full"
+              class="ul-h-full"
               peCatchImageNotFound
               src="https://images.unsplash.com/photo-1511882150382-421056eb6909?w=400&h=300&fit=crop"
               alt="Space Racer"
             />
-            <pe-pill theme="fill-red" variant="read-only">Sale</pe-pill>
+            <ul-pill theme="fill-red" variant="read-only">Sale</ul-pill>
           </div>
-          <div udsCardFooter class="pe-demo-product-strip__footer">
-            <pe-price-button
+          <div udsCardFooter class="ul-demo-product-strip__footer">
+            <ul-price-button
               [price]="4.99"
               [originalPrice]="9.99"
               [discountBasis]="50"
               currency="USD"
               theme="fill-purple"
             />
-            <pe-button theme="ghost-white">View</pe-button>
+            <ul-button theme="ghost-white">View</ul-button>
           </div>
-        </pe-card>
-        <pe-card
+        </ul-card>
+        <ul-card
           cardCaption="Game"
           cardTitle="Puzzle Master"
           cardSubtitle="Casual">
@@ -88,36 +88,36 @@ const quantityDropdownItems: DropdownItem[] = [
               src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=400&h=300&fit=crop"
               alt="Puzzle Master"
             />
-          <div udsCardFooter class="pe-demo-product-strip__footer">
-            <pe-dropdown
+          <div udsCardFooter class="ul-demo-product-strip__footer">
+            <ul-dropdown
               [items]="quantityDropdownItems"
               theme="transparent-white"
               [selectedIndex]="0"
             />
-            <pe-price-button
+            <ul-price-button
               [price]="0"
               currency="USD"
               theme="transparent-white"
             />
           </div>
-        </pe-card>
+        </ul-card>
       </div>
     </div>
   `,
   styles: [
     `
-      .pe-demo-product-strip {
+      .ul-demo-product-strip {
         min-height: 100vh;
         padding: 2rem;
         background: #0a0a0a;
       }
-      .pe-demo-product-strip__grid {
+      .ul-demo-product-strip__grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1.5rem;
         max-width: 960px;
       }
-      .pe-demo-product-strip__footer {
+      .ul-demo-product-strip__footer {
         display: flex;
         align-items: center;
         gap: 0.75rem;
@@ -163,7 +163,7 @@ type Story = StoryObj<DemoProductStripComponent>;
 
 export const Default: Story = {
   render: () => ({
-    template: '<pe-demo-product-strip></pe-demo-product-strip>',
+    template: '<ul-demo-product-strip></ul-demo-product-strip>',
     moduleMetadata: {
       imports: [DemoProductStripComponent],
     },

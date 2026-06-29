@@ -21,7 +21,7 @@ export type SidebarItem = {
 };
 
 @Component({
-  selector: 'pe-sidebar',
+  selector: 'ul-sidebar',
   standalone: true,
   imports: [ButtonComponent, IconComponent, ListItemComponent],
   templateUrl: './sidebar.html',

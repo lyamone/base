@@ -1,52 +1,52 @@
-<nav class="pe-navbar" role="navigation">
-  <div class="pe-navbar__bar">
-    <div class="pe-navbar__logo">
+<nav class="ul-navbar" role="navigation">
+  <div class="ul-navbar__bar">
+    <div class="ul-navbar__logo">
       @if (showToggle()) {
-        <pe-button
+        <ul-button
           theme="ghost-white"
           [iconOnly]="true"
           size="sm"
-          class="pe-navbar__sidebar_toggle"
+          class="ul-navbar__sidebar_toggle"
           ariaLabel="Open menu"
           [attr.aria-expanded]="sidebarOpen()"
           (buttonClick)="toggleSidebar()"
         >
-          <pe-icon icon="menu" size="6" />
-        </pe-button>
+          <ul-icon icon="menu" size="6" />
+        </ul-button>
       }
       @if (hasLogoSlot()) {
-        <ng-content select="[pe-navbar-logo]" />
+        <ng-content select="[ul-navbar-logo]" />
       } @else {
-        <img [src]="logoSrc()" [alt]="logoAlt()" class="pe-navbar__logo-img" height="32" />
-        <a [href]="logoHref()" class="pe-navbar__logo-link pe-navbar__logo-text">Pinake</a>
+        <img [src]="logoSrc()" [alt]="logoAlt()" class="ul-navbar__logo-img" height="32" />
+        <a [href]="logoHref()" class="ul-navbar__logo-link ul-navbar__logo-text">Pinake</a>
       }
     </div>
 
     @if (hasSearchSlot()) {
-      <pe-button
+      <ul-button
         theme="ghost-white"
         [iconOnly]="true"
-        class="pe-navbar__search-toggle"
+        class="ul-navbar__search-toggle"
         ariaLabel="Toggle search"
         [attr.aria-expanded]="searchExpanded()"
         (buttonClick)="toggleSearch()"
       >
-        <pe-icon icon="search" size="6" />
-      </pe-button>
+        <ul-icon icon="search" size="6" />
+      </ul-button>
     }
 
     <div
-      class="pe-navbar__search-wrapper"
-      [class.pe-navbar__search-wrapper--expanded]="searchExpanded()"
+      class="ul-navbar__search-wrapper"
+      [class.ul-navbar__search-wrapper--expanded]="searchExpanded()"
     >
-      <ng-content select="[pe-navbar-search]" />
+      <ng-content select="[ul-navbar-search]" />
     </div>
 
-    <div class="pe-navbar__avatar">
+    <div class="ul-navbar__avatar">
       @if (hasAvatarSlot()) {
-        <ng-content select="[pe-navbar-avatar]" />
+        <ng-content select="[ul-navbar-avatar]" />
       } @else if (avatarSrc() || avatarInitials()) {
-        <pe-avatar
+        <ul-avatar
           [src]="avatarSrc()"
           [initials]="avatarInitials()"
           [alt]="avatarAlt()"

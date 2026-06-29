@@ -19,7 +19,7 @@ import {
 } from './navbar-slot.directive';
 
 @Component({
-  selector: 'pe-navbar',
+  selector: 'ul-navbar',
   standalone: true,
   imports: [AvatarComponent, ButtonComponent, IconComponent],
   templateUrl: './navbar.html',

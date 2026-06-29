@@ -11,7 +11,7 @@ import {
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
 @Component({
-  selector: 'pe-tooltip',
+  selector: 'ul-tooltip',
   standalone: true,
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.scss',
@@ -29,7 +29,7 @@ export class TooltipComponent {
   private showTimeoutId: number | null = null;
   private hideTimeoutId: number | null = null;
 
-  readonly tooltipId = `pe-tooltip-${Math.random().toString(36).slice(2, 11)}`;
+  readonly tooltipId = `ul-tooltip-${Math.random().toString(36).slice(2, 11)}`;
 
   @HostBinding('attr.aria-describedby')
   get ariaDescribedBy(): string | null {

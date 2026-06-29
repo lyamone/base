@@ -30,7 +30,7 @@ describe('FileInputComponent', () => {
 
   it('should have trigger button that opens file dialog when clicked', () => {
     const el = fixture.nativeElement as HTMLElement;
-    const trigger = el.querySelector<HTMLButtonElement>('.pe-file-input__trigger');
+    const trigger = el.querySelector<HTMLButtonElement>('.ul-file-input__trigger');
     const nativeInput = el.querySelector<HTMLInputElement>('input[type="file"]');
     expect(trigger).toBeTruthy();
     expect(nativeInput).toBeTruthy();
@@ -43,7 +43,7 @@ describe('FileInputComponent', () => {
     fixture.componentRef.setInput('disabled', true);
     fixture.detectChanges();
     const el = fixture.nativeElement as HTMLElement;
-    const trigger = el.querySelector<HTMLButtonElement>('.pe-file-input__trigger');
+    const trigger = el.querySelector<HTMLButtonElement>('.ul-file-input__trigger');
     const nativeInput = el.querySelector<HTMLInputElement>('input[type="file"]');
     const clickSpy = vi.spyOn(nativeInput!, 'click');
     trigger!.click();
@@ -70,7 +70,7 @@ describe('FileInputComponent', () => {
     fixture.detectChanges();
     expect(component.value()).toBeTruthy();
     expect(component.value()?.length).toBe(1);
-    const labelEl = el.querySelector('.pe-file-input__label');
+    const labelEl = el.querySelector('.ul-file-input__label');
     expect(labelEl?.textContent?.trim()).toBe('test.txt');
   });
 

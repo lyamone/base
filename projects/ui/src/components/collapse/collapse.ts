@@ -25,26 +25,26 @@ export type CollapseVariant = 'text' | 'icon';
  *
  * @example
  * ```html
- * <pe-collapse [maxHeight]="300" variant="text">
+ * <ul-collapse [maxHeight]="300" variant="text">
  *   <div>Collapsible content here</div>
- * </pe-collapse>
+ * </ul-collapse>
  * ```
  */
 @Component({
-  selector: 'pe-collapse',
+  selector: 'ul-collapse',
   standalone: true,
   imports: [ButtonComponent, IconComponent],
   template: `
     <div [class]="computedClasses()">
-      <div class="pe-collapse__content" #content [attr.aria-expanded]="!collapsed()" [attr.aria-hidden]="collapsed()">
+      <div class="ul-collapse__content" #content [attr.aria-expanded]="!collapsed()" [attr.aria-hidden]="collapsed()">
         <ng-content />
       </div>
       @if (isCollapsible()) {
-        <div class="pe-collapse__toggle">
-          <pe-button
+        <div class="ul-collapse__toggle">
+          <ul-button
             theme="ghost-white"
             [iconOnly]="variant() === 'icon'"
-            class="pe-collapse__toggle-button"
+            class="ul-collapse__toggle-button"
             (click)="toggle()"
             (keydown)="onToggleKeydown($event)"
             [attr.aria-label]="collapsed() ? expandLabel() : collapseLabel()">
@@ -53,17 +53,17 @@ export type CollapseVariant = 'text' | 'icon';
                 {{ collapsed() ? expandLabel() : collapseLabel() }}
               </span>
             } @else if (variant() === 'icon') {
-              <pe-icon size="6" icon="chevron_up" />
+              <ul-icon size="6" icon="chevron_up" />
             }
-          </pe-button>
+          </ul-button>
         </div>
       }
     </div>
   `,
   styleUrls: ['./collapse.scss'],
   host: {
-    '[style.--pe-collapse-max-height.px]': 'maxHeight()',
-    '[style.--pe-collapse-full-height.px]': 'fullHeight()',
+    '[style.--ul-collapse-max-height.px]': 'maxHeight()',
+    '[style.--ul-collapse-full-height.px]': 'fullHeight()',
     role: 'region',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -145,8 +145,8 @@ export class CollapseComponent implements AfterViewInit {
 
   computedClasses = computed(() => {
     return {
-      'pe-collapse': true,
-      'pe-collapse--collapsed': this.isCollapsible() && this.collapsed(),
+      'ul-collapse': true,
+      'ul-collapse--collapsed': this.isCollapsible() && this.collapsed(),
     };
   });
 }

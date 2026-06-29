@@ -39,11 +39,11 @@ export type HeroSize = 'sm' | 'md' | 'lg';
  * Fully responsive across mobile, tablet, and desktop.
  *
  * When slots are not projected, inputs are used (title, subtitle, badges, primaryAction, secondaryAction).
- * Content projection slots: pe-hero-badges, pe-hero-title, pe-hero-subtitle, pe-hero-actions, pe-hero-content.
+ * Content projection slots: ul-hero-badges, ul-hero-title, ul-hero-subtitle, ul-hero-actions, ul-hero-content.
  *
  * @example
  * ```html
- * <pe-hero
+ * <ul-hero
  *   title="Welcome"
  *   subtitle="Build amazing experiences"
  *   [primaryAction]="{ label: 'Get Started', href: '/signup' }"
@@ -52,7 +52,7 @@ export type HeroSize = 'sm' | 'md' | 'lg';
  * ```
  */
 @Component({
-  selector: 'pe-hero',
+  selector: 'ul-hero',
   standalone: true,
   imports: [ButtonComponent, IconComponent, PillComponent, RouterLink],
   templateUrl: './hero.html',

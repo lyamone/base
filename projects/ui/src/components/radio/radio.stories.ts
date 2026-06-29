@@ -10,7 +10,7 @@ const meta: Meta<RadioComponent> = {
     docs: {
       description: {
         component:
-          'Single radio option for use in a group. Use with `pe-radio-group` and `[formField]` for Signal Forms, or bind `[(checked)]` per radio. Requires `name` and `value`; supports disabled and custom id. Full accessibility with ARIA and keyboard (Space/Enter).',
+          'Single radio option for use in a group. Use with `ul-radio-group` and `[formField]` for Signal Forms, or bind `[(checked)]` per radio. Requires `name` and `value`; supports disabled and custom id. Full accessibility with ARIA and keyboard (Space/Enter).',
       },
     },
   },
@@ -77,7 +77,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-radio 
+      <ul-radio 
         [value]="value" 
         [name]="name" 
         [disabled]="disabled" 
@@ -85,7 +85,7 @@ export const Default: Story = {
         [id]="id"
         (click)="click($event)">
         Option 1
-      </pe-radio>
+      </ul-radio>
     `,
   }),
 };
@@ -131,38 +131,38 @@ export const RadioGroup: Story = {
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <h3>Select your preferred option:</h3>
         
-        <pe-radio 
+        <ul-radio 
           value="option1" 
           name="radio-group-example" 
           [checked]="selectedValue === 'option1'"
           (checkedChange)="selectedValue = selectedValue === 'option1' ? '' : 'option1'">
           Option 1 - This is the first choice
-        </pe-radio>
+        </ul-radio>
         
-        <pe-radio 
+        <ul-radio 
           value="option2" 
           name="radio-group-example" 
           [checked]="selectedValue === 'option2'"
           (checkedChange)="selectedValue = selectedValue === 'option2' ? '' : 'option2'">
           Option 2 - This is the second choice
-        </pe-radio>
+        </ul-radio>
         
-        <pe-radio 
+        <ul-radio 
           value="option3" 
           name="radio-group-example" 
           [checked]="selectedValue === 'option3'"
           (checkedChange)="selectedValue = selectedValue === 'option3' ? '' : 'option3'">
           Option 3 - This is the third choice
-        </pe-radio>
+        </ul-radio>
         
-        <pe-radio 
+        <ul-radio 
           value="option4" 
           name="radio-group-example" 
           [checked]="selectedValue === 'option4'"
           [disabled]="true"
           (checkedChange)="selectedValue = selectedValue === 'option4' ? '' : 'option4'">
           Option 4 - This option is disabled
-        </pe-radio>
+        </ul-radio>
         
         <p style="margin-top: 16px; font-size: 14px; color: #666;">
           Selected value: <strong>{{ selectedValue }}</strong>

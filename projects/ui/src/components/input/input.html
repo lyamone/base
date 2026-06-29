@@ -1,29 +1,29 @@
 <div
-  class="pe-input pe-input--{{ size() }} pe-input--appearance-{{ appearance() }}"
-  [class.pe-input--error]="hasError()"
-  [class.pe-input--disabled]="disabled()"
-  [class.pe-input--read-only]="readOnly()"
-  [class.pe-input--required]="required()"
+  class="ul-input ul-input--{{ size() }} ul-input--appearance-{{ appearance() }}"
+  [class.ul-input--error]="hasError()"
+  [class.ul-input--disabled]="disabled()"
+  [class.ul-input--read-only]="readOnly()"
+  [class.ul-input--required]="required()"
   [attr.aria-invalid]="hasError()"
   [attr.aria-required]="required()"
   [attr.aria-describedby]="describedBy()"
 >
-  <pe-form-field-label
+  <ul-form-field-label
     [label]="label()"
     [required]="required()"
     [for]="effectiveControlId()"
     [size]="size()"
   />
 
-  <div class="pe-input__group" [class.pe-input__group--focused]="isFocused()">
-    <div class="pe-input__left-elements">
-      <ng-content select="[pe-input-left-elements]" />
+  <div class="ul-input__group" [class.ul-input__group--focused]="isFocused()">
+    <div class="ul-input__left-elements">
+      <ng-content select="[ul-input-left-elements]" />
     </div>
 
     <input
       [id]="effectiveControlId()"
       [type]="type()"
-      class="pe-input__field"
+      class="ul-input__field"
       [placeholder]="placeholder()"
       [value]="value()"
       (input)="onInput($event)"
@@ -41,12 +41,12 @@
       [attr.aria-describedby]="describedBy()"
     />
 
-    <div class="pe-input__right-elements">
-      <ng-content select="[pe-input-right-elements]" />
+    <div class="ul-input__right-elements">
+      <ng-content select="[ul-input-right-elements]" />
     </div>
   </div>
 
-  <pe-form-field-helper
+  <ul-form-field-helper
     [id]="effectiveHelperId()"
     [helperText]="helperText()"
     [errorText]="errorText() || (hasError() && errors().length ? errors()[0].message : '') || null"

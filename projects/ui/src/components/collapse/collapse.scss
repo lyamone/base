@@ -4,7 +4,7 @@
   &__content {
     position: relative;
     overflow: hidden;
-    height: var(--pe-collapse-full-height);
+    height: var(--ul-collapse-full-height);
     @include transition-property(height);
   }
 
@@ -38,7 +38,7 @@
         black calc(100% - #{$component-control-height-lg}),
         transparent 100%
       );
-      height: var(--pe-collapse-max-height);
+      height: var(--ul-collapse-max-height);
     }
 
     // rotate icon

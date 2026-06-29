@@ -1,21 +1,21 @@
 <div [class]="computedClasses()">
-  <div class="pe-status-icon">
-    <pe-icon [icon]="icon" size="12" />
+  <div class="ul-status-icon">
+    <ul-icon [icon]="icon" size="12" />
     @if (loadingAnimation()) {
-      <div class="pe-status-loading">
-        <pe-radial [size]="96" [percentage]="50" [infinite]="true" />
+      <div class="ul-status-loading">
+        <ul-radial [size]="96" [percentage]="50" [infinite]="true" />
       </div>
     }
   </div>
-  <div class="pe-status-title-container">
-    <div class="pe-status-title">
-      <ng-content select="[pe-status-title]" />
+  <div class="ul-status-title-container">
+    <div class="ul-status-title">
+      <ng-content select="[ul-status-title]" />
     </div>
-    <div class="pe-status-subtitle">
-      <ng-content select="[pe-status-subtitle]" />
+    <div class="ul-status-subtitle">
+      <ng-content select="[ul-status-subtitle]" />
     </div>
   </div>
-  <div class="pe-status-description">
-    <ng-content select="[pe-status-description]" />
+  <div class="ul-status-description">
+    <ng-content select="[ul-status-description]" />
   </div>
 </div>

@@ -59,7 +59,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar-group
+      <ul-avatar-group
         [avatars]="avatars"
         [size]="size"
         [maxVisible]="maxVisible"
@@ -81,7 +81,7 @@ export const WithOverflow: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar-group
+      <ul-avatar-group
         [avatars]="avatars"
         [size]="size"
         [maxVisible]="maxVisible"
@@ -103,7 +103,7 @@ export const Stacked: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar-group
+      <ul-avatar-group
         [avatars]="avatars"
         [size]="size"
         [maxVisible]="maxVisible"
@@ -125,7 +125,7 @@ export const StackedWithOverflow: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar-group
+      <ul-avatar-group
         [avatars]="avatars"
         [size]="size"
         [maxVisible]="maxVisible"
@@ -148,19 +148,19 @@ export const AllSizes: Story = {
       <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
         <div>
           <div style="margin-bottom: 8px; font-size: 12px; color: #999;">Small</div>
-          <pe-avatar-group [avatars]="avatars" [size]="'sm'" [stacked]="stacked" />
+          <ul-avatar-group [avatars]="avatars" [size]="'sm'" [stacked]="stacked" />
         </div>
         <div>
           <div style="margin-bottom: 8px; font-size: 12px; color: #999;">Medium</div>
-          <pe-avatar-group [avatars]="avatars" [size]="'md'" [stacked]="stacked" />
+          <ul-avatar-group [avatars]="avatars" [size]="'md'" [stacked]="stacked" />
         </div>
         <div>
           <div style="margin-bottom: 8px; font-size: 12px; color: #999;">Large</div>
-          <pe-avatar-group [avatars]="avatars" [size]="'lg'" [stacked]="stacked" />
+          <ul-avatar-group [avatars]="avatars" [size]="'lg'" [stacked]="stacked" />
         </div>
         <div>
           <div style="margin-bottom: 8px; font-size: 12px; color: #999;">Extra Large</div>
-          <pe-avatar-group [avatars]="avatars" [size]="'xl'" [stacked]="stacked" />
+          <ul-avatar-group [avatars]="avatars" [size]="'xl'" [stacked]="stacked" />
         </div>
       </div>
     `,
@@ -185,7 +185,7 @@ export const LargeGroup: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <pe-avatar-group
+      <ul-avatar-group
         [avatars]="avatars"
         [size]="size"
         [maxVisible]="maxVisible"

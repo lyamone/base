@@ -16,30 +16,30 @@ export interface RadioGroupOption {
 
 /**
  * Radio group that holds the selected option value. Implements FormValueControl for Signal Forms [formField].
- * Use [(value)] or [formField]="myForm().choice". Renders pe-radio per option; value is the selected option's value.
+ * Use [(value)] or [formField]="myForm().choice". Renders ul-radio per option; value is the selected option's value.
  */
 @Component({
-  selector: 'pe-radio-group',
+  selector: 'ul-radio-group',
   standalone: true,
   imports: [RadioComponent, FormFieldLabelComponent, FormFieldHelperComponent],
   template: `
     <div
-      class="pe-radio-group"
+      class="ul-radio-group"
       [attr.aria-invalid]="hasError()"
       [attr.aria-required]="required()"
       [attr.aria-describedby]="describedBy()"
       role="radiogroup"
       [attr.aria-label]="label()"
     >
-      <pe-form-field-label
+      <ul-form-field-label
         [label]="label()"
         [required]="required()"
         [for]="ids.controlId"
         size="md"
       />
-      <div class="pe-radio-group__radios" [id]="ids.controlId">
+      <div class="ul-radio-group__radios" [id]="ids.controlId">
         @for (opt of options(); track opt.value) {
-          <pe-radio
+          <ul-radio
             [name]="name()"
             [value]="opt.value"
             [checked]="value() === opt.value"
@@ -47,10 +47,10 @@ export interface RadioGroupOption {
             (selected)="value.set(opt.value)"
           >
             {{ opt.label }}
-          </pe-radio>
+          </ul-radio>
         }
       </div>
-      <pe-form-field-helper
+      <ul-form-field-helper
         [id]="ids.helperId"
         [helperText]="helperText()"
         [errorText]="errorText() || (hasError() && errors().length ? (errors()[0].message ?? null) : null)"
@@ -75,7 +75,7 @@ export class RadioGroupComponent implements FormValueControl<string | null> {
 
   readonly value = model<string | null>(null);
 
-  protected readonly ids = createFormFieldIds('pe-radio-group');
+  protected readonly ids = createFormFieldIds('ul-radio-group');
   protected readonly hasError = computed(() => this.error() || this.invalid());
   protected readonly describedBy = computed(() =>
     getFormFieldDescribedBy(
