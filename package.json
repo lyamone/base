@@ -10,7 +10,7 @@
     "ui:copy-fonts": "npx shx rm -rf projects/ui/assets/styles/fonts && npx shx mkdir -p projects/ui/assets/styles/fonts && npx shx cp -r projects/ui/src/lib/fonts/* projects/ui/assets/styles/fonts/",
     "ui:sass": "npx sass projects/ui/src/foundations/index.scss:projects/ui/assets/styles/foundations.css --no-source-map --load-path=projects/ui/src",
     "ui:sass:watch": "npx sass projects/ui/src/foundations/index.scss:projects/ui/assets/styles/foundations.css --watch --load-path=projects/ui/src",
-    "build:ui": "npm run ui:copy-fonts && npm run ui:sass && ng build ui",
+    "build:ui": "npm run ui:copy-fonts && npm run ui:sass && ng build ui && node scripts/patch-ui-exports.mjs",
     "storybook": "ng run ui:storybook",
     "build-storybook": "ng run ui:build-storybook",
     "build-storybook:ci": "npm run ui:copy-fonts && npm run ui:sass && ng run ui:build-storybook"

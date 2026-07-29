@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, input, model, output, signal } from '@angular/core';
 import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
 
+import { ButtonComponent } from '../button/button';
+import { IconComponent } from '../icon/icon';
 import {
   createFormFieldIds,
   FormFieldHelperComponent,
@@ -25,7 +27,7 @@ export type InputAppearance = 'border-only' | 'subtle-tint';
 @Component({
   selector: 'ul-input',
   standalone: true,
-  imports: [FormFieldLabelComponent, FormFieldHelperComponent],
+  imports: [FormFieldLabelComponent, FormFieldHelperComponent, ButtonComponent, IconComponent],
   templateUrl: './input.html',
   styleUrls: ['./input.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,6 +51,10 @@ export class InputComponent implements FormValueControl<string> {
   readonly autocomplete = input<string>('off');
   /** When provided (e.g. by a parent form field), the input element uses this id instead of the internal one. */
   readonly controlId = input<string | undefined>();
+  /** Aria-label for the toggle button when the password is hidden (i.e. the action reveals it). */
+  readonly showPasswordLabel = input<string>('Show password');
+  /** Aria-label for the toggle button when the password is visible (i.e. the action hides it). */
+  readonly hidePasswordLabel = input<string>('Hide password');
 
   /** FormUiControl optional: bound by [formField] when invalid */
   readonly invalid = input<boolean>(false);
@@ -66,6 +72,17 @@ export class InputComponent implements FormValueControl<string> {
   protected readonly isFocused = signal(false);
   protected readonly hasError = computed(() => this.error() || this.invalid());
 
+  protected readonly isPasswordType = computed(() => this.type() === 'password');
+
+  protected readonly passwordRevealed = signal(false);
+  protected readonly effectiveType = computed(() =>
+    this.isPasswordType() && this.passwordRevealed() ? 'text' : this.type()
+  );
+  protected readonly passwordToggleIcon = computed(() => (this.passwordRevealed() ? 'eye_on' : 'eye_dashed'));
+  protected readonly passwordToggleLabel = computed(() =>
+    this.passwordRevealed() ? this.hidePasswordLabel() : this.showPasswordLabel()
+  );
+
   protected readonly describedBy = computed(() =>
     getFormFieldDescribedBy(
       this.effectiveHelperId(),
@@ -79,6 +96,8 @@ export class InputComponent implements FormValueControl<string> {
   // Outputs
   readonly inputBlur = output<FocusEvent>();
   readonly inputFocus = output<FocusEvent>();
+  /** Emitted when Enter is pressed in the field; typically used to submit a form. */
+  readonly inputEnter = output<KeyboardEvent>();
 
   onInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
@@ -94,6 +113,16 @@ export class InputComponent implements FormValueControl<string> {
   onFocus(event: FocusEvent): void {
     this.isFocused.set(true);
     this.inputFocus.emit(event);
+  }
+
+  onKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.inputEnter.emit(event);
+    }
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordRevealed.update((revealed) => !revealed);
   }
 
   /**

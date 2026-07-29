@@ -2010,18 +2010,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" [maxItems]=\"maxItems\" />\n    `,\n  }),\n}",
-                "rawdescription": "Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.",
-                "description": "<p>Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.</p>\n"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/avatar/avatar-group.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2053,6 +2041,18 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
                 "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
                 "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" [maxItems]=\"maxItems\" />\n    `,\n  }),\n}",
+                "rawdescription": "Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.",
+                "description": "<p>Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.</p>\n"
             },
             {
                 "name": "Default",
@@ -2124,16 +2124,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/modal/modal.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    variant: 'default',\n    open: false,\n    title: 'Default modal',\n  },\n  render: (args) => ({\n    props: {\n      ...args,\n      isOpen: args.open,\n    },\n    template: `\n    <div style=\"width: 512px; height: 512px;\">\n      <ul-button theme=\"transparent-white\" type=\"button\" (click)=\"isOpen = true\">Open modal</ul-button>\n      <ul-modal\n        [(open)]=\"isOpen\"\n        [variant]=\"variant\"\n        [title]=\"title\"\n        [closeOnBackdropClick]=\"closeOnBackdropClick\"\n        [showCloseButton]=\"showCloseButton\"\n        (closed)=\"isOpen = false\">\n        <p>This is the default modal variant. Use it for generic dialogs and confirmations.</p>\n      </ul-modal>\n    </div>\n    `,\n  }),\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/navbar/navbar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2144,13 +2134,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/pill/pill.stories.ts",
+                "file": "projects/ui/src/components/modal/modal.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span>Pill Label</span>\n      </ul-pill>\n    `,\n  }),\n}",
-                "rawdescription": "Default pill story that demonstrates the basic pill component.\nShows a simple pill with configurable variant, size, and theme.",
-                "description": "<p>Default pill story that demonstrates the basic pill component.\nShows a simple pill with configurable variant, size, and theme.</p>\n"
+                "defaultValue": "{\n  args: {\n    variant: 'default',\n    open: false,\n    title: 'Default modal',\n  },\n  render: (args) => ({\n    props: {\n      ...args,\n      isOpen: args.open,\n    },\n    template: `\n    <div style=\"width: 512px; height: 512px;\">\n      <ul-button theme=\"transparent-white\" type=\"button\" (click)=\"isOpen = true\">Open modal</ul-button>\n      <ul-modal\n        [(open)]=\"isOpen\"\n        [variant]=\"variant\"\n        [title]=\"title\"\n        [closeOnBackdropClick]=\"closeOnBackdropClick\"\n        [showCloseButton]=\"showCloseButton\"\n        (closed)=\"isOpen = false\">\n        <p>This is the default modal variant. Use it for generic dialogs and confirmations.</p>\n      </ul-modal>\n    </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Default",
@@ -2168,11 +2156,13 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/radial/radial.stories.ts",
+                "file": "projects/ui/src/components/pill/pill.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    size: 96,\n    percentage: 25,\n    infinite: false,\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span>Pill Label</span>\n      </ul-pill>\n    `,\n  }),\n}",
+                "rawdescription": "Default pill story that demonstrates the basic pill component.\nShows a simple pill with configurable variant, size, and theme.",
+                "description": "<p>Default pill story that demonstrates the basic pill component.\nShows a simple pill with configurable variant, size, and theme.</p>\n"
             },
             {
                 "name": "Default",
@@ -2183,6 +2173,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    value: 'option1',\n    name: 'radio-group',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-radio \n        [value]=\"value\" \n        [name]=\"name\" \n        [disabled]=\"disabled\" \n        [checked]=\"checked\"\n        [id]=\"id\"\n        (click)=\"click($event)\">\n        Option 1\n      </ul-radio>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/radial/radial.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    size: 96,\n    percentage: 25,\n    infinite: false,\n  },\n}"
             },
             {
                 "name": "Default",
@@ -2350,18 +2350,6 @@
                 "name": "Disabled",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/pill/pill.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    disabled: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span>Disabled Pill</span>\n      </ul-pill>\n    `,\n  }),\n}",
-                "rawdescription": "Demonstrates a disabled pill state.",
-                "description": "<p>Demonstrates a disabled pill state.</p>\n"
-            },
-            {
-                "name": "Disabled",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/price-button/price-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2369,6 +2357,18 @@
                 "defaultValue": "{\n  args: {\n    disabled: true,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    label: 'Unavailable',\n  },\n}",
                 "rawdescription": "Story for a disabled price button.",
                 "description": "<p>Story for a disabled price button.</p>\n"
+            },
+            {
+                "name": "Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/pill/pill.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    disabled: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span>Disabled Pill</span>\n      </ul-pill>\n    `,\n  }),\n}",
+                "rawdescription": "Demonstrates a disabled pill state.",
+                "description": "<p>Demonstrates a disabled pill state.</p>\n"
             },
             {
                 "name": "Disabled",
@@ -2938,16 +2938,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<BreadcrumbComponent>",
-                "defaultValue": "{\n  title: 'Components/Navigation/Breadcrumb',\n  component: BreadcrumbComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [RouterTestingModule],\n    }),\n  ],\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Navigation breadcrumb component for displaying page hierarchy. Supports responsive collapsing on mobile, customizable separators (chevron, slash, dot), and optional icons. Last item is not a link and uses aria-current=\"page\" for accessibility.',\n      },\n    },\n  },\n  argTypes: {\n    items: {\n      control: { type: 'object' },\n      description: 'Array of breadcrumb items to display',\n    },\n    separator: {\n      options: ['chevron_right', 'slash', 'dot'],\n      control: { type: 'radio' },\n      description: 'Separator type between breadcrumb items',\n    },\n    maxItems: {\n      control: { type: 'number' },\n      description: 'Maximum number of items to show before collapsing (for responsive behavior)',\n    },\n  },\n  args: {\n    items: [\n      { label: 'Home', href: '/' },\n      { label: 'Products', href: '/products' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page' },\n    ],\n    separator: 'chevron_right',\n    maxItems: undefined,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/avatar/avatar-group.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2983,6 +2973,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<CalendarComponent>",
                 "defaultValue": "{\n  title: 'Components/Form Elements/Calendar',\n  component: CalendarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Date and/or time picker with popup calendar. Implements `FormValueControl<Date | null>` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Modes: date, time, datetime. Supports min/max date and time, locale, sizes, and label/helper/error text.',\n      },\n    },\n  },\n  argTypes: {\n    mode: {\n      options: ['date', 'time', 'datetime'] as CalendarMode[],\n      control: { type: 'select' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    showCalendarIcon: {\n      control: { type: 'boolean' },\n    },\n  },\n  args: {\n    mode: 'date',\n    value: null,\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: '',\n    label: 'Date',\n    helperText: '',\n    errorText: 'Please select a date',\n    showCalendarIcon: true,\n    minDate: null,\n    maxDate: null,\n    minTime: null,\n    maxTime: null,\n    locale: 'en-US',\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<BreadcrumbComponent>",
+                "defaultValue": "{\n  title: 'Components/Navigation/Breadcrumb',\n  component: BreadcrumbComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [RouterTestingModule],\n    }),\n  ],\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Navigation breadcrumb component for displaying page hierarchy. Supports responsive collapsing on mobile, customizable separators (chevron, slash, dot), and optional icons. Last item is not a link and uses aria-current=\"page\" for accessibility.',\n      },\n    },\n  },\n  argTypes: {\n    items: {\n      control: { type: 'object' },\n      description: 'Array of breadcrumb items to display',\n    },\n    separator: {\n      options: ['chevron_right', 'slash', 'dot'],\n      control: { type: 'radio' },\n      description: 'Separator type between breadcrumb items',\n    },\n    maxItems: {\n      control: { type: 'number' },\n      description: 'Maximum number of items to show before collapsing (for responsive behavior)',\n    },\n  },\n  args: {\n    items: [\n      { label: 'Home', href: '/' },\n      { label: 'Products', href: '/products' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page' },\n    ],\n    separator: 'chevron_right',\n    maxItems: undefined,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3088,6 +3088,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<NavbarComponent>",
+                "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar]. Import the slot directives when using slots so the navbar can detect them. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/list-item/list-item.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3108,11 +3118,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "file": "projects/ui/src/components/price-button/price-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<NavbarComponent>",
-                "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar]. Import the slot directives when using slots so the navbar can detect them. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },\n  },\n}"
+                "type": "Meta<PriceButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Actions/Price Button',\n  component: PriceButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Button that shows a price (or \"Free\" when 0), with optional original price and sale badge. Supports label override, size, theme (same as ul-button), sale position (left/right), and currency. Use for purchase or download actions.',\n      },\n    },\n  },\n  argTypes: {\n    label: {\n      control: 'text',\n      description:\n        'Text label to display on the button. If empty and price > 0, shows the price. If price is 0, shows \"Free\".',\n    },\n    size: {\n      options: ['sm', 'md', 'lg'],\n      control: { type: 'radio' },\n      description: 'Button size',\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme of the button.',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Disables the button when true.',\n    },\n    salePosition: {\n      options: ['left', 'right'],\n      control: { type: 'radio' },\n      description: 'Position of the sale badge: left or right.',\n    },\n    price: {\n      control: { type: 'number', min: 0 },\n      description: 'Current price to display. 0 means free.',\n    },\n    originalPrice: {\n      control: { type: 'number', min: 0 },\n      description: 'Original price before discount. If different from price and discountBasis > 0, shows a sale badge.',\n    },\n    discountBasis: {\n      control: { type: 'number', min: 0, max: 100 },\n      description: 'Discount percentage to display if on sale.',\n    },\n    currency: {\n      control: 'text',\n      description: 'Currency code (e.g., USD, EUR, UOS). For UOS, a custom symbol is shown.',\n    },\n  },\n  args: {\n    size: 'md' as UiSize,\n    theme: 'fill-yellow' as UiTheme,\n    disabled: false,\n    salePosition: 'right' as SalePosition,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    currency: 'USD',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3128,11 +3138,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                "file": "projects/ui/src/components/radio/radio.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<PriceButtonComponent>",
-                "defaultValue": "{\n  title: 'Components/Actions/Price Button',\n  component: PriceButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Button that shows a price (or \"Free\" when 0), with optional original price and sale badge. Supports label override, size, theme (same as ul-button), sale position (left/right), and currency. Use for purchase or download actions.',\n      },\n    },\n  },\n  argTypes: {\n    label: {\n      control: 'text',\n      description:\n        'Text label to display on the button. If empty and price > 0, shows the price. If price is 0, shows \"Free\".',\n    },\n    size: {\n      options: ['sm', 'md', 'lg'],\n      control: { type: 'radio' },\n      description: 'Button size',\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme of the button.',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Disables the button when true.',\n    },\n    salePosition: {\n      options: ['left', 'right'],\n      control: { type: 'radio' },\n      description: 'Position of the sale badge: left or right.',\n    },\n    price: {\n      control: { type: 'number', min: 0 },\n      description: 'Current price to display. 0 means free.',\n    },\n    originalPrice: {\n      control: { type: 'number', min: 0 },\n      description: 'Original price before discount. If different from price and discountBasis > 0, shows a sale badge.',\n    },\n    discountBasis: {\n      control: { type: 'number', min: 0, max: 100 },\n      description: 'Discount percentage to display if on sale.',\n    },\n    currency: {\n      control: 'text',\n      description: 'Currency code (e.g., USD, EUR, UOS). For UOS, a custom symbol is shown.',\n    },\n  },\n  args: {\n    size: 'md' as UiSize,\n    theme: 'fill-yellow' as UiTheme,\n    disabled: false,\n    salePosition: 'right' as SalePosition,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    currency: 'USD',\n  },\n}"
+                "type": "Meta<RadioComponent>",
+                "defaultValue": "{\n  title: 'Components/Form Elements/Radio',\n  component: RadioComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single radio option for use in a group. Use with `ul-radio-group` and `[formField]` for Signal Forms, or bind `[(checked)]` per radio. Requires `name` and `value`; supports disabled and custom id. Full accessibility with ARIA and keyboard (Space/Enter).',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: 'text',\n      description:\n        'The value associated with this radio button. This value identifies the radio button within its group.',\n      table: {\n        type: { summary: 'string' },\n        required: true,\n      },\n    },\n    name: {\n      control: 'text',\n      description:\n        'The name attribute for the radio button group. All radio buttons in the same group should share the same name.',\n      table: {\n        type: { summary: 'string' },\n        required: true,\n      },\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the radio button is disabled.',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: 'false' },\n      },\n    },\n    checked: {\n      control: 'boolean',\n      description: 'Whether the radio button is currently checked/selected. Supports two-way binding.',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: 'false' },\n      },\n    },\n    id: {\n      control: 'text',\n      description: 'Unique identifier for the radio button. If not provided, one will be auto-generated.',\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    click: {\n      action: 'click',\n      description: 'Event emitted when the radio button is clicked. Useful for additional click handling.',\n      table: {\n        type: { summary: 'EventEmitter<MouseEvent>' },\n      },\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3143,16 +3153,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<RadialComponent>",
                 "defaultValue": "{\n  title: 'Components/Feedback/Radial',\n  component: RadialComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Circular progress indicator. Set `percentage` (0–100) and `size` (pixels). Optional `infinite` for indeterminate spinning. Use for loading or progress states.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      control: 'select',\n      options: [96, 64, 48, 32, 24, 20, 16],\n      description: 'Size of the radial component in pixels',\n    },\n    percentage: {\n      control: { type: 'range', min: 0, max: 100, step: 1 },\n      description: 'Percentage of the radial that is filled (0-100)',\n    },\n    infinite: {\n      control: { type: 'boolean' },\n      description: 'If true, the radial will rotate indefinitely',\n    },\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/radio/radio.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<RadioComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Radio',\n  component: RadioComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single radio option for use in a group. Use with `ul-radio-group` and `[formField]` for Signal Forms, or bind `[(checked)]` per radio. Requires `name` and `value`; supports disabled and custom id. Full accessibility with ARIA and keyboard (Space/Enter).',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: 'text',\n      description:\n        'The value associated with this radio button. This value identifies the radio button within its group.',\n      table: {\n        type: { summary: 'string' },\n        required: true,\n      },\n    },\n    name: {\n      control: 'text',\n      description:\n        'The name attribute for the radio button group. All radio buttons in the same group should share the same name.',\n      table: {\n        type: { summary: 'string' },\n        required: true,\n      },\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the radio button is disabled.',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: 'false' },\n      },\n    },\n    checked: {\n      control: 'boolean',\n      description: 'Whether the radio button is currently checked/selected. Supports two-way binding.',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: 'false' },\n      },\n    },\n    id: {\n      control: 'text',\n      description: 'Unique identifier for the radio button. If not provided, one will be auto-generated.',\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    click: {\n      action: 'click',\n      description: 'Event emitted when the radio button is clicked. Useful for additional click handling.',\n      table: {\n        type: { summary: 'EventEmitter<MouseEvent>' },\n      },\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4154,18 +4154,6 @@
                 "name": "WithIcons",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    items: [\n      { label: 'Home', href: '/', icon: 'home' },\n      { label: 'Products', href: '/products', icon: 'store' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page', icon: 'chevron_right' },\n    ],\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" />\n    `,\n  }),\n}",
-                "rawdescription": "Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.",
-                "description": "<p>Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.</p>\n"
-            },
-            {
-                "name": "WithIcons",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -4173,6 +4161,18 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\">\n        <i class=\"ul-icon ul-icon-store\"></i>\n        Button\n        <i class=\"ul-icon ul-icon-chevron_right\"></i>\n      </ul-button>\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates a button with icons on both sides.",
                 "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
+            },
+            {
+                "name": "WithIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    items: [\n      { label: 'Home', href: '/', icon: 'home' },\n      { label: 'Products', href: '/products', icon: 'store' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page', icon: 'chevron_right' },\n    ],\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" />\n    `,\n  }),\n}",
+                "rawdescription": "Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.",
+                "description": "<p>Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.</p>\n"
             },
             {
                 "name": "WithIcons",
@@ -4504,17 +4504,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<BreadcrumbComponent>",
-                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<AvatarGroupComponent>",
                 "file": "projects/ui/src/components/avatar/avatar-group.stories.ts",
                 "deprecated": false,
@@ -4550,6 +4539,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<CalendarComponent>",
                 "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<BreadcrumbComponent>",
+                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4669,6 +4669,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<NavbarComponent>",
+                "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ListItemComponent>",
                 "file": "projects/ui/src/components/list-item/list-item.stories.ts",
                 "deprecated": false,
@@ -4691,8 +4702,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<NavbarComponent>",
-                "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "rawtype": "StoryObj<PriceButtonComponent>",
+                "file": "projects/ui/src/components/price-button/price-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4713,8 +4724,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PriceButtonComponent>",
-                "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                "rawtype": "StoryObj<RadioComponent>",
+                "file": "projects/ui/src/components/radio/radio.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4726,17 +4737,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<RadialComponent>",
                 "file": "projects/ui/src/components/radial/radial.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<RadioComponent>",
-                "file": "projects/ui/src/components/radio/radio.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -7321,6 +7321,78 @@
                     "defaultValue": "{\n  args: {\n    logoHref: '/',\n    avatarInitials: 'U',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-navbar\n        [logoHref]=\"logoHref\"\n        [avatarInitials]=\"avatarInitials\"\n      >\n                <ul-avatar ul-navbar-avatar initials=\"U\" size=\"md\" />\n      </ul-navbar>\n    `,\n  }),\n}"
                 }
             ],
+            "projects/ui/src/components/price-button/price-button.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-price-button\n        [label]=\"label\"\n        [size]=\"size\"\n        [theme]=\"theme\"\n        [disabled]=\"disabled\"\n        [salePosition]=\"salePosition\"\n        [price]=\"price\"\n        [originalPrice]=\"originalPrice\"\n        [discountBasis]=\"discountBasis\"\n        [currency]=\"currency\"\n      ></ul-price-button>\n    `,\n  }),\n}",
+                    "rawdescription": "Default price button story showing a typical use case with a discount.",
+                    "description": "<p>Default price button story showing a typical use case with a discount.</p>\n"
+                },
+                {
+                    "name": "Disabled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    disabled: true,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    label: 'Unavailable',\n  },\n}",
+                    "rawdescription": "Story for a disabled price button.",
+                    "description": "<p>Story for a disabled price button.</p>\n"
+                },
+                {
+                    "name": "Free",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    price: 0,\n    originalPrice: 0,\n    discountBasis: 0,\n    theme: 'fill-purple' as UiTheme,\n  },\n}",
+                    "rawdescription": "Story for a free item (price = 0).",
+                    "description": "<p>Story for a free item (price = 0).</p>\n"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PriceButtonComponent>",
+                    "defaultValue": "{\n  title: 'Components/Actions/Price Button',\n  component: PriceButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Button that shows a price (or \"Free\" when 0), with optional original price and sale badge. Supports label override, size, theme (same as ul-button), sale position (left/right), and currency. Use for purchase or download actions.',\n      },\n    },\n  },\n  argTypes: {\n    label: {\n      control: 'text',\n      description:\n        'Text label to display on the button. If empty and price > 0, shows the price. If price is 0, shows \"Free\".',\n    },\n    size: {\n      options: ['sm', 'md', 'lg'],\n      control: { type: 'radio' },\n      description: 'Button size',\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme of the button.',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Disables the button when true.',\n    },\n    salePosition: {\n      options: ['left', 'right'],\n      control: { type: 'radio' },\n      description: 'Position of the sale badge: left or right.',\n    },\n    price: {\n      control: { type: 'number', min: 0 },\n      description: 'Current price to display. 0 means free.',\n    },\n    originalPrice: {\n      control: { type: 'number', min: 0 },\n      description: 'Original price before discount. If different from price and discountBasis > 0, shows a sale badge.',\n    },\n    discountBasis: {\n      control: { type: 'number', min: 0, max: 100 },\n      description: 'Discount percentage to display if on sale.',\n    },\n    currency: {\n      control: 'text',\n      description: 'Currency code (e.g., USD, EUR, UOS). For UOS, a custom symbol is shown.',\n    },\n  },\n  args: {\n    size: 'md' as UiSize,\n    theme: 'fill-yellow' as UiTheme,\n    disabled: false,\n    salePosition: 'right' as SalePosition,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    currency: 'USD',\n  },\n}"
+                },
+                {
+                    "name": "NoDiscount",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    price: 15,\n    originalPrice: 0,\n    discountBasis: 0,\n    theme: 'transparent-white' as UiTheme,\n  },\n}",
+                    "rawdescription": "Story for a price button with no discount.",
+                    "description": "<p>Story for a price button with no discount.</p>\n"
+                },
+                {
+                    "name": "SaleLeft",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    salePosition: 'left',\n    price: 5,\n    originalPrice: 10,\n    discountBasis: 50,\n    label: '',\n  },\n}",
+                    "rawdescription": "Story for a left-aligned sale badge.",
+                    "description": "<p>Story for a left-aligned sale badge.</p>\n"
+                }
+            ],
             "projects/ui/src/components/pill/pill.stories.ts": [
                 {
                     "name": "Default",
@@ -7403,78 +7475,6 @@
                     "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span class=\"ul-icon ul-icon-ultra_games\"></span>\n        <span>Pill with Icons</span>\n        <span class=\"ul-icon ul-icon-chevron_right\"></span>\n      </ul-pill>\n    `,\n  }),\n}",
                     "rawdescription": "Demonstrates a pill with icons on both sides.",
                     "description": "<p>Demonstrates a pill with icons on both sides.</p>\n"
-                }
-            ],
-            "projects/ui/src/components/price-button/price-button.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-price-button\n        [label]=\"label\"\n        [size]=\"size\"\n        [theme]=\"theme\"\n        [disabled]=\"disabled\"\n        [salePosition]=\"salePosition\"\n        [price]=\"price\"\n        [originalPrice]=\"originalPrice\"\n        [discountBasis]=\"discountBasis\"\n        [currency]=\"currency\"\n      ></ul-price-button>\n    `,\n  }),\n}",
-                    "rawdescription": "Default price button story showing a typical use case with a discount.",
-                    "description": "<p>Default price button story showing a typical use case with a discount.</p>\n"
-                },
-                {
-                    "name": "Disabled",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    disabled: true,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    label: 'Unavailable',\n  },\n}",
-                    "rawdescription": "Story for a disabled price button.",
-                    "description": "<p>Story for a disabled price button.</p>\n"
-                },
-                {
-                    "name": "Free",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    price: 0,\n    originalPrice: 0,\n    discountBasis: 0,\n    theme: 'fill-purple' as UiTheme,\n  },\n}",
-                    "rawdescription": "Story for a free item (price = 0).",
-                    "description": "<p>Story for a free item (price = 0).</p>\n"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<PriceButtonComponent>",
-                    "defaultValue": "{\n  title: 'Components/Actions/Price Button',\n  component: PriceButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Button that shows a price (or \"Free\" when 0), with optional original price and sale badge. Supports label override, size, theme (same as ul-button), sale position (left/right), and currency. Use for purchase or download actions.',\n      },\n    },\n  },\n  argTypes: {\n    label: {\n      control: 'text',\n      description:\n        'Text label to display on the button. If empty and price > 0, shows the price. If price is 0, shows \"Free\".',\n    },\n    size: {\n      options: ['sm', 'md', 'lg'],\n      control: { type: 'radio' },\n      description: 'Button size',\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme of the button.',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Disables the button when true.',\n    },\n    salePosition: {\n      options: ['left', 'right'],\n      control: { type: 'radio' },\n      description: 'Position of the sale badge: left or right.',\n    },\n    price: {\n      control: { type: 'number', min: 0 },\n      description: 'Current price to display. 0 means free.',\n    },\n    originalPrice: {\n      control: { type: 'number', min: 0 },\n      description: 'Original price before discount. If different from price and discountBasis > 0, shows a sale badge.',\n    },\n    discountBasis: {\n      control: { type: 'number', min: 0, max: 100 },\n      description: 'Discount percentage to display if on sale.',\n    },\n    currency: {\n      control: 'text',\n      description: 'Currency code (e.g., USD, EUR, UOS). For UOS, a custom symbol is shown.',\n    },\n  },\n  args: {\n    size: 'md' as UiSize,\n    theme: 'fill-yellow' as UiTheme,\n    disabled: false,\n    salePosition: 'right' as SalePosition,\n    price: 9.99,\n    originalPrice: 19.99,\n    discountBasis: 50,\n    currency: 'USD',\n  },\n}"
-                },
-                {
-                    "name": "NoDiscount",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    price: 15,\n    originalPrice: 0,\n    discountBasis: 0,\n    theme: 'transparent-white' as UiTheme,\n  },\n}",
-                    "rawdescription": "Story for a price button with no discount.",
-                    "description": "<p>Story for a price button with no discount.</p>\n"
-                },
-                {
-                    "name": "SaleLeft",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    salePosition: 'left',\n    price: 5,\n    originalPrice: 10,\n    discountBasis: 50,\n    label: '',\n  },\n}",
-                    "rawdescription": "Story for a left-aligned sale badge.",
-                    "description": "<p>Story for a left-aligned sale badge.</p>\n"
                 }
             ],
             "projects/ui/src/components/radial/radial.stories.ts": [
@@ -8086,19 +8086,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<BreadcrumbComponent>",
-                    "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/avatar/avatar-group.stories.ts": [
                 {
                     "name": "Story",
@@ -8145,6 +8132,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CalendarComponent>",
                     "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<BreadcrumbComponent>",
+                    "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -8281,6 +8281,19 @@
                     "kind": 184
                 }
             ],
+            "projects/ui/src/components/navbar/navbar.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<NavbarComponent>",
+                    "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/ui/src/components/list-item/list-item.stories.ts": [
                 {
                     "name": "Story",
@@ -8307,13 +8320,13 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/navbar/navbar.stories.ts": [
+            "projects/ui/src/components/price-button/price-button.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<NavbarComponent>",
-                    "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                    "rawtype": "StoryObj<PriceButtonComponent>",
+                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -8333,13 +8346,13 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/price-button/price-button.stories.ts": [
+            "projects/ui/src/components/radio/radio.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<PriceButtonComponent>",
-                    "file": "projects/ui/src/components/price-button/price-button.stories.ts",
+                    "rawtype": "StoryObj<RadioComponent>",
+                    "file": "projects/ui/src/components/radio/radio.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -8353,19 +8366,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<RadialComponent>",
                     "file": "projects/ui/src/components/radial/radial.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
-            "projects/ui/src/components/radio/radio.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<RadioComponent>",
-                    "file": "projects/ui/src/components/radio/radio.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

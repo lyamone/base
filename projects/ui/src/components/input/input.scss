@@ -8,6 +8,9 @@
   gap: $spacing-spacing-1;
 
   // Input group: border by default, transparent background, focus/hover per appearance
+  // The border is drawn as an inset box-shadow instead of a layout border, so the
+  // group's height stays purely content-box — a full-height projected control
+  // (e.g. the password toggle button) then fills it exactly, without overflowing.
   &__group {
     display: flex;
     align-items: center;
@@ -15,28 +18,28 @@
     padding: 0 $spacing-spacing-3; // default padding
     gap: $spacing-spacing-2;
     border-radius: $radius-radius-2;
-    border: 2px solid $color-border-white-light;
+    box-shadow: inset 0 0 0 2px $color-border-white-light;
     background-color: transparent;
     color: $color-text-primary;
-    @include transition-properties((border-color, background-color));
+    @include transition-properties((box-shadow, background-color));
     @include typography('body-m');
 
     &--focused {
-      border-color: $color-border-white-medium-strong;
+      box-shadow: inset 0 0 0 2px $color-border-white-medium-strong;
     }
   }
 
   // Option A: border-only — hover = border only, no fill
   &--appearance-border-only:not(.#{$prefix}input--disabled) {
     .#{$prefix}input__group:hover {
-      border-color: $color-border-white-medium;
+      box-shadow: inset 0 0 0 2px $color-border-white-medium;
     }
   }
 
   // Option B: subtle-tint — hover = border + 5% fill
   &--appearance-subtle-tint:not(.#{$prefix}input--disabled) {
     .#{$prefix}input__group:hover {
-      border-color: $color-border-white-medium;
+      box-shadow: inset 0 0 0 2px $color-border-white-medium;
       background-color: $color-background-white-extra-light;
     }
   }
@@ -59,10 +62,29 @@
   &__left-elements,
   &__right-elements {
     display: flex;
+    align-items: center;
     gap: $spacing-spacing-2;
 
     ::ng-deep .#{$prefix}icon {
       @include icon-size('6');
+    }
+  }
+
+  // The password toggle sits flush inside the field; it should read as part of
+  // the input, not as its own interactive surface, so its hover/active fill is
+  // suppressed here rather than adding a dedicated "flush" theme to ul-button.
+  // ::ng-deep reaches the inner .ul-btn element rendered by ButtonComponent's
+  // own template, which sits past ul-input's view-encapsulation boundary.
+  &__password-toggle ::ng-deep .#{$prefix}btn {
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+
+    // Suppress the outline on mouse click only; :focus-visible (keyboard/
+    // programmatic focus) is left intact so the control stays accessible.
+    &:focus:not(:focus-visible) {
+      outline: none;
     }
   }
 
@@ -131,14 +153,14 @@
   // Error state
   &--error {
     .#{$prefix}input__group {
-      border: 2px solid $color-border-red;
+      box-shadow: inset 0 0 0 2px $color-border-red;
     }
   }
 
   // Disabled state
   &--disabled {
     .#{$prefix}input__group {
-      border: 2px solid $color-border-white-light;
+      box-shadow: inset 0 0 0 2px $color-border-white-light;
       background-color: transparent;
     }
 
@@ -153,7 +175,7 @@
   // Read-only state
   &--read-only {
     .#{$prefix}input__group {
-      border: 2px solid $color-border-white-light;
+      box-shadow: inset 0 0 0 2px $color-border-white-light;
       background-color: transparent;
     }
 

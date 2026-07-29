@@ -22,13 +22,14 @@
 
     <input
       [id]="effectiveControlId()"
-      [type]="type()"
+      [type]="effectiveType()"
       class="ul-input__field"
       [placeholder]="placeholder()"
       [value]="value()"
       (input)="onInput($event)"
       (blur)="onBlur($event)"
       (focus)="onFocus($event)"
+      (keydown)="onKeydown($event)"
       [disabled]="disabled()"
       [readonly]="readOnly()"
       [required]="required()"
@@ -42,6 +43,19 @@
     />
 
     <div class="ul-input__right-elements">
+      @if (isPasswordType()) {
+        <ul-button
+          class="ul-input__password-toggle"
+          theme="ghost-white"
+          size="sm"
+          type="button"
+          [iconOnly]="true"
+          [ariaLabel]="passwordToggleLabel()"
+          (buttonClick)="togglePasswordVisibility()"
+        >
+          <ul-icon [icon]="passwordToggleIcon()" />
+        </ul-button>
+      }
       <ng-content select="[ul-input-right-elements]" />
     </div>
   </div>

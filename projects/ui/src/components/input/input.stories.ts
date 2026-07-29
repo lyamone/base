@@ -81,6 +81,14 @@ const meta: Meta<InputComponent> = {
       control: { type: 'text' },
       description: 'Autocomplete attribute (e.g. off, email).',
     },
+    showPasswordLabel: {
+      control: { type: 'text' },
+      description: 'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',
+    },
+    hidePasswordLabel: {
+      control: { type: 'text' },
+      description: 'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',
+    },
   },
   args: {
     value: '',
@@ -99,6 +107,8 @@ const meta: Meta<InputComponent> = {
     minLength: undefined,
     pattern: [],
     autocomplete: 'off',
+    showPasswordLabel: 'Show password',
+    hidePasswordLabel: 'Hide password',
   },
 };
 
@@ -282,6 +292,95 @@ export const WithElements: Story = {
           <i class="ul-icon ul-icon-search"></i>
         </ng-container>
       </ul-input>
+    `,
+  }),
+};
+
+/**
+ * Password field with the built-in show/hide toggle. Any input with
+ * `type="password"` automatically renders a reveal button inside the field.
+ */
+export const Password: Story = {
+  args: {
+    type: 'password',
+    label: 'Password',
+    placeholder: 'Enter your password',
+    helperText: 'Must be at least 8 characters',
+    autocomplete: 'current-password',
+    value: 'super-secret',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-input
+        [type]="type"
+        [size]="size"
+        [appearance]="appearance"
+        [error]="error"
+        [disabled]="disabled"
+        [readOnly]="readOnly"
+        [placeholder]="placeholder"
+        [label]="label"
+        [helperText]="helperText"
+        [errorText]="errorText"
+        [value]="value"
+        [autocomplete]="autocomplete"
+        [showPasswordLabel]="showPasswordLabel"
+        [hidePasswordLabel]="hidePasswordLabel"
+      />
+    `,
+  }),
+};
+
+/**
+ * Password field in an error state, e.g. failed strength or confirmation validation.
+ */
+export const PasswordWithError: Story = {
+  args: {
+    type: 'password',
+    label: 'Password',
+    helperText: 'Must be at least 8 characters',
+    errorText: 'Password is too short',
+    error: true,
+    value: 'weak',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-input
+        [type]="type"
+        [size]="size"
+        [appearance]="appearance"
+        [error]="error"
+        [label]="label"
+        [helperText]="helperText"
+        [errorText]="errorText"
+        [value]="value"
+      />
+    `,
+  }),
+};
+
+/**
+ * Compares an enabled vs. disabled password field; the toggle always renders
+ * for type="password", so disabled is the only other state to contrast here.
+ */
+export const PasswordStates: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 24rem;">
+        <ul-input
+          type="password"
+          label="Enabled"
+          value="super-secret"
+        />
+        <ul-input
+          type="password"
+          label="Disabled"
+          value="super-secret"
+          [disabled]="true"
+        />
+      </div>
     `,
   }),
 };

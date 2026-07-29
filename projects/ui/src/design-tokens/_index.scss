@@ -1,0 +1,17 @@
+/**
+ * Public Sass entry point for @underlayerdev/ui design tokens.
+ *
+ * Consuming apps can import this via the `pkg:` importer:
+ *
+ *   @use 'pkg:@underlayerdev/ui/design-tokens' as tokens;
+ *
+ *   .my-component {
+ *     padding: tokens.$spacing-spacing-4;
+ *     color: tokens.$color-text-secondary;
+ *   }
+ *
+ * Requires Dart Sass with the Node package importer enabled (supported by
+ * @angular/build out of the box since Angular CLI 20+).
+ */
+@forward 'variables';
+@forward 'elevations';

@@ -20,6 +20,11 @@
       "glob": "**/*",
       "input": "assets/img",
       "output": "img"
+    },
+    {
+      "glob": "*.scss",
+      "input": "src/design-tokens",
+      "output": "design-tokens"
     }
   ]
 }
