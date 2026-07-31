@@ -6,6 +6,7 @@ import { IconComponent } from '../icon/icon';
 import { SearchSelectComponent } from '../search-select/search-select';
 
 import {
+  NavbarAppNameSlotDirective,
   NavbarAvatarSlotDirective,
   NavbarComponent,
   NavbarLogoSlotDirective,
@@ -21,7 +22,7 @@ const meta: Meta<NavbarComponent> = {
     docs: {
       description: {
         component:
-          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar]. Import the slot directives when using slots so the navbar can detect them. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used.',
+          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar], [ul-navbar-app-name]. Import the slot directives when using slots so the navbar can detect them. [ul-navbar-app-name] renders next to the default logo image (logoSrc) — it has no effect when a custom [ul-navbar-logo] is projected. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used. Set `variant="minimal"` to show only the logo — no sidebar toggle, search, or avatar — for auth pages and other chromeless flows.',
       },
     },
   },
@@ -35,6 +36,7 @@ const meta: Meta<NavbarComponent> = {
         NavbarLogoSlotDirective,
         NavbarSearchSlotDirective,
         NavbarAvatarSlotDirective,
+        NavbarAppNameSlotDirective,
       ],
     }),
     (story) => ({
@@ -50,6 +52,11 @@ const meta: Meta<NavbarComponent> = {
     }),
   ],
   argTypes: {
+    variant: {
+      control: 'select',
+      options: ['full', 'minimal'],
+      description: "'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.",
+    },
     logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },
     logoAlt: { control: 'text' },
     avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },
@@ -73,7 +80,7 @@ export const Default: Story = {
         [logoAlt]="logoAlt"
         [avatarInitials]="avatarInitials"
       >
-        <a ul-navbar-logo href="/" style="font-weight: 700; color: inherit; text-decoration: none;">PERPETUA</a>
+        <a ul-navbar-logo href="/" style="font-weight: 700; color: inherit; text-decoration: none;">UNDERLAYER</a>
         <div ul-navbar-search>
           <ul-search-select
             placeholder="Search..." 
@@ -95,7 +102,7 @@ export const WithDefaultLogoAndAvatar: Story = {
   args: {
     logoHref: '/',
     logoSrc: 'assets/img/logo.png',
-    logoAlt: 'Pinake logo',
+    logoAlt: 'Underlayer logo',
     avatarInitials: 'AB',
     avatarAlt: 'User',
   },
@@ -108,7 +115,9 @@ export const WithDefaultLogoAndAvatar: Story = {
         [logoAlt]="logoAlt"
         [avatarInitials]="avatarInitials"
         [avatarAlt]="avatarAlt"
-      />
+      >
+        <span ul-navbar-app-name>Underlayer</span>
+      </ul-navbar>
     `,
   }),
 };
@@ -127,6 +136,26 @@ export const WithoutSearch: Story = {
       >
                 <ul-avatar ul-navbar-avatar initials="U" size="md" />
       </ul-navbar>
+    `,
+  }),
+};
+
+export const Minimal: Story = {
+  args: {
+    variant: 'minimal',
+    logoHref: '/',
+    logoSrc: 'assets/img/logo.png',
+    logoAlt: 'Underlayer logo',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-navbar
+        [variant]="variant"
+        [logoHref]="logoHref"
+        [logoSrc]="logoSrc"
+        [logoAlt]="logoAlt"
+      />
     `,
   }),
 };

@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
   ],
   framework: '@storybook/angular',
-  staticDirs: ['../src/lib/fonts'],
+  staticDirs: ['../src/lib/fonts', { from: '../assets/img', to: 'assets/img' }],
   webpackFinal: async (config, { configType }) => {
     // Resolve "Conflicting values for 'process.env.NODE_ENV'" by replacing only
     // DefinePlugins that set process.env, and keep others (e.g. STORYBOOK_ANGULAR_OPTIONS).

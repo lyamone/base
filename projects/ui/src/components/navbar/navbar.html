@@ -17,42 +17,48 @@
       @if (hasLogoSlot()) {
         <ng-content select="[ul-navbar-logo]" />
       } @else {
-        <img [src]="logoSrc()" [alt]="logoAlt()" class="ul-navbar__logo-img" height="32" />
-        <a [href]="logoHref()" class="ul-navbar__logo-link ul-navbar__logo-text">Pinake</a>
+        <img [src]="logoSrc()" [alt]="logoAlt()" class="ul-navbar__logo-img" height="64" />
+        @if (hasAppNameSlot()) {
+          <a [href]="logoHref()" class="ul-navbar__logo-link ul-navbar__logo-text">
+            <ng-content select="[ul-navbar-app-name]" />
+          </a>
+        }
       }
     </div>
 
-    @if (hasSearchSlot()) {
-      <ul-button
-        theme="ghost-white"
-        [iconOnly]="true"
-        class="ul-navbar__search-toggle"
-        ariaLabel="Toggle search"
-        [attr.aria-expanded]="searchExpanded()"
-        (buttonClick)="toggleSearch()"
+    @if (!isMinimal()) {
+      @if (hasSearchSlot()) {
+        <ul-button
+          theme="ghost-white"
+          [iconOnly]="true"
+          class="ul-navbar__search-toggle"
+          ariaLabel="Toggle search"
+          [attr.aria-expanded]="searchExpanded()"
+          (buttonClick)="toggleSearch()"
+        >
+          <ul-icon icon="search" size="6" />
+        </ul-button>
+      }
+
+      <div
+        class="ul-navbar__search-wrapper"
+        [class.ul-navbar__search-wrapper--expanded]="searchExpanded()"
       >
-        <ul-icon icon="search" size="6" />
-      </ul-button>
+        <ng-content select="[ul-navbar-search]" />
+      </div>
+
+      <div class="ul-navbar__avatar">
+        @if (hasAvatarSlot()) {
+          <ng-content select="[ul-navbar-avatar]" />
+        } @else if (avatarSrc() || avatarInitials()) {
+          <ul-avatar
+            [src]="avatarSrc()"
+            [initials]="avatarInitials()"
+            [alt]="avatarAlt()"
+            size="md"
+          />
+        }
+      </div>
     }
-
-    <div
-      class="ul-navbar__search-wrapper"
-      [class.ul-navbar__search-wrapper--expanded]="searchExpanded()"
-    >
-      <ng-content select="[ul-navbar-search]" />
-    </div>
-
-    <div class="ul-navbar__avatar">
-      @if (hasAvatarSlot()) {
-        <ng-content select="[ul-navbar-avatar]" />
-      } @else if (avatarSrc() || avatarInitials()) {
-        <ul-avatar
-          [src]="avatarSrc()"
-          [initials]="avatarInitials()"
-          [alt]="avatarAlt()"
-          size="md"
-        />
-      }
-    </div>
   </div>
 </nav>

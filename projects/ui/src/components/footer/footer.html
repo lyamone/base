@@ -1,12 +1,17 @@
 <div class="ul-footer">
   <p class="ul-footer__copyright">
-    {{ copyrightText() }}
+    <ng-content select="[ul-copyright]" />
   </p>
   @if (socialLinks()) {
     <ul class="ul-footer__social-links">
       @for (link of socialLinks(); track link.url) {
-        <li>
-          <ul-button [theme]="'ghost-white'" [iconOnly]="true" [disabled]="false">
+        <li class="ul-footer__social-link">
+          <ul-button
+            theme="ghost-white"
+            [iconOnly]="true"
+            [disabled]="false"
+            (buttonClick)="navigate(link.url)"
+          >
             <ul-icon [icon]="link.icon" />
           </ul-button>
         </li>

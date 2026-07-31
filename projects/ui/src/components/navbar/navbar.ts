@@ -13,10 +13,14 @@ import { AvatarComponent } from '../avatar/avatar';
 import { ButtonComponent } from '../button/button';
 import { IconComponent } from '../icon/icon';
 import {
+  NavbarAppNameSlotDirective,
   NavbarAvatarSlotDirective,
   NavbarLogoSlotDirective,
   NavbarSearchSlotDirective,
 } from './navbar-slot.directive';
+
+/** 'full' shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo — for auth pages and other chromeless flows. */
+export type NavbarVariant = 'full' | 'minimal';
 
 @Component({
   selector: 'ul-navbar',
@@ -28,6 +32,9 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class NavbarComponent {
+  /** 'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo. */
+  variant = input<NavbarVariant>('full');
+
   /** Default logo link href when logo slot is not projected. */
   logoHref = input<string>('/');
 
@@ -35,7 +42,7 @@ export class NavbarComponent {
   logoSrc = input<string | undefined>(undefined);
 
   /** Default logo image alt when logo slot is not projected. */
-  logoAlt = input<string>('');
+  logoAlt = input<string>('logo');
 
   /** Default avatar image src when avatar slot is not projected. */
   avatarSrc = input<string | undefined>(undefined);
@@ -58,12 +65,18 @@ export class NavbarComponent {
   readonly logoSlot = contentChild(NavbarLogoSlotDirective);
   readonly searchSlot = contentChild(NavbarSearchSlotDirective);
   readonly avatarSlot = contentChild(NavbarAvatarSlotDirective);
+  readonly appNameSlot = contentChild(NavbarAppNameSlotDirective);
+
+  readonly isMinimal = computed(() => this.variant() === 'minimal');
 
   readonly hasLogoSlot = computed(() => !!this.logoSlot());
-  readonly hasSearchSlot = computed(() => !!this.searchSlot());
-  readonly hasAvatarSlot = computed(() => !!this.avatarSlot());
+  readonly hasSearchSlot = computed(() => !this.isMinimal() && !!this.searchSlot());
+  readonly hasAvatarSlot = computed(() => !this.isMinimal() && !!this.avatarSlot());
+  readonly hasAppNameSlot = computed(() => !this.hasLogoSlot() && !!this.appNameSlot());
 
-  readonly showToggle = computed(() => !this.hasLogoSlot() || this.showSidebarToggle());
+  readonly showToggle = computed(
+    () => !this.isMinimal() && (!this.hasLogoSlot() || this.showSidebarToggle())
+  );
 
   readonly searchExpanded = signal(false);
 

@@ -9,7 +9,7 @@ export default {
     docs: {
       description: {
         component:
-          'Page footer with copyright text, optional social links (with icons), and optional link list. Pass `copyrightText`, `socialLinks` (url + icon), and `links` (url + text).',
+          'Page footer with copyright text, optional social links (with icons), and optional link list. Project copyright content via `[ul-copyright]`, and pass `socialLinks` (url + icon) and `links` (url + text).',
       },
     },
   },
@@ -31,10 +31,11 @@ export default {
 
 const OverviewTemplate = () => ({
   template: `
-    <ul-footer
-      copyrightText="&copy; {{ currentYear }} Underlayer. All rights reserved. All trademarks or product names are the property of their respective owners."
-      [socialLinks]="socialLinks"
-      [links]="links"/>`,
+    <ul-footer [socialLinks]="socialLinks" [links]="links">
+      <ng-container ul-copyright>
+        &copy; {{ currentYear }} Underlayer. All rights reserved. All trademarks or product names are the property of their respective owners.
+      </ng-container>
+    </ul-footer>`,
   props: {
     currentYear: new Date().getFullYear(),
     socialLinks: [

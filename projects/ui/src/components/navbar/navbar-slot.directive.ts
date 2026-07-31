@@ -20,3 +20,10 @@ export class NavbarSearchSlotDirective {}
   standalone: true,
 })
 export class NavbarAvatarSlotDirective {}
+
+/** Place on the element projected into [ul-navbar-app-name] so the navbar can detect app-name content. Only rendered when a logo slot is not projected (it sits next to the default logo image). */
+@Directive({
+  selector: '[ul-navbar-app-name]',
+  standalone: true,
+})
+export class NavbarAppNameSlotDirective {}

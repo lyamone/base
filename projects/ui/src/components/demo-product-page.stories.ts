@@ -209,11 +209,12 @@ const searchOptions = [
       </main>
 
       <ul-footer
-        [copyrightText]="copyrightText"
         [socialLinks]="socialLinks"
         [links]="footerLinks"
         class="ul-demo-product-page__footer"
-      />
+      >
+        <ng-container ul-copyright>{{ copyrightText }}</ng-container>
+      </ul-footer>
     </div>
   `,
   styles: [
@@ -520,11 +521,12 @@ class DemoProductPageComponent {
         </main>
 
         <ul-footer
-          [copyrightText]="copyrightText"
           [socialLinks]="socialLinks"
           [links]="footerLinks"
           class="ul-demo-product-page__footer"
-        />
+        >
+          <ng-container ul-copyright>{{ copyrightText }}</ng-container>
+        </ul-footer>
       </div>
     </ul-demo-app-layout>
   `,
