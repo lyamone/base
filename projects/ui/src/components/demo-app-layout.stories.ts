@@ -30,7 +30,13 @@ const searchOptions = [
 @Component({
   selector: 'ul-demo-app-layout',
   standalone: true,
-  imports: [NavbarComponent, SidebarComponent],
+  imports: [
+    NavbarComponent,
+    SidebarComponent,
+    NavbarLogoSlotDirective,
+    NavbarSearchSlotDirective,
+    NavbarAvatarSlotDirective,
+  ],
   template: `
     <div class="ul-demo-app-layout">
       <ul-sidebar
@@ -48,9 +54,15 @@ const searchOptions = [
             [sidebarOpen]="sidebarOpen()"
             [showSidebarToggle]="true"
             (sidebarToggle)="onSidebarToggle()">
-            <ng-content select="[ul-navbar-logo]" />
-            <ng-content select="[ul-navbar-search]" />
-            <ng-content select="[ul-navbar-avatar]" />
+            <ng-container ul-navbar-logo>
+              <ng-content select="[ul-navbar-logo]" />
+            </ng-container>
+            <ng-container ul-navbar-search>
+              <ng-content select="[ul-navbar-search]" />
+            </ng-container>
+            <ng-container ul-navbar-avatar>
+              <ng-content select="[ul-navbar-avatar]" />
+            </ng-container>
           </ul-navbar>
         </header>
         <main class="ul-demo-app-layout__main">

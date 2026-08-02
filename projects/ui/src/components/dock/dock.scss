@@ -1,0 +1,19 @@
+@use '../../foundations/toolkit' as *;
+
+.#{$prefix}dock {
+  @include dock-bar;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $elevation-navbar; // same tier as navbar — both are persistent chrome, never overlap (top vs bottom)
+
+  @include down('md') {
+    display: flex;
+  }
+
+  @include up('md') {
+    display: none;
+  }
+}

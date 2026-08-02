@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="ul-dock-item"
+  [class.ul-dock-item--active]="active()"
+  [disabled]="disabled()"
+  [attr.aria-current]="active() ? 'page' : null"
+>
+  <ul-icon [icon]="icon()" size="6" />
+  @if (label()) {
+    <span class="ul-dock-item__label">{{ label() }}</span>
+  }
+</button>

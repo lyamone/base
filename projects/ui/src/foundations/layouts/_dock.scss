@@ -1,0 +1,19 @@
+@use '../core' as *;
+
+/// Semantic min-height for dock bar (uses spacing token, matches navbar's).
+$layout-dock-min-height: $spacing-spacing-12 !default;
+
+/// Base dock bar layout: flex row, bottom-anchored chrome. Unlike navbar-bar,
+/// includes iOS safe-area clearance since the dock sits flush against the
+/// bottom edge (home indicator). Use only in the dock component; all values
+/// reference design tokens.
+@mixin dock-bar {
+  min-height: $layout-dock-min-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: $spacing-spacing-2 $spacing-spacing-4;
+  padding-bottom: calc($spacing-spacing-2 + env(safe-area-inset-bottom));
+  background-color: $color-background-main;
+  border-top: 1px solid $color-border-white-light;
+}

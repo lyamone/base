@@ -1,0 +1,38 @@
+@use '../../foundations/toolkit' as *;
+
+.#{$prefix}dock-item {
+  cursor: pointer;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-spacing-1;
+  flex: 1;
+  padding: $spacing-spacing-1;
+  border-radius: $radius-radius-2;
+  color: $color-text-secondary;
+  @include typography('caption-l');
+
+  &:focus-visible,
+  &:focus {
+    outline-offset: 2px;
+    outline: $color-border-white-medium solid 2px;
+  }
+
+  &--active {
+    color: $color-text-purple;
+  }
+
+  &__label {
+    line-height: 1;
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    color: $color-text-disabled;
+  }
+}
