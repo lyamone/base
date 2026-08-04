@@ -10,6 +10,7 @@ export * from './checkbox/checkbox';
 export * from './collapse/collapse';
 export * from './dock/dock';
 export * from './dock/dock-item';
+export * from './dock/dock-item-slot.directive';
 export * from './dropdown/dropdown';
 export * from './file-input/file-input';
 export * from './footer/footer';

@@ -2,11 +2,19 @@
   type="button"
   class="ul-dock-item"
   [class.ul-dock-item--active]="active()"
+  [class.ul-dock-item--accent]="variant() === 'accent'"
   [disabled]="disabled()"
   [attr.aria-current]="active() ? 'page' : null"
 >
-  <ul-icon [icon]="icon()" size="6" />
-  @if (label()) {
-    <span class="ul-dock-item__label">{{ label() }}</span>
+  @if (hasContentSlot()) {
+    <ng-content select="[ul-dock-item-content]" />
+  } @else {
+    <ul-icon [icon]="icon()!" size="6" />
+    @if (label()) {
+      <span class="ul-dock-item__label">{{ label() }}</span>
+    }
+  }
+  @if (badge()) {
+    <span class="ul-dock-item__badge">{{ badge() }}</span>
   }
 </button>

@@ -1,6 +1,7 @@
 @use '../../foundations/toolkit' as *;
 
 .#{$prefix}dock-item {
+  position: relative;
   cursor: pointer;
   border: none;
   background: none;
@@ -26,8 +27,42 @@
     color: $color-text-purple;
   }
 
+  &--accent {
+    color: $color-text-primary;
+
+    .#{$prefix}icon {
+      background-color: $color-background-purple;
+      border-radius: $radius-radius-full;
+      padding: $spacing-spacing-2;
+      box-sizing: content-box;
+    }
+
+    &:hover .#{$prefix}icon {
+      background-color: $color-interactive-surface-solid-purple-hover;
+    }
+
+    &.#{$prefix}dock-item--active .#{$prefix}icon {
+      background-color: $color-interactive-surface-solid-purple-active;
+    }
+  }
+
   &__label {
     line-height: 1;
+  }
+
+  &__badge {
+    position: absolute;
+    top: $spacing-spacing-1;
+    right: calc(50% - $spacing-spacing-6);
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: $radius-radius-full;
+    background-color: $color-background-red;
+    color: $color-text-primary;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: center;
   }
 
   &:disabled,

@@ -1160,7 +1160,7 @@
         },
         {
             "name": "DockDemoComponent",
-            "id": "component-DockDemoComponent-ebda8eee772aa1194a67cf68ae4ced4beb90224b9c6cc8515161f45878a6ece3f9b64924ee6913ae06fbb157b3c4326551e117c0334a4c680ea10cc0b86966ce",
+            "id": "component-DockDemoComponent-1093c579baeeb19032ea01842aeee5d5d70ebadff1dc3b10db51102b9da9a891ee6d334044d8bbaf06f1d540ff7ace5644ba8e81ac51acebd4b6bd80a0b83378",
             "file": "projects/ui/src/components/dock/dock.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1170,7 +1170,7 @@
             "selector": "ul-dock-demo",
             "styleUrls": [],
             "styles": [],
-            "template": "<div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n  <main style=\"padding: 1.5rem;\">\n    <p style=\"color: rgba(255,255,255,0.7);\">\n      Resize the viewport below 1024px to see the dock — it's hidden by\n      the component's own CSS at desktop widths, by design.\n    </p>\n  </main>\n  <ul-dock>\n    @for (item of items; track item.icon) {\n      <ul-dock-item\n        [icon]=\"item.icon\"\n        [label]=\"item.label\"\n        [active]=\"active() === item.icon\"\n        (click)=\"active.set(item.icon)\"\n      />\n    }\n  </ul-dock>\n</div>\n",
+            "template": "<div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n  <main style=\"padding: 1.5rem;\">\n    <p style=\"color: rgba(255,255,255,0.7);\">\n      Resize the viewport below 1024px to see the dock — it's hidden by the component's own CSS\n      at desktop widths, by design. The \"New\" item shows a fully custom, projected-content tab\n      with the \"accent\" variant; \"Alerts\" shows a badge.\n    </p>\n  </main>\n  <ul-dock>\n    <ul-dock-item\n      icon=\"home\"\n      label=\"Home\"\n      [active]=\"active() === 'home'\"\n      (click)=\"active.set('home')\"\n    />\n    <ul-dock-item\n      icon=\"search\"\n      label=\"Search\"\n      [active]=\"active() === 'search'\"\n      (click)=\"active.set('search')\"\n    />\n    <ul-dock-item variant=\"accent\" [active]=\"active() === 'new'\" (click)=\"active.set('new')\">\n      <span ul-dock-item-content>\n        <ul-icon icon=\"plus\" size=\"6\" />\n        <span class=\"ul-dock-item__label\">New</span>\n      </span>\n    </ul-dock-item>\n    <ul-dock-item\n      icon=\"bell_on\"\n      label=\"Alerts\"\n      badge=\"3\"\n      [active]=\"active() === 'alerts'\"\n      (click)=\"active.set('alerts')\"\n    />\n    <ul-dock-item\n      icon=\"user\"\n      label=\"Profile\"\n      [active]=\"active() === 'profile'\"\n      (click)=\"active.set('profile')\"\n    />\n  </ul-dock>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -1186,18 +1186,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
-                },
-                {
-                    "name": "items",
-                    "defaultValue": "DEMO_ITEMS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 44
+                    "line": 60
                 }
             ],
             "methodsClass": [],
@@ -1214,12 +1203,20 @@
                 {
                     "name": "DockItemComponent",
                     "type": "component"
+                },
+                {
+                    "name": "IconComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DockItemContentSlotDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { moduleMetadata } from '@storybook/angular';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { DockComponent } from './dock';\nimport { DockItemComponent } from './dock-item';\n\ntype DockDemoItem = { icon: string; label: string };\n\nconst DEMO_ITEMS: DockDemoItem[] = [\n  { icon: 'home', label: 'Home' },\n  { icon: 'search', label: 'Search' },\n  { icon: 'plus', label: 'New' },\n  { icon: 'user', label: 'Profile' },\n  { icon: 'settings', label: 'Settings' },\n];\n\n@Component({\n  selector: 'ul-dock-demo',\n  standalone: true,\n  imports: [DockComponent, DockItemComponent],\n  template: `\n    <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n      <main style=\"padding: 1.5rem;\">\n        <p style=\"color: rgba(255,255,255,0.7);\">\n          Resize the viewport below 1024px to see the dock — it's hidden by\n          the component's own CSS at desktop widths, by design.\n        </p>\n      </main>\n      <ul-dock>\n        @for (item of items; track item.icon) {\n          <ul-dock-item\n            [icon]=\"item.icon\"\n            [label]=\"item.label\"\n            [active]=\"active() === item.icon\"\n            (click)=\"active.set(item.icon)\"\n          />\n        }\n      </ul-dock>\n    </div>\n  `,\n})\nclass DockDemoComponent {\n  items = DEMO_ITEMS;\n  active = signal('home');\n}\n\nconst meta: Meta<DockComponent> = {\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n};\n\nexport default meta;\ntype Story = StoryObj<DockComponent>;\n\nexport const Default: Story = {\n  render: () => ({\n    template: `<ul-dock-demo></ul-dock-demo>`,\n  }),\n};\n\nexport const MobileViewport: Story = {\n  ...Default,\n  parameters: {\n    viewport: {\n      defaultViewport: 'mobile1',\n    },\n  },\n};\n\nexport const TabletViewport: Story = {\n  ...Default,\n  parameters: {\n    viewport: {\n      defaultViewport: 'tablet',\n    },\n  },\n};\n",
+            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { moduleMetadata } from '@storybook/angular';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { IconComponent } from '../icon/icon';\nimport { DockComponent } from './dock';\nimport { DockItemContentSlotDirective } from './dock-item-slot.directive';\nimport { DockItemComponent } from './dock-item';\n\n@Component({\n  selector: 'ul-dock-demo',\n  standalone: true,\n  imports: [DockComponent, DockItemComponent, IconComponent, DockItemContentSlotDirective],\n  template: `\n    <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n      <main style=\"padding: 1.5rem;\">\n        <p style=\"color: rgba(255,255,255,0.7);\">\n          Resize the viewport below 1024px to see the dock — it's hidden by the component's own CSS\n          at desktop widths, by design. The \"New\" item shows a fully custom, projected-content tab\n          with the \"accent\" variant; \"Alerts\" shows a badge.\n        </p>\n      </main>\n      <ul-dock>\n        <ul-dock-item\n          icon=\"home\"\n          label=\"Home\"\n          [active]=\"active() === 'home'\"\n          (click)=\"active.set('home')\"\n        />\n        <ul-dock-item\n          icon=\"search\"\n          label=\"Search\"\n          [active]=\"active() === 'search'\"\n          (click)=\"active.set('search')\"\n        />\n        <ul-dock-item variant=\"accent\" [active]=\"active() === 'new'\" (click)=\"active.set('new')\">\n          <span ul-dock-item-content>\n            <ul-icon icon=\"plus\" size=\"6\" />\n            <span class=\"ul-dock-item__label\">New</span>\n          </span>\n        </ul-dock-item>\n        <ul-dock-item\n          icon=\"bell_on\"\n          label=\"Alerts\"\n          badge=\"3\"\n          [active]=\"active() === 'alerts'\"\n          (click)=\"active.set('alerts')\"\n        />\n        <ul-dock-item\n          icon=\"user\"\n          label=\"Profile\"\n          [active]=\"active() === 'profile'\"\n          (click)=\"active.set('profile')\"\n        />\n      </ul-dock>\n    </div>\n  `,\n})\nclass DockDemoComponent {\n  active = signal('home');\n}\n\nconst meta: Meta<DockComponent> = {\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n};\n\nexport default meta;\ntype Story = StoryObj<DockComponent>;\n\nexport const Default: Story = {\n  render: () => ({\n    template: `<ul-dock-demo></ul-dock-demo>`,\n  }),\n};\n\nexport const MobileViewport: Story = {\n  ...Default,\n  parameters: {\n    viewport: {\n      defaultViewport: 'mobile1',\n    },\n  },\n};\n\nexport const TabletViewport: Story = {\n  ...Default,\n  parameters: {\n    viewport: {\n      defaultViewport: 'tablet',\n    },\n  },\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2396,16 +2393,6 @@
                 "defaultValue": "[\n  { label: 'Home', leftIcons: ['home'], value: 'home' },\n  { label: 'Library', leftIcons: ['library'], value: 'library' },\n  { label: 'Store', leftIcons: ['store'], value: 'store' },\n  { label: 'Wallet', leftIcons: ['wallet'], value: 'wallet' },\n  { label: 'Settings', leftIcons: ['settings'], value: 'settings', rightIcons: ['chevron_right'] },\n]"
             },
             {
-                "name": "DEMO_ITEMS",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/dock/dock.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "DockDemoItem[]",
-                "defaultValue": "[\n  { icon: 'home', label: 'Home' },\n  { icon: 'search', label: 'Search' },\n  { icon: 'plus', label: 'New' },\n  { icon: 'user', label: 'Profile' },\n  { icon: 'settings', label: 'Settings' },\n]"
-            },
-            {
                 "name": "DirectionalSpacing",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3087,21 +3074,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CardComponent>",
-                "defaultValue": "{\n  title: 'Components/Data Display/Card',\n  component: CardComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Card container with optional media, caption, title, content, and footer. Supports horizontal/vertical direction, aspect ratios (default, square, portrait), footer distribution, and focused/disabled states. Content is projected via slots.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ButtonComponent, SkeletonComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `<div style=\"max-width: 300px; margin: 2rem auto;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    // State controls\n    focused: {\n      control: 'boolean',\n      description: 'Whether the card is focused',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the card is disabled',\n    },\n    // Layout controls\n    cardDirection: {\n      control: 'select',\n      options: ['horizontal', 'vertical'],\n      description: 'Card layout direction',\n    },\n    cardCaptionSize: {\n      control: 'select',\n      options: ['default', 'sm'],\n      description: 'Size of the caption text',\n    },\n    footerDist: {\n      control: 'select',\n      options: ['default', 'equal'],\n      description: 'Footer actions distribution',\n    },\n    // Media controls\n    mediaAspectRatio: {\n      control: 'select',\n      options: ['default', 'square', 'portrait'],\n      description: 'Media aspect ratio',\n    },\n    mediaBlur: {\n      control: 'boolean',\n      description: 'Whether to apply blur effect to media',\n    },\n    mediaGrayscale: {\n      control: 'boolean',\n      description: 'Whether to apply grayscale effect to media',\n    },\n    // Content controls\n    cardCaption: {\n      control: 'text',\n      description: 'Card caption text',\n    },\n    cardTitle: {\n      control: 'text',\n      description: 'Card title text',\n    },\n    cardTitleSingleLine: {\n      control: 'boolean',\n      description: 'Whether to limit title to a single line',\n    },\n    cardSubtitle: {\n      control: 'text',\n      description: 'Card subtitle text',\n    },\n    cardSubtitleSingleLine: {\n      control: 'boolean',\n      description: 'Whether to limit subtitle to a single line',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay instead of card content while loading',\n    },\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/carousel/carousel.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CarouselComponent>",
                 "defaultValue": "{\n  title: 'Components/Data Display/Carousel',\n  component: CarouselComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [CarouselItemComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `<div style=\"max-width: 800px;\">${story().template}</div>`,\n    }),\n  ],\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'centered',\n    docs: {\n      description: {\n        component:\n          'Carousel/slider powered by Splide. Add `ul-carousel-item` children; pass Splide `options` and optional `autoMount`. Emits `mounted` with the Splide instance for custom configuration.',\n      },\n    },\n  },\n  argTypes: {\n    options: {\n      description: 'Splide carousel options https://splidejs.com/guides/options/',\n    },\n    autoMount: {\n      description: 'Whether to automatically mount the carousel on initialization',\n      control: 'boolean',\n    },\n    mounted: {\n      description: 'Event emitted when the carousel is mounted, providing the Splide instance',\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CardComponent>",
+                "defaultValue": "{\n  title: 'Components/Data Display/Card',\n  component: CardComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Card container with optional media, caption, title, content, and footer. Supports horizontal/vertical direction, aspect ratios (default, square, portrait), footer distribution, and focused/disabled states. Content is projected via slots.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ButtonComponent, SkeletonComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `<div style=\"max-width: 300px; margin: 2rem auto;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    // State controls\n    focused: {\n      control: 'boolean',\n      description: 'Whether the card is focused',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the card is disabled',\n    },\n    // Layout controls\n    cardDirection: {\n      control: 'select',\n      options: ['horizontal', 'vertical'],\n      description: 'Card layout direction',\n    },\n    cardCaptionSize: {\n      control: 'select',\n      options: ['default', 'sm'],\n      description: 'Size of the caption text',\n    },\n    footerDist: {\n      control: 'select',\n      options: ['default', 'equal'],\n      description: 'Footer actions distribution',\n    },\n    // Media controls\n    mediaAspectRatio: {\n      control: 'select',\n      options: ['default', 'square', 'portrait'],\n      description: 'Media aspect ratio',\n    },\n    mediaBlur: {\n      control: 'boolean',\n      description: 'Whether to apply blur effect to media',\n    },\n    mediaGrayscale: {\n      control: 'boolean',\n      description: 'Whether to apply grayscale effect to media',\n    },\n    // Content controls\n    cardCaption: {\n      control: 'text',\n      description: 'Card caption text',\n    },\n    cardTitle: {\n      control: 'text',\n      description: 'Card title text',\n    },\n    cardTitleSingleLine: {\n      control: 'boolean',\n      description: 'Whether to limit title to a single line',\n    },\n    cardSubtitle: {\n      control: 'text',\n      description: 'Card subtitle text',\n    },\n    cardSubtitleSingleLine: {\n      control: 'boolean',\n      description: 'Whether to limit subtitle to a single line',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay instead of card content while loading',\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3131,7 +3118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DockComponent>",
-                "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -3221,7 +3208,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<NavbarComponent>",
-                "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar], [ul-navbar-app-name]. Import the slot directives when using slots so the navbar can detect them. [ul-navbar-app-name] renders next to the default logo image (logoSrc) — it has no effect when a custom [ul-navbar-logo] is projected. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used. Set `variant=\"minimal\"` to show only the logo — no sidebar toggle, search, or avatar — for auth pages and other chromeless flows.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n        NavbarAppNameSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['full', 'minimal'],\n      description: \"'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.\",\n    },\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar], [ul-navbar-app-name]. Import the slot directives when using slots so the navbar can detect them. [ul-navbar-app-name] renders next to the default logo image (logoSrc) — it has no effect when a custom [ul-navbar-logo] is projected. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used. Set `variant=\"minimal\"` to show only the logo — no sidebar toggle, search, or avatar — for auth pages and other chromeless flows.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n        NavbarAppNameSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['full', 'minimal'],\n      description:\n        \"'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.\",\n    },\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: {\n      control: 'text',\n      description: 'Default avatar initials when avatar slot is not used',\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4112,6 +4099,16 @@
                 "description": "<p>Demonstrates a vertical layout button available only on large size.</p>\n<ul>\n<li>Sets the props size to lg and vertical to true</li>\n</ul>\n"
             },
             {
+                "name": "WideSearchMobile",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    logoHref: '/',\n    logoAlt: 'Home',\n    avatarInitials: 'JD',\n    searchCollapsible: false,\n  },\n  parameters: {\n    viewport: { defaultViewport: 'mobile1' },\n    docs: {\n      description: {\n        story:\n          'searchCollapsible=false keeps the search slot always expanded, even on mobile, instead of collapsing to an icon toggle — for apps that want search visible and full-width at every viewport.',\n      },\n    },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-navbar\n        [logoHref]=\"logoHref\"\n        [logoAlt]=\"logoAlt\"\n        [avatarInitials]=\"avatarInitials\"\n        [searchCollapsible]=\"searchCollapsible\"\n      >\n        <a ul-navbar-logo href=\"/\" style=\"font-weight: 700; color: inherit; text-decoration: none;\">UNDERLAYER</a>\n        <div ul-navbar-search>\n          <ul-search-select\n            placeholder=\"Search...\"\n            [options]=\"[\n              { label: 'Apple', value: 'apple' },\n              { label: 'Banana', value: 'banana' },\n              { label: 'Cherry', value: 'cherry' },\n            ]\"\n            size=\"md\"\n          />\n        </div>\n        <ul-avatar ul-navbar-avatar initials=\"JD\" size=\"md\" />\n      </ul-navbar>\n    `,\n  }),\n}"
+            },
+            {
                 "name": "WithAppLayout",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4599,17 +4596,6 @@
         "functions": [],
         "typealiases": [
             {
-                "name": "DockDemoItem",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "literal type",
-                "file": "projects/ui/src/components/dock/dock.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 188
-            },
-            {
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -4745,8 +4731,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CardComponent>",
-                "file": "projects/ui/src/components/card/card.stories.ts",
+                "rawtype": "StoryObj<CarouselComponent>",
+                "file": "projects/ui/src/components/carousel/carousel.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4756,8 +4742,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CarouselComponent>",
-                "file": "projects/ui/src/components/carousel/carousel.stories.ts",
+                "rawtype": "StoryObj<CardComponent>",
+                "file": "projects/ui/src/components/card/card.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -7504,16 +7490,6 @@
                     "defaultValue": "{\n  render: () => ({\n    template: `<ul-dock-demo></ul-dock-demo>`,\n  }),\n}"
                 },
                 {
-                    "name": "DEMO_ITEMS",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/dock/dock.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "DockDemoItem[]",
-                    "defaultValue": "[\n  { icon: 'home', label: 'Home' },\n  { icon: 'search', label: 'Search' },\n  { icon: 'plus', label: 'New' },\n  { icon: 'user', label: 'Profile' },\n  { icon: 'settings', label: 'Settings' },\n]"
-                },
-                {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -7521,7 +7497,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DockComponent>",
-                    "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "MobileViewport",
@@ -7563,7 +7539,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<NavbarComponent>",
-                    "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar], [ul-navbar-app-name]. Import the slot directives when using slots so the navbar can detect them. [ul-navbar-app-name] renders next to the default logo image (logoSrc) — it has no effect when a custom [ul-navbar-logo] is projected. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used. Set `variant=\"minimal\"` to show only the logo — no sidebar toggle, search, or avatar — for auth pages and other chromeless flows.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n        NavbarAppNameSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['full', 'minimal'],\n      description: \"'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.\",\n    },\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Navigation/Navbar',\n  component: NavbarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          'Responsive navbar with logo, optional search, and avatar. Use content projection: [ul-navbar-logo], [ul-navbar-search], [ul-navbar-avatar], [ul-navbar-app-name]. Import the slot directives when using slots so the navbar can detect them. [ul-navbar-app-name] renders next to the default logo image (logoSrc) — it has no effect when a custom [ul-navbar-logo] is projected. On mobile, when search is projected a toggle button shows; on tablet/desktop search is inline. Default logo/avatar can be set via logoHref/logoSrc/logoAlt and avatarSrc/avatarInitials/avatarAlt when slots are not used. Set `variant=\"minimal\"` to show only the logo — no sidebar toggle, search, or avatar — for auth pages and other chromeless flows.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [\n        NavbarComponent,\n        SearchSelectComponent,\n        IconComponent,\n        AvatarComponent,\n        NavbarLogoSlotDirective,\n        NavbarSearchSlotDirective,\n        NavbarAvatarSlotDirective,\n        NavbarAppNameSlotDirective,\n      ],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"min-height: 100vh; background: var(--color-background-main, #0a0a0a);\">\n          ${story().template}\n          <main style=\"padding: 1.5rem; color: rgba(255,255,255,0.7);\">\n            Resize the viewport to see mobile (search toggle) vs tablet/desktop (inline search).\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['full', 'minimal'],\n      description:\n        \"'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.\",\n    },\n    logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },\n    logoAlt: { control: 'text' },\n    avatarInitials: {\n      control: 'text',\n      description: 'Default avatar initials when avatar slot is not used',\n    },\n  },\n}"
                 },
                 {
                     "name": "Minimal",
@@ -7594,6 +7570,16 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  ...Default,\n  parameters: {\n    viewport: { defaultViewport: 'tablet' },\n  },\n}"
+                },
+                {
+                    "name": "WideSearchMobile",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/navbar/navbar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    logoHref: '/',\n    logoAlt: 'Home',\n    avatarInitials: 'JD',\n    searchCollapsible: false,\n  },\n  parameters: {\n    viewport: { defaultViewport: 'mobile1' },\n    docs: {\n      description: {\n        story:\n          'searchCollapsible=false keeps the search slot always expanded, even on mobile, instead of collapsing to an icon toggle — for apps that want search visible and full-width at every viewport.',\n      },\n    },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-navbar\n        [logoHref]=\"logoHref\"\n        [logoAlt]=\"logoAlt\"\n        [avatarInitials]=\"avatarInitials\"\n        [searchCollapsible]=\"searchCollapsible\"\n      >\n        <a ul-navbar-logo href=\"/\" style=\"font-weight: 700; color: inherit; text-decoration: none;\">UNDERLAYER</a>\n        <div ul-navbar-search>\n          <ul-search-select\n            placeholder=\"Search...\"\n            [options]=\"[\n              { label: 'Apple', value: 'apple' },\n              { label: 'Banana', value: 'banana' },\n              { label: 'Cherry', value: 'cherry' },\n            ]\"\n            size=\"md\"\n          />\n        </div>\n        <ul-avatar ul-navbar-avatar initials=\"JD\" size=\"md\" />\n      </ul-navbar>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "WithDefaultLogoAndAvatar",
@@ -8290,30 +8276,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "projects/ui/src/components/dock/dock.stories.ts": [
-                {
-                    "name": "DockDemoItem",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "literal type",
-                    "file": "projects/ui/src/components/dock/dock.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 188
-                },
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DockComponent>",
-                    "file": "projects/ui/src/components/dock/dock.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/demo-app-layout.stories.ts": [
                 {
                     "name": "Story",
@@ -8470,19 +8432,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/card/card.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CardComponent>",
-                    "file": "projects/ui/src/components/card/card.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/carousel/carousel.stories.ts": [
                 {
                     "name": "Story",
@@ -8490,6 +8439,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CarouselComponent>",
                     "file": "projects/ui/src/components/carousel/carousel.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/card/card.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CardComponent>",
+                    "file": "projects/ui/src/components/card/card.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -8516,6 +8478,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CollapseComponent>",
                     "file": "projects/ui/src/components/collapse/collapse.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/dock/dock.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DockComponent>",
+                    "file": "projects/ui/src/components/dock/dock.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -10079,7 +10054,7 @@
                 "linktype": "component",
                 "name": "DockDemoComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -10088,16 +10063,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/dock/dock.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DEMO_ITEMS",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -10128,16 +10093,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "TabletViewport",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/dock/dock.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "DockDemoItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -11016,6 +10971,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "TabletViewport",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/navbar/navbar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WideSearchMobile",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

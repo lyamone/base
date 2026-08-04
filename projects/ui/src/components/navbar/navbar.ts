@@ -19,7 +19,7 @@ import {
   NavbarSearchSlotDirective,
 } from './navbar-slot.directive';
 
-/** 'full' shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo — for auth pages and other chromeless flows. */
+/** 'full' shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo — for auth pages and other chromeless flows. See also `searchCollapsible` for whether the search slot collapses to an icon-toggle on mobile. */
 export type NavbarVariant = 'full' | 'minimal';
 
 @Component({
@@ -52,12 +52,15 @@ export class NavbarComponent {
 
   /** Default avatar image alt when avatar slot is not projected. */
   avatarAlt = input<string>('');
-  
+
   /** For aria-expanded on the toggle button */
   sidebarOpen = input<boolean>(false);
 
   /** When true, show the sidebar toggle button even when a logo slot is projected. */
   showSidebarToggle = input<boolean>(false);
+
+  /** When false, the projected search slot is always rendered expanded (no icon-toggle collapse on mobile) — use for apps that want search visible and full-width at every viewport. */
+  searchCollapsible = input<boolean>(true);
 
   /** Emitted when the user clicks the sidebar toggle. Parent should flip the open state. */
   sidebarToggle = output<void>();
@@ -71,11 +74,12 @@ export class NavbarComponent {
 
   readonly hasLogoSlot = computed(() => !!this.logoSlot());
   readonly hasSearchSlot = computed(() => !this.isMinimal() && !!this.searchSlot());
+  readonly showSearchToggle = computed(() => this.hasSearchSlot() && this.searchCollapsible());
   readonly hasAvatarSlot = computed(() => !this.isMinimal() && !!this.avatarSlot());
   readonly hasAppNameSlot = computed(() => !this.hasLogoSlot() && !!this.appNameSlot());
 
   readonly showToggle = computed(
-    () => !this.isMinimal() && (!this.hasLogoSlot() || this.showSidebarToggle())
+    () => !this.isMinimal() && (!this.hasLogoSlot() || this.showSidebarToggle()),
   );
 
   readonly searchExpanded = signal(false);

@@ -55,11 +55,15 @@ const meta: Meta<NavbarComponent> = {
     variant: {
       control: 'select',
       options: ['full', 'minimal'],
-      description: "'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.",
+      description:
+        "'full' (default) shows the sidebar toggle, search, and avatar; 'minimal' shows only the logo.",
     },
     logoHref: { control: 'text', description: 'Default logo link when logo slot is not used' },
     logoAlt: { control: 'text' },
-    avatarInitials: { control: 'text', description: 'Default avatar initials when avatar slot is not used' },
+    avatarInitials: {
+      control: 'text',
+      description: 'Default avatar initials when avatar slot is not used',
+    },
   },
 };
 
@@ -165,6 +169,49 @@ export const MobileViewport: Story = {
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
   },
+};
+
+export const WideSearchMobile: Story = {
+  args: {
+    logoHref: '/',
+    logoAlt: 'Home',
+    avatarInitials: 'JD',
+    searchCollapsible: false,
+  },
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+    docs: {
+      description: {
+        story:
+          'searchCollapsible=false keeps the search slot always expanded, even on mobile, instead of collapsing to an icon toggle — for apps that want search visible and full-width at every viewport.',
+      },
+    },
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-navbar
+        [logoHref]="logoHref"
+        [logoAlt]="logoAlt"
+        [avatarInitials]="avatarInitials"
+        [searchCollapsible]="searchCollapsible"
+      >
+        <a ul-navbar-logo href="/" style="font-weight: 700; color: inherit; text-decoration: none;">UNDERLAYER</a>
+        <div ul-navbar-search>
+          <ul-search-select
+            placeholder="Search..."
+            [options]="[
+              { label: 'Apple', value: 'apple' },
+              { label: 'Banana', value: 'banana' },
+              { label: 'Cherry', value: 'cherry' },
+            ]"
+            size="md"
+          />
+        </div>
+        <ul-avatar ul-navbar-avatar initials="JD" size="md" />
+      </ul-navbar>
+    `,
+  }),
 };
 
 export const TabletViewport: Story = {

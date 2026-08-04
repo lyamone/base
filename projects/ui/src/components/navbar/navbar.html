@@ -27,7 +27,7 @@
     </div>
 
     @if (!isMinimal()) {
-      @if (hasSearchSlot()) {
+      @if (showSearchToggle()) {
         <ul-button
           theme="ghost-white"
           [iconOnly]="true"
@@ -42,7 +42,7 @@
 
       <div
         class="ul-navbar__search-wrapper"
-        [class.ul-navbar__search-wrapper--expanded]="searchExpanded()"
+        [class.ul-navbar__search-wrapper--expanded]="searchExpanded() || !searchCollapsible()"
       >
         <ng-content select="[ul-navbar-search]" />
       </div>

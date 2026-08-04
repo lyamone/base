@@ -2,46 +2,60 @@ import { Component, signal } from '@angular/core';
 import { moduleMetadata } from '@storybook/angular';
 
 import { Meta, StoryObj } from '../../../.storybook/types';
+import { IconComponent } from '../icon/icon';
 import { DockComponent } from './dock';
+import { DockItemContentSlotDirective } from './dock-item-slot.directive';
 import { DockItemComponent } from './dock-item';
-
-type DockDemoItem = { icon: string; label: string };
-
-const DEMO_ITEMS: DockDemoItem[] = [
-  { icon: 'home', label: 'Home' },
-  { icon: 'search', label: 'Search' },
-  { icon: 'plus', label: 'New' },
-  { icon: 'user', label: 'Profile' },
-  { icon: 'settings', label: 'Settings' },
-];
 
 @Component({
   selector: 'ul-dock-demo',
   standalone: true,
-  imports: [DockComponent, DockItemComponent],
+  imports: [DockComponent, DockItemComponent, IconComponent, DockItemContentSlotDirective],
   template: `
     <div style="min-height: 100vh; background: var(--color-background-main, #0a0a0a);">
       <main style="padding: 1.5rem;">
         <p style="color: rgba(255,255,255,0.7);">
-          Resize the viewport below 1024px to see the dock — it's hidden by
-          the component's own CSS at desktop widths, by design.
+          Resize the viewport below 1024px to see the dock — it's hidden by the component's own CSS
+          at desktop widths, by design. The "New" item shows a fully custom, projected-content tab
+          with the "accent" variant; "Alerts" shows a badge.
         </p>
       </main>
       <ul-dock>
-        @for (item of items; track item.icon) {
-          <ul-dock-item
-            [icon]="item.icon"
-            [label]="item.label"
-            [active]="active() === item.icon"
-            (click)="active.set(item.icon)"
-          />
-        }
+        <ul-dock-item
+          icon="home"
+          label="Home"
+          [active]="active() === 'home'"
+          (click)="active.set('home')"
+        />
+        <ul-dock-item
+          icon="search"
+          label="Search"
+          [active]="active() === 'search'"
+          (click)="active.set('search')"
+        />
+        <ul-dock-item variant="accent" [active]="active() === 'new'" (click)="active.set('new')">
+          <span ul-dock-item-content>
+            <ul-icon icon="plus" size="6" />
+          </span>
+        </ul-dock-item>
+        <ul-dock-item
+          icon="bell_on"
+          label="Alerts"
+          badge="3"
+          [active]="active() === 'alerts'"
+          (click)="active.set('alerts')"
+        />
+        <ul-dock-item
+          icon="user"
+          label="Profile"
+          [active]="active() === 'profile'"
+          (click)="active.set('profile')"
+        />
       </ul-dock>
     </div>
   `,
 })
 class DockDemoComponent {
-  items = DEMO_ITEMS;
   active = signal('home');
 }
 
@@ -54,7 +68,7 @@ const meta: Meta<DockComponent> = {
     docs: {
       description: {
         component:
-          "Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Resize the Storybook viewport below 1024px to see it render.",
+          "Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.",
       },
     },
   },
