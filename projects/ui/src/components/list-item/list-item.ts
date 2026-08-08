@@ -12,6 +12,7 @@ export type ListItemTheme = 'ghost-white' | 'transparent-white' | 'outline-white
   template: `
     <ul-skeleton [show]="loading()" variant="rect">
       <button
+        type="button"
         class="ul-list-item ul-list-item--{{ theme() }}"
         [class.ul-list-item--no-focus-outline]="hideFocusOutline()"
         [class.ul-list-item--selected]="selected() || !!checkbox()?.checked"

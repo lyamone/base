@@ -53,12 +53,12 @@
   &__badge {
     position: absolute;
     top: $spacing-spacing-1;
-    right: calc(50% - $spacing-spacing-6);
+    right: calc(50% - $spacing-spacing-4);
     min-width: 16px;
     height: 16px;
     padding: 0 4px;
     border-radius: $radius-radius-full;
-    background-color: $color-background-red;
+    background-color: $color-background-purple;
     color: $color-text-primary;
     font-size: 10px;
     line-height: 16px;

@@ -7,7 +7,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Additional utility classes built on top of the design tokens: line clamp, size helpers, and transform/position helpers.',
+          'Additional utility classes built on top of the design tokens: line clamp, size helpers, transform/position helpers, and visibility.',
       },
     },
   },
@@ -116,6 +116,40 @@ export const TransformAndPosition: Story = {
           <code>.ul-translate-x-8</code>
           <code>.ul-translate-y-8</code>
           <code>.ul-top-8</code>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const Hidden: Story = {
+  render: () => ({
+    template: `
+      <div class="ul-p-4 ul-gap-6" style="display: flex; flex-direction: column; max-width: 600px;">
+        <h2 class="ul-typography-headline-l-regular ul-mb-4">Hidden</h2>
+        <p class="ul-typography-body-m-regular ul-mb-4">
+          Use <code>.ul-hidden</code> to set <code>display: none</code>. It also supports the
+          responsive breakpoint prefixes (<code>xs:</code>, <code>sm:</code>, <code>md:</code>,
+          <code>lg:</code>, <code>xl:</code>) to hide an element only from that breakpoint up —
+          e.g. <code>.md:ul-hidden</code> hides the element at 1024px and wider, while it stays
+          visible below that.
+        </p>
+
+        <div class="ul-gap-4" style="display: flex; flex-direction: column;">
+          <div class="ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 ul-hidden">
+            This box is always hidden (.ul-hidden) — it will never render.
+          </div>
+
+          <div class="ul-bg-purple ul-p-3 ul-rounded-2">
+            <p class="ul-typography-body-m-regular">
+              Resize the viewport to see the box below toggle: visible below 1024px, hidden at
+              1024px and above (<code>.md:ul-hidden</code>).
+            </p>
+          </div>
+
+          <div class="ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 md:ul-hidden">
+            Visible below 1024px, hidden at 1024px+.
+          </div>
         </div>
       </div>
     `,

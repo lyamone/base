@@ -1972,6 +1972,35 @@ a:active {
   -webkit-line-clamp: 3;
 }
 
+.ul-hidden {
+  display: none;
+}
+
+@media screen and (min-width: 0px) {
+  .xs\:ul-hidden {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sm\:ul-hidden {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .md\:ul-hidden {
+    display: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .lg\:ul-hidden {
+    display: none;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .xl\:ul-hidden {
+    display: none;
+  }
+}
 .ul- {
   /*
   gap-{size} (both row and column)

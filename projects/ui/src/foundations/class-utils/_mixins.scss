@@ -116,6 +116,15 @@
       }
     }
 
+    // Hidden
+    // Also available with a responsive prefix, e.g. `sm:#{$prefix}hidden`,
+    // to hide only from that breakpoint up.
+    &hidden {
+      @include variants('responsive') {
+        display: none;
+      }
+    }
+
     // Spacing
     /*
 gap-{size} (both row and column)
