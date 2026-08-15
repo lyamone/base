@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, input, model, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, input, model, output, ViewEncapsulation } from '@angular/core';
 import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
 
 import { DropdownComponent, DropdownItem } from '../dropdown/dropdown';
@@ -46,6 +46,8 @@ export class SelectComponent implements FormValueControl<string | null> {
 
   readonly invalid = input<boolean>(false);
   readonly errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
+  /** FormUiControl optional: [formField] listens to this to mark the bound field touched when the dropdown closes */
+  readonly touch = output<void>();
 
   readonly value = model<string | null>(null);
   protected readonly selectedIndex = model<number>(0);
@@ -99,6 +101,10 @@ export class SelectComponent implements FormValueControl<string | null> {
 
     this.selectedIndex.set(index);
     this.value.set(option?.value ?? null);
+  }
+
+  protected onDropdownClosed(): void {
+    this.touch.emit();
   }
 }
 

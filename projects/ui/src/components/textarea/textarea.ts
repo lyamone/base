@@ -58,6 +58,8 @@ export class TextareaComponent implements FormValueControl<string> {
   readonly invalid = input<boolean>(false);
   readonly errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
   readonly touched = model<boolean>(false);
+  /** FormUiControl optional: [formField] listens to this to mark the bound field touched on blur */
+  readonly touch = output<void>();
 
   readonly value = model<string>('');
 
@@ -89,6 +91,7 @@ export class TextareaComponent implements FormValueControl<string> {
   onBlur(event: FocusEvent): void {
     this.isFocused.set(false);
     this.touched.set(true);
+    this.touch.emit();
     this.inputBlur.emit(event);
   }
 

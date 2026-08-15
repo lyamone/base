@@ -176,6 +176,13 @@ export class DropdownComponent {
   selectedItemChange = output<DropdownItem>();
 
   /**
+   * Emitted when the menu closes, whether or not a selection was made —
+   * the closest thing this component has to a "blur" for form controls
+   * built on top of it (see ul-select's touch output).
+   */
+  closed = output<void>();
+
+  /**
    * Handles the selection of a dropdown item.
    * @param index - The index of the selected item
    */
@@ -190,5 +197,6 @@ export class DropdownComponent {
 
   onMenuClosed(): void {
     this.isOpen.set(false);
+    this.closed.emit();
   }
 }
