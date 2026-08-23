@@ -5,6 +5,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: $spacing-spacing-1;
 
   // Control wrapper — aligned with input (2px border, hover/focus)

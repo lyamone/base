@@ -5,6 +5,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: $spacing-spacing-1;
 
   // Input group: border by default, transparent background, focus/hover per appearance

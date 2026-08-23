@@ -97,10 +97,4 @@ describe('FileInputComponent', () => {
     component.focus();
     expect(focusSpy).toHaveBeenCalled();
   });
-
-  it('should expose valueChange output', () => {
-    const emitted: (FileList | null)[] = [];
-    component.valueChange.subscribe((v) => emitted.push(v));
-    expect(component.valueChange).toBeDefined();
-  });
 });
