@@ -17,13 +17,13 @@
 
   // Responsive styles
   @include up('xs') {
-    min-width: 140px;
+    min-width: 100px;
   }
   @include up('sm') {
-    min-width: 208px;
+    min-width: 180px;
   }
   @include up('lg') {
-    min-width: 232px;
+    min-width: 150px;
   }
 
   // Interactive states
@@ -44,13 +44,13 @@
     border-radius: $radius-radius-2;
 
     @include up('xs') {
-      min-height: 140px;
+      min-height: 100px;
     }
     @include up('sm') {
-      min-height: 208px;
+      min-height: 180px;
     }
     @include up('lg') {
-      min-height: 232px;
+      min-height: 150px;
     }
 
     // Media content
