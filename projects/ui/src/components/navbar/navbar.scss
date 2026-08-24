@@ -7,6 +7,8 @@
     @include navbar-bar;
     flex-wrap: wrap;
 
+    // Unpaired with any up() rule, so down()'s wider range is intentional here:
+    // the stacking context is wanted for the whole md tier and below.
     @include down('md') {
       position: relative;
       z-index: $elevation-navbar;
@@ -14,7 +16,7 @@
   }
 
   &__sidebar_toggle {
-    @include down('md') {
+    @include below('md') {
       display: inline-flex;
     }
 
@@ -65,7 +67,7 @@
   }
 
   &__search-toggle {
-    @include down('md') {
+    @include below('md') {
       display: inline-flex;
     }
 
@@ -80,7 +82,7 @@
     display: flex;
     align-items: center;
 
-    @include down('md') {
+    @include below('md') {
       flex-basis: 100%;
       order: 10;
       max-height: 0;

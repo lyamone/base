@@ -9,11 +9,12 @@
   right: 0;
   z-index: $elevation-navbar; // same tier as navbar — both are persistent chrome, never overlap (top vs bottom)
 
-  @include down('md') {
+  // Complement of the navbar's desktop layout: the dock owns navigation only
+  // where the navbar's inline nav is not shown. `below('md')` rather than
+  // `down('md')` because the latter also covers the md tier (up to
+  // $breakpoint-lg - 1), overlapping `up('md')` and leaving visibility to be
+  // settled by source order.
+  @include below('md') {
     display: flex;
-  }
-
-  @include up('md') {
-    display: none;
   }
 }

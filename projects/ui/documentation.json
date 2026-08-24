@@ -2110,18 +2110,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
-                "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
-                "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2129,6 +2117,18 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" [maxItems]=\"maxItems\" />\n    `,\n  }),\n}",
                 "rawdescription": "Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.",
                 "description": "<p>Default breadcrumb story with 4 items.\nShows the basic breadcrumb navigation pattern.</p>\n"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
+                "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
+                "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
             },
             {
                 "name": "Default",
@@ -2687,6 +2687,16 @@
                 "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-8\">Headlines</h2>\n        \n        <div class=\"ul-gap-8\" style=\"display: flex; flex-direction: column;\">\n          <div *ngFor=\"let style of styles\">\n            <p [class]=\"style.class\">{{style.name}}</p>\n            <code>.{{style.class}}</code>\n          </div>\n        </div>\n      </div>\n    `,\n    props: {\n      styles: [\n        {\n          name: 'Headline 3XL ExtraBlack',\n          class: 'ul-typography-headline-3xl-extrablack',\n        },\n        {\n          name: 'Headline 3XL Regular',\n          class: 'ul-typography-headline-3xl-regular',\n        },\n        {\n          name: 'Headline 2XL ExtraBlack',\n          class: 'ul-typography-headline-2xl-extrablack',\n        },\n        {\n          name: 'Headline 2XL Regular',\n          class: 'ul-typography-headline-2xl-regular',\n        },\n        {\n          name: 'Headline XL ExtraBlack',\n          class: 'ul-typography-headline-xl-extrablack',\n        },\n        {\n          name: 'Headline XL Regular',\n          class: 'ul-typography-headline-xl-regular',\n        },\n        {\n          name: 'Headline L ExtraBlack',\n          class: 'ul-typography-headline-l-extrablack',\n        },\n        {\n          name: 'Headline L Regular',\n          class: 'ul-typography-headline-l-regular',\n        },\n        {\n          name: 'Headline M ExtraBlack',\n          class: 'ul-typography-headline-m-extrablack',\n        },\n        {\n          name: 'Headline M Regular',\n          class: 'ul-typography-headline-m-regular',\n        },\n        {\n          name: 'Headline S ExtraBlack',\n          class: 'ul-typography-headline-s-extrablack',\n        },\n        {\n          name: 'Headline S Regular',\n          class: 'ul-typography-headline-s-regular',\n        },\n      ],\n    },\n  }),\n}"
             },
             {
+                "name": "Hidden",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 600px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Hidden</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-hidden</code> to set <code>display: none</code>. It also supports the\n          responsive breakpoint prefixes (<code>xs:</code>, <code>sm:</code>, <code>md:</code>,\n          <code>lg:</code>, <code>xl:</code>) to hide an element only from that breakpoint up —\n          e.g. <code>.md:ul-hidden</code> hides the element at 1024px and wider, while it stays\n          visible below that.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-direction: column;\">\n          <div class=\"ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 ul-hidden\">\n            This box is always hidden (.ul-hidden) — it will never render.\n          </div>\n\n          <div class=\"ul-bg-purple ul-p-3 ul-rounded-2\">\n            <p class=\"ul-typography-body-m-regular\">\n              Resize the viewport to see the box below toggle: visible below 1024px, hidden at\n              1024px and above (<code>.md:ul-hidden</code>).\n            </p>\n          </div>\n\n          <div class=\"ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 md:ul-hidden\">\n            Visible below 1024px, hidden at 1024px+.\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
+            },
+            {
                 "name": "Horizontal",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3044,21 +3054,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<BreadcrumbComponent>",
                 "defaultValue": "{\n  title: 'Components/Navigation/Breadcrumb',\n  component: BreadcrumbComponent,\n  decorators: [\n    moduleMetadata({\n      imports: [RouterTestingModule],\n    }),\n  ],\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Navigation breadcrumb component for displaying page hierarchy. Supports responsive collapsing on mobile, customizable separators (chevron, slash, dot), and optional icons. Last item is not a link and uses aria-current=\"page\" for accessibility.',\n      },\n    },\n  },\n  argTypes: {\n    items: {\n      control: { type: 'object' },\n      description: 'Array of breadcrumb items to display',\n    },\n    separator: {\n      options: ['chevron_right', 'slash', 'dot'],\n      control: { type: 'radio' },\n      description: 'Separator type between breadcrumb items',\n    },\n    maxItems: {\n      control: { type: 'number' },\n      description: 'Maximum number of items to show before collapsing (for responsive behavior)',\n    },\n  },\n  args: {\n    items: [\n      { label: 'Home', href: '/' },\n      { label: 'Products', href: '/products' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page' },\n    ],\n    separator: 'chevron_right',\n    maxItems: undefined,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3378,7 +3388,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta",
-                "defaultValue": "{\n  title: 'Foundations/Utilities',\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Additional utility classes built on top of the design tokens: line clamp, size helpers, and transform/position helpers.',\n      },\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'Foundations/Utilities',\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Additional utility classes built on top of the design tokens: line clamp, size helpers, transform/position helpers, and visibility.',\n      },\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4326,18 +4336,6 @@
                 "name": "WithIcons",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\">\n        <i class=\"ul-icon ul-icon-store\"></i>\n        Button\n        <i class=\"ul-icon ul-icon-chevron_right\"></i>\n      </ul-button>\n    `,\n  }),\n}",
-                "rawdescription": "Demonstrates a button with icons on both sides.",
-                "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
-            },
-            {
-                "name": "WithIcons",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -4345,6 +4343,18 @@
                 "defaultValue": "{\n  args: {\n    items: [\n      { label: 'Home', href: '/', icon: 'home' },\n      { label: 'Products', href: '/products', icon: 'store' },\n      { label: 'Electronics', href: '/products/electronics' },\n      { label: 'Current Page', icon: 'chevron_right' },\n    ],\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-breadcrumb [items]=\"items\" [separator]=\"separator\" />\n    `,\n  }),\n}",
                 "rawdescription": "Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.",
                 "description": "<p>Breadcrumb with icons on some items.\nDemonstrates how icons can be added to breadcrumb items.</p>\n"
+            },
+            {
+                "name": "WithIcons",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\">\n        <i class=\"ul-icon ul-icon-store\"></i>\n        Button\n        <i class=\"ul-icon ul-icon-chevron_right\"></i>\n      </ul-button>\n    `,\n  }),\n}",
+                "rawdescription": "Demonstrates a button with icons on both sides.",
+                "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
             },
             {
                 "name": "WithIcons",
@@ -4698,8 +4708,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "projects/ui/src/components/button/button.stories.ts",
+                "rawtype": "StoryObj<BreadcrumbComponent>",
+                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -4709,8 +4719,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<BreadcrumbComponent>",
-                "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8068,6 +8078,58 @@
                     "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-8\">Padding</h2>\n        \n        <div class=\"ul-gap-8\" style=\"display: flex; flex-direction: column;\">\n          <div *ngFor=\"let size of sizes\">\n            <h3 class=\"ul-typography-body-l-regular ul-mb-4\">Padding {{size.name}}</h3>\n            <div [class]=\"'ul-p-' + size.value\" class=\"ul-bg-purple\" style=\"width: fit-content;\">\n              <div class=\"ul-bg-grey-lvl-1\" style=\"width: 100px; height: 100px;\">\n              </div>\n            </div>\n            <code>.ul-p-{{size.value}}</code>\n            <p class=\"ul-typography-body-m-regular\">{{size.pixels}}px</p>\n          </div>\n        </div>\n      </div>\n    `,\n    props: {\n      sizes: [\n        { name: '1', value: '1', pixels: 4 },\n        { name: '2', value: '2', pixels: 8 },\n        { name: '3', value: '3', pixels: 12 },\n        { name: '4', value: '4', pixels: 16 },\n        { name: '5', value: '5', pixels: 20 },\n        { name: '6', value: '6', pixels: 24 },\n        { name: '7', value: '7', pixels: 28 },\n        { name: '8', value: '8', pixels: 32 },\n        { name: '9', value: '9', pixels: 36 },\n        { name: '10', value: '10', pixels: 40 },\n        { name: '11', value: '11', pixels: 44 },\n        { name: '12', value: '12', pixels: 48 },\n        { name: '14', value: '14', pixels: 56 },\n        { name: '15', value: '15', pixels: 60 },\n        { name: '16', value: '16', pixels: 64 },\n        { name: '20', value: '20', pixels: 80 },\n        { name: '24', value: '24', pixels: 96 },\n        { name: '28', value: '28', pixels: 112 },\n        { name: '32', value: '32', pixels: 128 },\n      ],\n    },\n  }),\n}"
                 }
             ],
+            "projects/ui/src/foundations/class-utils/utilities.stories.ts": [
+                {
+                    "name": "Hidden",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 600px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Hidden</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-hidden</code> to set <code>display: none</code>. It also supports the\n          responsive breakpoint prefixes (<code>xs:</code>, <code>sm:</code>, <code>md:</code>,\n          <code>lg:</code>, <code>xl:</code>) to hide an element only from that breakpoint up —\n          e.g. <code>.md:ul-hidden</code> hides the element at 1024px and wider, while it stays\n          visible below that.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-direction: column;\">\n          <div class=\"ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 ul-hidden\">\n            This box is always hidden (.ul-hidden) — it will never render.\n          </div>\n\n          <div class=\"ul-bg-purple ul-p-3 ul-rounded-2\">\n            <p class=\"ul-typography-body-m-regular\">\n              Resize the viewport to see the box below toggle: visible below 1024px, hidden at\n              1024px and above (<code>.md:ul-hidden</code>).\n            </p>\n          </div>\n\n          <div class=\"ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2 md:ul-hidden\">\n            Visible below 1024px, hidden at 1024px+.\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "LineClamp",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 600px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Line clamp</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-line-clamp-*</code> to truncate multi-line text with an ellipsis.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-direction: column;\">\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 1 line</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-1 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after a single line using the .ul-line-clamp-1 utility class.\n            </p>\n            <code>.ul-line-clamp-1</code>\n          </div>\n\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 2 lines</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-2 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after two lines using the .ul-line-clamp-2 utility class. It is useful for cards and list items where you want consistent heights.\n            </p>\n            <code>.ul-line-clamp-2</code>\n          </div>\n\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 3 lines</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-3 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after three lines using the .ul-line-clamp-3 utility class. Ideal for richer descriptions while still preserving layout stability across cards.\n            </p>\n            <code>.ul-line-clamp-3</code>\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta",
+                    "defaultValue": "{\n  title: 'Foundations/Utilities',\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Additional utility classes built on top of the design tokens: line clamp, size helpers, transform/position helpers, and visibility.',\n      },\n    },\n  },\n}"
+                },
+                {
+                    "name": "SizeUtilities",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Width & height utilities</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-w-*</code> and <code>.ul-h-*</code> to size elements using the spacing scale.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-wrap: wrap; align-items: flex-end;\">\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-16 .ul-h-8</p>\n          </div>\n\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-24 ul-h-12 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-24 .ul-h-12</p>\n          </div>\n\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-32 ul-h-16 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-32 .ul-h-16</p>\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "TransformAndPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 640px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Transform & position helpers</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Translate and offset elements using the spacing scale with <code>.ul-translate-x-*</code>, <code>.ul-translate-y-*</code>,\n          and positional utilities like <code>.ul-top-*</code>.\n        </p>\n\n        <div class=\"ul-bg-grey-lvl-1 ul-rounded-2 ul-p-6\" style=\"position: relative; height: 160px; overflow: hidden;\">\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-translate-x-8\"\n            style=\"transform: translateY(0);\"\n          ></div>\n\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-translate-y-8\"\n            style=\"transform: translateX(0); margin-top: 24px;\"\n          ></div>\n\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-top-8\"\n            style=\"position: absolute; right: 16px;\"\n          ></div>\n        </div>\n\n        <div class=\"ul-gap-2\" style=\"display: flex; flex-direction: column;\">\n          <code>.ul-translate-x-8</code>\n          <code>.ul-translate-y-8</code>\n          <code>.ul-top-8</code>\n        </div>\n      </div>\n    `,\n  }),\n}"
+                }
+            ],
             "projects/ui/src/components/toast/toast.stories.ts": [
                 {
                     "name": "InfoToast",
@@ -8140,48 +8202,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  render: () => ({\n    template: `\n    <div class=\"ul-background-white-light\" style=\"height: 300px; width: 200px;\">  \n        <img \n            peCatchImageNotFound\n            [showPlaceholder]=\"false\"\n            src=\"invalid-image-url.jpg\" \n            alt=\"Invalid image without placeholder\"\n            width=\"200\"\n            height=\"300\"\n        />\n    </div>\n    `,\n  }),\n  parameters: {\n    docs: {\n      description: {\n        story:\n          'Demonstrates the behavior when showPlaceholder is set to false - the image will be hidden instead of showing a placeholder.',\n      },\n    },\n  },\n}"
-                }
-            ],
-            "projects/ui/src/foundations/class-utils/utilities.stories.ts": [
-                {
-                    "name": "LineClamp",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 600px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Line clamp</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-line-clamp-*</code> to truncate multi-line text with an ellipsis.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-direction: column;\">\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 1 line</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-1 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after a single line using the .ul-line-clamp-1 utility class.\n            </p>\n            <code>.ul-line-clamp-1</code>\n          </div>\n\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 2 lines</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-2 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after two lines using the .ul-line-clamp-2 utility class. It is useful for cards and list items where you want consistent heights.\n            </p>\n            <code>.ul-line-clamp-2</code>\n          </div>\n\n          <div>\n            <h3 class=\"ul-typography-body-l-regular ul-mb-2\">Clamp to 3 lines</h3>\n            <p class=\"ul-typography-body-m-regular ul-line-clamp-3 ul-bg-grey-lvl-1 ul-p-3 ul-rounded-2\">\n              This is a long piece of text that will be truncated after three lines using the .ul-line-clamp-3 utility class. Ideal for richer descriptions while still preserving layout stability across cards.\n            </p>\n            <code>.ul-line-clamp-3</code>\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta",
-                    "defaultValue": "{\n  title: 'Foundations/Utilities',\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Additional utility classes built on top of the design tokens: line clamp, size helpers, and transform/position helpers.',\n      },\n    },\n  },\n}"
-                },
-                {
-                    "name": "SizeUtilities",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Width & height utilities</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Use <code>.ul-w-*</code> and <code>.ul-h-*</code> to size elements using the spacing scale.\n        </p>\n\n        <div class=\"ul-gap-4\" style=\"display: flex; flex-wrap: wrap; align-items: flex-end;\">\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-16 .ul-h-8</p>\n          </div>\n\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-24 ul-h-12 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-24 .ul-h-12</p>\n          </div>\n\n          <div class=\"ul-p-4 ul-bg-grey-lvl-1 ul-rounded-2\">\n            <div class=\"ul-bg-purple ul-w-32 ul-h-16 ul-rounded-2\"></div>\n            <p class=\"ul-typography-body-m-regular ul-mt-2\">.ul-w-32 .ul-h-16</p>\n          </div>\n        </div>\n      </div>\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "TransformAndPosition",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    template: `\n      <div class=\"ul-p-4 ul-gap-6\" style=\"display: flex; flex-direction: column; max-width: 640px;\">\n        <h2 class=\"ul-typography-headline-l-regular ul-mb-4\">Transform & position helpers</h2>\n        <p class=\"ul-typography-body-m-regular ul-mb-4\">\n          Translate and offset elements using the spacing scale with <code>.ul-translate-x-*</code>, <code>.ul-translate-y-*</code>,\n          and positional utilities like <code>.ul-top-*</code>.\n        </p>\n\n        <div class=\"ul-bg-grey-lvl-1 ul-rounded-2 ul-p-6\" style=\"position: relative; height: 160px; overflow: hidden;\">\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-translate-x-8\"\n            style=\"transform: translateY(0);\"\n          ></div>\n\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-translate-y-8\"\n            style=\"transform: translateX(0); margin-top: 24px;\"\n          ></div>\n\n          <div\n            class=\"ul-bg-purple ul-w-16 ul-h-8 ul-rounded-2 ul-top-8\"\n            style=\"position: absolute; right: 16px;\"\n          ></div>\n        </div>\n\n        <div class=\"ul-gap-2\" style=\"display: flex; flex-direction: column;\">\n          <code>.ul-translate-x-8</code>\n          <code>.ul-translate-y-8</code>\n          <code>.ul-top-8</code>\n        </div>\n      </div>\n    `,\n  }),\n}"
                 }
             ],
             "projects/ui/src/components/skeleton/skeleton.stories.ts": [
@@ -8393,19 +8413,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/button/button.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts": [
                 {
                     "name": "Story",
@@ -8413,6 +8420,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<BreadcrumbComponent>",
                     "file": "projects/ui/src/components/breadcrumb/breadcrumb.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/button/button.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -12120,6 +12140,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/foundations/class-utils/utilities.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Hidden",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

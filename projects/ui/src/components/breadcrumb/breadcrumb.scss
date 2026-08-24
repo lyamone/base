@@ -34,8 +34,13 @@
       }
     }
 
+    // These two are complements: overflow items collapse into the ellipsis on
+    // mobile, and the ellipsis itself is hidden once they're all shown. They
+    // must split at the same edge, so both use below()/up() — with down('md')
+    // the md tier (1024–1279px) hid the items AND the ellipsis, silently
+    // dropping the middle of the trail with no affordance.
     &--hidden-mobile {
-      @include down('md') {
+      @include below('md') {
         display: none;
       }
     }
@@ -100,8 +105,11 @@
     user-select: none;
   }
 
-  // Responsive adjustments
-  @include down('md') {
+  // Responsive adjustments — three exclusive tiers. The first uses below('md')
+  // so it stops where between('md','lg') starts; down('md') would have run to
+  // $breakpoint-lg - 1 and leaked its caption-l typography into the md tier,
+  // which between() never resets.
+  @include below('md') {
     &__list, &__item {
       gap: $spacing-spacing-1;
     }

@@ -65,7 +65,7 @@
     border-color: $color-border-red;
   }
 
-  @include down('sm') {
+  @include below('md') {
     &__list {
       max-height: $component-dropdown-list-max-height;
     }

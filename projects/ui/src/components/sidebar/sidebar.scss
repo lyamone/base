@@ -16,7 +16,7 @@
     pointer-events: none;
     @include transition-property(opacity, $transition-duration-normal);
 
-    @include down('md') {
+    @include below('md') {
       display: block;
     }
 
@@ -42,12 +42,12 @@
     overflow: hidden;
     @include transition-property(transform, $transition-duration-normal);
 
-    @include down('md') {
+    @include below('md') {
       transform: translateX(-100%);
     }
 
     &--open {
-      @include down('md') {
+      @include below('md') {
         transform: translateX(0);
       }
     }

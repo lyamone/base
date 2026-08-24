@@ -113,7 +113,7 @@
     }
   }
 
-  @include down('sm') {
+  @include below('md') {
     &__scroll {
       margin-left: -$spacing-spacing-4;
       margin-right: -$spacing-spacing-4;

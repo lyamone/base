@@ -30,7 +30,15 @@
   }
 }
 
-/// Creates a desktop-first media query that applies styles from the specified breakpoint and down
+/// Creates a desktop-first media query covering the named tier *and everything
+/// below it* — `down('md')` includes the md tier itself, so it ends at
+/// `$breakpoint-lg - 1`, not `$breakpoint-md - 1`.
+///
+/// IMPORTANT: `down($bp)` is therefore NOT the complement of `up($bp)` — both
+/// include the $bp tier, so they overlap. Pairing them on one property means
+/// the result is decided by source order, which is almost never intended.
+/// When you want "the part `up($bp)` does not cover", use `below($bp)`.
+///
 /// @param {String} $breakpoint - Breakpoint name: 'xs', 'sm', 'md', or 'lg'
 /// @example
 ///   @include down('lg') {
@@ -53,6 +61,38 @@
     @media (max-width: ($breakpoint-xl - 1)) {
       @content;
     }
+  }
+}
+
+/// Creates a media query for everything strictly *below* the named tier — the
+/// exact complement of `up($breakpoint)`, so the two never overlap. Use this
+/// (not `down()`) to split one property into a mobile and a desktop value.
+/// @param {String} $breakpoint - Breakpoint name: 'sm', 'md', 'lg', or 'xl'
+/// @example
+///   // ul-dock: visible only where the desktop navbar is not
+///   @include below('md') {
+///     display: flex;
+///   }
+@mixin below($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: ($breakpoint-sm - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: ($breakpoint-md - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: ($breakpoint-lg - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: ($breakpoint-xl - 1)) {
+      @content;
+    }
+  } @else {
+    @error "below() expects 'sm', 'md', 'lg', or 'xl' — got '#{$breakpoint}'. "
+      + "There is nothing below 'xs' (it starts at 0).";
   }
 }
 
@@ -106,13 +146,21 @@
 ///   }
 @mixin only($breakpoint) {
   @if $breakpoint == 'xs' {
-    @include between('xs', 'sm');
+    @include between('xs', 'sm') {
+      @content;
+    }
   } @else if $breakpoint == 'sm' {
-    @include between('sm', 'md');
+    @include between('sm', 'md') {
+      @content;
+    }
   } @else if $breakpoint == 'md' {
-    @include between('md', 'lg');
+    @include between('md', 'lg') {
+      @content;
+    }
   } @else if $breakpoint == 'lg' {
-    @include between('lg', 'xl');
+    @include between('lg', 'xl') {
+      @content;
+    }
   } @else if $breakpoint == 'xl' {
     @media (min-width: $breakpoint-xl) {
       @content;
