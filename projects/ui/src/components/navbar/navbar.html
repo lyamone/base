@@ -2,10 +2,13 @@
   <div class="ul-navbar__bar">
     <div class="ul-navbar__logo">
       @if (showToggle()) {
+        <!-- Default 'md' size, matching the search toggle below and the
+        sidebar's own close button: `sm` capped the icon at 20px (the
+        `.ul-btn--sm .ul-icon` rule outranks `.ul-icon-size-*`, so the icon's
+        own size input cannot raise it) and gave a 32px tap target. -->
         <ul-button
           theme="ghost-white"
           [iconOnly]="true"
-          size="sm"
           class="ul-navbar__sidebar_toggle"
           ariaLabel="Open menu"
           [attr.aria-expanded]="sidebarOpen()"

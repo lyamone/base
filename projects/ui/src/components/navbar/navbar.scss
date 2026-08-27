@@ -42,6 +42,11 @@
     flex-shrink: 0;
     margin-right: auto;
     gap: $spacing-spacing-2;
+    // A flex item's default min-width: auto refuses to shrink below its
+    // content, so a long app name would push the bar wider than the viewport
+    // and cause horizontal scroll rather than being clipped. Needed on the
+    // container as well as the text for the shrink to propagate.
+    min-width: 0;
 
     &-link {
       display: flex;
@@ -51,8 +56,25 @@
     }
 
     &-text {
-      @include typography('brand-headline-s', 'extrablack');
+      // Only rendered below md (the app name is hidden at md+), so this size is
+      // the mobile one — brand-headline-m, up from brand-headline-s, since it is
+      // the sole piece of text in the mobile bar.
+      @include typography('brand-headline-m', 'extrablack');
       color: inherit;
+
+      // The name is consumer-supplied and unbounded, and 'Ultra Brand' at 28px
+      // with 2.8px tracking is wide: an 11-character name needs ~370px of bar,
+      // more than a 360px viewport. Truncate instead of forcing the whole bar
+      // to overflow horizontally.
+      //
+      // display: block overrides the flex that __logo-link (the same element —
+      // the anchor carries both classes) sets: text-overflow does not apply to
+      // a flex container's anonymous item, so the ellipsis would never show.
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       @include up('md') {
         display: none;

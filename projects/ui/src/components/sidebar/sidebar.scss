@@ -92,6 +92,24 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-spacing-1;
+
+    // ul-list-item is sized for dense lists (caption-l, 14px). That reads as
+    // too small for the drawer, which is the primary navigation below md and
+    // is touch-driven — so raise the label and its icons there only. Scoped to
+    // below('md') because at md+ the same component is an in-flow desktop rail
+    // sitting next to page content, where the denser default is correct.
+    @include below('md') {
+      .#{$prefix}list-item {
+        @include typography('body-m');
+        padding: $spacing-spacing-3;
+      }
+
+      // The icons are set per-instance in the template (size="5", 20px), so
+      // the class they carry has to be overridden rather than re-passed.
+      .#{$prefix}list-item .#{$prefix}icon {
+        @include icon-size('6');
+      }
+    }
   }
 
   &__footer {
