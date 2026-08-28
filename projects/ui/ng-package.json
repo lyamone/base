@@ -25,6 +25,16 @@
       "glob": "*.scss",
       "input": "src/design-tokens",
       "output": "design-tokens"
+    },
+    {
+      "glob": "_core.scss",
+      "input": "src/foundations",
+      "output": "foundations"
+    },
+    {
+      "glob": "*.scss",
+      "input": "src/foundations/breakpoints",
+      "output": "foundations/breakpoints"
     }
   ]
 }

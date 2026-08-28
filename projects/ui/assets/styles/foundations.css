@@ -15,6 +15,22 @@
  * - modal: dialogs
  * - toast: notifications
  */
+/**
+ * Public Sass entry point for @underlayerdev/ui breakpoint media queries.
+ *
+ * Consuming apps can import this via the `pkg:` importer:
+ *
+ *   @use 'pkg:@underlayerdev/ui/breakpoints' as bp;
+ *
+ *   .my-component {
+ *     @include bp.up('md') {
+ *       display: flex;
+ *     }
+ *   }
+ *
+ * Requires Dart Sass with the Node package importer enabled (supported by
+ * @angular/build out of the box since Angular CLI 20+).
+ */
 .ul-rich-text {
   font-family: Ultra Nunito Sans;
   line-height: 28px;
