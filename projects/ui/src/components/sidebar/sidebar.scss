@@ -92,13 +92,24 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-spacing-1;
+  }
 
-    // ul-list-item is sized for dense lists (caption-l, 14px). That reads as
-    // too small for the drawer, which is the primary navigation below md and
-    // is touch-driven — so raise the label and its icons there only. Scoped to
-    // below('md') because at md+ the same component is an in-flow desktop rail
-    // sitting next to page content, where the denser default is correct.
-    @include below('md') {
+  &__footer {
+    flex-shrink: 0;
+    border-top: 1px solid $color-border-white-light;
+    padding-top: $spacing-spacing-4;
+  }
+
+  // ul-list-item is sized for dense lists (caption-l, 14px). That reads as
+  // too small for the drawer, which is the primary navigation below md and
+  // is touch-driven — so raise the label and its icons there, whether the
+  // item sits in the nav list or is projected into the footer (e.g. a
+  // sign-out action via [ul-sidebar-footer]). Scoped to below('md') because
+  // at md+ the same component is an in-flow desktop rail sitting next to
+  // page content, where the denser default is correct.
+  @include below('md') {
+    &__nav,
+    &__footer {
       .#{$prefix}list-item {
         @include typography('body-m');
         padding: $spacing-spacing-3;
@@ -110,11 +121,5 @@
         @include icon-size('6');
       }
     }
-  }
-
-  &__footer {
-    flex-shrink: 0;
-    border-top: 1px solid $color-border-white-light;
-    padding-top: $spacing-spacing-4;
   }
 }
