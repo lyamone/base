@@ -9,7 +9,7 @@ const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
 
 pkg.exports ??= {};
 pkg.exports['./design-tokens/*'] = './design-tokens/*';
-pkg.exports['./breakpoints/*'] = './foundations/breakpoints/*';
+pkg.exports['./breakpoints/*'] = './breakpoints/*';
 
 writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 console.log('Patched dist/ui/package.json with ./design-tokens/* and ./breakpoints/* exports');

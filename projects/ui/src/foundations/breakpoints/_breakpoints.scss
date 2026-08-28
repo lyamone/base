@@ -1,4 +1,4 @@
-@use '../core' as *;
+@use './values' as *;
 
 /// Creates a mobile-first media query that applies styles from the specified breakpoint and up
 /// @param {String} $breakpoint - Breakpoint name: 'xs', 'sm', 'md', 'lg', or 'xl'

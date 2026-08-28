@@ -1,0 +1,12 @@
+// Keep in sync with design-tokens/_variables.scss $breakpoint-*.
+//
+// Duplicated (not imported from ../core / ../design-tokens) so the
+// published `./breakpoints` package export stays self-contained: Node's
+// package "exports" boundaries block relative imports that cross from one
+// exported subpath into a different one, so this file can't reach outside
+// its own foundations/breakpoints/ directory once published.
+$breakpoint-xs: 0px !default;
+$breakpoint-sm: 768px !default;
+$breakpoint-md: 1024px !default;
+$breakpoint-lg: 1280px !default;
+$breakpoint-xl: 1600px !default;
