@@ -50,6 +50,10 @@ export class InputComponent implements FormValueControl<string> {
   readonly maxLength = input<number | undefined>();
   readonly minLength = input<number | undefined>();
   readonly pattern = input<readonly RegExp[]>([]);
+  /** Native step for type="number". Defaults to 'any' (decimals allowed) rather than the
+   * browser's own default of 1, which would silently reject e.g. "19.99" — pass an explicit
+   * step (e.g. 1) to restrict to whole numbers. */
+  readonly step = input<number | 'any' | undefined>(undefined);
   readonly autocomplete = input<string>('off');
   /** When provided (e.g. by a parent form field), the input element uses this id instead of the internal one. */
   readonly controlId = input<string | undefined>();
@@ -88,6 +92,12 @@ export class InputComponent implements FormValueControl<string> {
   protected readonly nativePattern = computed<string | null>(() => {
     const patterns = this.pattern();
     return patterns.length ? patterns.map((p) => p.source).join('|') : null;
+  });
+
+  protected readonly nativeStep = computed<number | 'any' | null>(() => {
+    const step = this.step();
+    if (step !== undefined) return step;
+    return this.type() === 'number' ? 'any' : null;
   });
 
   protected readonly isPasswordType = computed(() => this.type() === 'password');
