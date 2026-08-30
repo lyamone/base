@@ -6,6 +6,5 @@ import { Directive } from '@angular/core';
  */
 @Directive({
   selector: '[ul-textarea-field]',
-  standalone: true,
 })
 export class TextareaFieldDirective {}

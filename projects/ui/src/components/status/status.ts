@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 import { IconComponent, IconName } from '../icon/icon';
 import { RadialComponent } from '../radial/radial';
@@ -7,11 +7,9 @@ export type Status = 'confirm' | 'alert' | 'error' | 'pending' | 'info';
 
 @Component({
   selector: 'ul-status',
-  standalone: true,
   imports: [IconComponent, RadialComponent],
   templateUrl: './status.html',
   styleUrl: './status.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatusComponent {
   status = input<Status>('info');

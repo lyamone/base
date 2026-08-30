@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, input, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, effect, input, signal, ViewEncapsulation } from '@angular/core';
 
 import { IconComponent, IconName } from '../icon/icon';
 import { SkeletonComponent } from '../skeleton/skeleton';
@@ -12,18 +12,17 @@ type IconSize = '5' | '6' | '7' | '8';
  */
 @Component({
   selector: 'ul-avatar',
-  standalone: true,
   imports: [IconComponent, SkeletonComponent],
   template: `
-    <ul-skeleton class="ul-avatar ul-avatar--{{ size() }}" [show]="loading()" variant="rect" borderRadius="full">
+    <ul-skeleton
+      class="ul-avatar ul-avatar--{{ size() }}"
+      [show]="loading()"
+      variant="rect"
+      borderRadius="full"
+    >
       <div class="ul-avatar ul-avatar--{{ size() }}">
         @if (src() && !imageError()) {
-          <img
-            [src]="src()"
-            [alt]="alt()"
-            (error)="handleImageError()"
-            class="ul-avatar__image"
-          />
+          <img [src]="src()" [alt]="alt()" (error)="handleImageError()" class="ul-avatar__image" />
         } @else if (initials()) {
           <span class="ul-avatar__initials">{{ initials() }}</span>
         } @else if (icon()) {
@@ -33,7 +32,6 @@ type IconSize = '5' | '6' | '7' | '8';
     </ul-skeleton>
   `,
   styleUrls: ['./avatar.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class AvatarComponent {

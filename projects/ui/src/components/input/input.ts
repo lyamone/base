@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input, model, output, signal } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import { Component, computed, input, model, output, signal } from '@angular/core';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import { ButtonComponent } from '../button/button';
 import { IconComponent } from '../icon/icon';
@@ -26,11 +30,9 @@ export type InputAppearance = 'border-only' | 'subtle-tint';
  */
 @Component({
   selector: 'ul-input',
-  standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent, ButtonComponent, IconComponent],
   templateUrl: './input.html',
   styleUrls: ['./input.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements FormValueControl<string> {
   readonly type = input<InputType>('text');
@@ -69,20 +71,36 @@ export class InputComponent implements FormValueControl<string> {
 
   protected readonly ids = createFormFieldIds('ul-input');
   protected readonly effectiveControlId = computed(() => this.controlId() ?? this.ids.controlId);
-  protected readonly effectiveHelperId = computed(() => (this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId));
-  protected readonly effectiveErrorId = computed(() => (this.controlId() ? `${this.controlId()}-error` : this.ids.errorId));
+  protected readonly effectiveHelperId = computed(() =>
+    this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId,
+  );
+  protected readonly effectiveErrorId = computed(() =>
+    this.controlId() ? `${this.controlId()}-error` : this.ids.errorId,
+  );
   protected readonly isFocused = signal(false);
   protected readonly hasError = computed(() => this.error() || this.invalid());
+
+  // [attr.pattern]="pattern()" would stringify an empty array to "" instead
+  // of omitting the attribute — an empty native pattern matches only the
+  // empty string, so every non-empty value would fail native validation.
+  // Native <input pattern> only accepts one regex source, so multiple
+  // patterns are combined as alternatives.
+  protected readonly nativePattern = computed<string | null>(() => {
+    const patterns = this.pattern();
+    return patterns.length ? patterns.map((p) => p.source).join('|') : null;
+  });
 
   protected readonly isPasswordType = computed(() => this.type() === 'password');
 
   protected readonly passwordRevealed = signal(false);
   protected readonly effectiveType = computed(() =>
-    this.isPasswordType() && this.passwordRevealed() ? 'text' : this.type()
+    this.isPasswordType() && this.passwordRevealed() ? 'text' : this.type(),
   );
-  protected readonly passwordToggleIcon = computed(() => (this.passwordRevealed() ? 'eye_on' : 'eye_dashed'));
+  protected readonly passwordToggleIcon = computed(() =>
+    this.passwordRevealed() ? 'eye_on' : 'eye_dashed',
+  );
   protected readonly passwordToggleLabel = computed(() =>
-    this.passwordRevealed() ? this.hidePasswordLabel() : this.showPasswordLabel()
+    this.passwordRevealed() ? this.hidePasswordLabel() : this.showPasswordLabel(),
   );
 
   protected readonly describedBy = computed(() =>
@@ -91,8 +109,8 @@ export class InputComponent implements FormValueControl<string> {
       this.effectiveErrorId(),
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 
   // Outputs

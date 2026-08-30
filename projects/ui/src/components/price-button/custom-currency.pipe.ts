@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
  */
 @Pipe({
   name: 'peCurrency',
-  standalone: true,
 })
 export class CustomCurrencyPipe extends CurrencyPipe implements PipeTransform {
   private static readonly UOS_SYMBOL = 'ᕫ';
@@ -34,7 +33,9 @@ export class CustomCurrencyPipe extends CurrencyPipe implements PipeTransform {
     locale?: string,
   ): string | null {
     const customDisplay = currencyCode === 'UOS' ? CustomCurrencyPipe.UOS_SYMBOL : display;
-    return this.separateCurrencyAndPrice(super.transform(value, currencyCode, customDisplay, digitsInfo, locale));
+    return this.separateCurrencyAndPrice(
+      super.transform(value, currencyCode, customDisplay, digitsInfo, locale),
+    );
   }
 
   private separateCurrencyAndPrice(input: string | null): string | null {

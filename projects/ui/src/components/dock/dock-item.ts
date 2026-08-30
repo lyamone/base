@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  contentChild,
-  input,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, computed, contentChild, input, ViewEncapsulation } from '@angular/core';
 
 import { IconComponent, type IconName } from '../icon/icon';
 import { DockItemContentSlotDirective } from './dock-item-slot.directive';
@@ -36,11 +29,9 @@ export type DockItemVariant = 'default' | 'accent';
  */
 @Component({
   selector: 'ul-dock-item',
-  standalone: true,
   imports: [IconComponent],
   templateUrl: './dock-item.html',
   styleUrls: ['./dock-item.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class DockItemComponent {

@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   contentChildren,
   effect,
@@ -15,10 +14,8 @@ import Splide, { Options } from '@splidejs/splide';
 
 @Component({
   selector: 'ul-carousel-item',
-  standalone: true,
   template: ` <ng-content /> `,
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'splide__slide ul-carousel__item',
   },
@@ -27,7 +24,6 @@ export class CarouselItemComponent {}
 
 @Component({
   selector: 'ul-carousel',
-  standalone: true,
   template: `
     <div class="splide ul-carousel" #carousel role="region" aria-roledescription="carousel">
       <div class="splide__track ul-carousel__track">
@@ -39,7 +35,6 @@ export class CarouselItemComponent {}
   `,
   styleUrl: './carousel.scss',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselComponent implements AfterViewInit, OnDestroy {
   options = input<Options>({

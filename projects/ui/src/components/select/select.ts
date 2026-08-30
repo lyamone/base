@@ -1,5 +1,17 @@
-import { ChangeDetectionStrategy, Component, computed, effect, input, model, output, ViewEncapsulation } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import {
+  Component,
+  computed,
+  effect,
+  input,
+  model,
+  output,
+  ViewEncapsulation,
+} from '@angular/core';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import { DropdownComponent, DropdownItem } from '../dropdown/dropdown';
 import {
@@ -25,12 +37,10 @@ export interface SelectOption extends DropdownItem {
  */
 @Component({
   selector: 'ul-select',
-  standalone: true,
   imports: [DropdownComponent, FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './select.html',
   styleUrls: ['./select.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent implements FormValueControl<string | null> {
   readonly size = input<UiSize>('md');
@@ -74,8 +84,8 @@ export class SelectComponent implements FormValueControl<string | null> {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 
   constructor() {
@@ -107,4 +117,3 @@ export class SelectComponent implements FormValueControl<string | null> {
     this.touch.emit();
   }
 }
-

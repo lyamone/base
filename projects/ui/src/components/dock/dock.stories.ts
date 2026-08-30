@@ -9,7 +9,6 @@ import { DockItemComponent } from './dock-item';
 
 @Component({
   selector: 'ul-dock-demo',
-  standalone: true,
   imports: [DockComponent, DockItemComponent, IconComponent, DockItemContentSlotDirective],
   template: `
     <div style="min-height: 100vh; background: var(--color-background-main, #0a0a0a);">

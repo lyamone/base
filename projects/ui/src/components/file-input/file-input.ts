@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -10,7 +9,11 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import {
   createFormFieldIds,
@@ -32,11 +35,9 @@ export type FileInputAppearance = 'border-only' | 'subtle-tint';
  */
 @Component({
   selector: 'ul-file-input',
-  standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './file-input.html',
   styleUrls: ['./file-input.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileInputComponent implements FormValueControl<FileList | null> {
   readonly size = input<UiSize>('md');
@@ -66,10 +67,10 @@ export class FileInputComponent implements FormValueControl<FileList | null> {
   protected readonly ids = createFormFieldIds('ul-file-input');
   protected readonly effectiveControlId = computed(() => this.controlId() ?? this.ids.controlId);
   protected readonly effectiveHelperId = computed(() =>
-    this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId
+    this.controlId() ? `${this.controlId()}-helper` : this.ids.helperId,
   );
   protected readonly effectiveErrorId = computed(() =>
-    this.controlId() ? `${this.controlId()}-error` : this.ids.errorId
+    this.controlId() ? `${this.controlId()}-error` : this.ids.errorId,
   );
   protected readonly isFocused = signal(false);
   protected readonly hasError = computed(() => this.error() || this.invalid());
@@ -80,8 +81,8 @@ export class FileInputComponent implements FormValueControl<FileList | null> {
       this.effectiveErrorId(),
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 
   /** Display text for selected file(s). */

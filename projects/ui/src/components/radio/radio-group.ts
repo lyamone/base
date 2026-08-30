@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input, model } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import { Component, computed, input, model } from '@angular/core';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import {
   createFormFieldIds,
@@ -20,7 +24,6 @@ export interface RadioGroupOption {
  */
 @Component({
   selector: 'ul-radio-group',
-  standalone: true,
   imports: [RadioComponent, FormFieldLabelComponent, FormFieldHelperComponent],
   template: `
     <div
@@ -53,13 +56,14 @@ export interface RadioGroupOption {
       <ul-form-field-helper
         [id]="ids.helperId"
         [helperText]="helperText()"
-        [errorText]="errorText() || (hasError() && errors().length ? (errors()[0].message ?? null) : null)"
+        [errorText]="
+          errorText() || (hasError() && errors().length ? (errors()[0].message ?? null) : null)
+        "
         [error]="hasError()"
       />
     </div>
   `,
   styleUrls: ['./radio-group.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioGroupComponent implements FormValueControl<string | null> {
   readonly name = input.required<string>();
@@ -83,7 +87,7 @@ export class RadioGroupComponent implements FormValueControl<string | null> {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 }

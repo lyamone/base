@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input, model } from '@angular/core';
-import type { FormCheckboxControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import { Component, computed, input, model } from '@angular/core';
+import type {
+  FormCheckboxControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import {
   createFormFieldIds,
@@ -18,7 +22,6 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
  */
 @Component({
   selector: 'ul-checkbox',
-  standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   template: `
     <div
@@ -76,7 +79,6 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
     </div>
   `,
   styleUrls: ['./checkbox.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent implements FormCheckboxControl {
   checked = model<boolean>(false);
@@ -99,7 +101,7 @@ export class CheckboxComponent implements FormCheckboxControl {
   protected readonly resolvedErrorText = computed(
     () =>
       this.errorText() ||
-      (this.hasError() && this.errors().length ? (this.errors()[0]?.message ?? null) : null)
+      (this.hasError() && this.errors().length ? (this.errors()[0]?.message ?? null) : null),
   );
 
   protected readonly describedBy = computed(() =>
@@ -108,8 +110,8 @@ export class CheckboxComponent implements FormCheckboxControl {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.resolvedErrorText()
-    )
+      !!this.resolvedErrorText(),
+    ),
   );
 
   onChange(event: Event): void {

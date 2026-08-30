@@ -25,8 +25,8 @@ import { SearchSelectComponent } from './search-select/search-select';
 import { SelectComponent } from './select/select';
 
 const breadcrumbItems: BreadcrumbItem[] = [
-  { label: 'Home', href: '/',  },
-  { label: 'Games', href: '/games', },
+  { label: 'Home', href: '/' },
+  { label: 'Games', href: '/games' },
   { label: 'Chrono Nexus' },
 ];
 
@@ -53,7 +53,6 @@ const searchOptions = [
 
 @Component({
   selector: 'ul-demo-product-page',
-  standalone: true,
   imports: [
     NavbarComponent,
     NavbarLogoSlotDirective,
@@ -79,14 +78,15 @@ const searchOptions = [
   template: `
     <div class="ul-demo-product-page">
       <ul-navbar logoHref="/" [avatarInitials]="'JD'">
-        <a ul-navbar-logo href="/" class="ul-text-primary ul-typography-brand-headline-m-extrablack">
+        <a
+          ul-navbar-logo
+          href="/"
+          class="ul-text-primary ul-typography-brand-headline-m-extrablack"
+        >
           <img src="assets/img/logo.png" alt="Player Eleven" class="ul-demo-product-page__logo" />
         </a>
         <div ul-navbar-search>
-          <ul-search-select
-            placeholder="Search games..."
-            [options]="searchOptions"
-            size="md" />
+          <ul-search-select placeholder="Search games..." [options]="searchOptions" size="md" />
         </div>
         <ul-avatar ul-navbar-avatar initials="JD" size="md" />
       </ul-navbar>
@@ -128,18 +128,22 @@ const searchOptions = [
           </div>
 
           <aside class="ul-demo-product-page__info">
-          
-              <div class="ul-demo-product-page__badges">
-            <p class="ul-demo-product-page__category">Action RPG</p>
+            <div class="ul-demo-product-page__badges">
+              <p class="ul-demo-product-page__category">Action RPG</p>
               <ul-pill theme="transparent-red" variant="read-only">Sale</ul-pill>
-              <ul-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="ul-demo-product-page__wishlist-btn">
+              <ul-button
+                theme="ghost-white"
+                [iconOnly]="true"
+                ariaLabel="Add to wishlist"
+                class="ul-demo-product-page__wishlist-btn"
+              >
                 <ul-icon icon="heart" size="6" />
               </ul-button>
             </div>
             <h1 class="ul-demo-product-page__title">Chrono Nexus</h1>
-            <p class="ul-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
-
-
+            <p class="ul-demo-product-page__subtitle">
+              Bend time. Shape destiny. An epic journey across fractured realities.
+            </p>
 
             <div class="ul-demo-product-page__form-block">
               <ul-select
@@ -149,15 +153,14 @@ const searchOptions = [
                 theme="transparent-white"
                 size="md"
               />
-                <ul-select
-                  [options]="quantityDropdownItems"
-                  theme="transparent-white"
-                  label="Quantity"
-                  [(value)]="selectedQuantity"
-                />
-
+              <ul-select
+                [options]="quantityDropdownItems"
+                theme="transparent-white"
+                label="Quantity"
+                [(value)]="selectedQuantity"
+              />
             </div>
-            
+
             <div class="ul-demo-product-page__price-block">
               <ul-price-button
                 label="Add to cart"
@@ -194,14 +197,23 @@ const searchOptions = [
             <ul-accordion-item>
               <ng-container ul-accordion-label>System Requirements</ng-container>
               <ng-container ul-accordion-content>
-                <p><strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX 1060</p>
-                <p><strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM, NVIDIA RTX 3060</p>
+                <p>
+                  <strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX
+                  1060
+                </p>
+                <p>
+                  <strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM, NVIDIA
+                  RTX 3060
+                </p>
               </ng-container>
             </ul-accordion-item>
             <ul-accordion-item>
               <ng-container ul-accordion-label>Shipping & Returns</ng-container>
               <ng-container ul-accordion-content>
-                <p>Digital products are delivered instantly. Full refund within 14 days if not satisfied.</p>
+                <p>
+                  Digital products are delivered instantly. Full refund within 14 days if not
+                  satisfied.
+                </p>
               </ng-container>
             </ul-accordion-item>
           </ul-accordion>
@@ -352,7 +364,8 @@ class DemoProductPageComponent {
 
   carouselOptions = { autoplay: false, pagination: true };
 
-  descriptionHtml = '<h1>Chrono Nexus </h1> <p>Chrono Nexus is a stunning action RPG where you wield the power of time itself. Navigate through fractured timelines, battle temporal anomalies, and forge alliances across different eras. Features <strong>fluid combat</strong>, rich storytelling, and breathtaking visuals powered by next-gen technology.</p>';
+  descriptionHtml =
+    '<h1>Chrono Nexus </h1> <p>Chrono Nexus is a stunning action RPG where you wield the power of time itself. Navigate through fractured timelines, battle temporal anomalies, and forge alliances across different eras. Features <strong>fluid combat</strong>, rich storytelling, and breathtaking visuals powered by next-gen technology.</p>';
 
   copyrightText = `© ${new Date().getFullYear()} Player Eleven. All rights reserved.`;
   socialLinks = [
@@ -366,7 +379,6 @@ class DemoProductPageComponent {
 
 @Component({
   selector: 'ul-demo-product-page-with-layout',
-  standalone: true,
   imports: [
     DemoAppLayoutComponent,
     NavbarLogoSlotDirective,
@@ -394,10 +406,7 @@ class DemoProductPageComponent {
         <img src="assets/img/logo.png" alt="Player Eleven" class="ul-demo-product-page__logo" />
       </a>
       <div ul-navbar-search>
-        <ul-search-select
-          placeholder="Search games..."
-          [options]="searchOptions"
-          size="md" />
+        <ul-search-select placeholder="Search games..." [options]="searchOptions" size="md" />
       </div>
       <ul-avatar ul-navbar-avatar initials="JD" size="md" />
 
@@ -442,12 +451,19 @@ class DemoProductPageComponent {
               <div class="ul-demo-product-page__badges">
                 <p class="ul-demo-product-page__category">Action RPG</p>
                 <ul-pill theme="transparent-red" variant="read-only">Sale</ul-pill>
-                <ul-button theme="ghost-white" [iconOnly]="true" ariaLabel="Add to wishlist" class="ul-demo-product-page__wishlist-btn">
+                <ul-button
+                  theme="ghost-white"
+                  [iconOnly]="true"
+                  ariaLabel="Add to wishlist"
+                  class="ul-demo-product-page__wishlist-btn"
+                >
                   <ul-icon icon="heart" size="6" />
                 </ul-button>
               </div>
               <h1 class="ul-demo-product-page__title">Chrono Nexus</h1>
-              <p class="ul-demo-product-page__subtitle">Bend time. Shape destiny. An epic journey across fractured realities.</p>
+              <p class="ul-demo-product-page__subtitle">
+                Bend time. Shape destiny. An epic journey across fractured realities.
+              </p>
 
               <div class="ul-demo-product-page__form-block">
                 <ul-select
@@ -485,9 +501,9 @@ class DemoProductPageComponent {
                 <ng-container ul-accordion-content>
                   <p>
                     Chrono Nexus is a stunning action RPG where you wield the power of time itself.
-                    Navigate through fractured timelines, battle temporal anomalies, and forge alliances
-                    across different eras. Features fluid combat, rich storytelling, and breathtaking
-                    visuals powered by next-gen technology.
+                    Navigate through fractured timelines, battle temporal anomalies, and forge
+                    alliances across different eras. Features fluid combat, rich storytelling, and
+                    breathtaking visuals powered by next-gen technology.
                   </p>
                 </ng-container>
               </ul-accordion-item>
@@ -506,14 +522,23 @@ class DemoProductPageComponent {
               <ul-accordion-item>
                 <ng-container ul-accordion-label>System Requirements</ng-container>
                 <ng-container ul-accordion-content>
-                  <p><strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX 1060</p>
-                  <p><strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM, NVIDIA RTX 3060</p>
+                  <p>
+                    <strong>Minimum:</strong> Windows 10 64-bit, Intel Core i5, 8 GB RAM, NVIDIA GTX
+                    1060
+                  </p>
+                  <p>
+                    <strong>Recommended:</strong> Windows 11 64-bit, Intel Core i7, 16 GB RAM,
+                    NVIDIA RTX 3060
+                  </p>
                 </ng-container>
               </ul-accordion-item>
               <ul-accordion-item>
                 <ng-container ul-accordion-label>Shipping & Returns</ng-container>
                 <ng-container ul-accordion-content>
-                  <p>Digital products are delivered instantly. Full refund within 14 days if not satisfied.</p>
+                  <p>
+                    Digital products are delivered instantly. Full refund within 14 days if not
+                    satisfied.
+                  </p>
                 </ng-container>
               </ul-accordion-item>
             </ul-accordion>
@@ -718,7 +743,8 @@ export const NavbarOnly: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Product page without sidebar layout. Use when the app does not have a drawer/sidebar.',
+        story:
+          'Product page without sidebar layout. Use when the app does not have a drawer/sidebar.',
       },
     },
   },

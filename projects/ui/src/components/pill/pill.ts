@@ -1,12 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 
 import { ButtonComponent } from '../button/button';
 import { IconComponent } from '../icon/icon';
 
 export type PillSize = 'md' | 'lg';
 
-export type PillVariant = 'interactive' | 'interactive-rounded' | 'read-only' | 'dismissible' | 'selectable';
+export type PillVariant =
+  | 'interactive'
+  | 'interactive-rounded'
+  | 'read-only'
+  | 'dismissible'
+  | 'selectable';
 
 export type PillTheme =
   | 'fill-white'
@@ -26,11 +31,9 @@ export type PillTheme =
 
 @Component({
   selector: 'ul-pill',
-  standalone: true,
   imports: [CommonModule, ButtonComponent, IconComponent],
   templateUrl: './pill.html',
   styleUrls: ['./pill.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PillComponent {
   variant = input<PillVariant>('interactive');
@@ -49,7 +52,12 @@ export class PillComponent {
   });
 
   modifierClass = computed(() => {
-    const classes = ['ul-pill', `ul-pill--${this.variant()}`, `ul-pill--${this.theme()}`, `ul-pill--${this.size()}`];
+    const classes = [
+      'ul-pill',
+      `ul-pill--${this.variant()}`,
+      `ul-pill--${this.theme()}`,
+      `ul-pill--${this.size()}`,
+    ];
 
     if (this.disabled()) {
       classes.push('ul-pill--disabled');

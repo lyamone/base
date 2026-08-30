@@ -10,7 +10,6 @@ import type { UiSize, UiTheme } from '../shared/ui-types';
  */
 @Directive({
   selector: '[peButton]',
-  standalone: true,
   host: {
     '[attr.role]': '"button"',
     '[class]': 'allClasses()',

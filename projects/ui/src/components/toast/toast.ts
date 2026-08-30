@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, inject } from '@angular/core';
+import { Component, ViewEncapsulation, computed, inject } from '@angular/core';
 
 import { ButtonComponent } from '../button/button';
 import { IconComponent } from '../icon/icon';
@@ -7,12 +7,10 @@ import { ToastService, ToastWithRole } from './toast.service';
 
 @Component({
   selector: 'ul-toast-container',
-  standalone: true,
   imports: [ButtonComponent, IconComponent],
   templateUrl: './toast.html',
   styleUrl: './toast.scss',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastContainerComponent {
   private readonly toastService = inject(ToastService);
@@ -26,4 +24,3 @@ export class ToastContainerComponent {
     this.toastService.dismiss(id);
   }
 }
-

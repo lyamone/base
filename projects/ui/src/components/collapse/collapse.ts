@@ -1,6 +1,5 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -32,11 +31,15 @@ export type CollapseVariant = 'text' | 'icon';
  */
 @Component({
   selector: 'ul-collapse',
-  standalone: true,
   imports: [ButtonComponent, IconComponent],
   template: `
     <div [class]="computedClasses()">
-      <div class="ul-collapse__content" #content [attr.aria-expanded]="!collapsed()" [attr.aria-hidden]="collapsed()">
+      <div
+        class="ul-collapse__content"
+        #content
+        [attr.aria-expanded]="!collapsed()"
+        [attr.aria-hidden]="collapsed()"
+      >
         <ng-content />
       </div>
       @if (isCollapsible()) {
@@ -47,7 +50,8 @@ export type CollapseVariant = 'text' | 'icon';
             class="ul-collapse__toggle-button"
             (click)="toggle()"
             (keydown)="onToggleKeydown($event)"
-            [attr.aria-label]="collapsed() ? expandLabel() : collapseLabel()">
+            [attr.aria-label]="collapsed() ? expandLabel() : collapseLabel()"
+          >
             @if (variant() === 'text') {
               <span>
                 {{ collapsed() ? expandLabel() : collapseLabel() }}
@@ -66,7 +70,6 @@ export type CollapseVariant = 'text' | 'icon';
     '[style.--ul-collapse-full-height.px]': 'fullHeight()',
     role: 'region',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapseComponent implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);

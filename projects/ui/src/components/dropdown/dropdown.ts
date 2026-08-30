@@ -1,7 +1,6 @@
 import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { NgTemplateOutlet } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   input,
@@ -59,12 +58,18 @@ export type DropdownItem = {
  */
 @Component({
   selector: 'ul-dropdown',
-  standalone: true,
-  imports: [CdkMenuTrigger, CdkMenu, CdkMenuItem, NgTemplateOutlet, ListItemComponent, IconComponent, ButtonComponent],
+  imports: [
+    CdkMenuTrigger,
+    CdkMenu,
+    CdkMenuItem,
+    NgTemplateOutlet,
+    ListItemComponent,
+    IconComponent,
+    ButtonComponent,
+  ],
   templateUrl: './dropdown.html',
   styleUrls: ['./dropdown.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownComponent {
   /**

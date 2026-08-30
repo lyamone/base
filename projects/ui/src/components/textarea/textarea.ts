@@ -1,14 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  contentChild,
-  input,
-  model,
-  output,
-  signal,
-} from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import { Component, computed, contentChild, input, model, output, signal } from '@angular/core';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import {
   createFormFieldIds,
@@ -30,11 +25,9 @@ export type TextareaResize = 'none' | 'vertical' | 'horizontal' | 'both';
  */
 @Component({
   selector: 'ul-textarea',
-  standalone: true,
   imports: [FormFieldLabelComponent, FormFieldHelperComponent],
   templateUrl: './textarea.html',
   styleUrls: ['./textarea.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextareaComponent implements FormValueControl<string> {
   readonly size = input<UiSize>('md');
@@ -76,8 +69,8 @@ export class TextareaComponent implements FormValueControl<string> {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 
   readonly inputBlur = output<FocusEvent>();

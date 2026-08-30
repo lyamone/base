@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 /**
  * Shared helper/error text for form fields (input, select, textarea).
@@ -6,7 +6,6 @@ import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@a
  */
 @Component({
   selector: 'ul-form-field-helper',
-  standalone: true,
   template: `
     <span
       [id]="id()"
@@ -21,7 +20,6 @@ import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@a
     </span>
   `,
   styleUrls: ['./form-field.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class FormFieldHelperComponent {

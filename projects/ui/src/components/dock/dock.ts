@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 /**
  * Mobile-only bottom navigation bar, styled like an app's tab bar
@@ -17,10 +17,8 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
  */
 @Component({
   selector: 'ul-dock',
-  standalone: true,
   templateUrl: './dock.html',
   styleUrls: ['./dock.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class DockComponent {}

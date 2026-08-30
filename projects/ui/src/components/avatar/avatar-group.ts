@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 
 import { AvatarComponent } from './avatar';
 import type { UiSize } from '../shared/ui-types';
@@ -19,10 +19,10 @@ export interface AvatarData {
  */
 @Component({
   selector: 'ul-avatar-group',
-  standalone: true,
   imports: [AvatarComponent],
   template: `
-    <div class="ul-avatar-group ul-avatar-group--{{this.size()}}"
+    <div
+      class="ul-avatar-group ul-avatar-group--{{ this.size() }}"
       [class.ul-avatar-group--stacked]="stacked()"
     >
       @for (avatar of visibleAvatars(); track $index) {
@@ -36,15 +36,16 @@ export interface AvatarData {
         />
       }
       @if (remainingCount() > 0) {
-        <div class="ul-avatar-group__overflow ul-avatar-group__overflow--{{this.size()}}" 
-          [class.ul-avatar-group__overflow-avatar]="!stacked()">
+        <div
+          class="ul-avatar-group__overflow ul-avatar-group__overflow--{{ this.size() }}"
+          [class.ul-avatar-group__overflow-avatar]="!stacked()"
+        >
           <span class="ul-avatar-group__overflow-text">+{{ remainingCount() }}</span>
         </div>
       }
     </div>
   `,
   styleUrls: ['./avatar-group.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class AvatarGroupComponent {

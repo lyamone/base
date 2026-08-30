@@ -1,4 +1,4 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { booleanAttribute, Component, input, ViewEncapsulation } from '@angular/core';
 
 import { SkeletonComponent } from '../skeleton/skeleton';
 
@@ -10,7 +10,6 @@ export type MediaAspectRatio = 'default' | 'square' | 'portrait';
 
 @Component({
   selector: 'ul-card',
-  standalone: true,
   imports: [SkeletonComponent],
   templateUrl: './card.html',
   styleUrls: ['./card.scss'],
@@ -29,7 +28,6 @@ export type MediaAspectRatio = 'default' | 'square' | 'portrait';
     '[class.ul-card--media-blurred]': 'mediaBlur()',
   },
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
   // State inputs

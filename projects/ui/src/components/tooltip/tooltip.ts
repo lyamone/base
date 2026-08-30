@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   HostBinding,
   HostListener,
@@ -12,11 +11,9 @@ export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
 
 @Component({
   selector: 'ul-tooltip',
-  standalone: true,
   templateUrl: './tooltip.html',
   styleUrl: './tooltip.scss',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipComponent {
   text = input<string>('');
@@ -95,4 +92,3 @@ export class TooltipComponent {
     }
   }
 }
-

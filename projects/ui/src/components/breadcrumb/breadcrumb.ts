@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { IconComponent } from '../icon/icon';
@@ -29,11 +29,9 @@ export type BreadcrumbSeparator = 'chevron_right' | 'slash' | 'dot';
  */
 @Component({
   selector: 'ul-breadcrumb',
-  standalone: true,
   imports: [IconComponent, RouterLink],
   templateUrl: './breadcrumb.html',
   styleUrls: ['./breadcrumb.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class BreadcrumbComponent {

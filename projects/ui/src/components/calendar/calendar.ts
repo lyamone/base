@@ -1,6 +1,5 @@
 import { CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -10,7 +9,11 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import {
   createFormFieldIds,
@@ -44,7 +47,6 @@ export interface TimeSelection {
  */
 @Component({
   selector: 'ul-calendar',
-  standalone: true,
   imports: [
     CdkMenuTrigger,
     CdkMenu,
@@ -55,7 +57,6 @@ export interface TimeSelection {
   ],
   templateUrl: './calendar.html',
   styleUrls: ['./calendar.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class CalendarComponent implements FormValueControl<Date | null> {
@@ -153,7 +154,7 @@ export class CalendarComponent implements FormValueControl<Date | null> {
   protected readonly resolvedErrorText = computed(
     () =>
       this.errorText() ||
-      (this.hasError() && this.errors().length ? (this.errors()[0]?.message ?? null) : null)
+      (this.hasError() && this.errors().length ? (this.errors()[0]?.message ?? null) : null),
   );
 
   readonly describedBy = computed(() =>
@@ -162,8 +163,8 @@ export class CalendarComponent implements FormValueControl<Date | null> {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.resolvedErrorText()
-    )
+      !!this.resolvedErrorText(),
+    ),
   );
 
   readonly calendarDays = computed<CalendarDay[]>(() => {
@@ -187,8 +188,7 @@ export class CalendarComponent implements FormValueControl<Date | null> {
       const isCurrentMonth = date.getMonth() === month.getMonth();
       const isToday = date.getTime() === today.getTime();
       const isSelected =
-        selected !== null &&
-        date.getTime() === new Date(selected).setHours(0, 0, 0, 0);
+        selected !== null && date.getTime() === new Date(selected).setHours(0, 0, 0, 0);
       const isDisabled = this.isDateDisabled(date);
 
       days.push({

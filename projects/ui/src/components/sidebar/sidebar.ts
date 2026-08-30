@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  input,
-  model,
-  output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, HostListener, input, model, output, ViewEncapsulation } from '@angular/core';
 
 import { ButtonComponent } from '../button/button';
 import { IconComponent, IconName } from '../icon/icon';
@@ -22,11 +14,9 @@ export type SidebarItem = {
 
 @Component({
   selector: 'ul-sidebar',
-  standalone: true,
   imports: [ButtonComponent, IconComponent, ListItemComponent],
   templateUrl: './sidebar.html',
   styleUrls: ['./sidebar.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
     '[attr.aria-hidden]': '!open()',

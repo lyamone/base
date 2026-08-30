@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output, ViewEncapsulation } from '@angular/core';
+import { Component, input, output, ViewEncapsulation } from '@angular/core';
 
 import type { UiSize, UiTheme } from '../shared/ui-types';
 import { ButtonComponent } from '../button/button';
@@ -10,12 +10,10 @@ export type Currency = 'UOS' | string;
 
 @Component({
   selector: 'ul-price-button',
-  standalone: true,
   imports: [ButtonComponent, CustomCurrencyPipe],
   templateUrl: './price-button.html',
   styleUrl: './price-button.scss',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'ul-price-button',
     '[class.ul-price-button--sale-left]': 'salePosition() === "left"',

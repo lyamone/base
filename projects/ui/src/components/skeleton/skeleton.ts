@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, computed, input } from '@angular/core';
+import { Component, ViewEncapsulation, computed, input } from '@angular/core';
 
 export type SkeletonVariant = 'rect' | 'text';
 
@@ -7,12 +7,10 @@ export type SkeletonBorderRadius = 'xs' | 'sm' | 'md' | 'lg' | 'full';
 
 @Component({
   selector: 'ul-skeleton',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './skeleton.html',
   styleUrls: ['./skeleton.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonComponent {
   readonly variant = input<SkeletonVariant>('rect');
@@ -55,4 +53,3 @@ export class SkeletonComponent {
     return index;
   }
 }
-

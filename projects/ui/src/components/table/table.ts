@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, model, output, signal } from '@angular/core';
+import { Component, computed, input, model, output, signal } from '@angular/core';
 
 import { IconComponent } from '../icon/icon';
 import { InputComponent } from '../input/input';
@@ -19,11 +19,9 @@ export type SortDirection = 'asc' | 'desc';
  */
 @Component({
   selector: 'ul-table',
-  standalone: true,
   imports: [InputComponent, IconComponent, SkeletonComponent],
   templateUrl: './table.html',
   styleUrls: ['./table.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
   readonly columns = input<TableColumn[]>([]);
@@ -43,7 +41,7 @@ export class TableComponent {
   protected readonly filterQuery = signal('');
 
   protected readonly hasSortableColumn = computed(() =>
-    this.columns().some((col) => col.sortable === true)
+    this.columns().some((col) => col.sortable === true),
   );
 
   protected readonly filteredData = computed(() => {

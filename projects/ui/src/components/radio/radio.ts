@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, computed, input, model, output, signal, ViewEncapsulation } from '@angular/core';
+import {
+  booleanAttribute,
+  Component,
+  computed,
+  input,
+  model,
+  output,
+  signal,
+  ViewEncapsulation,
+} from '@angular/core';
 
 /**
  * Radio button for use inside a group. For Signal Forms use ul-radio-group with [formField].
@@ -10,7 +19,6 @@ import { booleanAttribute, Component, computed, input, model, output, signal, Vi
  */
 @Component({
   selector: 'ul-radio',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './radio.html',
   styleUrls: ['./radio.scss'],

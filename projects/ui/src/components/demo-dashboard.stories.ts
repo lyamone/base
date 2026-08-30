@@ -7,10 +7,7 @@ import { ButtonComponent } from './button/button';
 import { CardComponent } from './card/card';
 import { DemoAppLayoutComponent } from './demo-app-layout.stories';
 import { IconComponent } from './icon/icon';
-import {
-  NavbarAvatarSlotDirective,
-  NavbarLogoSlotDirective,
-} from './navbar/index';
+import { NavbarAvatarSlotDirective, NavbarLogoSlotDirective } from './navbar/index';
 import { ListItemComponent } from './list-item/list-item';
 import { RadialComponent } from './radial/radial';
 import { SidebarComponent, SidebarItem } from './sidebar/sidebar';
@@ -26,7 +23,6 @@ const sidebarItems: SidebarItem[] = [
 
 @Component({
   selector: 'ul-demo-dashboard',
-  standalone: true,
   imports: [
     SidebarComponent,
     CardComponent,
@@ -42,24 +38,19 @@ const sidebarItems: SidebarItem[] = [
         [items]="sidebarItems"
         theme="ghost-white"
         [selectedIndex]="selectedIndex()"
-        (itemSelected)="onItemSelected($event)">
+        (itemSelected)="onItemSelected($event)"
+      >
       </ul-sidebar>
       <main class="ul-demo-dashboard__main">
         <h1 class="ul-demo-dashboard__title">Dashboard</h1>
         <div class="ul-demo-dashboard__grid">
-          <ul-card
-            cardCaption="Storage"
-            cardTitle="75% used"
-            cardSubtitle="12.4 GB of 16 GB">
+          <ul-card cardCaption="Storage" cardTitle="75% used" cardSubtitle="12.4 GB of 16 GB">
             <div udsCardFooter class="ul-demo-dashboard__card-footer">
               <ul-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
               <ul-button theme="ghost-white">View</ul-button>
             </div>
           </ul-card>
-          <ul-card
-            cardCaption="Status"
-            cardTitle="Active"
-            cardSubtitle="All systems operational">
+          <ul-card cardCaption="Status" cardTitle="Active" cardSubtitle="All systems operational">
             <div udsCardFooter class="ul-demo-dashboard__card-footer">
               <ul-status status="confirm">
                 <span ul-status-title>Running</span>
@@ -67,19 +58,13 @@ const sidebarItems: SidebarItem[] = [
               <ul-button theme="ghost-white">Details</ul-button>
             </div>
           </ul-card>
-          <ul-card
-            cardCaption="Tasks"
-            cardTitle="8 of 10 complete"
-            cardSubtitle="2 pending">
+          <ul-card cardCaption="Tasks" cardTitle="8 of 10 complete" cardSubtitle="2 pending">
             <div udsCardFooter class="ul-demo-dashboard__card-footer">
               <ul-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
               <ul-button theme="fill-purple">Continue</ul-button>
             </div>
           </ul-card>
-          <ul-card
-            cardCaption="Alerts"
-            cardTitle="1 pending"
-            cardSubtitle="Review required">
+          <ul-card cardCaption="Alerts" cardTitle="1 pending" cardSubtitle="Review required">
             <div udsCardFooter class="ul-demo-dashboard__card-footer">
               <ul-status status="alert">
                 <span ul-status-title>Action needed</span>
@@ -140,7 +125,6 @@ class DemoDashboardComponent {
 
 @Component({
   selector: 'ul-demo-dashboard-with-layout',
-  standalone: true,
   imports: [
     DemoAppLayoutComponent,
     NavbarLogoSlotDirective,
@@ -156,26 +140,25 @@ class DemoDashboardComponent {
   ],
   template: `
     <ul-demo-app-layout [sidebarItems]="sidebarItems">
-      <a ul-navbar-logo href="/" class="ul-text-primary" style="font-weight: 700; color: inherit; text-decoration: none;">
+      <a
+        ul-navbar-logo
+        href="/"
+        class="ul-text-primary"
+        style="font-weight: 700; color: inherit; text-decoration: none;"
+      >
         Player Eleven
       </a>
       <ul-avatar ul-navbar-avatar initials="JD" size="md" />
 
       <h1 class="ul-demo-dashboard__title">Dashboard</h1>
       <div class="ul-demo-dashboard__grid">
-        <ul-card
-          cardCaption="Storage"
-          cardTitle="75% used"
-          cardSubtitle="12.4 GB of 16 GB">
+        <ul-card cardCaption="Storage" cardTitle="75% used" cardSubtitle="12.4 GB of 16 GB">
           <div udsCardFooter class="ul-demo-dashboard__card-footer">
             <ul-radial size="48" [percentage]="75" ariaLabel="Storage 75%" />
             <ul-button theme="ghost-white">View</ul-button>
           </div>
         </ul-card>
-        <ul-card
-          cardCaption="Status"
-          cardTitle="Active"
-          cardSubtitle="All systems operational">
+        <ul-card cardCaption="Status" cardTitle="Active" cardSubtitle="All systems operational">
           <div udsCardFooter class="ul-demo-dashboard__card-footer">
             <ul-status status="confirm">
               <span ul-status-title>Running</span>
@@ -183,19 +166,13 @@ class DemoDashboardComponent {
             <ul-button theme="ghost-white">Details</ul-button>
           </div>
         </ul-card>
-        <ul-card
-          cardCaption="Tasks"
-          cardTitle="8 of 10 complete"
-          cardSubtitle="2 pending">
+        <ul-card cardCaption="Tasks" cardTitle="8 of 10 complete" cardSubtitle="2 pending">
           <div udsCardFooter class="ul-demo-dashboard__card-footer">
             <ul-radial size="48" [percentage]="80" ariaLabel="Tasks 80%" />
             <ul-button theme="fill-purple">Continue</ul-button>
           </div>
         </ul-card>
-        <ul-card
-          cardCaption="Alerts"
-          cardTitle="1 pending"
-          cardSubtitle="Review required">
+        <ul-card cardCaption="Alerts" cardTitle="1 pending" cardSubtitle="Review required">
           <div udsCardFooter class="ul-demo-dashboard__card-footer">
             <ul-status status="alert">
               <span ul-status-title>Action needed</span>
@@ -242,7 +219,8 @@ const meta: Meta<DemoDashboardComponent> = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'App shell with sidebar navigation and a grid of KPI-style cards using Radial and Status.',
+        component:
+          'App shell with sidebar navigation and a grid of KPI-style cards using Radial and Status.',
       },
     },
   },

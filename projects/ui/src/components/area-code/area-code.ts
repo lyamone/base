@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 /**
  * A code display component that shows code with automatic line numbering.
@@ -12,10 +12,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
  */
 @Component({
   selector: 'ul-area-code',
-  standalone: true,
   templateUrl: './area-code.html',
   styleUrls: ['./area-code.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AreaCodeComponent {
   // Core inputs

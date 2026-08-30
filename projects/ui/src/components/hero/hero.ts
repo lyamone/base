@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  contentChild,
-  input,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, computed, contentChild, input, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import type { UiSize, UiTheme } from '../shared/ui-types';
@@ -53,11 +46,9 @@ export type HeroSize = 'sm' | 'md' | 'lg';
  */
 @Component({
   selector: 'ul-hero',
-  standalone: true,
   imports: [ButtonComponent, IconComponent, PillComponent, RouterLink],
   templateUrl: './hero.html',
   styleUrls: ['./hero.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class HeroComponent {

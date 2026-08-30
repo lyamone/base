@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   contentChild,
   computed,
@@ -24,11 +23,9 @@ export type NavbarVariant = 'full' | 'minimal';
 
 @Component({
   selector: 'ul-navbar',
-  standalone: true,
   imports: [AvatarComponent, ButtonComponent, IconComponent],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class NavbarComponent {

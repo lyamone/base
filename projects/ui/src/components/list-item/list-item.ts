@@ -1,13 +1,16 @@
-import { ChangeDetectionStrategy, Component, contentChild, input } from '@angular/core';
+import { Component, contentChild, input } from '@angular/core';
 
 import { CheckboxComponent } from '../checkbox/checkbox';
 import { SkeletonComponent } from '../skeleton/skeleton';
 
-export type ListItemTheme = 'ghost-white' | 'transparent-white' | 'outline-white' | 'outline-purple';
+export type ListItemTheme =
+  | 'ghost-white'
+  | 'transparent-white'
+  | 'outline-white'
+  | 'outline-purple';
 
 @Component({
   selector: 'ul-list-item',
-  standalone: true,
   imports: [SkeletonComponent],
   template: `
     <ul-skeleton [show]="loading()" variant="rect">
@@ -17,7 +20,8 @@ export type ListItemTheme = 'ghost-white' | 'transparent-white' | 'outline-white
         [class.ul-list-item--no-focus-outline]="hideFocusOutline()"
         [class.ul-list-item--selected]="selected() || !!checkbox()?.checked"
         (click)="clickHandler()"
-        [disabled]="disabled() || loading()">
+        [disabled]="disabled() || loading()"
+      >
         <div class="ul-list-item__before-label">
           <ng-content select="[ul-list-item-before-label]"></ng-content>
         </div>
@@ -31,7 +35,6 @@ export type ListItemTheme = 'ghost-white' | 'transparent-white' | 'outline-white
     </ul-skeleton>
   `,
   styleUrls: ['./list-item.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent {
   checkbox = contentChild<CheckboxComponent>(CheckboxComponent);

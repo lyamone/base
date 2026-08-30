@@ -25,7 +25,6 @@ interface DemoFormModel {
 
 @Component({
   selector: 'ul-forms-signal-forms-demo',
-  standalone: true,
   imports: [
     FormsModule,
     FormField,
@@ -62,11 +61,7 @@ interface DemoFormModel {
         <ul-checkbox [formField]="demoForm.acceptTerms">
           I accept the terms and conditions
         </ul-checkbox>
-        <ul-calendar
-          [formField]="demoForm.date"
-          label="Date"
-          placeholder="Select date"
-        />
+        <ul-calendar [formField]="demoForm.date" label="Date" placeholder="Select date" />
         <ul-radio-group
           [formField]="demoForm.choice"
           name="choice"
@@ -74,21 +69,14 @@ interface DemoFormModel {
           [options]="choiceOptions"
         />
         <div class="ul-signal-forms-demo__actions">
-          <ul-button
-            type="submit"
-            theme="primary"
-            [disabled]="!demoForm().valid()"
-          >
+          <ul-button type="submit" theme="primary" [disabled]="!demoForm().valid()">
             Submit
           </ul-button>
         </div>
       </form>
       <aside class="ul-signal-forms-demo__values">
         <h3 class="ul-signal-forms-demo__values-title">Form value</h3>
-        <ul-area-code
-          [content]="demoValues()"
-          [showLineNumbers]="false"
-        />
+        <ul-area-code [content]="demoValues()" [showLineNumbers]="false" />
       </aside>
     </div>
   `,
@@ -143,7 +131,7 @@ class SignalFormsDemoComponent {
   });
 
   demoValues = computed(() => {
-    const value = this.demoForm().value()
+    const value = this.demoForm().value();
     return JSON.stringify(value, null, 2);
   });
 

@@ -19,7 +19,6 @@ const quantityDropdownItems: DropdownItem[] = [
 
 @Component({
   selector: 'ul-demo-product-strip',
-  standalone: true,
   imports: [
     CardComponent,
     PriceButtonComponent,
@@ -34,17 +33,14 @@ const quantityDropdownItems: DropdownItem[] = [
     <div class="ul-demo-product-strip">
       <h1 class="ul-typography-headline-l-extrablack ul-pb-4">Featured</h1>
       <div class="ul-demo-product-strip__grid">
-        <ul-card
-          cardCaption="Game"
-          cardTitle="Adventure Quest"
-          cardSubtitle="Action RPG">
-            <img
+        <ul-card cardCaption="Game" cardTitle="Adventure Quest" cardSubtitle="Action RPG">
+          <img
             udsCardMedia
-              class="ul-h-full"
-              peCatchImageNotFound
-              src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop"
-              alt="Adventure Quest"
-            />
+            class="ul-h-full"
+            peCatchImageNotFound
+            src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop"
+            alt="Adventure Quest"
+          />
           <div udsCardFooter class="ul-demo-product-strip__footer">
             <ul-price-button
               label="Add to cart"
@@ -54,10 +50,7 @@ const quantityDropdownItems: DropdownItem[] = [
             />
           </div>
         </ul-card>
-        <ul-card
-          cardCaption="Game"
-          cardTitle="Space Racer"
-          cardSubtitle="Racing">
+        <ul-card cardCaption="Game" cardTitle="Space Racer" cardSubtitle="Racing">
           <div udsCardMedia>
             <img
               class="ul-h-full"
@@ -78,27 +71,20 @@ const quantityDropdownItems: DropdownItem[] = [
             <ul-button theme="ghost-white">View</ul-button>
           </div>
         </ul-card>
-        <ul-card
-          cardCaption="Game"
-          cardTitle="Puzzle Master"
-          cardSubtitle="Casual">
-            <img
+        <ul-card cardCaption="Game" cardTitle="Puzzle Master" cardSubtitle="Casual">
+          <img
             udsCardMedia
-              peCatchImageNotFound
-              src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=400&h=300&fit=crop"
-              alt="Puzzle Master"
-            />
+            peCatchImageNotFound
+            src="https://images.unsplash.com/photo-1585504198199-20277593b94f?w=400&h=300&fit=crop"
+            alt="Puzzle Master"
+          />
           <div udsCardFooter class="ul-demo-product-strip__footer">
             <ul-dropdown
               [items]="quantityDropdownItems"
               theme="transparent-white"
               [selectedIndex]="0"
             />
-            <ul-price-button
-              [price]="0"
-              currency="USD"
-              theme="transparent-white"
-            />
+            <ul-price-button [price]="0" currency="USD" theme="transparent-white" />
           </div>
         </ul-card>
       </div>

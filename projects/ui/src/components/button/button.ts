@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output, ViewEncapsulation } from '@angular/core';
+import { Component, input, output, ViewEncapsulation } from '@angular/core';
 
 import { ButtonDirective } from './button.directive';
 import type { UiSize, UiTheme } from '../shared/ui-types';
@@ -10,7 +10,6 @@ import type { UiSize, UiTheme } from '../shared/ui-types';
  */
 @Component({
   selector: 'ul-button',
-  standalone: true,
   imports: [ButtonDirective],
   template: `
     <button
@@ -23,12 +22,12 @@ import type { UiSize, UiTheme } from '../shared/ui-types';
       [iconOnly]="iconOnly()"
       [vertical]="vertical()"
       [disabled]="disabled()"
-      (click)="handleClick($event)">
+      (click)="handleClick($event)"
+    >
       <ng-content />
     </button>
   `,
   styleUrls: ['./button.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent {

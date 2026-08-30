@@ -29,7 +29,6 @@ const searchOptions = [
 
 @Component({
   selector: 'ul-demo-app-layout',
-  standalone: true,
   imports: [
     NavbarComponent,
     SidebarComponent,
@@ -44,7 +43,8 @@ const searchOptions = [
         [theme]="sidebarTheme()"
         [selectedIndex]="selectedIndex()"
         [(open)]="sidebarOpen"
-        (itemSelected)="onItemSelected($event)">
+        (itemSelected)="onItemSelected($event)"
+      >
       </ul-sidebar>
       <div class="ul-demo-app-layout__body">
         <header class="ul-demo-app-layout__navbar">
@@ -53,7 +53,8 @@ const searchOptions = [
             [avatarInitials]="avatarInitials()"
             [sidebarOpen]="sidebarOpen()"
             [showSidebarToggle]="true"
-            (sidebarToggle)="onSidebarToggle()">
+            (sidebarToggle)="onSidebarToggle()"
+          >
             <ng-container ul-navbar-logo>
               <ng-content select="[ul-navbar-logo]" />
             </ng-container>
@@ -97,7 +98,9 @@ const searchOptions = [
 })
 export class DemoAppLayoutComponent {
   sidebarItems = input<SidebarItem[]>(defaultSidebarItems);
-  sidebarTheme = input<'ghost-white' | 'transparent-white' | 'outline-white' | 'outline-purple'>('ghost-white');
+  sidebarTheme = input<'ghost-white' | 'transparent-white' | 'outline-white' | 'outline-purple'>(
+    'ghost-white',
+  );
   avatarInitials = input<string>('JD');
 
   readonly sidebarOpen = model<boolean>(false);
@@ -118,7 +121,6 @@ export class DemoAppLayoutComponent {
 
 @Component({
   selector: 'ul-demo-app-layout-story',
-  standalone: true,
   imports: [
     DemoAppLayoutComponent,
     NavbarLogoSlotDirective,
@@ -140,8 +142,8 @@ export class DemoAppLayoutComponent {
       <div class="ul-demo-app-layout-story__content">
         <h1 class="ul-demo-app-layout-story__title">App Layout Demo</h1>
         <p class="ul-demo-app-layout-story__desc">
-          This layout coordinates the navbar and sidebar. On mobile, use the hamburger menu in the navbar
-          to open the sidebar drawer. On desktop, the sidebar stays visible.
+          This layout coordinates the navbar and sidebar. On mobile, use the hamburger menu in the
+          navbar to open the sidebar drawer. On desktop, the sidebar stays visible.
         </p>
         <p class="ul-demo-app-layout-story__hint">
           Resize the viewport to mobile width to see the toggle behavior.

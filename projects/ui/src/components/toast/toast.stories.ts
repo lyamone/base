@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 
 import { Meta, StoryObj } from '../../../.storybook/types';
 
@@ -9,20 +9,16 @@ import { ToastService } from './toast.service';
 
 @Component({
   selector: 'ul-toast-story',
-  standalone: true,
   imports: [ButtonComponent, ToastContainerComponent],
   template: `
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 16px; max-width: 480px;">
       @if (mode() === 'info') {
         <p class="ul-typography-body-m-regular">
-          Click the button to trigger an informational toast. The toast will auto-dismiss after a few seconds.
+          Click the button to trigger an informational toast. The toast will auto-dismiss after a
+          few seconds.
         </p>
 
-        <ul-button
-          theme="fill-purple"
-          (buttonClick)="showInfoToast()">
-          Show info toast
-        </ul-button>
+        <ul-button theme="fill-purple" (buttonClick)="showInfoToast()"> Show info toast </ul-button>
       } @else {
         <p class="ul-typography-body-m-regular">
           Trigger different toast variants. All are rendered by a single global container.
@@ -39,7 +35,6 @@ import { ToastService } from './toast.service';
       <ul-toast-container />
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ToastStoryComponent {
   private readonly toast = inject(ToastService);
@@ -91,4 +86,3 @@ export const Variants: Story = {
     mode: 'variants',
   },
 };
-

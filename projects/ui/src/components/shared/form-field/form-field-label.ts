@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 import type { UiSize } from '../ui-types';
 
@@ -8,23 +8,23 @@ import type { UiSize } from '../ui-types';
  */
 @Component({
   selector: 'ul-form-field-label',
-  standalone: true,
   template: `
     @if (label()) {
       <label
         [attr.for]="for()"
-        class="ul-form-field__label ul-form-field__label--{{size()}}"
+        class="ul-form-field__label ul-form-field__label--{{ size() }}"
         [class.ul-form-field__label--required]="required()"
       >
         {{ label() }}
         @if (required()) {
-          <span class="ul-form-field__required-indicator" aria-hidden="true" title="Required"> * </span>
+          <span class="ul-form-field__required-indicator" aria-hidden="true" title="Required">
+            *
+          </span>
         }
       </label>
     }
   `,
   styleUrls: ['./form-field.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class FormFieldLabelComponent {

@@ -1,7 +1,6 @@
 import { CdkAccordion, CdkAccordionItem } from '@angular/cdk/accordion';
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   contentChildren,
   DestroyRef,
@@ -18,12 +17,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
  */
 @Component({
   selector: 'ul-accordion-item',
-  standalone: true,
   template: `
     <div
       class="ul-accordion__item"
       [class.ul-accordion__item--expanded]="cdkAccordionItem.expanded"
-      [class.ul-accordion__item--disabled]="cdkAccordionItem.disabled">
+      [class.ul-accordion__item--disabled]="cdkAccordionItem.disabled"
+    >
       <button
         (click)="onToggle()"
         class="ul-accordion__trigger"
@@ -33,7 +32,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         [attr.aria-disabled]="cdkAccordionItem.disabled ? 'true' : null"
         [disabled]="cdkAccordionItem.disabled"
         (keydown)="onKeydown($event)"
-        type="button">
+        type="button"
+      >
         <div class="ul-accordion__icon">
           <ng-content select="[ul-accordion-icon]"></ng-content>
         </div>
@@ -52,13 +52,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         class="ul-accordion__content"
         [id]="contentId"
         [attr.aria-labelledby]="triggerId"
-        [attr.aria-hidden]="!cdkAccordionItem.expanded">
+        [attr.aria-hidden]="!cdkAccordionItem.expanded"
+      >
         <ng-content select="[ul-accordion-content]"></ng-content>
       </div>
     </div>
   `,
   styleUrls: ['./accordion.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [
     {
       directive: CdkAccordionItem,
@@ -148,14 +148,17 @@ export class AccordionItemComponent {
  */
 @Component({
   selector: 'ul-accordion',
-  standalone: true,
   template: `
-    <cdk-accordion #accordion [multi]="multi()" class="ul-accordion" [class.ul-accordion--divider]="showDivider()">
+    <cdk-accordion
+      #accordion
+      [multi]="multi()"
+      class="ul-accordion"
+      [class.ul-accordion--divider]="showDivider()"
+    >
       <ng-content />
     </cdk-accordion>
   `,
   styleUrls: ['./accordion.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CdkAccordion],
 })
 export class AccordionComponent implements AfterViewInit {
@@ -163,9 +166,12 @@ export class AccordionComponent implements AfterViewInit {
   readonly multi = input<boolean>(false);
 
   private readonly destroyRef = inject(DestroyRef);
-  private readonly accordionItems = contentChildren<AccordionItemComponent, CdkAccordionItem>(AccordionItemComponent, {
-    read: CdkAccordionItem,
-  });
+  private readonly accordionItems = contentChildren<AccordionItemComponent, CdkAccordionItem>(
+    AccordionItemComponent,
+    {
+      read: CdkAccordionItem,
+    },
+  );
 
   ngAfterViewInit(): void {
     this.setupSingleExpansionLogic();

@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
@@ -21,18 +20,14 @@ export type RichTextSize = 'body-m' | 'body-l';
  */
 @Component({
   selector: 'ul-rich-text',
-  template: `
-    @if (content()) {
+  template: ` @if (content()) {
       <div
         class="ul-rich-text"
         [class.ul-rich-text--body-m]="size() === 'body-m'"
         [innerHTML]="sanitizedContent()"
       ></div>
     } @else {
-      <div
-        class="ul-rich-text"
-        [class.ul-rich-text--body-m]="size() === 'body-m'"
-      >
+      <div class="ul-rich-text" [class.ul-rich-text--body-m]="size() === 'body-m'">
         <ng-content />
       </div>
     }`,
@@ -40,7 +35,6 @@ export type RichTextSize = 'body-m' | 'body-l';
     class: 'ul-rich-text-host',
   },
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RichTextComponent {
   readonly content = input<string | null>(null);

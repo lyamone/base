@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input, model, output, signal } from '@angular/core';
-import type { FormValueControl, ValidationError, WithOptionalFieldTree } from '@angular/forms/signals';
+import { Component, computed, input, model, output, signal } from '@angular/core';
+import type {
+  FormValueControl,
+  ValidationError,
+  WithOptionalFieldTree,
+} from '@angular/forms/signals';
 
 import { IconComponent } from '../icon/icon';
 import { InputComponent } from '../input/input';
@@ -23,7 +27,6 @@ export interface SearchSelectOption {
  */
 @Component({
   selector: 'ul-search-select',
-  standalone: true,
   imports: [
     InputComponent,
     IconComponent,
@@ -33,7 +36,6 @@ export interface SearchSelectOption {
   ],
   templateUrl: './search-select.html',
   styleUrls: ['./search-select.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchSelectComponent implements FormValueControl<string | null> {
   readonly size = input<UiSize>('md');
@@ -69,8 +71,8 @@ export class SearchSelectComponent implements FormValueControl<string | null> {
       this.ids.errorId,
       !!this.helperText(),
       this.hasError(),
-      !!this.errorText() || this.errors().length > 0
-    )
+      !!this.errorText() || this.errors().length > 0,
+    ),
   );
 
   protected readonly selectedOption = computed(() => {
@@ -100,7 +102,9 @@ export class SearchSelectComponent implements FormValueControl<string | null> {
     return this.query().trim().length >= min;
   });
 
-  protected readonly hasNoResults = computed(() => this.shouldShowPanel() && this.filteredOptions().length === 0);
+  protected readonly hasNoResults = computed(
+    () => this.shouldShowPanel() && this.filteredOptions().length === 0,
+  );
 
   protected readonly optionId = (index: number) => `${this.ids.controlId}-option-${index}`;
 
@@ -151,7 +155,7 @@ export class SearchSelectComponent implements FormValueControl<string | null> {
       case 'ArrowUp':
         event.preventDefault();
         this.highlightedIndex.set(
-          this.highlightedIndex() <= 0 ? list.length - 1 : this.highlightedIndex() - 1
+          this.highlightedIndex() <= 0 ? list.length - 1 : this.highlightedIndex() - 1,
         );
         break;
       case 'Enter':

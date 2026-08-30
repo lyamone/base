@@ -1,6 +1,5 @@
 import { CdkTrapFocus } from '@angular/cdk/a11y';
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   HostListener,
@@ -23,11 +22,9 @@ export type ModalVariant =
 
 @Component({
   selector: 'ul-modal',
-  standalone: true,
   imports: [CdkTrapFocus, ButtonComponent, IconComponent],
   templateUrl: './modal.html',
   styleUrls: ['./modal.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {
     '[attr.aria-hidden]': '!open()',
@@ -81,9 +78,7 @@ export class ModalComponent {
   readonly isSuccess = computed(() => this.variant() === 'success');
   readonly isError = computed(() => this.variant() === 'error');
 
-  modalTitle = computed(() => 
-    (this.isSuccess() || this.isError()) ? '' : this.title()
-  );
+  modalTitle = computed(() => (this.isSuccess() || this.isError() ? '' : this.title()));
 
   readonly titleId = `ul-modal-title-${Math.random().toString(36).slice(2, 11)}`;
   readonly bodyId = `ul-modal-body-${Math.random().toString(36).slice(2, 11)}`;

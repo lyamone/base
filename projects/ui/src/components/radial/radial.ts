@@ -1,4 +1,4 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { booleanAttribute, Component, computed, input } from '@angular/core';
 
 type RadialSize = 96 | 64 | 48 | 32 | 24 | 20 | 16;
 
@@ -14,10 +14,8 @@ const lineWidths = {
 
 @Component({
   selector: 'ul-radial',
-  standalone: true,
   templateUrl: './radial.html',
   styleUrl: './radial.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadialComponent {
   // size of the radial component in px
