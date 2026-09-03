@@ -1,0 +1,19 @@
+@use '../../foundations/toolkit' as *;
+@use '../shared/menu-overlay';
+
+.#{$prefix}menu {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-spacing-1;
+  background-color: $color-background-grey-lvl-1;
+  border-radius: $radius-radius-4;
+  padding: $spacing-spacing-1;
+  margin: $spacing-spacing-1 0;
+  min-width: 200px;
+
+  @include menu-overlay.bottom-sheet-below-md;
+
+  &__backdrop {
+    @include menu-overlay.bottom-sheet-backdrop;
+  }
+}

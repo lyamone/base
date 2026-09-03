@@ -10,7 +10,7 @@ const meta: Meta<CheckboxComponent> = {
     docs: {
       description: {
         component:
-          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm).',
+          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm, lg — lg is easier to tap on touch, e.g. mobile bulk-select rows).',
       },
     },
   },
@@ -34,7 +34,7 @@ const meta: Meta<CheckboxComponent> = {
     },
     size: {
       control: 'select',
-      options: ['default', 'sm'],
+      options: ['default', 'sm', 'lg'],
       description: 'The size variant of the checkbox',
     },
     label: {
@@ -172,6 +172,9 @@ export const SizeVariants: Story = {
         </ul-checkbox>
         <ul-checkbox [checked]="checked" size="sm">
           Small Size
+        </ul-checkbox>
+        <ul-checkbox [checked]="checked" size="lg">
+          Large Size
         </ul-checkbox>
       </div>
     `,

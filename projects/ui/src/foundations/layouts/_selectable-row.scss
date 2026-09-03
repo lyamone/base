@@ -1,0 +1,23 @@
+@use '../core' as *;
+@use '../animations/animations' as *;
+
+// Generic "this row can be selected" / "this row is selected" affordance for
+// bulk-select lists, independent of any specific row markup — toggle these
+// classes from a consumer's own template, no wrapper component required.
+// Border-only, on purpose: row content is arbitrary (thumbnails, images,
+// etc.), so a background tint could clash with it — a white border, not a
+// background or accent color, is the only signal.
+@mixin generate-selectable-row-styles {
+  .#{$prefix}selectable-row {
+    border: 2px solid $color-border-white-medium;
+    background-color: transparent;
+    @include transition-properties(border-color);
+
+    // A projected ul-list-item may bring its own "selected" background tint
+    // (e.g. for dropdown/select use) — neutralize it here so this pattern
+    // stays border-only regardless of what's nested inside.
+    .#{$prefix}list-item--selected {
+      background-color: transparent;
+    }
+  }
+}

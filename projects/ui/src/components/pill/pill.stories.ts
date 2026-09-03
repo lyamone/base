@@ -10,7 +10,7 @@ const meta: Meta<PillComponent> = {
     docs: {
       description: {
         component:
-          'Compact label or tag with multiple variants (interactive, read-only, dismissible, selectable), sizes (md, lg), and themes (fill, transparent, outline). Outline themes use transparent background with border and semantic text. stroke-white is an alias for outline-white.',
+          'Compact label or tag with multiple variants (interactive, read-only, dismissible, selectable), sizes (sm, md, lg), and themes (fill, transparent, outline). sm reuses the same (smallest available) type scale as md and shrinks via tighter padding/gap/icon size instead of smaller text. Outline themes use transparent background with border and semantic text. stroke-white is an alias for outline-white.',
       },
     },
   },
@@ -20,7 +20,7 @@ const meta: Meta<PillComponent> = {
       control: { type: 'radio' },
     },
     size: {
-      options: ['md', 'lg'],
+      options: ['sm', 'md', 'lg'],
       control: { type: 'radio' },
     },
     theme: {
@@ -69,6 +69,31 @@ export const Default: Story = {
       <ul-pill [variant]="variant" [size]="size" [theme]="theme" [disabled]="disabled">
         <span>Pill Label</span>
       </ul-pill>
+    `,
+  }),
+};
+
+/**
+ * All three sizes side by side. 'sm' and 'md' share the same text size —
+ * 'caption-l' is already the smallest type scale step in the system — and
+ * differ only in padding/gap/icon size.
+ */
+export const Sizes: Story = {
+  args: {},
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="display: flex; align-items: center; gap: 12px">
+        <ul-pill [variant]="variant" size="sm" [theme]="theme" [disabled]="disabled">
+          <span>Small</span>
+        </ul-pill>
+        <ul-pill [variant]="variant" size="md" [theme]="theme" [disabled]="disabled">
+          <span>Medium</span>
+        </ul-pill>
+        <ul-pill [variant]="variant" size="lg" [theme]="theme" [disabled]="disabled">
+          <span>Large</span>
+        </ul-pill>
+      </div>
     `,
   }),
 };

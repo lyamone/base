@@ -4,7 +4,7 @@ import { Component, computed, input, output } from '@angular/core';
 import { ButtonComponent } from '../button/button';
 import { IconComponent } from '../icon/icon';
 
-export type PillSize = 'md' | 'lg';
+export type PillSize = 'sm' | 'md' | 'lg';
 
 export type PillVariant =
   | 'interactive'

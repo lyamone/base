@@ -49,6 +49,7 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
         [class.ul-checkbox__row--visible-zone]="zone() === 'visible'"
         [class.ul-checkbox__row--checked-visible-zone]="zone() === 'checked-visible'"
         [class.ul-checkbox__row--sm]="size() === 'sm'"
+        [class.ul-checkbox__row--lg]="size() === 'lg'"
         [class.ul-checkbox__row--error]="hasError()"
         [attr.for]="ids.controlId"
       >

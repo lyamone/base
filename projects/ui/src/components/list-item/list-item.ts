@@ -18,18 +18,18 @@ export type ListItemTheme =
         type="button"
         class="ul-list-item ul-list-item--{{ theme() }}"
         [class.ul-list-item--no-focus-outline]="hideFocusOutline()"
-        [class.ul-list-item--selected]="selected() || !!checkbox()?.checked"
+        [class.ul-list-item--selected]="selected() || !!checkbox()?.checked()"
         (click)="clickHandler()"
         [disabled]="disabled() || loading()"
       >
         <div class="ul-list-item__before-label">
-          <ng-content select="[ul-list-item-before-label]"></ng-content>
+          <ng-content select="[ul-list-item-before-label]" />
         </div>
         <div class="ul-list-item__label">
-          <ng-content select="[ul-list-item-label]"></ng-content>
+          <ng-content select="[ul-list-item-label]" />
         </div>
         <div class="ul-list-item__after-label">
-          <ng-content select="[ul-list-item-after-label]"></ng-content>
+          <ng-content select="[ul-list-item-after-label]" />
         </div>
       </button>
     </ul-skeleton>

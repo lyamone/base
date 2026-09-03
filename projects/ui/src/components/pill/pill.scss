@@ -39,6 +39,15 @@ $pill-class: '.#{$prefix}pill';
   @include pill-base;
 
   // Size variants
+  // 'caption-l' is the smallest type scale step in the system, so 'sm'
+  // reuses it (same as 'md') and gets smaller purely via tighter
+  // padding/gap/icon size instead of smaller text.
+  &--sm {
+    @include typography('caption-l', 'medium');
+    gap: $spacing-spacing-1;
+    padding: $spacing-spacing-1 $spacing-spacing-2;
+  }
+
   &--md {
     @include typography('caption-l', 'medium');
   }
@@ -69,6 +78,16 @@ $pill-class: '.#{$prefix}pill';
 
     .#{$prefix}btn--sm:last-child .#{$prefix}icon {
       @include icon-size('4');
+    }
+
+    &--sm {
+      padding: $spacing-spacing-1 $spacing-spacing-1 $spacing-spacing-1 $spacing-spacing-2;
+      border-radius: $radius-radius-2;
+
+      .#{$prefix}btn--sm:last-child {
+        min-width: 20px;
+        height: 20px;
+      }
     }
 
     &--md {
@@ -321,5 +340,11 @@ $pill-class: '.#{$prefix}pill';
 
   .#{$prefix}icon {
     @include icon-size('5');
+  }
+
+  // After the unconditional icon rule above (equal specificity, so source
+  // order decides) so 'sm' actually gets the smaller icon.
+  &--sm .#{$prefix}icon {
+    @include icon-size('4');
   }
 }

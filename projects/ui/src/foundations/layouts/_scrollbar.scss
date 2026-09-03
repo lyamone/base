@@ -1,73 +1,29 @@
-@use '../animations/animations' as *;
 @use '../core' as *;
 
-// Scrollbar width and height
-$scrollbar-width: 8px;
-$scrollbar-height: 8px;
-
-// Scrollbar colors using design tokens
-$scrollbar-track-color: transparent; // $color-background-white-medium-light; // Using white-5 from variables
-$scrollbar-thumb-color: $color-interactive-surface-ghost-white-active;
-$scrollbar-thumb-hover-color: $color-interactive-surface-ghost-white-hover;
-
-// Base scrollbar styles
+// `overflow: overlay` — the previous approach for "scrollbar doesn't take
+// up layout width" — is invalid in modern Chromium (removed) and was never
+// supported by Firefox, so it was silently doing nothing in most browsers:
+// the scrollbar (when one appeared) still consumed space and painted its
+// own track/thumb colors, which can visibly mismatch a dark panel.
+//
+// The scrollbar is fully hidden instead — zero width, never painted — but
+// scrolling itself is untouched (wheel, touch, keyboard all still work via
+// plain `overflow-y: auto`/`overflow: auto` on the element).
 @mixin custom-scrollbar {
-  // For WebKit browsers (Chrome, Safari, newer Edge)
-  &::-webkit-scrollbar {
-    width: $scrollbar-width;
-    height: $scrollbar-height;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: $scrollbar-track-color;
-    border-radius: $radius-radius-1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $scrollbar-thumb-color;
-    border-radius: $radius-radius-1;
-    @include transition-property(background-color, $transition-duration-fast);
-
-    &:hover {
-      background: $scrollbar-thumb-hover-color;
-    }
-  }
-
-  // For Firefox
-  scrollbar-width: thin;
-  scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
-
-  // Ensure scrollbar doesn't affect layout
-  overflow: overlay;
+  scrollbar-width: none; // Firefox
   -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
 }
 
 // Main mixin to generate all scrollbar styles
 @mixin generate-scrollbar-styles {
-  // Container class with scrollbar
+  // Container class with a hidden-but-functional scrollbar
   .#{$prefix}scrollable {
     @include custom-scrollbar;
-
-    // Hide scrollbar by default
-    &::-webkit-scrollbar {
-      opacity: 0;
-      @include transition-property(opacity, $transition-duration-normal);
-    }
-
-    // Show scrollbar on hover
-    &:hover {
-      &::-webkit-scrollbar {
-        opacity: 1;
-      }
-    }
-
-    // Firefox scrollbar styles
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    @include transition-property(scrollbar-color, $transition-duration-normal);
-
-    &:hover {
-      scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
-    }
   }
 }

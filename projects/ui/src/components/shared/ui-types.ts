@@ -1,6 +1,6 @@
 export type UiSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type UiCheckboxSize = 'default' | 'sm';
+export type UiCheckboxSize = 'default' | 'sm' | 'lg';
 
 export type UiTheme =
   | 'fill-purple'
@@ -19,4 +19,3 @@ export type UiTheme =
   | 'outline-purple'
   | 'outline-red'
   | 'outline-green';
-

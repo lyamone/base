@@ -1,0 +1,49 @@
+@use '../../foundations/toolkit' as *;
+
+/// Makes a CDK-menu content panel (the element carrying `cdkMenu`) behave
+/// like a native bottom sheet below the 'md' breakpoint: pinned to the
+/// viewport's bottom edge, full width, rounded top corners, scrollable if
+/// its content overflows.
+///
+/// This relies on a CSS quirk rather than any CDK API: `CdkMenuTrigger`
+/// exposes no hook to swap its `FlexibleConnectedPositionStrategy` for a
+/// viewport-anchored one, and its overlay pane takes no custom panelClass
+/// to target from outside. But `position: fixed` on THIS panel escapes that
+/// (unrelated, `position: absolute`) ancestor pane entirely and anchors
+/// straight to the real viewport — as long as nothing between here and the
+/// viewport sets a transform/filter/will-change that would create a new
+/// containing block for fixed descendants. CDK's own pane doesn't, so this
+/// holds. Every other CDK-menu behavior (keyboard nav, focus, outside-click
+/// close, escape-to-close) is untouched — only this panel's own CSS moves.
+@mixin bottom-sheet-below-md {
+  @include below('md') {
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 40vh;
+    margin: 0;
+    border-radius: $radius-radius-4 $radius-radius-4 0 0;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+}
+
+/// A tap-to-dismiss backdrop for the mobile bottom sheet, meant as a sibling
+/// placed immediately BEFORE the `cdkMenu` panel in the same `<ng-template>`
+/// (so it renders behind it in paint order, no z-index needed) — and,
+/// crucially, OUTSIDE the element carrying `cdkMenu`, so CDK's own
+/// outside-click detection treats a tap on it as "outside the menu" and
+/// closes the menu with no extra JS on our side. Hidden entirely at 'md'
+/// and up, where there is no sheet to dismiss.
+@mixin bottom-sheet-backdrop {
+  display: none;
+
+  @include below('md') {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: $color-background-black-medium;
+  }
+}

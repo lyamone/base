@@ -1,20 +1,28 @@
 @use '../../foundations/toolkit' as *;
+@use '../shared/menu-overlay';
 
 .#{$prefix}dropdown {
   display: inline-flex;
   flex-direction: column;
   width: 100%;
+
   gap: $spacing-spacing-1;
+
+  &__backdrop {
+    @include menu-overlay.bottom-sheet-backdrop;
+  }
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: $spacing-spacing-1;
+        gap: $spacing-spacing-1;
     background-color: $color-background-grey-lvl-1;
     border-radius: $radius-radius-4;
     padding: $spacing-spacing-1;
     margin: $spacing-spacing-1 0;
     max-height: $component-dropdown-list-max-height;
     overflow-y: auto;
+
+    @include menu-overlay.bottom-sheet-below-md;
   }
 }

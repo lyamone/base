@@ -1,0 +1,26 @@
+<ul-menu-trigger
+  [theme]="theme()"
+  [disabled]="disabled()"
+  [iconOnly]="triggerIconOnly()"
+  [iconOnlyLabel]="iconOnlyLabel()"
+  [label]="triggerLabel()"
+  [leftIcons]="triggerLeftIcons()"
+  [rightIcons]="triggerRightIcons()"
+  [menuTemplate]="menu"
+  [menuId]="menuId"
+  [isOpen]="isOpen()"
+  (opened)="onMenuOpened()"
+  (closed)="onMenuClosed()"
+/>
+
+<ng-template #menu>
+  <div class="ul-menu__backdrop" (click)="closeMenu()"></div>
+  <div cdkMenu class="ul-menu" [id]="menuId">
+    <ul-menu-items
+      [items]="items()"
+      [theme]="theme()"
+      (itemTriggered)="handleItemTriggered($event)"
+    />
+    <ng-content />
+  </div>
+</ng-template>

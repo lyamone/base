@@ -401,42 +401,23 @@ a:active {
   }
 }
 
-.ul-scrollable::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.ul-scrollable::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 4px;
-}
-.ul-scrollable::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.ul-scrollable::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
 .ul-scrollable {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  overflow: overlay;
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 .ul-scrollable::-webkit-scrollbar {
-  opacity: 0;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0;
+  height: 0;
+  display: none;
 }
-.ul-scrollable:hover::-webkit-scrollbar {
-  opacity: 1;
+
+.ul-selectable-row {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.ul-scrollable {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  transition: scrollbar-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.ul-scrollable:hover {
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+.ul-selectable-row .ul-list-item--selected {
+  background-color: transparent;
 }
 
 .ul-row {

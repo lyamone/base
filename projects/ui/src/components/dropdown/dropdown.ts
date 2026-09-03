@@ -1,5 +1,4 @@
-import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
-import { NgTemplateOutlet } from '@angular/common';
+import { CdkMenu } from '@angular/cdk/menu';
 import {
   Component,
   computed,
@@ -7,27 +6,20 @@ import {
   model,
   output,
   signal,
+  viewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
-import { ButtonComponent } from '../button/button';
-import { IconComponent, IconName } from '../icon/icon';
-import { ListItemComponent, ListItemTheme } from '../list-item/list-item';
+import { IconName } from '../icon/icon';
+import { ListItemTheme } from '../list-item/list-item';
+import { MenuItem, MenuItemsComponent } from '../menu/menu-items';
+import { MenuTriggerComponent } from '../menu/menu-trigger';
 
-/**
- * Represents a single item in the dropdown menu.
- */
-export type DropdownItem = {
-  /** Display text for the dropdown item */
-  label: string;
-  /** Optional value associated with the item */
-  value?: string;
-  /** Icons to display on the left side of the item */
-  leftIcons?: IconName[];
-  /** Icons to display on the right side of the item */
-  rightIcons?: IconName[];
-  /** Whether the item is disabled and cannot be selected */
-  disabled?: boolean;
+/** @deprecated Import from `../menu/menu-items` instead — kept here so existing `DropdownItem` imports keep working. */
+export type DropdownItem = MenuItem;
+
+const DEFAULT_MENU_TRIGGER_ICONS: Pick<MenuItem, 'leftIcons' | 'rightIcons'> = {
+  rightIcons: ['chevron_down'],
 };
 
 /**
@@ -58,15 +50,7 @@ export type DropdownItem = {
  */
 @Component({
   selector: 'ul-dropdown',
-  imports: [
-    CdkMenuTrigger,
-    CdkMenu,
-    CdkMenuItem,
-    NgTemplateOutlet,
-    ListItemComponent,
-    IconComponent,
-    ButtonComponent,
-  ],
+  imports: [CdkMenu, MenuItemsComponent, MenuTriggerComponent],
   templateUrl: './dropdown.html',
   styleUrls: ['./dropdown.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -82,7 +66,7 @@ export class DropdownComponent {
    * Array of items to display in the dropdown menu.
    * @default []
    */
-  items = input<DropdownItem[]>([]);
+  items = input<MenuItem[]>([]);
 
   /**
    * Whether the dropdown is disabled.
@@ -93,7 +77,7 @@ export class DropdownComponent {
   /**
    * Overrides the icons of the selected item in the trigger button.
    * Can override leftIcons, rightIcons, or both.
-   * @default {}
+   * @default { rightIcons: ['chevron_down'] }
    *
    * @example
    * ```typescript
@@ -102,9 +86,9 @@ export class DropdownComponent {
    * }
    * ```
    */
-  menuTriggerIcons = input<Pick<DropdownItem, 'leftIcons' | 'rightIcons'>>({
-    rightIcons: ['chevron_down'],
-  });
+  menuTriggerIcons = input<Pick<MenuItem, 'leftIcons' | 'rightIcons'> | undefined>(
+    DEFAULT_MENU_TRIGGER_ICONS,
+  );
 
   /**
    * Shows only a single icon in the trigger button, hiding the selected item's label and icons.
@@ -137,7 +121,7 @@ export class DropdownComponent {
   selectedItem = computed(() => {
     const items = this.items();
     const index = this.selectedIndex();
-    const fallback: DropdownItem = {
+    const fallback: MenuItem = {
       label: '',
       value: undefined,
       leftIcons: [],
@@ -148,7 +132,7 @@ export class DropdownComponent {
 
     return {
       ...item,
-      ...this.menuTriggerIcons(),
+      ...(this.menuTriggerIcons() ?? DEFAULT_MENU_TRIGGER_ICONS),
     };
   });
 
@@ -178,7 +162,7 @@ export class DropdownComponent {
   /**
    * Emitted when a new item is selected from the dropdown.
    */
-  selectedItemChange = output<DropdownItem>();
+  selectedItemChange = output<MenuItem>();
 
   /**
    * Emitted when the menu closes, whether or not a selection was made —
@@ -187,6 +171,8 @@ export class DropdownComponent {
    */
   closed = output<void>();
 
+  private readonly trigger = viewChild(MenuTriggerComponent);
+
   /**
    * Handles the selection of a dropdown item.
    * @param index - The index of the selected item
@@ -194,6 +180,14 @@ export class DropdownComponent {
   handleItemTriggered(index: number) {
     this.selectedIndex.set(index);
     this.selectedItemChange.emit(this.items()[index]);
+  }
+
+  /**
+   * Closes the panel. CDK auto-closes on a `cdkMenuItem` trigger already —
+   * this is for the mobile backdrop tap, which isn't one.
+   */
+  closeMenu(): void {
+    this.trigger()?.close();
   }
 
   onMenuOpened(): void {

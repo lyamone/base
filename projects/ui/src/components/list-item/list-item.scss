@@ -16,26 +16,31 @@
   @include typography('caption-l');
   @include interactive-surface('ghost', 'white');
 
-  &:focus-visible,
-  &:focus {
+  &:focus-visible {
     outline-offset: 2px;
     outline: $color-border-white-medium solid 2px;
   }
 
   &--no-focus-outline {
-    &:focus-visible,
-    &:focus {
+    &:focus-visible {
       outline: none;
       outline-offset: 0;
     }
   }
 
   &--selected {
-    background-color: $color-interactive-surface-ghost-white-selected;
+    background-color: transparent;
   }
 
   &--transparent-white {
     @include interactive-surface('transparent', 'white');
+    // The transparent-white token's resting ("enabled") state is a
+    // deliberately always-visible tint elsewhere (e.g. a pill/badge meant
+    // to look frosted at rest) — but in a list, every row doing that reads
+    // as "everything is selected". Stay invisible at rest like ghost-white;
+    // hover/active/selected (set by the mixin above, on more specific
+    // selectors) are untouched.
+    background-color: transparent;
   }
 
   &--outline-white {

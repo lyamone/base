@@ -5,6 +5,7 @@
 @include load-fonts();
 @include generate-container-classes();
 @include generate-scrollbar-styles();
+@include generate-selectable-row-styles();
 @include generate-grid-classes();
 @include generate-typography-classes();
 @include generate-interactive-surface();

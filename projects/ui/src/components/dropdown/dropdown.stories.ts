@@ -25,7 +25,7 @@ const meta: Meta<DropdownComponent> = {
   ],
   argTypes: {
     theme: {
-      options: ['ghost-white', 'transparent-white'],
+      options: ['ghost-white', 'transparent-white','outline-white'],
       control: 'select',
     },
     menuTriggerIcons: {
@@ -46,68 +46,57 @@ const dropdownItems: DropdownItem[] = [
     label: 'Most recent first',
     value: 'recent_desc',
     leftIcons: ['sort'],
-    rightIcons: ['activity'],
   },
   {
     label: 'Most old first',
     value: 'recent_asc',
     leftIcons: ['sort'],
-    rightIcons: ['admin'],
   },
   {
     label: 'Lower price first',
     value: 'price_asc',
     leftIcons: ['dollar'],
-    rightIcons: ['apple'],
     disabled: true,
   },
   {
     label: 'Higher price first',
     value: 'price_desc',
     leftIcons: ['dollar'],
-    rightIcons: ['application'],
   },
   {
     label: 'Alphabetical order A - Z',
     value: 'alpha_asc',
     leftIcons: ['type'],
-    rightIcons: ['archive'],
   },
   {
     label: 'Alphabetical order Z - A',
     value: 'alpha_desc',
     leftIcons: ['type'],
-    rightIcons: ['award'],
   },
   {
     label: 'Popular games',
     value: 'popular',
     leftIcons: ['star_filled'],
-    rightIcons: ['flame'],
   },
   {
     label: 'New releases',
     value: 'new',
     leftIcons: ['star'],
-    rightIcons: ['plus'],
   },
   {
     label: 'On sale',
     value: 'sale',
     leftIcons: ['tag'],
-    rightIcons: ['percent'],
   },
   {
     label: 'Free games',
     value: 'free',
     leftIcons: ['gift'],
-    rightIcons: ['check'],
   },
   {
     label: 'Premium games',
     value: 'premium',
     leftIcons: ['crown'],
-    rightIcons: ['diamond'],
   },
   {
     label: 'Categories',
@@ -124,7 +113,7 @@ const dropdownItems: DropdownItem[] = [
  */
 export const Basic: Story = {
   args: {
-    theme: 'transparent-white',
+    theme: 'ghost-white',
     items: dropdownItems,
   },
   render: (args) => ({
@@ -173,7 +162,7 @@ export const WithLeftMenuTriggerIcons: Story = {
  */
 export const WithRightMenuTriggerIcons: Story = {
   args: {
-    theme: 'transparent-white',
+    theme: 'ghost-white',
     items: dropdownItems,
     menuTriggerIcons: {
       leftIcons: [],
@@ -201,7 +190,7 @@ export const WithRightMenuTriggerIcons: Story = {
  */
 export const WithTriggerIconOnly: Story = {
   args: {
-    theme: 'transparent-white',
+    theme: 'ghost-white',
     items: [
       {
         label: 'Edit',
