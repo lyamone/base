@@ -19,4 +19,13 @@ describe('CheckboxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('hides the required asterisk when showRequiredIndicator is false', () => {
+    fixture.componentRef.setInput('label', 'Accept terms');
+    fixture.componentRef.setInput('required', true);
+    fixture.componentRef.setInput('showRequiredIndicator', false);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.ul-form-field__required-indicator')).toBeFalsy();
+  });
 });

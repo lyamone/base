@@ -17,6 +17,7 @@
     [required]="required()"
     [for]="ids.controlId"
     [size]="size()"
+    [showRequiredIndicator]="showRequiredIndicator()"
   />
 
   <div
@@ -59,7 +60,9 @@
   <ul-form-field-helper
     [id]="ids.helperId"
     [helperText]="helperText()"
-    [errorText]="(errorText() || (hasError() && errors().length ? errors()[0].message : null)) ?? null"
+    [errorText]="
+      (errorText() || (hasError() && errors().length ? errors()[0].message : null)) ?? null
+    "
     [error]="hasError()"
   />
 </div>

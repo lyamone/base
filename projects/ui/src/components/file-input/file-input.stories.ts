@@ -45,6 +45,11 @@ const meta: Meta<FileInputComponent> = {
       control: { type: 'boolean' },
       description: 'Marks the field as required.',
     },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     placeholderText: {
       control: { type: 'text' },
       description: 'Text when no file is selected.',
@@ -70,6 +75,7 @@ const meta: Meta<FileInputComponent> = {
     error: false,
     disabled: false,
     required: false,
+    showRequiredIndicator: true,
     placeholderText: 'No file chosen',
     label: 'Label',
     helperText: 'Helper text',
@@ -107,6 +113,7 @@ export const WithLabelAndHelper: Story = {
     label: 'Upload document',
     helperText: 'PDF or images, max 10 MB',
     placeholderText: 'No file chosen',
+    required: true,
   },
   render: (args) => ({
     props: args,
@@ -117,6 +124,34 @@ export const WithLabelAndHelper: Story = {
         [label]="label"
         [helperText]="helperText"
         [placeholderText]="placeholderText"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+      />
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...WithLabelAndHelper.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-file-input
+        [size]="size"
+        [appearance]="appearance"
+        [label]="label"
+        [helperText]="helperText"
+        [placeholderText]="placeholderText"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
       />
     `,
   }),

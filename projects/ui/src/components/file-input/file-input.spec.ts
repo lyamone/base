@@ -64,7 +64,11 @@ describe('FileInputComponent', () => {
     const nativeInput = el.querySelector<HTMLInputElement>('input[type="file"]');
     expect(nativeInput).toBeTruthy();
     const file = new File(['content'], 'test.txt', { type: 'text/plain' });
-    const fileList = { length: 1, item: (i: number) => (i === 0 ? file : null), 0: file } as unknown as FileList;
+    const fileList = {
+      length: 1,
+      item: (i: number) => (i === 0 ? file : null),
+      0: file,
+    } as unknown as FileList;
     Object.defineProperty(nativeInput!, 'files', { value: fileList, configurable: true });
     nativeInput!.dispatchEvent(new Event('change', { bubbles: true }));
     fixture.detectChanges();
@@ -88,6 +92,15 @@ describe('FileInputComponent', () => {
     const wrapper = fixture.nativeElement as HTMLElement;
     const firstDiv = wrapper.querySelector('div');
     expect(firstDiv?.getAttribute('aria-required')).toBe('true');
+  });
+
+  it('should hide the required asterisk when showRequiredIndicator is false', () => {
+    fixture.componentRef.setInput('label', 'Attachment');
+    fixture.componentRef.setInput('required', true);
+    fixture.componentRef.setInput('showRequiredIndicator', false);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.ul-form-field__required-indicator')).toBeFalsy();
   });
 
   it('focus() should focus the native input', () => {

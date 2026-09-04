@@ -67,6 +67,7 @@ export class CalendarComponent implements FormValueControl<Date | null> {
   readonly disabled = input<boolean>(false);
   readonly readOnly = input<boolean>(false);
   readonly required = input<boolean>(false);
+  readonly showRequiredIndicator = input<boolean>(true);
   readonly placeholder = input<string>('');
   readonly label = input<string | null>(null);
   readonly helperText = input<string | null>(null);

@@ -42,6 +42,11 @@ const meta: Meta<SearchSelectComponent> = {
     error: { control: { type: 'boolean' } },
     disabled: { control: { type: 'boolean' } },
     required: { control: { type: 'boolean' } },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     label: { control: { type: 'text' } },
     helperText: { control: { type: 'text' } },
     errorText: { control: { type: 'text' } },
@@ -53,6 +58,7 @@ const meta: Meta<SearchSelectComponent> = {
     error: false,
     disabled: false,
     required: false,
+    showRequiredIndicator: true,
     label: 'Search and select',
     helperText: 'Type to filter options',
     errorText: 'Please select an option',
@@ -95,6 +101,7 @@ export const WithError: Story = {
     options: defaultOptions,
     error: true,
     value: null,
+    required: true,
   },
   render: (args) => ({
     props: args,
@@ -107,6 +114,37 @@ export const WithError: Story = {
         [error]="error"
         [disabled]="disabled"
         [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+        [placeholder]="placeholder"
+        [options]="options"
+        [(value)]="value"
+      />
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...WithError.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-search-select
+        [size]="size"
+        [label]="label"
+        [helperText]="helperText"
+        [errorText]="errorText"
+        [error]="error"
+        [disabled]="disabled"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
         [placeholder]="placeholder"
         [options]="options"
         [(value)]="value"
@@ -177,7 +215,8 @@ export const Responsive: Story = {
   args: {
     options: defaultOptions,
     label: 'Search (responsive)',
-    helperText: 'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',
+    helperText:
+      'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',
   },
   parameters: {
     viewport: { defaultViewport: 'responsive' },

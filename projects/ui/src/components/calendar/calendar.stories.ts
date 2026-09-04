@@ -35,6 +35,11 @@ const meta: Meta<CalendarComponent> = {
     required: {
       control: { type: 'boolean' },
     },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     placeholder: {
       control: { type: 'text' },
     },
@@ -59,6 +64,7 @@ const meta: Meta<CalendarComponent> = {
     disabled: false,
     readOnly: false,
     required: false,
+    showRequiredIndicator: true,
     placeholder: '',
     label: 'Date',
     helperText: '',
@@ -202,6 +208,7 @@ export const WithError: Story = {
     label: 'Birth date',
     helperText: 'Enter your date of birth',
     errorText: 'This field is required',
+    required: true,
   },
   render: (args) => ({
     props: args,
@@ -214,6 +221,34 @@ export const WithError: Story = {
         [helperText]="helperText"
         [errorText]="errorText"
         [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+      />
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...WithError.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-calendar
+        [(value)]="value"
+        [mode]="mode"
+        [error]="error"
+        [label]="label"
+        [helperText]="helperText"
+        [errorText]="errorText"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
       />
     `,
   }),

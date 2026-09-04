@@ -49,6 +49,11 @@ const meta: Meta<InputComponent> = {
       control: { type: 'boolean' },
       description: 'Marks the field as required (shows indicator).',
     },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     placeholder: {
       control: { type: 'text' },
       description: 'Placeholder text when empty.',
@@ -83,11 +88,13 @@ const meta: Meta<InputComponent> = {
     },
     showPasswordLabel: {
       control: { type: 'text' },
-      description: 'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',
+      description:
+        'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',
     },
     hidePasswordLabel: {
       control: { type: 'text' },
-      description: 'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',
+      description:
+        'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',
     },
   },
   args: {
@@ -99,6 +106,7 @@ const meta: Meta<InputComponent> = {
     disabled: false,
     readOnly: false,
     required: false,
+    showRequiredIndicator: true,
     placeholder: 'Enter text...',
     label: 'Label',
     helperText: 'Helper text',
@@ -176,6 +184,7 @@ export const WithLabelAndHelper: Story = {
     label: 'Username',
     helperText: 'Enter your username',
     placeholder: 'johndoe',
+    required: true,
   },
   render: (args) => ({
     props: args,
@@ -186,6 +195,38 @@ export const WithLabelAndHelper: Story = {
         [error]="error"
         [disabled]="disabled"
         [readOnly]="readOnly"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+        [placeholder]="placeholder"
+        [label]="label"
+        [helperText]="helperText"
+        [value]="value"
+      />
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...WithLabelAndHelper.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-input
+        [size]="size"
+        [appearance]="appearance"
+        [error]="error"
+        [disabled]="disabled"
+        [readOnly]="readOnly"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
         [placeholder]="placeholder"
         [label]="label"
         [helperText]="helperText"

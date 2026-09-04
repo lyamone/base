@@ -16,7 +16,7 @@ import type { UiSize } from '../ui-types';
         [class.ul-form-field__label--required]="required()"
       >
         {{ label() }}
-        @if (required()) {
+        @if (required() && !!showRequiredIndicator()) {
           <span class="ul-form-field__required-indicator" aria-hidden="true" title="Required">
             *
           </span>
@@ -32,4 +32,5 @@ export class FormFieldLabelComponent {
   readonly required = input<boolean>(false);
   readonly for = input<string>('');
   readonly size = input<UiSize>('md');
+  readonly showRequiredIndicator = input<boolean>(true);
 }

@@ -69,4 +69,13 @@ describe('InputComponent', () => {
     const input = fixture.nativeElement.querySelector('input') as HTMLInputElement;
     expect(input.getAttribute('step')).toBe('1');
   });
+
+  it('should hide the required asterisk when showRequiredIndicator is false', () => {
+    fixture.componentRef.setInput('label', 'Email');
+    fixture.componentRef.setInput('required', true);
+    fixture.componentRef.setInput('showRequiredIndicator', false);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.ul-form-field__required-indicator')).toBeFalsy();
+  });
 });

@@ -39,6 +39,7 @@ export interface RadioGroupOption {
         [required]="required()"
         [for]="ids.controlId"
         size="md"
+        [showRequiredIndicator]="showRequiredIndicator()"
       />
       <div class="ul-radio-group__radios" [id]="ids.controlId">
         @for (opt of options(); track opt.value) {
@@ -74,6 +75,7 @@ export class RadioGroupComponent implements FormValueControl<string | null> {
   readonly error = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
+  readonly showRequiredIndicator = input<boolean>(true);
   readonly invalid = input<boolean>(false);
   readonly errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
 

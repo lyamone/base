@@ -45,6 +45,7 @@ export class SearchSelectComponent implements FormValueControl<string | null> {
   readonly error = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
+  readonly showRequiredIndicator = input<boolean>(true);
   readonly placeholder = input<string>('Search...');
   readonly options = input<SearchSelectOption[]>([]);
   readonly minCharsToOpen = input<number>(0);

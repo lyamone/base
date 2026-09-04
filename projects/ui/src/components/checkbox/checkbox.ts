@@ -41,6 +41,7 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
         [required]="required()"
         [for]="ids.controlId"
         [size]="size() === 'sm' ? 'sm' : 'md'"
+        [showRequiredIndicator]="showRequiredIndicator()"
       />
 
       <label
@@ -82,19 +83,20 @@ export type CheckboxZoneType = 'none' | 'accessible' | 'visible' | 'checked-visi
   styleUrls: ['./checkbox.scss'],
 })
 export class CheckboxComponent implements FormCheckboxControl {
-  checked = model<boolean>(false);
+  readonly checked = model<boolean>(false);
 
-  disabled = model<boolean>(false);
-  indeterminate = model<boolean>(false);
-  zone = input<CheckboxZoneType>('none');
-  size = input<UiCheckboxSize>('default');
-  label = input<string | null>(null);
-  helperText = input<string | null>(null);
-  required = input<boolean>(false);
-  error = input<boolean>(false);
-  errorText = input<string | null>(null);
-  invalid = input<boolean>(false);
-  errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
+  readonly disabled = model<boolean>(false);
+  readonly indeterminate = model<boolean>(false);
+  readonly zone = input<CheckboxZoneType>('none');
+  readonly size = input<UiCheckboxSize>('default');
+  readonly label = input<string | null>(null);
+  readonly helperText = input<string | null>(null);
+  readonly required = input<boolean>(false);
+  readonly showRequiredIndicator = input<boolean>(true);
+  readonly error = input<boolean>(false);
+  readonly errorText = input<string | null>(null);
+  readonly invalid = input<boolean>(false);
+  readonly errors = input<readonly WithOptionalFieldTree<ValidationError>[]>([]);
 
   protected readonly ids = createFormFieldIds('ul-checkbox');
   protected readonly hasError = computed(() => this.error() || this.invalid());

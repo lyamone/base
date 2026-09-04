@@ -49,6 +49,11 @@ const meta: Meta<CheckboxComponent> = {
       control: 'boolean',
       description: 'Whether the checkbox is required (shows asterisk, aria-required)',
     },
+    showRequiredIndicator: {
+      control: 'boolean',
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     error: {
       control: 'boolean',
       description: 'Whether the checkbox is in an error state',
@@ -188,6 +193,7 @@ export const FormField: Story = {
     label: 'Accept terms and conditions',
     helperText: 'You must agree to continue.',
     required: true,
+    showRequiredIndicator: true,
   },
   render: (args) => ({
     props: args,
@@ -197,6 +203,35 @@ export const FormField: Story = {
         [label]="label"
         [helperText]="helperText"
         [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+        [disabled]="disabled"
+        [size]="size"
+      >
+        I agree to the terms
+      </ul-checkbox>
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...FormField.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-checkbox
+        [checked]="checked"
+        [label]="label"
+        [helperText]="helperText"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
         [disabled]="disabled"
         [size]="size"
       >

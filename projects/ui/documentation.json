@@ -1955,6 +1955,16 @@
                 "name": "AllSizes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
+            },
+            {
+                "name": "AllSizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1962,16 +1972,6 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button [size]=\"'sm'\" [theme]=\"theme\">\n          Small Button\n        </ul-button>\n        <ul-button [size]=\"'md'\" [theme]=\"theme\">\n          Medium Button\n        </ul-button>\n        <ul-button [size]=\"'lg'\" [theme]=\"theme\">\n          Large Button\n        </ul-button>\n        <ul-button [size]=\"'xl'\" [theme]=\"theme\">\n          Extra Large Button\n        </ul-button>\n      </div>\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.",
                 "description": "<p>Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.</p>\n"
-            },
-            {
-                "name": "AllSizes",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "AllSizes",
@@ -2471,6 +2471,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: baseArgs,\n  render: cardTemplate,\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2478,16 +2488,6 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
                 "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
                 "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: baseArgs,\n  render: cardTemplate,\n}"
             },
             {
                 "name": "Default",
@@ -2957,7 +2957,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    ...Basic.args,\n    label: 'Accept terms and conditions',\n    helperText: 'You must agree to continue.',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    ...Basic.args,\n    label: 'Accept terms and conditions',\n    helperText: 'You must agree to continue.',\n    required: true,\n    showRequiredIndicator: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}"
             },
             {
                 "name": "Free",
@@ -3447,21 +3447,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/calendar/calendar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CalendarComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Calendar',\n  component: CalendarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Date and/or time picker with popup calendar. Implements `FormValueControl<Date | null>` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Modes: date, time, datetime. Supports min/max date and time, locale, sizes, and label/helper/error text.',\n      },\n    },\n  },\n  argTypes: {\n    mode: {\n      options: ['date', 'time', 'datetime'] as CalendarMode[],\n      control: { type: 'select' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    showCalendarIcon: {\n      control: { type: 'boolean' },\n    },\n  },\n  args: {\n    mode: 'date',\n    value: null,\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: '',\n    label: 'Date',\n    helperText: '',\n    errorText: 'Please select a date',\n    showCalendarIcon: true,\n    minDate: null,\n    maxDate: null,\n    minTime: null,\n    maxTime: null,\n    locale: 'en-US',\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/Calendar',\n  component: CalendarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Date and/or time picker with popup calendar. Implements `FormValueControl<Date | null>` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Modes: date, time, datetime. Supports min/max date and time, locale, sizes, and label/helper/error text.',\n      },\n    },\n  },\n  argTypes: {\n    mode: {\n      options: ['date', 'time', 'datetime'] as CalendarMode[],\n      control: { type: 'select' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    showCalendarIcon: {\n      control: { type: 'boolean' },\n    },\n  },\n  args: {\n    mode: 'date',\n    value: null,\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: '',\n    label: 'Date',\n    helperText: '',\n    errorText: 'Please select a date',\n    showCalendarIcon: true,\n    minDate: null,\n    maxDate: null,\n    minTime: null,\n    maxTime: null,\n    locale: 'en-US',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3487,11 +3477,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/checkbox/checkbox.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CheckboxComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Checkbox',\n  component: CheckboxComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm, lg — lg is easier to tap on touch, e.g. mobile bulk-select rows).',\n      },\n    },\n  },\n  argTypes: {\n    checked: {\n      control: 'boolean',\n      description: 'The checked state of the checkbox',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the checkbox is disabled',\n    },\n    indeterminate: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an indeterminate state',\n    },\n    zone: {\n      control: 'select',\n      options: ['none', 'accessible', 'visible', 'checked-visible'],\n      description: 'The zone type of the checkbox',\n    },\n    size: {\n      control: 'select',\n      options: ['default', 'sm', 'lg'],\n      description: 'The size variant of the checkbox',\n    },\n    label: {\n      control: 'text',\n      description: 'Form field label (above the checkbox), same as input/textarea',\n    },\n    helperText: {\n      control: 'text',\n      description: 'Helper text below the checkbox when not in error state',\n    },\n    required: {\n      control: 'boolean',\n      description: 'Whether the checkbox is required (shows asterisk, aria-required)',\n    },\n    error: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an error state',\n    },\n    errorText: {\n      control: 'text',\n      description: 'Error message shown below when in error state',\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/Checkbox',\n  component: CheckboxComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm, lg — lg is easier to tap on touch, e.g. mobile bulk-select rows).',\n      },\n    },\n  },\n  argTypes: {\n    checked: {\n      control: 'boolean',\n      description: 'The checked state of the checkbox',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the checkbox is disabled',\n    },\n    indeterminate: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an indeterminate state',\n    },\n    zone: {\n      control: 'select',\n      options: ['none', 'accessible', 'visible', 'checked-visible'],\n      description: 'The zone type of the checkbox',\n    },\n    size: {\n      control: 'select',\n      options: ['default', 'sm', 'lg'],\n      description: 'The size variant of the checkbox',\n    },\n    label: {\n      control: 'text',\n      description: 'Form field label (above the checkbox), same as input/textarea',\n    },\n    helperText: {\n      control: 'text',\n      description: 'Helper text below the checkbox when not in error state',\n    },\n    required: {\n      control: 'boolean',\n      description: 'Whether the checkbox is required (shows asterisk, aria-required)',\n    },\n    showRequiredIndicator: {\n      control: 'boolean',\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    error: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an error state',\n    },\n    errorText: {\n      control: 'text',\n      description: 'Error message shown below when in error state',\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3531,7 +3531,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FileInputComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/File input',\n  component: FileInputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'File input with label, helper/error text, and optional slots. Implements `FormValueControl<FileList | null>` for Signal Forms `[formField]`. Uses hidden native file input + visible trigger + selected file label. Supports sizes (sm–xl), appearance (border-only / subtle-tint), accept, multiple, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n      description: 'Visual size.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies FileInputAppearance[],\n      description: 'Border/hover style.',\n    },\n    accept: {\n      control: { type: 'text' },\n      description: 'Accept attribute (e.g. image/*, .pdf).',\n    },\n    multiple: {\n      control: { type: 'boolean' },\n      description: 'Allow multiple file selection.',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required.',\n    },\n    placeholderText: {\n      control: { type: 'text' },\n      description: 'Text when no file is selected.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n  },\n  args: {\n    size: 'md',\n    appearance: 'border-only',\n    accept: '',\n    multiple: false,\n    error: false,\n    disabled: false,\n    required: false,\n    placeholderText: 'No file chosen',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/File input',\n  component: FileInputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'File input with label, helper/error text, and optional slots. Implements `FormValueControl<FileList | null>` for Signal Forms `[formField]`. Uses hidden native file input + visible trigger + selected file label. Supports sizes (sm–xl), appearance (border-only / subtle-tint), accept, multiple, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n      description: 'Visual size.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies FileInputAppearance[],\n      description: 'Border/hover style.',\n    },\n    accept: {\n      control: { type: 'text' },\n      description: 'Accept attribute (e.g. image/*, .pdf).',\n    },\n    multiple: {\n      control: { type: 'boolean' },\n      description: 'Allow multiple file selection.',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required.',\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholderText: {\n      control: { type: 'text' },\n      description: 'Text when no file is selected.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n  },\n  args: {\n    size: 'md',\n    appearance: 'border-only',\n    accept: '',\n    multiple: false,\n    error: false,\n    disabled: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholderText: 'No file chosen',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3571,7 +3571,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Input',\n  component: InputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for use with Signal Forms via `[formField]`. Use `[(value)]` for two-way binding. Supports sizes (sm–xl), disabled/readonly/required, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n      description: 'Current input value; use with [(value)] for two-way binding.',\n    },\n    type: {\n      control: { type: 'text' },\n      description: 'Native input type: text, password, email, number, tel, url.',\n    },\n    size: {\n      control: { type: 'text' },\n      description: 'Visual size: sm, md, lg, xl.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies InputAppearance[],\n      description:\n        'Border/hover style: border-only (hover = border only), subtle-tint (hover = border + 5% fill).',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n      description: 'Makes the input read-only.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required (shows indicator).',\n    },\n    placeholder: {\n      control: { type: 'text' },\n      description: 'Placeholder text when empty.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n    maxLength: {\n      control: { type: 'number' },\n      description: 'Max length attribute.',\n    },\n    minLength: {\n      control: { type: 'number' },\n      description: 'Min length attribute.',\n    },\n    pattern: {\n      control: { type: 'text' },\n      description: 'HTML pattern attribute for validation.',\n    },\n    autocomplete: {\n      control: { type: 'text' },\n      description: 'Autocomplete attribute (e.g. off, email).',\n    },\n    showPasswordLabel: {\n      control: { type: 'text' },\n      description: 'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',\n    },\n    hidePasswordLabel: {\n      control: { type: 'text' },\n      description: 'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',\n    },\n  },\n  args: {\n    value: '',\n    type: 'text',\n    size: 'md',\n    appearance: 'border-only',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    pattern: [],\n    autocomplete: 'off',\n    showPasswordLabel: 'Show password',\n    hidePasswordLabel: 'Hide password',\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/Input',\n  component: InputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for use with Signal Forms via `[formField]`. Use `[(value)]` for two-way binding. Supports sizes (sm–xl), disabled/readonly/required, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n      description: 'Current input value; use with [(value)] for two-way binding.',\n    },\n    type: {\n      control: { type: 'text' },\n      description: 'Native input type: text, password, email, number, tel, url.',\n    },\n    size: {\n      control: { type: 'text' },\n      description: 'Visual size: sm, md, lg, xl.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies InputAppearance[],\n      description:\n        'Border/hover style: border-only (hover = border only), subtle-tint (hover = border + 5% fill).',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n      description: 'Makes the input read-only.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required (shows indicator).',\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n      description: 'Placeholder text when empty.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n    maxLength: {\n      control: { type: 'number' },\n      description: 'Max length attribute.',\n    },\n    minLength: {\n      control: { type: 'number' },\n      description: 'Min length attribute.',\n    },\n    pattern: {\n      control: { type: 'text' },\n      description: 'HTML pattern attribute for validation.',\n    },\n    autocomplete: {\n      control: { type: 'text' },\n      description: 'Autocomplete attribute (e.g. off, email).',\n    },\n    showPasswordLabel: {\n      control: { type: 'text' },\n      description:\n        'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',\n    },\n    hidePasswordLabel: {\n      control: { type: 'text' },\n      description:\n        'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',\n    },\n  },\n  args: {\n    value: '',\n    type: 'text',\n    size: 'md',\n    appearance: 'border-only',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    pattern: [],\n    autocomplete: 'off',\n    showPasswordLabel: 'Show password',\n    hidePasswordLabel: 'Hide password',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3671,7 +3671,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SearchSelectComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/SearchSelect',\n  component: SearchSelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Combobox: search input with filterable dropdown. Type to filter options and select a result. Implements `FormValueControl<string | null>` for Signal Forms. Use `[(value)]` for two-way binding. Responsive (mobile, tablet, desktop).',\n      },\n    },\n    layout: 'centered',\n  },\n  decorators: [\n    (story) => ({\n      ...story(),\n      template: `<div style=\"min-height: 500px; min-width: 400px;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    error: { control: { type: 'boolean' } },\n    disabled: { control: { type: 'boolean' } },\n    required: { control: { type: 'boolean' } },\n    label: { control: { type: 'text' } },\n    helperText: { control: { type: 'text' } },\n    errorText: { control: { type: 'text' } },\n    placeholder: { control: { type: 'text' } },\n    minCharsToOpen: { control: { type: 'number' } },\n  },\n  args: {\n    size: 'md',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Search and select',\n    helperText: 'Type to filter options',\n    errorText: 'Please select an option',\n    placeholder: 'Search...',\n    minCharsToOpen: 0,\n    options: defaultOptions,\n    value: null,\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/SearchSelect',\n  component: SearchSelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Combobox: search input with filterable dropdown. Type to filter options and select a result. Implements `FormValueControl<string | null>` for Signal Forms. Use `[(value)]` for two-way binding. Responsive (mobile, tablet, desktop).',\n      },\n    },\n    layout: 'centered',\n  },\n  decorators: [\n    (story) => ({\n      ...story(),\n      template: `<div style=\"min-height: 500px; min-width: 400px;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    error: { control: { type: 'boolean' } },\n    disabled: { control: { type: 'boolean' } },\n    required: { control: { type: 'boolean' } },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    label: { control: { type: 'text' } },\n    helperText: { control: { type: 'text' } },\n    errorText: { control: { type: 'text' } },\n    placeholder: { control: { type: 'text' } },\n    minCharsToOpen: { control: { type: 'number' } },\n  },\n  args: {\n    size: 'md',\n    error: false,\n    disabled: false,\n    required: false,\n    showRequiredIndicator: true,\n    label: 'Search and select',\n    helperText: 'Type to filter options',\n    errorText: 'Please select an option',\n    placeholder: 'Search...',\n    minCharsToOpen: 0,\n    options: defaultOptions,\n    value: null,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3681,17 +3681,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SelectComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Select',\n  component: SelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Dropdown select built on the dropdown component. Implements `FormValueControl<string | null>` for Signal Forms `[formField]`. Use `[(value)]` or pass `[options]` and bind value. Supports label, helper/error text, placeholder, sizes, and themes (ghost-white, transparent-white).',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: ['ghost-white', 'transparent-white'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    value: {\n      control: { type: 'text' },\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'transparent-white',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Select option',\n    helperText: 'Choose an option from the list',\n    errorText: 'This field is required',\n    placeholder: 'Select an option',\n    value: null,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<SidebarComponent>",
-                "defaultValue": "{\n  title: 'Components/Layout/Sidebar',\n  component: SidebarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Responsive sidebar for app navigation. On desktop it stays visible with the current selection highlighted; on mobile it becomes a drawer with overlay and a toggle button. Use `items` for nav options (same shape as dropdown items) or project custom content via slots. Bind [(selectedIndex)] for the active item; supports theme, [(open)] for mobile drawer, and itemSelected output.',\n      },\n    },\n    layout: 'fullscreen',\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ListItemComponent, IconComponent, ButtonComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"display: flex; min-height: 100vh;\">\n          ${story().template}\n          <main style=\"flex: 1; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\">\n            <p style=\"color: rgba(255,255,255,0.7);\">Main content area. Resize to see sidebar as drawer on small viewports.</p>\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    selectedIndex: {\n      control: { type: 'number', min: 0, max: 4 },\n      description: 'Index of the selected nav item (visible on desktop)',\n    },\n    closeOnBackdropClick: {\n      control: 'boolean',\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/Select',\n  component: SelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Dropdown select built on the dropdown component. Implements `FormValueControl<string | null>` for Signal Forms `[formField]`. Use `[(value)]` or pass `[options]` and bind value. Supports label, helper/error text, placeholder, sizes, and themes (ghost-white, transparent-white).',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: ['ghost-white', 'transparent-white'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    value: {\n      control: { type: 'text' },\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'transparent-white',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Select option',\n    helperText: 'Choose an option from the list',\n    errorText: 'This field is required',\n    placeholder: 'Select an option',\n    value: null,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3702,6 +3692,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<SkeletonComponent>",
                 "defaultValue": "{\n  title: 'Components/Feedback/Skeleton',\n  component: SkeletonComponent,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [SkeletonComponent, ButtonComponent, CardComponent],\n    }),\n  ],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Skeleton loader for content placeholders. Use as a primitive block (rect or text) or as an overlay that sits on top of real content while data is loading.',\n      },\n    },\n  },\n  argTypes: {\n    variant: {\n      options: ['rect', 'text'],\n      control: { type: 'radio' },\n      description: 'Skeleton visual variant.',\n    },\n    width: {\n      control: 'text',\n      description: 'Explicit width (e.g. 100%, 200px). Applies to the host container.',\n    },\n    height: {\n      control: 'text',\n      description: 'Explicit height (e.g. 16px, 3rem). Applies to the host container.',\n    },\n    lines: {\n      control: { type: 'number', min: 1, max: 10 },\n      description: 'Number of lines for text/line variants.',\n    },\n    borderRadius: {\n      options: ['xs', 'sm', 'md', 'lg', 'full', null],\n      control: { type: 'radio' },\n      description: 'Optional radius override for rect variant.',\n    },\n    show: {\n      control: { type: 'boolean' },\n      description: 'Whether the skeleton is visible (useful for overlay mode).',\n    },\n  },\n  args: {\n    variant: 'rect',\n    width: '200px',\n    height: '24px',\n    lines: 3,\n    borderRadius: 'md',\n    show: true,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SidebarComponent>",
+                "defaultValue": "{\n  title: 'Components/Layout/Sidebar',\n  component: SidebarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Responsive sidebar for app navigation. On desktop it stays visible with the current selection highlighted; on mobile it becomes a drawer with overlay and a toggle button. Use `items` for nav options (same shape as dropdown items) or project custom content via slots. Bind [(selectedIndex)] for the active item; supports theme, [(open)] for mobile drawer, and itemSelected output.',\n      },\n    },\n    layout: 'fullscreen',\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ListItemComponent, IconComponent, ButtonComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"display: flex; min-height: 100vh;\">\n          ${story().template}\n          <main style=\"flex: 1; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\">\n            <p style=\"color: rgba(255,255,255,0.7);\">Main content area. Resize to see sidebar as drawer on small viewports.</p>\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    selectedIndex: {\n      control: { type: 'number', min: 0, max: 4 },\n      description: 'Index of the selected nav item (visible on desktop)',\n    },\n    closeOnBackdropClick: {\n      control: 'boolean',\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3731,7 +3731,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TextareaComponent>",
-                "defaultValue": "{\n  title: 'Components/Form Elements/Textarea',\n  component: TextareaComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Multi-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Supports sizes, resize behavior (none/vertical/horizontal/both), and disabled/readonly/required/error states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    maxLength: {\n      control: { type: 'number' },\n    },\n    minLength: {\n      control: { type: 'number' },\n    },\n    rows: {\n      control: { type: 'number' },\n    },\n    resize: {\n      options: ['none', 'vertical', 'horizontal', 'both'] as TextareaResize[],\n      control: { type: 'select' },\n    },\n  },\n  args: {\n    value: '',\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    rows: 3,\n    resize: 'vertical',\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Form Elements/Textarea',\n  component: TextareaComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Multi-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Supports sizes, resize behavior (none/vertical/horizontal/both), and disabled/readonly/required/error states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    maxLength: {\n      control: { type: 'number' },\n    },\n    minLength: {\n      control: { type: 'number' },\n    },\n    rows: {\n      control: { type: 'number' },\n    },\n    resize: {\n      options: ['none', 'vertical', 'horizontal', 'both'] as TextareaResize[],\n      control: { type: 'select' },\n    },\n  },\n  args: {\n    value: '',\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    rows: 3,\n    resize: 'vertical',\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4106,6 +4106,78 @@
                 "description": "<p>Demonstrates a read-only pill variant.</p>\n"
             },
             {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...WithError.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/checkbox/checkbox.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...FormField.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/file-input/file-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/search-select/search-select.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...WithError.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
+                "name": "RequiredWithoutIndicator",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/textarea/textarea.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+            },
+            {
                 "name": "Resize",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4123,7 +4195,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    label: 'Search (responsive)',\n    helperText: 'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',\n  },\n  parameters: {\n    viewport: { defaultViewport: 'responsive' },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"width: 100%; max-width: 480px; padding: 1rem;\">\n        <ul-search-select\n          [size]=\"size\"\n          [label]=\"label\"\n          [helperText]=\"helperText\"\n          [placeholder]=\"placeholder\"\n          [options]=\"options\"\n          [(value)]=\"value\"\n        />\n      </div>\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    label: 'Search (responsive)',\n    helperText:\n      'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',\n  },\n  parameters: {\n    viewport: { defaultViewport: 'responsive' },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"width: 100%; max-width: 480px; padding: 1rem;\">\n        <ul-search-select\n          [size]=\"size\"\n          [label]=\"label\"\n          [helperText]=\"helperText\"\n          [placeholder]=\"placeholder\"\n          [options]=\"options\"\n          [(value)]=\"value\"\n        />\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "Responsive",
@@ -4397,7 +4469,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    options,\n  },\n  render: () => ({\n    props: {\n      options,\n    },\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem; max-width: 420px;\">\n        <ul-select\n          [options]=\"options\"\n          label=\"Disabled select\"\n          helperText=\"This select is disabled\"\n          [disabled]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select\"\n          helperText=\"This field is required\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n        />\n      </div>\n    `,\n  }),\n}",
+                "defaultValue": "{\n  args: {\n    options,\n  },\n  render: () => ({\n    props: {\n      options,\n    },\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem; max-width: 420px;\">\n        <ul-select\n          [options]=\"options\"\n          label=\"Disabled select\"\n          helperText=\"This select is disabled\"\n          [disabled]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select\"\n          helperText=\"This field is required\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select, no asterisk\"\n          helperText=\"Every field on this form is required, so the '*' would just be noise\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n          [showRequiredIndicator]=\"false\"\n        />\n      </div>\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates disabled and required states.",
                 "description": "<p>Demonstrates disabled and required states.</p>\n"
             },
@@ -4651,7 +4723,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    mode: 'date',\n    error: true,\n    label: 'Birth date',\n    helperText: 'Enter your date of birth',\n    errorText: 'This field is required',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n      />\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    mode: 'date',\n    error: true,\n    label: 'Birth date',\n    helperText: 'Enter your date of birth',\n    errorText: 'This field is required',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
             },
             {
                 "name": "WithError",
@@ -4683,7 +4755,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    error: true,\n    value: null,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    error: true,\n    value: null,\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}"
             },
             {
                 "name": "WithError",
@@ -4829,7 +4901,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Upload document',\n    helperText: 'PDF or images, max 10 MB',\n    placeholderText: 'No file chosen',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n      />\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Upload document',\n    helperText: 'PDF or images, max 10 MB',\n    placeholderText: 'No file chosen',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
             },
             {
                 "name": "WithLabelAndHelper",
@@ -4839,7 +4911,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Username',\n    helperText: 'Enter your username',\n    placeholder: 'johndoe',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
+                "defaultValue": "{\n  args: {\n    label: 'Username',\n    helperText: 'Enter your username',\n    placeholder: 'johndoe',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates an input with a label and helper text.",
                 "description": "<p>Demonstrates an input with a label and helper text.</p>\n"
             },
@@ -4851,7 +4923,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Description',\n    helperText: 'Enter a short description',\n    placeholder: 'Type here...',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n      />\n    `,\n  }),\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Description',\n    helperText: 'Enter a short description',\n    placeholder: 'Type here...',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
             },
             {
                 "name": "WithLeftMenuTriggerIcons",
@@ -5148,17 +5220,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<CalendarComponent>",
                 "file": "projects/ui/src/components/calendar/calendar.stories.ts",
                 "deprecated": false,
@@ -5183,6 +5244,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<CarouselComponent>",
                 "file": "projects/ui/src/components/carousel/carousel.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5412,8 +5484,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<SidebarComponent>",
-                "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
+                "rawtype": "StoryObj<SkeletonComponent>",
+                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5423,8 +5495,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<SkeletonComponent>",
-                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                "rawtype": "StoryObj<SidebarComponent>",
+                "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -6094,6 +6166,110 @@
                     "description": "<p>Demonstrates an avatar with initials fallback.</p>\n"
                 }
             ],
+            "projects/ui/src/components/calendar/calendar.stories.ts": [
+                {
+                    "name": "AllSizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "DateOnly",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    label: 'Select date',\n    helperText: 'Choose a date from the calendar',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "DateTime",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'datetime',\n    label: 'Select date and time',\n    helperText: 'Choose both date and time',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "Disabled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    disabled: true,\n    label: 'Disabled calendar',\n    value: new Date(2025, 5, 15),\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [disabled]=\"disabled\"\n        [label]=\"label\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CalendarComponent>",
+                    "defaultValue": "{\n  title: 'Components/Form Elements/Calendar',\n  component: CalendarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Date and/or time picker with popup calendar. Implements `FormValueControl<Date | null>` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Modes: date, time, datetime. Supports min/max date and time, locale, sizes, and label/helper/error text.',\n      },\n    },\n  },\n  argTypes: {\n    mode: {\n      options: ['date', 'time', 'datetime'] as CalendarMode[],\n      control: { type: 'select' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    showCalendarIcon: {\n      control: { type: 'boolean' },\n    },\n  },\n  args: {\n    mode: 'date',\n    value: null,\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: '',\n    label: 'Date',\n    helperText: '',\n    errorText: 'Please select a date',\n    showCalendarIcon: true,\n    minDate: null,\n    maxDate: null,\n    minTime: null,\n    maxTime: null,\n    locale: 'en-US',\n  },\n}"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...WithError.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
+                },
+                {
+                    "name": "TimeOnly",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'time',\n    label: 'Select time',\n    helperText: 'Choose a time',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "WithConstraints",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'datetime',\n    label: 'Appointment date and time',\n    helperText: 'Select a date and time within the allowed range',\n    minDate: new Date(2025, 0, 1),\n    maxDate: new Date(2025, 11, 31),\n    minTime: new Date(2025, 0, 1, 9, 0),\n    maxTime: new Date(2025, 0, 1, 17, 0),\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "WithError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    error: true,\n    label: 'Birth date',\n    helperText: 'Enter your date of birth',\n    errorText: 'This field is required',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "WithoutIcon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    showCalendarIcon: false,\n    label: 'Date without icon',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [label]=\"label\"\n      />\n    `,\n  }),\n}"
+                }
+            ],
             "projects/ui/src/components/button/button.stories.ts": [
                 {
                     "name": "AllSizes",
@@ -6178,98 +6354,6 @@
                     "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
                 }
             ],
-            "projects/ui/src/components/calendar/calendar.stories.ts": [
-                {
-                    "name": "AllSizes",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "DateOnly",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    label: 'Select date',\n    helperText: 'Choose a date from the calendar',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "DateTime",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'datetime',\n    label: 'Select date and time',\n    helperText: 'Choose both date and time',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "Disabled",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    disabled: true,\n    label: 'Disabled calendar',\n    value: new Date(2025, 5, 15),\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [disabled]=\"disabled\"\n        [label]=\"label\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CalendarComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/Calendar',\n  component: CalendarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Date and/or time picker with popup calendar. Implements `FormValueControl<Date | null>` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Modes: date, time, datetime. Supports min/max date and time, locale, sizes, and label/helper/error text.',\n      },\n    },\n  },\n  argTypes: {\n    mode: {\n      options: ['date', 'time', 'datetime'] as CalendarMode[],\n      control: { type: 'select' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    showCalendarIcon: {\n      control: { type: 'boolean' },\n    },\n  },\n  args: {\n    mode: 'date',\n    value: null,\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: '',\n    label: 'Date',\n    helperText: '',\n    errorText: 'Please select a date',\n    showCalendarIcon: true,\n    minDate: null,\n    maxDate: null,\n    minTime: null,\n    maxTime: null,\n    locale: 'en-US',\n  },\n}"
-                },
-                {
-                    "name": "TimeOnly",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'time',\n    label: 'Select time',\n    helperText: 'Choose a time',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n        [locale]=\"locale\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "WithConstraints",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'datetime',\n    label: 'Appointment date and time',\n    helperText: 'Select a date and time within the allowed range',\n    minDate: new Date(2025, 0, 1),\n    maxDate: new Date(2025, 11, 31),\n    minTime: new Date(2025, 0, 1, 9, 0),\n    maxTime: new Date(2025, 0, 1, 17, 0),\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [minDate]=\"minDate\"\n        [maxDate]=\"maxDate\"\n        [minTime]=\"minTime\"\n        [maxTime]=\"maxTime\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "WithError",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    error: true,\n    label: 'Birth date',\n    helperText: 'Enter your date of birth',\n    errorText: 'This field is required',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [required]=\"required\"\n      />\n    `,\n  }),\n}"
-                },
-                {
-                    "name": "WithoutIcon",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    mode: 'date',\n    showCalendarIcon: false,\n    label: 'Date without icon',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [label]=\"label\"\n      />\n    `,\n  }),\n}"
-                }
-            ],
             "projects/ui/src/components/file-input/file-input.stories.ts": [
                 {
                     "name": "AllSizes",
@@ -6319,7 +6403,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<FileInputComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/File input',\n  component: FileInputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'File input with label, helper/error text, and optional slots. Implements `FormValueControl<FileList | null>` for Signal Forms `[formField]`. Uses hidden native file input + visible trigger + selected file label. Supports sizes (sm–xl), appearance (border-only / subtle-tint), accept, multiple, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n      description: 'Visual size.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies FileInputAppearance[],\n      description: 'Border/hover style.',\n    },\n    accept: {\n      control: { type: 'text' },\n      description: 'Accept attribute (e.g. image/*, .pdf).',\n    },\n    multiple: {\n      control: { type: 'boolean' },\n      description: 'Allow multiple file selection.',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required.',\n    },\n    placeholderText: {\n      control: { type: 'text' },\n      description: 'Text when no file is selected.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n  },\n  args: {\n    size: 'md',\n    appearance: 'border-only',\n    accept: '',\n    multiple: false,\n    error: false,\n    disabled: false,\n    required: false,\n    placeholderText: 'No file chosen',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/File input',\n  component: FileInputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'File input with label, helper/error text, and optional slots. Implements `FormValueControl<FileList | null>` for Signal Forms `[formField]`. Uses hidden native file input + visible trigger + selected file label. Supports sizes (sm–xl), appearance (border-only / subtle-tint), accept, multiple, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n      description: 'Visual size.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies FileInputAppearance[],\n      description: 'Border/hover style.',\n    },\n    accept: {\n      control: { type: 'text' },\n      description: 'Accept attribute (e.g. image/*, .pdf).',\n    },\n    multiple: {\n      control: { type: 'boolean' },\n      description: 'Allow multiple file selection.',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required.',\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholderText: {\n      control: { type: 'text' },\n      description: 'Text when no file is selected.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n  },\n  args: {\n    size: 'md',\n    appearance: 'border-only',\n    accept: '',\n    multiple: false,\n    error: false,\n    disabled: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholderText: 'No file chosen',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n  },\n}"
                 },
                 {
                     "name": "Multiple",
@@ -6330,6 +6414,18 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    multiple: true,\n    label: 'Select files',\n    placeholderText: 'No files chosen',\n    helperText: 'You can select multiple files',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [multiple]=\"multiple\"\n        [label]=\"label\"\n        [placeholderText]=\"placeholderText\"\n        [helperText]=\"helperText\"\n      />\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/file-input/file-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
                 },
                 {
                     "name": "WithError",
@@ -6349,7 +6445,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Upload document',\n    helperText: 'PDF or images, max 10 MB',\n    placeholderText: 'No file chosen',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n      />\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Upload document',\n    helperText: 'PDF or images, max 10 MB',\n    placeholderText: 'No file chosen',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-file-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [placeholderText]=\"placeholderText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
                 }
             ],
             "projects/ui/src/components/input/input.stories.ts": [
@@ -6397,7 +6493,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/Input',\n  component: InputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for use with Signal Forms via `[formField]`. Use `[(value)]` for two-way binding. Supports sizes (sm–xl), disabled/readonly/required, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n      description: 'Current input value; use with [(value)] for two-way binding.',\n    },\n    type: {\n      control: { type: 'text' },\n      description: 'Native input type: text, password, email, number, tel, url.',\n    },\n    size: {\n      control: { type: 'text' },\n      description: 'Visual size: sm, md, lg, xl.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies InputAppearance[],\n      description:\n        'Border/hover style: border-only (hover = border only), subtle-tint (hover = border + 5% fill).',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n      description: 'Makes the input read-only.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required (shows indicator).',\n    },\n    placeholder: {\n      control: { type: 'text' },\n      description: 'Placeholder text when empty.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n    maxLength: {\n      control: { type: 'number' },\n      description: 'Max length attribute.',\n    },\n    minLength: {\n      control: { type: 'number' },\n      description: 'Min length attribute.',\n    },\n    pattern: {\n      control: { type: 'text' },\n      description: 'HTML pattern attribute for validation.',\n    },\n    autocomplete: {\n      control: { type: 'text' },\n      description: 'Autocomplete attribute (e.g. off, email).',\n    },\n    showPasswordLabel: {\n      control: { type: 'text' },\n      description: 'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',\n    },\n    hidePasswordLabel: {\n      control: { type: 'text' },\n      description: 'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',\n    },\n  },\n  args: {\n    value: '',\n    type: 'text',\n    size: 'md',\n    appearance: 'border-only',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    pattern: [],\n    autocomplete: 'off',\n    showPasswordLabel: 'Show password',\n    hidePasswordLabel: 'Hide password',\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/Input',\n  component: InputComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for use with Signal Forms via `[formField]`. Use `[(value)]` for two-way binding. Supports sizes (sm–xl), disabled/readonly/required, and validation states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n      description: 'Current input value; use with [(value)] for two-way binding.',\n    },\n    type: {\n      control: { type: 'text' },\n      description: 'Native input type: text, password, email, number, tel, url.',\n    },\n    size: {\n      control: { type: 'text' },\n      description: 'Visual size: sm, md, lg, xl.',\n    },\n    appearance: {\n      control: { type: 'select' },\n      options: ['border-only', 'subtle-tint'] satisfies InputAppearance[],\n      description:\n        'Border/hover style: border-only (hover = border only), subtle-tint (hover = border + 5% fill).',\n    },\n    error: {\n      control: { type: 'boolean' },\n      description: 'When true, shows error styling and optional errorText.',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the input.',\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n      description: 'Makes the input read-only.',\n    },\n    required: {\n      control: { type: 'boolean' },\n      description: 'Marks the field as required (shows indicator).',\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n      description: 'Placeholder text when empty.',\n    },\n    label: {\n      control: { type: 'text' },\n      description: 'Label shown above the input.',\n    },\n    helperText: {\n      control: { type: 'text' },\n      description: 'Helper text shown below the input.',\n    },\n    errorText: {\n      control: { type: 'text' },\n      description: 'Error message shown when error is true.',\n    },\n    maxLength: {\n      control: { type: 'number' },\n      description: 'Max length attribute.',\n    },\n    minLength: {\n      control: { type: 'number' },\n      description: 'Min length attribute.',\n    },\n    pattern: {\n      control: { type: 'text' },\n      description: 'HTML pattern attribute for validation.',\n    },\n    autocomplete: {\n      control: { type: 'text' },\n      description: 'Autocomplete attribute (e.g. off, email).',\n    },\n    showPasswordLabel: {\n      control: { type: 'text' },\n      description:\n        'Aria-label for the toggle button when the password is hidden (i.e. the action reveals it).',\n    },\n    hidePasswordLabel: {\n      control: { type: 'text' },\n      description:\n        'Aria-label for the toggle button when the password is visible (i.e. the action hides it).',\n    },\n  },\n  args: {\n    value: '',\n    type: 'text',\n    size: 'md',\n    appearance: 'border-only',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    pattern: [],\n    autocomplete: 'off',\n    showPasswordLabel: 'Show password',\n    hidePasswordLabel: 'Hide password',\n  },\n}"
                 },
                 {
                     "name": "Password",
@@ -6434,6 +6530,18 @@
                     "defaultValue": "{\n  args: {\n    type: 'password',\n    label: 'Password',\n    helperText: 'Must be at least 8 characters',\n    errorText: 'Password is too short',\n    error: true,\n    value: 'weak',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [type]=\"type\"\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
                     "rawdescription": "Password field in an error state, e.g. failed strength or confirmation validation.",
                     "description": "<p>Password field in an error state, e.g. failed strength or confirmation validation.</p>\n"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
                 },
                 {
                     "name": "States",
@@ -6479,7 +6587,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Username',\n    helperText: 'Enter your username',\n    placeholder: 'johndoe',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
+                    "defaultValue": "{\n  args: {\n    label: 'Username',\n    helperText: 'Enter your username',\n    placeholder: 'johndoe',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-input\n        [size]=\"size\"\n        [appearance]=\"appearance\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [readOnly]=\"readOnly\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [value]=\"value\"\n      />\n    `,\n  }),\n}",
                     "rawdescription": "Demonstrates an input with a label and helper text.",
                     "description": "<p>Demonstrates an input with a label and helper text.</p>\n"
                 }
@@ -6533,7 +6641,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SearchSelectComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/SearchSelect',\n  component: SearchSelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Combobox: search input with filterable dropdown. Type to filter options and select a result. Implements `FormValueControl<string | null>` for Signal Forms. Use `[(value)]` for two-way binding. Responsive (mobile, tablet, desktop).',\n      },\n    },\n    layout: 'centered',\n  },\n  decorators: [\n    (story) => ({\n      ...story(),\n      template: `<div style=\"min-height: 500px; min-width: 400px;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    error: { control: { type: 'boolean' } },\n    disabled: { control: { type: 'boolean' } },\n    required: { control: { type: 'boolean' } },\n    label: { control: { type: 'text' } },\n    helperText: { control: { type: 'text' } },\n    errorText: { control: { type: 'text' } },\n    placeholder: { control: { type: 'text' } },\n    minCharsToOpen: { control: { type: 'number' } },\n  },\n  args: {\n    size: 'md',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Search and select',\n    helperText: 'Type to filter options',\n    errorText: 'Please select an option',\n    placeholder: 'Search...',\n    minCharsToOpen: 0,\n    options: defaultOptions,\n    value: null,\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/SearchSelect',\n  component: SearchSelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Combobox: search input with filterable dropdown. Type to filter options and select a result. Implements `FormValueControl<string | null>` for Signal Forms. Use `[(value)]` for two-way binding. Responsive (mobile, tablet, desktop).',\n      },\n    },\n    layout: 'centered',\n  },\n  decorators: [\n    (story) => ({\n      ...story(),\n      template: `<div style=\"min-height: 500px; min-width: 400px;\">${story().template}</div>`,\n    }),\n  ],\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    error: { control: { type: 'boolean' } },\n    disabled: { control: { type: 'boolean' } },\n    required: { control: { type: 'boolean' } },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    label: { control: { type: 'text' } },\n    helperText: { control: { type: 'text' } },\n    errorText: { control: { type: 'text' } },\n    placeholder: { control: { type: 'text' } },\n    minCharsToOpen: { control: { type: 'number' } },\n  },\n  args: {\n    size: 'md',\n    error: false,\n    disabled: false,\n    required: false,\n    showRequiredIndicator: true,\n    label: 'Search and select',\n    helperText: 'Type to filter options',\n    errorText: 'Please select an option',\n    placeholder: 'Search...',\n    minCharsToOpen: 0,\n    options: defaultOptions,\n    value: null,\n  },\n}"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/search-select/search-select.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...WithError.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
                 },
                 {
                     "name": "Responsive",
@@ -6543,7 +6663,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    label: 'Search (responsive)',\n    helperText: 'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',\n  },\n  parameters: {\n    viewport: { defaultViewport: 'responsive' },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"width: 100%; max-width: 480px; padding: 1rem;\">\n        <ul-search-select\n          [size]=\"size\"\n          [label]=\"label\"\n          [helperText]=\"helperText\"\n          [placeholder]=\"placeholder\"\n          [options]=\"options\"\n          [(value)]=\"value\"\n        />\n      </div>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    label: 'Search (responsive)',\n    helperText:\n      'Resize the viewport to see mobile, tablet, and desktop behavior. Panel is full width of the control.',\n  },\n  parameters: {\n    viewport: { defaultViewport: 'responsive' },\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"width: 100%; max-width: 480px; padding: 1rem;\">\n        <ul-search-select\n          [size]=\"size\"\n          [label]=\"label\"\n          [helperText]=\"helperText\"\n          [placeholder]=\"placeholder\"\n          [options]=\"options\"\n          [(value)]=\"value\"\n        />\n      </div>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "WithError",
@@ -6553,7 +6673,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    error: true,\n    value: null,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    options: defaultOptions,\n    error: true,\n    value: null,\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-search-select\n        [size]=\"size\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [errorText]=\"errorText\"\n        [error]=\"error\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [placeholder]=\"placeholder\"\n        [options]=\"options\"\n        [(value)]=\"value\"\n      />\n    `,\n  }),\n}"
                 }
             ],
             "projects/ui/src/components/select/select.stories.ts": [
@@ -6589,7 +6709,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SelectComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/Select',\n  component: SelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Dropdown select built on the dropdown component. Implements `FormValueControl<string | null>` for Signal Forms `[formField]`. Use `[(value)]` or pass `[options]` and bind value. Supports label, helper/error text, placeholder, sizes, and themes (ghost-white, transparent-white).',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: ['ghost-white', 'transparent-white'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    value: {\n      control: { type: 'text' },\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'transparent-white',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Select option',\n    helperText: 'Choose an option from the list',\n    errorText: 'This field is required',\n    placeholder: 'Select an option',\n    value: null,\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/Select',\n  component: SelectComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Dropdown select built on the dropdown component. Implements `FormValueControl<string | null>` for Signal Forms `[formField]`. Use `[(value)]` or pass `[options]` and bind value. Supports label, helper/error text, placeholder, sizes, and themes (ghost-white, transparent-white).',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: ['ghost-white', 'transparent-white'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    value: {\n      control: { type: 'text' },\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'transparent-white',\n    error: false,\n    disabled: false,\n    required: false,\n    label: 'Select option',\n    helperText: 'Choose an option from the list',\n    errorText: 'This field is required',\n    placeholder: 'Select an option',\n    value: null,\n  },\n}"
                 },
                 {
                     "name": "options",
@@ -6609,7 +6729,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    options,\n  },\n  render: () => ({\n    props: {\n      options,\n    },\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem; max-width: 420px;\">\n        <ul-select\n          [options]=\"options\"\n          label=\"Disabled select\"\n          helperText=\"This select is disabled\"\n          [disabled]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select\"\n          helperText=\"This field is required\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n        />\n      </div>\n    `,\n  }),\n}",
+                    "defaultValue": "{\n  args: {\n    options,\n  },\n  render: () => ({\n    props: {\n      options,\n    },\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem; max-width: 420px;\">\n        <ul-select\n          [options]=\"options\"\n          label=\"Disabled select\"\n          helperText=\"This select is disabled\"\n          [disabled]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select\"\n          helperText=\"This field is required\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n        />\n        <ul-select\n          [options]=\"options\"\n          label=\"Required select, no asterisk\"\n          helperText=\"Every field on this form is required, so the '*' would just be noise\"\n          errorText=\"Please select an option\"\n          [required]=\"true\"\n          [showRequiredIndicator]=\"false\"\n        />\n      </div>\n    `,\n  }),\n}",
                     "rawdescription": "Demonstrates disabled and required states.",
                     "description": "<p>Demonstrates disabled and required states.</p>\n"
                 },
@@ -6655,7 +6775,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TextareaComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/Textarea',\n  component: TextareaComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Multi-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Supports sizes, resize behavior (none/vertical/horizontal/both), and disabled/readonly/required/error states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    maxLength: {\n      control: { type: 'number' },\n    },\n    minLength: {\n      control: { type: 'number' },\n    },\n    rows: {\n      control: { type: 'number' },\n    },\n    resize: {\n      options: ['none', 'vertical', 'horizontal', 'both'] as TextareaResize[],\n      control: { type: 'select' },\n    },\n  },\n  args: {\n    value: '',\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    rows: 3,\n    resize: 'vertical',\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/Textarea',\n  component: TextareaComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Multi-line text input with label, helper/error text, and optional left/right slots. Implements `FormValueControl` for Signal Forms `[formField]`. Use `[(value)]` for two-way binding. Supports sizes, resize behavior (none/vertical/horizontal/both), and disabled/readonly/required/error states.',\n      },\n    },\n  },\n  argTypes: {\n    value: {\n      control: { type: 'text' },\n    },\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'select' },\n    },\n    error: {\n      control: { type: 'boolean' },\n    },\n    disabled: {\n      control: { type: 'boolean' },\n    },\n    readOnly: {\n      control: { type: 'boolean' },\n    },\n    required: {\n      control: { type: 'boolean' },\n    },\n    showRequiredIndicator: {\n      control: { type: 'boolean' },\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    placeholder: {\n      control: { type: 'text' },\n    },\n    label: {\n      control: { type: 'text' },\n    },\n    helperText: {\n      control: { type: 'text' },\n    },\n    errorText: {\n      control: { type: 'text' },\n    },\n    maxLength: {\n      control: { type: 'number' },\n    },\n    minLength: {\n      control: { type: 'number' },\n    },\n    rows: {\n      control: { type: 'number' },\n    },\n    resize: {\n      options: ['none', 'vertical', 'horizontal', 'both'] as TextareaResize[],\n      control: { type: 'select' },\n    },\n  },\n  args: {\n    value: '',\n    size: 'md',\n    error: false,\n    disabled: false,\n    readOnly: false,\n    required: false,\n    showRequiredIndicator: true,\n    placeholder: 'Enter text...',\n    label: 'Label',\n    helperText: 'Helper text',\n    errorText: 'Error text',\n    maxLength: undefined,\n    minLength: undefined,\n    rows: 3,\n    resize: 'vertical',\n  },\n}"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/textarea/textarea.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...WithLabelAndHelper.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
                 },
                 {
                     "name": "Resize",
@@ -6695,7 +6827,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Description',\n    helperText: 'Enter a short description',\n    placeholder: 'Type here...',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n      />\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Description',\n    helperText: 'Enter a short description',\n    placeholder: 'Type here...',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-textarea\n        [(value)]=\"value\"\n        [size]=\"size\"\n        [placeholder]=\"placeholder\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [rows]=\"rows\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n      />\n    `,\n  }),\n}"
                 },
                 {
                     "name": "WithSlots",
@@ -6913,7 +7045,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    ...Basic.args,\n    label: 'Accept terms and conditions',\n    helperText: 'You must agree to continue.',\n    required: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}"
+                    "defaultValue": "{\n  args: {\n    ...Basic.args,\n    label: 'Accept terms and conditions',\n    helperText: 'You must agree to continue.',\n    required: true,\n    showRequiredIndicator: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}"
                 },
                 {
                     "name": "LongLabel",
@@ -6933,7 +7065,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CheckboxComponent>",
-                    "defaultValue": "{\n  title: 'Components/Form Elements/Checkbox',\n  component: CheckboxComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm, lg — lg is easier to tap on touch, e.g. mobile bulk-select rows).',\n      },\n    },\n  },\n  argTypes: {\n    checked: {\n      control: 'boolean',\n      description: 'The checked state of the checkbox',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the checkbox is disabled',\n    },\n    indeterminate: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an indeterminate state',\n    },\n    zone: {\n      control: 'select',\n      options: ['none', 'accessible', 'visible', 'checked-visible'],\n      description: 'The zone type of the checkbox',\n    },\n    size: {\n      control: 'select',\n      options: ['default', 'sm', 'lg'],\n      description: 'The size variant of the checkbox',\n    },\n    label: {\n      control: 'text',\n      description: 'Form field label (above the checkbox), same as input/textarea',\n    },\n    helperText: {\n      control: 'text',\n      description: 'Helper text below the checkbox when not in error state',\n    },\n    required: {\n      control: 'boolean',\n      description: 'Whether the checkbox is required (shows asterisk, aria-required)',\n    },\n    error: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an error state',\n    },\n    errorText: {\n      control: 'text',\n      description: 'Error message shown below when in error state',\n    },\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Form Elements/Checkbox',\n  component: CheckboxComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Checkbox aligned with other form fields (input, textarea, radio-group). Uses shared form field label and helper. Optional label (prop or projected content), helperText, required, and error state. Implements `FormCheckboxControl` for Signal Forms `[formField]`. Use `[(checked)]` for two-way binding. Supports zone variants and size (default, sm, lg — lg is easier to tap on touch, e.g. mobile bulk-select rows).',\n      },\n    },\n  },\n  argTypes: {\n    checked: {\n      control: 'boolean',\n      description: 'The checked state of the checkbox',\n    },\n    disabled: {\n      control: 'boolean',\n      description: 'Whether the checkbox is disabled',\n    },\n    indeterminate: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an indeterminate state',\n    },\n    zone: {\n      control: 'select',\n      options: ['none', 'accessible', 'visible', 'checked-visible'],\n      description: 'The zone type of the checkbox',\n    },\n    size: {\n      control: 'select',\n      options: ['default', 'sm', 'lg'],\n      description: 'The size variant of the checkbox',\n    },\n    label: {\n      control: 'text',\n      description: 'Form field label (above the checkbox), same as input/textarea',\n    },\n    helperText: {\n      control: 'text',\n      description: 'Helper text below the checkbox when not in error state',\n    },\n    required: {\n      control: 'boolean',\n      description: 'Whether the checkbox is required (shows asterisk, aria-required)',\n    },\n    showRequiredIndicator: {\n      control: 'boolean',\n      description:\n        'Whether the \"*\" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',\n    },\n    error: {\n      control: 'boolean',\n      description: 'Whether the checkbox is in an error state',\n    },\n    errorText: {\n      control: 'text',\n      description: 'Error message shown below when in error state',\n    },\n  },\n}"
                 },
                 {
                     "name": "NoLabel",
@@ -6944,6 +7076,18 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    ...Basic.args,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [disabled]=\"disabled\"\n        [indeterminate]=\"indeterminate\"\n        [zone]=\"zone\"\n        [size]=\"size\"\n        [error]=\"error\"\n      ></ul-checkbox>\n    `,\n  }),\n}"
+                },
+                {
+                    "name": "RequiredWithoutIndicator",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/checkbox/checkbox.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    ...FormField.args,\n    showRequiredIndicator: false,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-checkbox\n        [checked]=\"checked\"\n        [label]=\"label\"\n        [helperText]=\"helperText\"\n        [required]=\"required\"\n        [showRequiredIndicator]=\"showRequiredIndicator\"\n        [disabled]=\"disabled\"\n        [size]=\"size\"\n      >\n        I agree to the terms\n      </ul-checkbox>\n    `,\n  }),\n}",
+                    "rawdescription": "When every field on a form is required by convention, a \"*\" on each one\nis just noise — showRequiredIndicator hides it while required's styling\nand aria-required stay intact.",
+                    "description": "<p>When every field on a form is required by convention, a &quot;*&quot; on each one\nis just noise — showRequiredIndicator hides it while required&#39;s styling\nand aria-required stay intact.</p>\n"
                 },
                 {
                     "name": "SizeVariants",
@@ -8948,19 +9092,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/button/button.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/calendar/calendar.stories.ts": [
                 {
                     "name": "Story",
@@ -8994,6 +9125,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CarouselComponent>",
                     "file": "projects/ui/src/components/carousel/carousel.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/button/button.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -9260,19 +9404,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/sidebar/sidebar.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<SidebarComponent>",
-                    "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/skeleton/skeleton.stories.ts": [
                 {
                     "name": "Story",
@@ -9280,6 +9411,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<SkeletonComponent>",
                     "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/sidebar/sidebar.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SidebarComponent>",
+                    "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -9437,7 +9581,7 @@
         "children": []
     },
     "coverage": {
-        "count": 23,
+        "count": 24,
         "status": "low",
         "files": [
             {
@@ -9975,6 +10119,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/ui/src/components/calendar/calendar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "TimeOnly",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -10229,6 +10383,16 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/checkbox/checkbox.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "projects/ui/src/components/checkbox/checkbox.stories.ts",
@@ -10797,6 +10961,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/ui/src/components/file-input/file-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "WithError",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -11266,6 +11440,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "PasswordWithError",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/ui/src/components/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
                 "coveragePercent": 100,
                 "coverageCount": "1/1",
                 "status": "very-good"
@@ -12083,6 +12267,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/ui/src/components/search-select/search-select.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Responsive",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -12507,6 +12701,16 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/textarea/textarea.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RequiredWithoutIndicator",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "projects/ui/src/components/textarea/textarea.stories.ts",

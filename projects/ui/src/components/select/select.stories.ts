@@ -32,6 +32,11 @@ const meta: Meta<SelectComponent> = {
     required: {
       control: { type: 'boolean' },
     },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     label: {
       control: { type: 'text' },
     },
@@ -228,8 +233,15 @@ export const States: Story = {
           errorText="Please select an option"
           [required]="true"
         />
+        <ul-select
+          [options]="options"
+          label="Required select, no asterisk"
+          helperText="Every field on this form is required, so the '*' would just be noise"
+          errorText="Please select an option"
+          [required]="true"
+          [showRequiredIndicator]="false"
+        />
       </div>
     `,
   }),
 };
-

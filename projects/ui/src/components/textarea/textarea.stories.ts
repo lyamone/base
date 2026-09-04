@@ -34,6 +34,11 @@ const meta: Meta<TextareaComponent> = {
     required: {
       control: { type: 'boolean' },
     },
+    showRequiredIndicator: {
+      control: { type: 'boolean' },
+      description:
+        'Whether the "*" shows when required — set false when every field on a form is required by convention and the asterisk would just be noise. The required styling/aria stays either way.',
+    },
     placeholder: {
       control: { type: 'text' },
     },
@@ -67,6 +72,7 @@ const meta: Meta<TextareaComponent> = {
     disabled: false,
     readOnly: false,
     required: false,
+    showRequiredIndicator: true,
     placeholder: 'Enter text...',
     label: 'Label',
     helperText: 'Helper text',
@@ -109,6 +115,7 @@ export const WithLabelAndHelper: Story = {
     label: 'Description',
     helperText: 'Enter a short description',
     placeholder: 'Type here...',
+    required: true,
   },
   render: (args) => ({
     props: args,
@@ -120,6 +127,35 @@ export const WithLabelAndHelper: Story = {
         [label]="label"
         [helperText]="helperText"
         [rows]="rows"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
+      />
+    `,
+  }),
+};
+
+/**
+ * When every field on a form is required by convention, a "*" on each one
+ * is just noise — showRequiredIndicator hides it while required's styling
+ * and aria-required stay intact.
+ */
+export const RequiredWithoutIndicator: Story = {
+  args: {
+    ...WithLabelAndHelper.args,
+    showRequiredIndicator: false,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ul-textarea
+        [(value)]="value"
+        [size]="size"
+        [placeholder]="placeholder"
+        [label]="label"
+        [helperText]="helperText"
+        [rows]="rows"
+        [required]="required"
+        [showRequiredIndicator]="showRequiredIndicator"
       />
     `,
   }),

@@ -46,6 +46,7 @@ export class FileInputComponent implements FormValueControl<FileList | null> {
   readonly multiple = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly required = input<boolean>(false);
+  readonly showRequiredIndicator = input<boolean>(true);
   readonly label = input<string | null>(null);
   readonly helperText = input<string | null>(null);
   readonly errorText = input<string | null>(null);
