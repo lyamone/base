@@ -114,22 +114,24 @@ export class SelectableRowComponent {
   }
 
   /**
-   * Once every row shows a checkbox in place of its media (compact +
-   * selecting), the checkbox is the only thing with its own toggle handler
-   * — everything else in the row (the content slot, empty space) does
-   * nothing on tap, which defeats the point of showing a large, easy-to-hit
-   * target. Toggling on any tap in that state fixes it; it's safe to do
-   * unconditionally (regardless of what's projected) because a consumer
-   * whose content contains a routerLink is already expected to have nulled
-   * that binding out while `selectionActive` — so there's no competing
-   * navigation to accidentally trigger.
+   * While selecting, a tap anywhere in the row toggles it — not just on the
+   * checkbox. This applies on every device, not only once the checkbox has
+   * replaced the media (compact): otherwise the row's content on
+   * fine-pointer devices would only be togglable by precisely hitting the
+   * small hover-revealed checkbox, which is inconsistent with how compact
+   * mode behaves and isn't how Gmail/Photos-style bulk-select works even on
+   * desktop web. It's safe to do unconditionally (regardless of what's
+   * projected) because a consumer whose content contains a routerLink is
+   * already expected to have nulled that binding out while
+   * `selectionActive` — so there's no competing navigation to accidentally
+   * trigger.
    */
   onHostClick(event: MouseEvent): void {
     if (this.justLongPressed) {
       this.justLongPressed = false;
       return;
     }
-    if (!this.isCompact() || !this.selectionActive()) return;
+    if (!this.selectionActive()) return;
     // The checkbox already has its own (checkedChange) handler — without
     // this, a tap on it would toggle twice (once from checkedChange, once
     // from this handler catching the same click as it bubbles up).

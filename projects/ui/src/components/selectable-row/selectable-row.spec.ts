@@ -128,8 +128,17 @@ describe('SelectableRowComponent', () => {
     expect(fixture.componentInstance.selectedChanges).toEqual([]);
   });
 
-  it('does not toggle on a plain tap on fine-pointer devices, even while selecting', () => {
-    const fixture = setup({ hasFinePointer: true, selectionActive: true });
+  it('toggles on a plain tap on fine-pointer devices too, once selecting', () => {
+    const fixture = setup({ hasFinePointer: true, selectionActive: true, selected: false });
+
+    const content: HTMLElement = fixture.nativeElement.querySelector('[ul-selectable-row-content]');
+    content.click();
+
+    expect(fixture.componentInstance.selectedChanges).toEqual([true]);
+  });
+
+  it('does not toggle on a plain tap on fine-pointer devices when nothing is selected yet', () => {
+    const fixture = setup({ hasFinePointer: true, selectionActive: false });
 
     const content: HTMLElement = fixture.nativeElement.querySelector('[ul-selectable-row-content]');
     content.click();
@@ -137,8 +146,17 @@ describe('SelectableRowComponent', () => {
     expect(fixture.componentInstance.selectedChanges).toEqual([]);
   });
 
-  it('does not double-toggle when the tap lands on the checkbox itself', () => {
+  it('does not double-toggle when the tap lands on the compact-mode checkbox itself', () => {
     const fixture = setup({ hasFinePointer: false, selectionActive: true, selected: false });
+
+    const input: HTMLInputElement = fixture.nativeElement.querySelector('.ul-checkbox__input');
+    input.click();
+
+    expect(fixture.componentInstance.selectedChanges).toEqual([true]);
+  });
+
+  it('does not double-toggle when the tap lands on the desktop hover checkbox itself', () => {
+    const fixture = setup({ hasFinePointer: true, selectionActive: true, selected: false });
 
     const input: HTMLInputElement = fixture.nativeElement.querySelector('.ul-checkbox__input');
     input.click();
