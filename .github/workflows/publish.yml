@@ -24,8 +24,17 @@ jobs:
       - name: Build library
         run: npm run build:ui
 
+      - name: Generate npm OTP
+        id: otp
+        run: |
+          CODE=$(node scripts/generate-npm-otp.mjs)
+          echo "::add-mask::$CODE"
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+        env:
+          NPM_OTP_SECRET: ${{ secrets.NPM_OTP_SECRET }}
+
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --otp="${{ steps.otp.outputs.code }}"
         working-directory: dist/ui
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
