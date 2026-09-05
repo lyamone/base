@@ -9,7 +9,10 @@ import { createHmac } from 'node:crypto';
 const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
 function base32Decode(input) {
-  const cleaned = input.replace(/=+$/, '').toUpperCase();
+  // Tolerate the whitespace/hyphen grouping some authenticator setup
+  // screens use when displaying the secret for manual entry (e.g.
+  // "ABCD EFGH IJKL" or "ABCD-EFGH-IJKL") — strip that before decoding.
+  const cleaned = input.replace(/[\s-]/g, '').replace(/=+$/, '').toUpperCase();
   let bits = '';
   for (const char of cleaned) {
     const index = BASE32_ALPHABET.indexOf(char);
