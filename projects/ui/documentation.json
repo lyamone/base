@@ -78,12 +78,12 @@
         },
         {
             "name": "DemoListing",
-            "id": "interface-DemoListing-c1ab41ac25e0e8be8f553cd0a29ec5532d41ac8a3182df086b7f52b25fba36fce52b1e3fdb82098495e35f6be270a5929d15a3a625ecf2540f31805480adf4ab",
-            "file": "projects/ui/src/components/list-item/list-item.stories.ts",
+            "id": "interface-DemoListing-e0a64cfedcf30b61644e33a7e56b338f324e367ef023e14cbf863f55f7b8519eb685ab2b9f1c055f563d854338320cf84dc7c6098280df592380d7cdacee642a",
+            "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { BreakpointObserver } from '@angular/cdk/layout';\nimport { Component, computed, inject, signal } from '@angular/core';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { moduleMetadata } from '@storybook/angular';\nimport { map } from 'rxjs';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { CheckboxComponent } from '../checkbox/checkbox';\nimport { IconComponent } from '../icon/icon';\nimport { LongPressDirective } from '../long-press/long-press.directive';\n\nimport { ListItemComponent } from './list-item';\n\ninterface DemoListing {\n  id: number;\n  title: string;\n  price: string;\n  imageUrl: string;\n}\n\nconst DEMO_LISTINGS: DemoListing[] = [\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n];\n\n/**\n * Mobile (coarse pointer / no hover): long-press selects a row and swaps its\n * thumbnail for a large checkbox in the same slot — there's no room for both\n * on a small card, and a big checkbox is far easier to hit than a small one\n * overlaid on a thumbnail.\n *\n * Desktop (fine pointer + real hover): the checkbox is always present but\n * invisible until the row is hovered, keyboard-focused, or already checked —\n * Gmail-list style. No long-press needed there; a mouse has room for a\n * precise, always-available target.\n */\n@Component({\n  selector: 'ul-listing-selectable-demo',\n  imports: [CheckboxComponent, LongPressDirective],\n  template: `\n    <div\n      style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n    >\n      <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n        <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n          Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n          real-hover viewports: hover a row to reveal its checkbox, Gmail-style — no long-press\n          needed. Coarse-pointer / no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a\n          row — it swaps the thumbnail for a large checkbox and enters selection mode for every row.\n        </p>\n        <ul-checkbox\n          [checked]=\"allSelected()\"\n          [indeterminate]=\"someSelected()\"\n          (checkedChange)=\"toggleSelectAll($event)\"\n        >\n          Select all\n        </ul-checkbox>\n        <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n          @for (listing of listings; track listing.id) {\n            <div\n              class=\"listing-row\"\n              [class.ul-selectable-row]=\"isSelected(listing.id)\"\n              ulLongPress\n              (ulLongPress)=\"select(listing.id)\"\n            >\n              @if (selectionMode()) {\n                <ul-checkbox\n                  size=\"lg\"\n                  [checked]=\"isSelected(listing.id)\"\n                  (checkedChange)=\"setSelected(listing.id, $event)\"\n                />\n              } @else {\n                <img [src]=\"listing.imageUrl\" alt=\"\" class=\"listing-row__thumb\" />\n              }\n              <div class=\"listing-row__info\">\n                <p class=\"listing-row__title\">{{ listing.title }}</p>\n                <p class=\"listing-row__price\">{{ listing.price }}</p>\n              </div>\n            </div>\n          }\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .listing-row {\n        display: flex;\n        align-items: center;\n        gap: 12px;\n        padding: 4px;\n        border-radius: 8px;\n      }\n      .listing-row__thumb {\n        width: 48px;\n        height: 48px;\n        flex-shrink: 0;\n        border-radius: 6px;\n        object-fit: cover;\n      }\n      .listing-row__hover-checkbox {\n        opacity: 0;\n        transition: opacity 150ms ease;\n      }\n      .listing-row:hover .listing-row__hover-checkbox,\n      .listing-row:focus-within .listing-row__hover-checkbox,\n      .listing-row:has(.ul-checkbox__input:checked) .listing-row__hover-checkbox {\n        opacity: 1;\n      }\n      .listing-row__info {\n        min-width: 0;\n        flex: 1;\n      }\n      .listing-row__title {\n        margin: 0;\n        color: #ffffff;\n        font-size: 14px;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n      }\n      .listing-row__price {\n        margin: 0;\n        color: rgba(255, 255, 255, 0.7);\n        font-size: 13px;\n      }\n    `,\n  ],\n})\nclass ListingSelectableDemoComponent {\n  readonly listings = DEMO_LISTINGS;\n\n  private readonly hasFinePointer = toSignal(\n    inject(BreakpointObserver)\n      .observe('(hover: hover) and (pointer: fine)')\n      .pipe(map((state) => state.matches)),\n    { initialValue: true },\n  );\n  readonly isCompact = computed(() => !this.hasFinePointer());\n\n  private readonly selectedIds = signal<ReadonlySet<number>>(new Set());\n  readonly selectionMode = computed(() => this.selectedIds().size > 0);\n  readonly allSelected = computed(() => this.listings.every((item) => this.isSelected(item.id)));\n  readonly someSelected = computed(() => this.selectionMode() && !this.allSelected());\n\n  isSelected(id: number): boolean {\n    return this.selectedIds().has(id);\n  }\n\n  select(id: number): void {\n    this.setSelected(id, true);\n  }\n\n  setSelected(id: number, value: boolean): void {\n    this.selectedIds.update((current) => {\n      const next = new Set(current);\n      if (value) {\n        next.add(id);\n      } else {\n        next.delete(id);\n      }\n      return next;\n    });\n  }\n\n  toggleSelectAll(checked: boolean): void {\n    this.selectedIds.set(checked ? new Set(this.listings.map((item) => item.id)) : new Set());\n  }\n}\n\nconst meta: Meta<ListItemComponent> = {\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list (checkboxes gated behind a selection, long-press to enter it), pair it with the ulLongPress directive and the .ul-selectable-row utility class — see the SelectableList story.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent, ListingSelectableDemoComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<ListItemComponent>;\n\nexport const Basic: Story = {\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"max-width: 400px\">\n        <ul-list-item [theme]=\"theme\" [disabled]=\"disabled\" [loading]=\"loading\">\n          <ng-container ul-list-item-label>Basic List Item</ng-container>\n        </ul-list-item>\n      </div>\n    `,\n  }),\n};\n\nexport const WithBeforeAndAfterContent: Story = {\n  render: () => ({\n    template: `\n    <div style=\"max-width: 400px\">\n      <ul-list-item>\n        <ng-container ul-list-item-before-label>\n          <ul-checkbox />\n          <ul-icon size=\"5\" icon=\"placeholder\" />\n          <ul-icon size=\"5\" icon=\"ultra_games\" />\n        </ng-container>\n        <ng-container ul-list-item-label>Basic List Item</ng-container>\n        <ng-container ul-list-item-after-label>\n          <span>+80</span>\n          <ul-icon size=\"5\" icon=\"ultra_marketplace\" />\n          <ul-icon size=\"5\" icon=\"placeholder\" />\n        </ng-container>\n      </ul-list-item>\n    </div>\n    `,\n  }),\n};\n\n/**\n * Bulk-select pattern for a real listing row (thumbnail + title + price),\n * built from ulLongPress + the .ul-selectable-row utility class. Desktop\n * (fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\n * Touch/coarse-pointer needs a long-press instead, which swaps the\n * thumbnail for a large checkbox — exactly like the mobile \"select\n * multiple\" gesture in Gmail/Photos/Files.\n */\nexport const SelectableList: Story = {\n  render: () => ({\n    template: `<ul-listing-selectable-demo />`,\n  }),\n};\n\nexport const Loading: Story = {\n  args: {\n    theme: 'ghost-white',\n    disabled: false,\n    loading: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"max-width: 400px\">\n        <ul-list-item [theme]=\"theme\" [disabled]=\"disabled\" [loading]=\"loading\">\n          <ng-container ul-list-item-label>Loading list item</ng-container>\n        </ul-list-item>\n      </div>\n    `,\n  }),\n};\n",
+            "sourceCode": "import { Component, computed, signal } from '@angular/core';\nimport { moduleMetadata } from '@storybook/angular';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { CheckboxComponent } from '../checkbox/checkbox';\n\nimport { SelectableRowComponent } from './selectable-row';\n\ninterface DemoListing {\n  id: number;\n  title: string;\n  price: string;\n  imageUrl: string;\n}\n\nconst DEMO_LISTINGS: DemoListing[] = [\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n];\n\n@Component({\n  selector: 'ul-selectable-row-demo',\n  imports: [SelectableRowComponent, CheckboxComponent],\n  template: `\n    <div\n      style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n    >\n      <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n        <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n          Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n          real-hover viewports: hover a row to reveal its checkbox, Gmail-style. Coarse-pointer /\n          no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a row — it swaps the\n          thumbnail for a large checkbox instead.\n        </p>\n        <ul-checkbox\n          [checked]=\"allSelected()\"\n          [indeterminate]=\"someSelected()\"\n          (checkedChange)=\"toggleSelectAll($event)\"\n        >\n          Select all\n        </ul-checkbox>\n        <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n          @for (listing of listings; track listing.id) {\n            <ul-selectable-row\n              [selected]=\"isSelected(listing.id)\"\n              [selectionActive]=\"hasSelection()\"\n              [ariaLabel]=\"'Select ' + listing.title\"\n              (selectedChange)=\"setSelected(listing.id, $event)\"\n              (longPress)=\"select(listing.id)\"\n            >\n              <img\n                ul-selectable-row-media\n                [src]=\"listing.imageUrl\"\n                alt=\"\"\n                style=\"width: 48px; height: 48px; flex-shrink: 0; border-radius: 6px; object-fit: cover;\"\n              />\n              <div ul-selectable-row-content style=\"min-width: 0; flex: 1;\">\n                <p\n                  style=\"margin: 0; color: #ffffff; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"\n                >\n                  {{ listing.title }}\n                </p>\n                <p style=\"margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;\">\n                  {{ listing.price }}\n                </p>\n              </div>\n            </ul-selectable-row>\n          }\n        </div>\n      </div>\n    </div>\n  `,\n})\nclass SelectableRowDemoComponent {\n  readonly listings = DEMO_LISTINGS;\n\n  private readonly selectedIds = signal<ReadonlySet<number>>(new Set());\n  readonly hasSelection = computed(() => this.selectedIds().size > 0);\n  readonly allSelected = computed(() => this.listings.every((item) => this.isSelected(item.id)));\n  readonly someSelected = computed(() => this.hasSelection() && !this.allSelected());\n\n  isSelected(id: number): boolean {\n    return this.selectedIds().has(id);\n  }\n\n  select(id: number): void {\n    this.setSelected(id, true);\n  }\n\n  setSelected(id: number, value: boolean): void {\n    this.selectedIds.update((current) => {\n      const next = new Set(current);\n      if (value) {\n        next.add(id);\n      } else {\n        next.delete(id);\n      }\n      return next;\n    });\n  }\n\n  toggleSelectAll(checked: boolean): void {\n    this.selectedIds.set(checked ? new Set(this.listings.map((item) => item.id)) : new Set());\n  }\n}\n\nconst meta: Meta<SelectableRowComponent> = {\n  title: 'Components/Data Display/Selectable Row',\n  component: SelectableRowComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Makes any projected row content selectable in a bulk-select list. Project a [ul-selectable-row-media] thumbnail and a [ul-selectable-row-content] label — anything else (a status pill, actions) can go in the default slot. Fine-pointer/real-hover devices get an always-present, hover-revealed checkbox (Gmail-list style); coarse-pointer/no-hover devices select via long-press instead, which swaps the media slot for a large checkbox on every row. Bind [selected]/[selectionActive] and listen for (selectedChange)/(longPress) — the consumer still owns the actual selection Set, this component only owns the gesture/layout orchestration. It does not know about routing, so a projected routerLink anchor still needs its own binding nulled out while selectionActive if tapping it should toggle instead of navigate.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [SelectableRowDemoComponent],\n    }),\n  ],\n};\n\nexport default meta;\ntype Story = StoryObj<SelectableRowComponent>;\n\nexport const Default: Story = {\n  render: () => ({\n    template: `<ul-selectable-row-demo />`,\n  }),\n};\n",
             "properties": [
                 {
                     "name": "id",
@@ -93,7 +93,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 10
                 },
                 {
                     "name": "imageUrl",
@@ -103,7 +103,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 13
                 },
                 {
                     "name": "price",
@@ -113,7 +113,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 12
                 },
                 {
                     "name": "title",
@@ -123,7 +123,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 11
                 }
             ],
             "indexSignatures": [],
@@ -1278,20 +1278,18 @@
             "extends": []
         },
         {
-            "name": "ListingSelectableDemoComponent",
-            "id": "component-ListingSelectableDemoComponent-c1ab41ac25e0e8be8f553cd0a29ec5532d41ac8a3182df086b7f52b25fba36fce52b1e3fdb82098495e35f6be270a5929d15a3a625ecf2540f31805480adf4ab",
-            "file": "projects/ui/src/components/list-item/list-item.stories.ts",
+            "name": "SelectableRowDemoComponent",
+            "id": "component-SelectableRowDemoComponent-e0a64cfedcf30b61644e33a7e56b338f324e367ef023e14cbf863f55f7b8519eb685ab2b9f1c055f563d854338320cf84dc7c6098280df592380d7cdacee642a",
+            "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "ul-listing-selectable-demo",
+            "selector": "ul-selectable-row-demo",
             "styleUrls": [],
-            "styles": [
-                "\n      .listing-row {\n        display: flex;\n        align-items: center;\n        gap: 12px;\n        padding: 4px;\n        border-radius: 8px;\n      }\n      .listing-row__thumb {\n        width: 48px;\n        height: 48px;\n        flex-shrink: 0;\n        border-radius: 6px;\n        object-fit: cover;\n      }\n      .listing-row__hover-checkbox {\n        opacity: 0;\n        transition: opacity 150ms ease;\n      }\n      .listing-row:hover .listing-row__hover-checkbox,\n      .listing-row:focus-within .listing-row__hover-checkbox,\n      .listing-row:has(.ul-checkbox__input:checked) .listing-row__hover-checkbox {\n        opacity: 1;\n      }\n      .listing-row__info {\n        min-width: 0;\n        flex: 1;\n      }\n      .listing-row__title {\n        margin: 0;\n        color: #ffffff;\n        font-size: 14px;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n      }\n      .listing-row__price {\n        margin: 0;\n        color: rgba(255, 255, 255, 0.7);\n        font-size: 13px;\n      }\n    "
-            ],
-            "template": "<div\n  style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n>\n  <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n    <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n      Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n      real-hover viewports: hover a row to reveal its checkbox, Gmail-style — no long-press\n      needed. Coarse-pointer / no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a\n      row — it swaps the thumbnail for a large checkbox and enters selection mode for every row.\n    </p>\n    <ul-checkbox\n      [checked]=\"allSelected()\"\n      [indeterminate]=\"someSelected()\"\n      (checkedChange)=\"toggleSelectAll($event)\"\n    >\n      Select all\n    </ul-checkbox>\n    <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n      @for (listing of listings; track listing.id) {\n        <div\n          class=\"listing-row\"\n          [class.ul-selectable-row]=\"isSelected(listing.id)\"\n          ulLongPress\n          (ulLongPress)=\"select(listing.id)\"\n        >\n          @if (selectionMode()) {\n            <ul-checkbox\n              size=\"lg\"\n              [checked]=\"isSelected(listing.id)\"\n              (checkedChange)=\"setSelected(listing.id, $event)\"\n            />\n          } @else {\n            <img [src]=\"listing.imageUrl\" alt=\"\" class=\"listing-row__thumb\" />\n          }\n          <div class=\"listing-row__info\">\n            <p class=\"listing-row__title\">{{ listing.title }}</p>\n            <p class=\"listing-row__price\">{{ listing.price }}</p>\n          </div>\n        </div>\n      }\n    </div>\n  </div>\n</div>\n",
+            "styles": [],
+            "template": "<div\n  style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n>\n  <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n    <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n      Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n      real-hover viewports: hover a row to reveal its checkbox, Gmail-style. Coarse-pointer /\n      no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a row — it swaps the\n      thumbnail for a large checkbox instead.\n    </p>\n    <ul-checkbox\n      [checked]=\"allSelected()\"\n      [indeterminate]=\"someSelected()\"\n      (checkedChange)=\"toggleSelectAll($event)\"\n    >\n      Select all\n    </ul-checkbox>\n    <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n      @for (listing of listings; track listing.id) {\n        <ul-selectable-row\n          [selected]=\"isSelected(listing.id)\"\n          [selectionActive]=\"hasSelection()\"\n          [ariaLabel]=\"'Select ' + listing.title\"\n          (selectedChange)=\"setSelected(listing.id, $event)\"\n          (longPress)=\"select(listing.id)\"\n        >\n          <img\n            ul-selectable-row-media\n            [src]=\"listing.imageUrl\"\n            alt=\"\"\n            style=\"width: 48px; height: 48px; flex-shrink: 0; border-radius: 6px; object-fit: cover;\"\n          />\n          <div ul-selectable-row-content style=\"min-width: 0; flex: 1;\">\n            <p\n              style=\"margin: 0; color: #ffffff; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"\n            >\n              {{ listing.title }}\n            </p>\n            <p style=\"margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;\">\n              {{ listing.price }}\n            </p>\n          </div>\n        </ul-selectable-row>\n      }\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -1307,36 +1305,21 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 159,
+                    "line": 95,
                     "modifierKind": [
                         148
                     ]
                 },
                 {
-                    "name": "hasFinePointer",
-                    "defaultValue": "toSignal(\n    inject(BreakpointObserver)\n      .observe('(hover: hover) and (pointer: fine)')\n      .pipe(map((state) => state.matches)),\n    { initialValue: true },\n  )",
+                    "name": "hasSelection",
+                    "defaultValue": "computed(() => this.selectedIds().size > 0)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 149,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "isCompact",
-                    "defaultValue": "computed(() => !this.hasFinePointer())",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 155,
+                    "line": 94,
                     "modifierKind": [
                         148
                     ]
@@ -1350,7 +1333,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 147,
+                    "line": 91,
                     "modifierKind": [
                         148
                     ]
@@ -1364,36 +1347,22 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 157,
+                    "line": 93,
                     "modifierKind": [
                         123,
                         148
                     ]
                 },
                 {
-                    "name": "selectionMode",
-                    "defaultValue": "computed(() => this.selectedIds().size > 0)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 158,
-                    "modifierKind": [
-                        148
-                    ]
-                },
-                {
                     "name": "someSelected",
-                    "defaultValue": "computed(() => this.selectionMode() && !this.allSelected())",
+                    "defaultValue": "computed(() => this.hasSelection() && !this.allSelected())",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 160,
+                    "line": 96,
                     "modifierKind": [
                         148
                     ]
@@ -1415,7 +1384,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 162,
+                    "line": 98,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1447,7 +1416,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 166,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1487,7 +1456,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 170,
+                    "line": 106,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1530,7 +1499,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 182,
+                    "line": 118,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1555,21 +1524,21 @@
             "standalone": false,
             "imports": [
                 {
-                    "name": "CheckboxComponent",
+                    "name": "SelectableRowComponent",
                     "type": "component"
                 },
                 {
-                    "name": "LongPressDirective",
-                    "type": "directive"
+                    "name": "CheckboxComponent",
+                    "type": "component"
                 }
             ],
-            "description": "<p>Mobile (coarse pointer / no hover): long-press selects a row and swaps its\nthumbnail for a large checkbox in the same slot — there&#39;s no room for both\non a small card, and a big checkbox is far easier to hit than a small one\noverlaid on a thumbnail.</p>\n<p>Desktop (fine pointer + real hover): the checkbox is always present but\ninvisible until the row is hovered, keyboard-focused, or already checked —\nGmail-list style. No long-press needed there; a mouse has room for a\nprecise, always-available target.</p>\n",
-            "rawdescription": "\n\nMobile (coarse pointer / no hover): long-press selects a row and swaps its\nthumbnail for a large checkbox in the same slot — there's no room for both\non a small card, and a big checkbox is far easier to hit than a small one\noverlaid on a thumbnail.\n\nDesktop (fine pointer + real hover): the checkbox is always present but\ninvisible until the row is hovered, keyboard-focused, or already checked —\nGmail-list style. No long-press needed there; a mouse has room for a\nprecise, always-available target.\n",
+            "description": "",
+            "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { BreakpointObserver } from '@angular/cdk/layout';\nimport { Component, computed, inject, signal } from '@angular/core';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { moduleMetadata } from '@storybook/angular';\nimport { map } from 'rxjs';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { CheckboxComponent } from '../checkbox/checkbox';\nimport { IconComponent } from '../icon/icon';\nimport { LongPressDirective } from '../long-press/long-press.directive';\n\nimport { ListItemComponent } from './list-item';\n\ninterface DemoListing {\n  id: number;\n  title: string;\n  price: string;\n  imageUrl: string;\n}\n\nconst DEMO_LISTINGS: DemoListing[] = [\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n];\n\n/**\n * Mobile (coarse pointer / no hover): long-press selects a row and swaps its\n * thumbnail for a large checkbox in the same slot — there's no room for both\n * on a small card, and a big checkbox is far easier to hit than a small one\n * overlaid on a thumbnail.\n *\n * Desktop (fine pointer + real hover): the checkbox is always present but\n * invisible until the row is hovered, keyboard-focused, or already checked —\n * Gmail-list style. No long-press needed there; a mouse has room for a\n * precise, always-available target.\n */\n@Component({\n  selector: 'ul-listing-selectable-demo',\n  imports: [CheckboxComponent, LongPressDirective],\n  template: `\n    <div\n      style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n    >\n      <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n        <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n          Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n          real-hover viewports: hover a row to reveal its checkbox, Gmail-style — no long-press\n          needed. Coarse-pointer / no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a\n          row — it swaps the thumbnail for a large checkbox and enters selection mode for every row.\n        </p>\n        <ul-checkbox\n          [checked]=\"allSelected()\"\n          [indeterminate]=\"someSelected()\"\n          (checkedChange)=\"toggleSelectAll($event)\"\n        >\n          Select all\n        </ul-checkbox>\n        <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n          @for (listing of listings; track listing.id) {\n            <div\n              class=\"listing-row\"\n              [class.ul-selectable-row]=\"isSelected(listing.id)\"\n              ulLongPress\n              (ulLongPress)=\"select(listing.id)\"\n            >\n              @if (selectionMode()) {\n                <ul-checkbox\n                  size=\"lg\"\n                  [checked]=\"isSelected(listing.id)\"\n                  (checkedChange)=\"setSelected(listing.id, $event)\"\n                />\n              } @else {\n                <img [src]=\"listing.imageUrl\" alt=\"\" class=\"listing-row__thumb\" />\n              }\n              <div class=\"listing-row__info\">\n                <p class=\"listing-row__title\">{{ listing.title }}</p>\n                <p class=\"listing-row__price\">{{ listing.price }}</p>\n              </div>\n            </div>\n          }\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [\n    `\n      .listing-row {\n        display: flex;\n        align-items: center;\n        gap: 12px;\n        padding: 4px;\n        border-radius: 8px;\n      }\n      .listing-row__thumb {\n        width: 48px;\n        height: 48px;\n        flex-shrink: 0;\n        border-radius: 6px;\n        object-fit: cover;\n      }\n      .listing-row__hover-checkbox {\n        opacity: 0;\n        transition: opacity 150ms ease;\n      }\n      .listing-row:hover .listing-row__hover-checkbox,\n      .listing-row:focus-within .listing-row__hover-checkbox,\n      .listing-row:has(.ul-checkbox__input:checked) .listing-row__hover-checkbox {\n        opacity: 1;\n      }\n      .listing-row__info {\n        min-width: 0;\n        flex: 1;\n      }\n      .listing-row__title {\n        margin: 0;\n        color: #ffffff;\n        font-size: 14px;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n      }\n      .listing-row__price {\n        margin: 0;\n        color: rgba(255, 255, 255, 0.7);\n        font-size: 13px;\n      }\n    `,\n  ],\n})\nclass ListingSelectableDemoComponent {\n  readonly listings = DEMO_LISTINGS;\n\n  private readonly hasFinePointer = toSignal(\n    inject(BreakpointObserver)\n      .observe('(hover: hover) and (pointer: fine)')\n      .pipe(map((state) => state.matches)),\n    { initialValue: true },\n  );\n  readonly isCompact = computed(() => !this.hasFinePointer());\n\n  private readonly selectedIds = signal<ReadonlySet<number>>(new Set());\n  readonly selectionMode = computed(() => this.selectedIds().size > 0);\n  readonly allSelected = computed(() => this.listings.every((item) => this.isSelected(item.id)));\n  readonly someSelected = computed(() => this.selectionMode() && !this.allSelected());\n\n  isSelected(id: number): boolean {\n    return this.selectedIds().has(id);\n  }\n\n  select(id: number): void {\n    this.setSelected(id, true);\n  }\n\n  setSelected(id: number, value: boolean): void {\n    this.selectedIds.update((current) => {\n      const next = new Set(current);\n      if (value) {\n        next.add(id);\n      } else {\n        next.delete(id);\n      }\n      return next;\n    });\n  }\n\n  toggleSelectAll(checked: boolean): void {\n    this.selectedIds.set(checked ? new Set(this.listings.map((item) => item.id)) : new Set());\n  }\n}\n\nconst meta: Meta<ListItemComponent> = {\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list (checkboxes gated behind a selection, long-press to enter it), pair it with the ulLongPress directive and the .ul-selectable-row utility class — see the SelectableList story.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent, ListingSelectableDemoComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<ListItemComponent>;\n\nexport const Basic: Story = {\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"max-width: 400px\">\n        <ul-list-item [theme]=\"theme\" [disabled]=\"disabled\" [loading]=\"loading\">\n          <ng-container ul-list-item-label>Basic List Item</ng-container>\n        </ul-list-item>\n      </div>\n    `,\n  }),\n};\n\nexport const WithBeforeAndAfterContent: Story = {\n  render: () => ({\n    template: `\n    <div style=\"max-width: 400px\">\n      <ul-list-item>\n        <ng-container ul-list-item-before-label>\n          <ul-checkbox />\n          <ul-icon size=\"5\" icon=\"placeholder\" />\n          <ul-icon size=\"5\" icon=\"ultra_games\" />\n        </ng-container>\n        <ng-container ul-list-item-label>Basic List Item</ng-container>\n        <ng-container ul-list-item-after-label>\n          <span>+80</span>\n          <ul-icon size=\"5\" icon=\"ultra_marketplace\" />\n          <ul-icon size=\"5\" icon=\"placeholder\" />\n        </ng-container>\n      </ul-list-item>\n    </div>\n    `,\n  }),\n};\n\n/**\n * Bulk-select pattern for a real listing row (thumbnail + title + price),\n * built from ulLongPress + the .ul-selectable-row utility class. Desktop\n * (fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\n * Touch/coarse-pointer needs a long-press instead, which swaps the\n * thumbnail for a large checkbox — exactly like the mobile \"select\n * multiple\" gesture in Gmail/Photos/Files.\n */\nexport const SelectableList: Story = {\n  render: () => ({\n    template: `<ul-listing-selectable-demo />`,\n  }),\n};\n\nexport const Loading: Story = {\n  args: {\n    theme: 'ghost-white',\n    disabled: false,\n    loading: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"max-width: 400px\">\n        <ul-list-item [theme]=\"theme\" [disabled]=\"disabled\" [loading]=\"loading\">\n          <ng-container ul-list-item-label>Loading list item</ng-container>\n        </ul-list-item>\n      </div>\n    `,\n  }),\n};\n",
+            "sourceCode": "import { Component, computed, signal } from '@angular/core';\nimport { moduleMetadata } from '@storybook/angular';\n\nimport { Meta, StoryObj } from '../../../.storybook/types';\nimport { CheckboxComponent } from '../checkbox/checkbox';\n\nimport { SelectableRowComponent } from './selectable-row';\n\ninterface DemoListing {\n  id: number;\n  title: string;\n  price: string;\n  imageUrl: string;\n}\n\nconst DEMO_LISTINGS: DemoListing[] = [\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n];\n\n@Component({\n  selector: 'ul-selectable-row-demo',\n  imports: [SelectableRowComponent, CheckboxComponent],\n  template: `\n    <div\n      style=\"min-height: 320px; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\"\n    >\n      <div style=\"max-width: 420px; display: flex; flex-direction: column; gap: 12px;\">\n        <p style=\"color: rgba(255,255,255,0.7); font-size: 13px; margin: 0;\">\n          Resize the viewport (or use Storybook's device toolbar) to see both modes. Fine-pointer /\n          real-hover viewports: hover a row to reveal its checkbox, Gmail-style. Coarse-pointer /\n          no-hover viewports: long-press (or mouse-click-and-hold ~500ms) a row — it swaps the\n          thumbnail for a large checkbox instead.\n        </p>\n        <ul-checkbox\n          [checked]=\"allSelected()\"\n          [indeterminate]=\"someSelected()\"\n          (checkedChange)=\"toggleSelectAll($event)\"\n        >\n          Select all\n        </ul-checkbox>\n        <div style=\"display: flex; flex-direction: column; gap: 8px;\">\n          @for (listing of listings; track listing.id) {\n            <ul-selectable-row\n              [selected]=\"isSelected(listing.id)\"\n              [selectionActive]=\"hasSelection()\"\n              [ariaLabel]=\"'Select ' + listing.title\"\n              (selectedChange)=\"setSelected(listing.id, $event)\"\n              (longPress)=\"select(listing.id)\"\n            >\n              <img\n                ul-selectable-row-media\n                [src]=\"listing.imageUrl\"\n                alt=\"\"\n                style=\"width: 48px; height: 48px; flex-shrink: 0; border-radius: 6px; object-fit: cover;\"\n              />\n              <div ul-selectable-row-content style=\"min-width: 0; flex: 1;\">\n                <p\n                  style=\"margin: 0; color: #ffffff; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;\"\n                >\n                  {{ listing.title }}\n                </p>\n                <p style=\"margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;\">\n                  {{ listing.price }}\n                </p>\n              </div>\n            </ul-selectable-row>\n          }\n        </div>\n      </div>\n    </div>\n  `,\n})\nclass SelectableRowDemoComponent {\n  readonly listings = DEMO_LISTINGS;\n\n  private readonly selectedIds = signal<ReadonlySet<number>>(new Set());\n  readonly hasSelection = computed(() => this.selectedIds().size > 0);\n  readonly allSelected = computed(() => this.listings.every((item) => this.isSelected(item.id)));\n  readonly someSelected = computed(() => this.hasSelection() && !this.allSelected());\n\n  isSelected(id: number): boolean {\n    return this.selectedIds().has(id);\n  }\n\n  select(id: number): void {\n    this.setSelected(id, true);\n  }\n\n  setSelected(id: number, value: boolean): void {\n    this.selectedIds.update((current) => {\n      const next = new Set(current);\n      if (value) {\n        next.add(id);\n      } else {\n        next.delete(id);\n      }\n      return next;\n    });\n  }\n\n  toggleSelectAll(checked: boolean): void {\n    this.selectedIds.set(checked ? new Set(this.listings.map((item) => item.id)) : new Set());\n  }\n}\n\nconst meta: Meta<SelectableRowComponent> = {\n  title: 'Components/Data Display/Selectable Row',\n  component: SelectableRowComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Makes any projected row content selectable in a bulk-select list. Project a [ul-selectable-row-media] thumbnail and a [ul-selectable-row-content] label — anything else (a status pill, actions) can go in the default slot. Fine-pointer/real-hover devices get an always-present, hover-revealed checkbox (Gmail-list style); coarse-pointer/no-hover devices select via long-press instead, which swaps the media slot for a large checkbox on every row. Bind [selected]/[selectionActive] and listen for (selectedChange)/(longPress) — the consumer still owns the actual selection Set, this component only owns the gesture/layout orchestration. It does not know about routing, so a projected routerLink anchor still needs its own binding nulled out while selectionActive if tapping it should toggle instead of navigate.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [SelectableRowDemoComponent],\n    }),\n  ],\n};\n\nexport default meta;\ntype Story = StoryObj<SelectableRowComponent>;\n\nexport const Default: Story = {\n  render: () => ({\n    template: `<ul-selectable-row-demo />`,\n  }),\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n      .listing-row {\n        display: flex;\n        align-items: center;\n        gap: 12px;\n        padding: 4px;\n        border-radius: 8px;\n      }\n      .listing-row__thumb {\n        width: 48px;\n        height: 48px;\n        flex-shrink: 0;\n        border-radius: 6px;\n        object-fit: cover;\n      }\n      .listing-row__hover-checkbox {\n        opacity: 0;\n        transition: opacity 150ms ease;\n      }\n      .listing-row:hover .listing-row__hover-checkbox,\n      .listing-row:focus-within .listing-row__hover-checkbox,\n      .listing-row:has(.ul-checkbox__input:checked) .listing-row__hover-checkbox {\n        opacity: 1;\n      }\n      .listing-row__info {\n        min-width: 0;\n        flex: 1;\n      }\n      .listing-row__title {\n        margin: 0;\n        color: #ffffff;\n        font-size: 14px;\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n      }\n      .listing-row__price {\n        margin: 0;\n        color: rgba(255, 255, 255, 0.7);\n        font-size: 13px;\n      }\n    \n",
+            "stylesData": "",
             "extends": []
         },
         {
@@ -1955,16 +1924,6 @@
                 "name": "AllSizes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
-            },
-            {
-                "name": "AllSizes",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1972,6 +1931,16 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button [size]=\"'sm'\" [theme]=\"theme\">\n          Small Button\n        </ul-button>\n        <ul-button [size]=\"'md'\" [theme]=\"theme\">\n          Medium Button\n        </ul-button>\n        <ul-button [size]=\"'lg'\" [theme]=\"theme\">\n          Large Button\n        </ul-button>\n        <ul-button [size]=\"'xl'\" [theme]=\"theme\">\n          Extra Large Button\n        </ul-button>\n      </div>\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.",
                 "description": "<p>Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.</p>\n"
+            },
+            {
+                "name": "AllSizes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/calendar/calendar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; flex-direction: column; gap: 1rem;\">\n        <ul-calendar mode=\"date\" size=\"sm\" label=\"Small\" />\n        <ul-calendar mode=\"date\" size=\"md\" label=\"Medium\" />\n        <ul-calendar mode=\"date\" size=\"lg\" label=\"Large\" />\n        <ul-calendar mode=\"date\" size=\"xl\" label=\"Extra large\" />\n      </div>\n    `,\n  }),\n}"
             },
             {
                 "name": "AllSizes",
@@ -2471,16 +2440,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/card/card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: baseArgs,\n  render: cardTemplate,\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2488,6 +2447,16 @@
                 "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
                 "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
                 "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/card/card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: baseArgs,\n  render: cardTemplate,\n}"
             },
             {
                 "name": "Default",
@@ -2655,6 +2624,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  render: () => ({\n    template: `<ul-selectable-row-demo />`,\n  }),\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2745,7 +2724,7 @@
                 "name": "DEMO_LISTINGS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/list-item/list-item.stories.ts",
+                "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "DemoListing[]",
@@ -3447,6 +3426,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ui/src/components/calendar/calendar.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3477,16 +3466,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/checkbox/checkbox.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3507,21 +3486,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/dock/dock.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DockComponent>",
-                "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/ui/src/components/dropdown/dropdown.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DropdownComponent>",
                 "defaultValue": "{\n  title: 'Components/Actions/Dropdown',\n  component: DropdownComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Trigger-based dropdown menu. Pass `items` (label, value, optional leftIcons, rightIcons, disabled) and bind `[(selectedIndex)]` for the chosen item. Themes: ghost-white, transparent-white. Used by ul-select; can be used standalone for custom menus.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ListItemComponent, IconComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      options: ['ghost-white', 'transparent-white','outline-white'],\n      control: 'select',\n    },\n    menuTriggerIcons: {\n      control: 'object',\n    },\n    disabled: {\n      control: 'boolean',\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/dock/dock.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DockComponent>",
+                "defaultValue": "{\n  title: 'Components/Navigation/Dock',\n  component: DockComponent,\n  tags: ['autodocs'],\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component:\n          \"Mobile-only bottom navigation bar (app-style tab bar). Hidden above the 'md' breakpoint (1024px) by the component's own CSS — no wrapper class or media query needed in the consuming app. Project ul-dock-item elements directly (icon + label + active state); there is no data-driven items input, since each item typically needs its own routerLink. Each item supports a badge (unread counts, etc.) and a variant ('default' | 'accent') for a raised/highlighted look, and can fully replace its icon+label with projected content via [ul-dock-item-content] for bespoke tabs. Resize the Storybook viewport below 1024px to see it render.\",\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [DockDemoComponent],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -3581,7 +3560,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ListItemComponent>",
-                "defaultValue": "{\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list (checkboxes gated behind a selection, long-press to enter it), pair it with the ulLongPress directive and the .ul-selectable-row utility class — see the SelectableList story.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent, ListingSelectableDemoComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list, see ul-selectable-row instead — it handles the checkbox/long-press/hover-reveal orchestration for you.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n}"
             },
             {
                 "name": "meta",
@@ -3687,11 +3666,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<SkeletonComponent>",
-                "defaultValue": "{\n  title: 'Components/Feedback/Skeleton',\n  component: SkeletonComponent,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [SkeletonComponent, ButtonComponent, CardComponent],\n    }),\n  ],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Skeleton loader for content placeholders. Use as a primitive block (rect or text) or as an overlay that sits on top of real content while data is loading.',\n      },\n    },\n  },\n  argTypes: {\n    variant: {\n      options: ['rect', 'text'],\n      control: { type: 'radio' },\n      description: 'Skeleton visual variant.',\n    },\n    width: {\n      control: 'text',\n      description: 'Explicit width (e.g. 100%, 200px). Applies to the host container.',\n    },\n    height: {\n      control: 'text',\n      description: 'Explicit height (e.g. 16px, 3rem). Applies to the host container.',\n    },\n    lines: {\n      control: { type: 'number', min: 1, max: 10 },\n      description: 'Number of lines for text/line variants.',\n    },\n    borderRadius: {\n      options: ['xs', 'sm', 'md', 'lg', 'full', null],\n      control: { type: 'radio' },\n      description: 'Optional radius override for rect variant.',\n    },\n    show: {\n      control: { type: 'boolean' },\n      description: 'Whether the skeleton is visible (useful for overlay mode).',\n    },\n  },\n  args: {\n    variant: 'rect',\n    width: '200px',\n    height: '24px',\n    lines: 3,\n    borderRadius: 'md',\n    show: true,\n  },\n}"
+                "type": "Meta<SelectableRowComponent>",
+                "defaultValue": "{\n  title: 'Components/Data Display/Selectable Row',\n  component: SelectableRowComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Makes any projected row content selectable in a bulk-select list. Project a [ul-selectable-row-media] thumbnail and a [ul-selectable-row-content] label — anything else (a status pill, actions) can go in the default slot. Fine-pointer/real-hover devices get an always-present, hover-revealed checkbox (Gmail-list style); coarse-pointer/no-hover devices select via long-press instead, which swaps the media slot for a large checkbox on every row. Bind [selected]/[selectionActive] and listen for (selectedChange)/(longPress) — the consumer still owns the actual selection Set, this component only owns the gesture/layout orchestration. It does not know about routing, so a projected routerLink anchor still needs its own binding nulled out while selectionActive if tapping it should toggle instead of navigate.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [SelectableRowDemoComponent],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -3702,6 +3681,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<SidebarComponent>",
                 "defaultValue": "{\n  title: 'Components/Layout/Sidebar',\n  component: SidebarComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Responsive sidebar for app navigation. On desktop it stays visible with the current selection highlighted; on mobile it becomes a drawer with overlay and a toggle button. Use `items` for nav options (same shape as dropdown items) or project custom content via slots. Bind [(selectedIndex)] for the active item; supports theme, [(open)] for mobile drawer, and itemSelected output.',\n      },\n    },\n    layout: 'fullscreen',\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [ListItemComponent, IconComponent, ButtonComponent],\n    }),\n    (story) => ({\n      ...story(),\n      template: `\n        <div style=\"display: flex; min-height: 100vh;\">\n          ${story().template}\n          <main style=\"flex: 1; padding: 1.5rem; background: var(--color-background-main, #0a0a0a);\">\n            <p style=\"color: rgba(255,255,255,0.7);\">Main content area. Resize to see sidebar as drawer on small viewports.</p>\n          </main>\n        </div>\n      `,\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    selectedIndex: {\n      control: { type: 'number', min: 0, max: 4 },\n      description: 'Index of the selected nav item (visible on desktop)',\n    },\n    closeOnBackdropClick: {\n      control: 'boolean',\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SkeletonComponent>",
+                "defaultValue": "{\n  title: 'Components/Feedback/Skeleton',\n  component: SkeletonComponent,\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [SkeletonComponent, ButtonComponent, CardComponent],\n    }),\n  ],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Skeleton loader for content placeholders. Use as a primitive block (rect or text) or as an overlay that sits on top of real content while data is loading.',\n      },\n    },\n  },\n  argTypes: {\n    variant: {\n      options: ['rect', 'text'],\n      control: { type: 'radio' },\n      description: 'Skeleton visual variant.',\n    },\n    width: {\n      control: 'text',\n      description: 'Explicit width (e.g. 100%, 200px). Applies to the host container.',\n    },\n    height: {\n      control: 'text',\n      description: 'Explicit height (e.g. 16px, 3rem). Applies to the host container.',\n    },\n    lines: {\n      control: { type: 'number', min: 1, max: 10 },\n      description: 'Number of lines for text/line variants.',\n    },\n    borderRadius: {\n      options: ['xs', 'sm', 'md', 'lg', 'full', null],\n      control: { type: 'radio' },\n      description: 'Optional radius override for rect variant.',\n    },\n    show: {\n      control: { type: 'boolean' },\n      description: 'Whether the skeleton is visible (useful for overlay mode).',\n    },\n  },\n  args: {\n    variant: 'rect',\n    width: '200px',\n    height: '24px',\n    lines: 3,\n    borderRadius: 'md',\n    show: true,\n  },\n}"
             },
             {
                 "name": "meta",
@@ -4280,18 +4269,6 @@
                 "defaultValue": "{\n  args: {\n    variant: 'selectable',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-pill [variant]=\"variant\" [size]=\"size\" [theme]=\"theme\" [disabled]=\"disabled\">\n        <span>Selectable Pill</span>\n      </ul-pill>\n    `,\n  }),\n}",
                 "rawdescription": "Demonstrates a selectable pill variant.",
                 "description": "<p>Demonstrates a selectable pill variant.</p>\n"
-            },
-            {
-                "name": "SelectableList",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/ui/src/components/list-item/list-item.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  render: () => ({\n    template: `<ul-listing-selectable-demo />`,\n  }),\n}",
-                "rawdescription": "Bulk-select pattern for a real listing row (thumbnail + title + price),\nbuilt from ulLongPress + the .ul-selectable-row utility class. Desktop\n(fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\nTouch/coarse-pointer needs a long-press instead, which swaps the\nthumbnail for a large checkbox — exactly like the mobile \"select\nmultiple\" gesture in Gmail/Photos/Files.",
-                "description": "<p>Bulk-select pattern for a real listing row (thumbnail + title + price),\nbuilt from ulLongPress + the .ul-selectable-row utility class. Desktop\n(fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\nTouch/coarse-pointer needs a long-press instead, which swaps the\nthumbnail for a large checkbox — exactly like the mobile &quot;select\nmultiple&quot; gesture in Gmail/Photos/Files.</p>\n"
             },
             {
                 "name": "Shadows",
@@ -5220,6 +5197,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "projects/ui/src/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<CalendarComponent>",
                 "file": "projects/ui/src/components/calendar/calendar.stories.ts",
                 "deprecated": false,
@@ -5253,17 +5241,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "projects/ui/src/components/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 184
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<CheckboxComponent>",
                 "file": "projects/ui/src/components/checkbox/checkbox.stories.ts",
                 "deprecated": false,
@@ -5286,8 +5263,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DockComponent>",
-                "file": "projects/ui/src/components/dock/dock.stories.ts",
+                "rawtype": "StoryObj<DropdownComponent>",
+                "file": "projects/ui/src/components/dropdown/dropdown.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5297,8 +5274,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<DropdownComponent>",
-                "file": "projects/ui/src/components/dropdown/dropdown.stories.ts",
+                "rawtype": "StoryObj<DockComponent>",
+                "file": "projects/ui/src/components/dock/dock.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5484,8 +5461,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<SkeletonComponent>",
-                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                "rawtype": "StoryObj<SelectableRowComponent>",
+                "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -5497,6 +5474,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<SidebarComponent>",
                 "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 184
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SkeletonComponent>",
+                "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -6166,6 +6154,90 @@
                     "description": "<p>Demonstrates an avatar with initials fallback.</p>\n"
                 }
             ],
+            "projects/ui/src/components/button/button.stories.ts": [
+                {
+                    "name": "AllSizes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button [size]=\"'sm'\" [theme]=\"theme\">\n          Small Button\n        </ul-button>\n        <ul-button [size]=\"'md'\" [theme]=\"theme\">\n          Medium Button\n        </ul-button>\n        <ul-button [size]=\"'lg'\" [theme]=\"theme\">\n          Large Button\n        </ul-button>\n        <ul-button [size]=\"'xl'\" [theme]=\"theme\">\n          Extra Large Button\n        </ul-button>\n      </div>\n    `,\n  }),\n}",
+                    "rawdescription": "Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.",
+                    "description": "<p>Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.</p>\n"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
+                    "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
+                    "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
+                },
+                {
+                    "name": "IconOnly",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    iconOnly: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\">\n        <i class=\"ul-icon ul-icon-cloud\"></i>\n      </ul-button>\n    `,\n  }),\n}",
+                    "rawdescription": "Demonstrates an icon-only button variant.\n- Sets iconOnly prop to true",
+                    "description": "<p>Demonstrates an icon-only button variant.</p>\n<ul>\n<li>Sets iconOnly prop to true</li>\n</ul>\n"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ButtonComponent>",
+                    "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
+                },
+                {
+                    "name": "Outline",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    theme: 'outline-white',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button theme=\"outline-white\">Outline White</ul-button>\n        <ul-button theme=\"outline-purple\">Outline Purple</ul-button>\n        <ul-button theme=\"outline-red\">Outline Red</ul-button>\n        <ul-button theme=\"outline-green\">Outline Green</ul-button>\n      </div>\n    `,\n  }),\n}",
+                    "rawdescription": "Outline theme: transparent background, 1px border, and semantic text color.\nUse outline-white, outline-purple, outline-red, or outline-green for secondary or tertiary actions.",
+                    "description": "<p>Outline theme: transparent background, 1px border, and semantic text color.\nUse outline-white, outline-purple, outline-red, or outline-green for secondary or tertiary actions.</p>\n"
+                },
+                {
+                    "name": "VerticalLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    size: 'lg',\n    vertical: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [vertical]=\"vertical\">\n        <i class=\"ul-icon ul-icon-cloud\"></i>\n        <span>Vertical Button</span>\n      </ul-button>\n    `,\n  }),\n}",
+                    "rawdescription": "Demonstrates a vertical layout button available only on large size.\n- Sets the props size to lg and vertical to true",
+                    "description": "<p>Demonstrates a vertical layout button available only on large size.</p>\n<ul>\n<li>Sets the props size to lg and vertical to true</li>\n</ul>\n"
+                },
+                {
+                    "name": "WithIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\">\n        <i class=\"ul-icon ul-icon-store\"></i>\n        Button\n        <i class=\"ul-icon ul-icon-chevron_right\"></i>\n      </ul-button>\n    `,\n  }),\n}",
+                    "rawdescription": "Demonstrates a button with icons on both sides.",
+                    "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
+                }
+            ],
             "projects/ui/src/components/calendar/calendar.stories.ts": [
                 {
                     "name": "AllSizes",
@@ -6268,90 +6340,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    mode: 'date',\n    showCalendarIcon: false,\n    label: 'Date without icon',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-calendar\n        [(value)]=\"value\"\n        [mode]=\"mode\"\n        [showCalendarIcon]=\"showCalendarIcon\"\n        [label]=\"label\"\n      />\n    `,\n  }),\n}"
-                }
-            ],
-            "projects/ui/src/components/button/button.stories.ts": [
-                {
-                    "name": "AllSizes",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button [size]=\"'sm'\" [theme]=\"theme\">\n          Small Button\n        </ul-button>\n        <ul-button [size]=\"'md'\" [theme]=\"theme\">\n          Medium Button\n        </ul-button>\n        <ul-button [size]=\"'lg'\" [theme]=\"theme\">\n          Large Button\n        </ul-button>\n        <ul-button [size]=\"'xl'\" [theme]=\"theme\">\n          Extra Large Button\n        </ul-button>\n      </div>\n    `,\n  }),\n}",
-                    "rawdescription": "Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.",
-                    "description": "<p>Demonstrates all available button sizes side by side.\nShows sm, md, lg, and xl sizes for easy comparison.</p>\n"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\" [disabled]=\"disabled\">\n        Button\n      </ul-button>\n    `,\n  }),\n}",
-                    "rawdescription": "Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.",
-                    "description": "<p>Default button story that demonstrates the basic button component.\nShows a simple button with configurable size and theme.</p>\n"
-                },
-                {
-                    "name": "IconOnly",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    iconOnly: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [iconOnly]=\"iconOnly\">\n        <i class=\"ul-icon ul-icon-cloud\"></i>\n      </ul-button>\n    `,\n  }),\n}",
-                    "rawdescription": "Demonstrates an icon-only button variant.\n- Sets iconOnly prop to true",
-                    "description": "<p>Demonstrates an icon-only button variant.</p>\n<ul>\n<li>Sets iconOnly prop to true</li>\n</ul>\n"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Components/Actions/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Primary action button with multiple themes (fill, transparent, ghost, outline), sizes (sm–xl), and optional icon-only or vertical layout. Outline themes use a transparent background with a 1px border and semantic text color. Content is projected; use icons or text. Supports disabled state.',\n      },\n    },\n  },\n  argTypes: {\n    size: {\n      options: ['sm', 'md', 'lg', 'xl'],\n      control: { type: 'radio' },\n    },\n    theme: {\n      options: [\n        'fill-purple',\n        'fill-white',\n        'fill-yellow',\n        'fill-red',\n        'transparent-purple',\n        'transparent-white',\n        'transparent-red',\n        'transparent-black',\n        'ghost-purple',\n        'ghost-white',\n        'ghost-red',\n        'ghost-green',\n        'outline-white',\n        'outline-purple',\n        'outline-red',\n        'outline-green',\n      ],\n      control: { type: 'select' },\n      description: 'Visual theme (fill, transparent, ghost, outline variants).',\n    },\n    iconOnly: {\n      control: { type: 'boolean' },\n      description: 'When true, button shows only icon content with no label.',\n    },\n    vertical: {\n      control: { type: 'boolean' },\n      description: 'Stack icon and label vertically (e.g. for large buttons).',\n    },\n    disabled: {\n      control: { type: 'boolean' },\n      description: 'Disables the button.',\n    },\n  },\n  args: {\n    size: 'md',\n    theme: 'fill-purple',\n    iconOnly: false,\n    vertical: false,\n    disabled: false,\n  },\n}"
-                },
-                {
-                    "name": "Outline",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    theme: 'outline-white',\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"display: flex; gap: 16px; align-items: center; flex-wrap: wrap;\">\n        <ul-button theme=\"outline-white\">Outline White</ul-button>\n        <ul-button theme=\"outline-purple\">Outline Purple</ul-button>\n        <ul-button theme=\"outline-red\">Outline Red</ul-button>\n        <ul-button theme=\"outline-green\">Outline Green</ul-button>\n      </div>\n    `,\n  }),\n}",
-                    "rawdescription": "Outline theme: transparent background, 1px border, and semantic text color.\nUse outline-white, outline-purple, outline-red, or outline-green for secondary or tertiary actions.",
-                    "description": "<p>Outline theme: transparent background, 1px border, and semantic text color.\nUse outline-white, outline-purple, outline-red, or outline-green for secondary or tertiary actions.</p>\n"
-                },
-                {
-                    "name": "VerticalLarge",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    size: 'lg',\n    vertical: true,\n  },\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\" [vertical]=\"vertical\">\n        <i class=\"ul-icon ul-icon-cloud\"></i>\n        <span>Vertical Button</span>\n      </ul-button>\n    `,\n  }),\n}",
-                    "rawdescription": "Demonstrates a vertical layout button available only on large size.\n- Sets the props size to lg and vertical to true",
-                    "description": "<p>Demonstrates a vertical layout button available only on large size.</p>\n<ul>\n<li>Sets the props size to lg and vertical to true</li>\n</ul>\n"
-                },
-                {
-                    "name": "WithIcons",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  render: (args) => ({\n    props: args,\n    template: `\n      <ul-button [size]=\"size\" [theme]=\"theme\">\n        <i class=\"ul-icon ul-icon-store\"></i>\n        Button\n        <i class=\"ul-icon ul-icon-chevron_right\"></i>\n      </ul-button>\n    `,\n  }),\n}",
-                    "rawdescription": "Demonstrates a button with icons on both sides.",
-                    "description": "<p>Demonstrates a button with icons on both sides.</p>\n"
                 }
             ],
             "projects/ui/src/components/file-input/file-input.stories.ts": [
@@ -7192,16 +7180,6 @@
                     "defaultValue": "{\n  render: (args) => ({\n    props: args,\n    template: `\n      <div style=\"max-width: 400px\">\n        <ul-list-item [theme]=\"theme\" [disabled]=\"disabled\" [loading]=\"loading\">\n          <ng-container ul-list-item-label>Basic List Item</ng-container>\n        </ul-list-item>\n      </div>\n    `,\n  }),\n}"
                 },
                 {
-                    "name": "DEMO_LISTINGS",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/list-item/list-item.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "DemoListing[]",
-                    "defaultValue": "[\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n]"
-                },
-                {
                     "name": "Loading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -7219,19 +7197,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ListItemComponent>",
-                    "defaultValue": "{\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list (checkboxes gated behind a selection, long-press to enter it), pair it with the ulLongPress directive and the .ul-selectable-row utility class — see the SelectableList story.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent, ListingSelectableDemoComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n}"
-                },
-                {
-                    "name": "SelectableList",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/ui/src/components/list-item/list-item.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  render: () => ({\n    template: `<ul-listing-selectable-demo />`,\n  }),\n}",
-                    "rawdescription": "Bulk-select pattern for a real listing row (thumbnail + title + price),\nbuilt from ulLongPress + the .ul-selectable-row utility class. Desktop\n(fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\nTouch/coarse-pointer needs a long-press instead, which swaps the\nthumbnail for a large checkbox — exactly like the mobile \"select\nmultiple\" gesture in Gmail/Photos/Files.",
-                    "description": "<p>Bulk-select pattern for a real listing row (thumbnail + title + price),\nbuilt from ulLongPress + the .ul-selectable-row utility class. Desktop\n(fine pointer, real hover) reveals a checkbox on hover, Gmail-list style.\nTouch/coarse-pointer needs a long-press instead, which swaps the\nthumbnail for a large checkbox — exactly like the mobile &quot;select\nmultiple&quot; gesture in Gmail/Photos/Files.</p>\n"
+                    "defaultValue": "{\n  title: 'Components/Data Display/List Item',\n  component: ListItemComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Single row item for lists and menus. Project label and optional before/after content (icons, checkboxes). Themes: ghost-white, transparent-white, outline-white, outline-purple. Used inside ul-dropdown and ul-select. For a bulk-select list, see ul-selectable-row instead — it handles the checkbox/long-press/hover-reveal orchestration for you.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [IconComponent, CheckboxComponent],\n    }),\n  ],\n  argTypes: {\n    theme: {\n      control: 'select',\n      options: ['ghost-white', 'transparent-white', 'outline-white', 'outline-purple'],\n    },\n    disabled: {\n      control: 'boolean',\n    },\n    loading: {\n      control: 'boolean',\n      description: 'Show skeleton overlay while loading',\n    },\n  },\n}"
                 },
                 {
                     "name": "WithBeforeAndAfterContent",
@@ -8458,6 +8424,38 @@
                     "defaultValue": "{\n  args: {\n    size: 32,\n    percentage: 75,\n    infinite: false,\n  },\n}"
                 }
             ],
+            "projects/ui/src/components/selectable-row/selectable-row.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  render: () => ({\n    template: `<ul-selectable-row-demo />`,\n  }),\n}"
+                },
+                {
+                    "name": "DEMO_LISTINGS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DemoListing[]",
+                    "defaultValue": "[\n  {\n    id: 1,\n    title: 'PS5 console, barely used',\n    price: '$349',\n    imageUrl: 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?w=200&h=200&fit=crop',\n  },\n  {\n    id: 2,\n    title: 'Mechanical keyboard, RGB',\n    price: '$79',\n    imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056eb6909?w=200&h=200&fit=crop',\n  },\n  {\n    id: 3,\n    title: 'Racing wheel + pedals',\n    price: '$210',\n    imageUrl: 'https://images.unsplash.com/photo-1585504198199-20277593b94f?w=200&h=200&fit=crop',\n  },\n]"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SelectableRowComponent>",
+                    "defaultValue": "{\n  title: 'Components/Data Display/Selectable Row',\n  component: SelectableRowComponent,\n  tags: ['autodocs'],\n  parameters: {\n    docs: {\n      description: {\n        component:\n          'Makes any projected row content selectable in a bulk-select list. Project a [ul-selectable-row-media] thumbnail and a [ul-selectable-row-content] label — anything else (a status pill, actions) can go in the default slot. Fine-pointer/real-hover devices get an always-present, hover-revealed checkbox (Gmail-list style); coarse-pointer/no-hover devices select via long-press instead, which swaps the media slot for a large checkbox on every row. Bind [selected]/[selectionActive] and listen for (selectedChange)/(longPress) — the consumer still owns the actual selection Set, this component only owns the gesture/layout orchestration. It does not know about routing, so a projected routerLink anchor still needs its own binding nulled out while selectionActive if tapping it should toggle instead of navigate.',\n      },\n    },\n  },\n  decorators: [\n    moduleMetadata({\n      imports: [SelectableRowDemoComponent],\n    }),\n  ],\n}"
+                }
+            ],
             "projects/ui/src/components/sidebar/sidebar.stories.ts": [
                 {
                     "name": "Default",
@@ -9092,6 +9090,19 @@
                     "kind": 184
                 }
             ],
+            "projects/ui/src/components/button/button.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "projects/ui/src/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
             "projects/ui/src/components/calendar/calendar.stories.ts": [
                 {
                     "name": "Story",
@@ -9131,19 +9142,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/button/button.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "projects/ui/src/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/checkbox/checkbox.stories.ts": [
                 {
                     "name": "Story",
@@ -9170,19 +9168,6 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/dock/dock.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DockComponent>",
-                    "file": "projects/ui/src/components/dock/dock.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 184
-                }
-            ],
             "projects/ui/src/components/dropdown/dropdown.stories.ts": [
                 {
                     "name": "Story",
@@ -9190,6 +9175,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<DropdownComponent>",
                     "file": "projects/ui/src/components/dropdown/dropdown.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/dock/dock.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DockComponent>",
+                    "file": "projects/ui/src/components/dock/dock.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -9404,13 +9402,13 @@
                     "kind": 184
                 }
             ],
-            "projects/ui/src/components/skeleton/skeleton.stories.ts": [
+            "projects/ui/src/components/selectable-row/selectable-row.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<SkeletonComponent>",
-                    "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
+                    "rawtype": "StoryObj<SelectableRowComponent>",
+                    "file": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -9424,6 +9422,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<SidebarComponent>",
                     "file": "projects/ui/src/components/sidebar/sidebar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 184
+                }
+            ],
+            "projects/ui/src/components/skeleton/skeleton.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SkeletonComponent>",
+                    "file": "projects/ui/src/components/skeleton/skeleton.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -11506,38 +11517,10 @@
             },
             {
                 "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ListingSelectableDemoComponent",
-                "coveragePercent": 8,
-                "coverageCount": "1/12",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "DemoListing",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Basic",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DEMO_LISTINGS",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -11561,16 +11544,6 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
-            },
-            {
-                "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "SelectableList",
-                "coveragePercent": 100,
-                "coverageCount": "1/1",
-                "status": "very-good"
             },
             {
                 "filePath": "projects/ui/src/components/list-item/list-item.stories.ts",
@@ -12364,6 +12337,64 @@
             },
             {
                 "filePath": "projects/ui/src/components/select/select.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectableRowDemoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DemoListing",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEMO_LISTINGS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ui/src/components/selectable-row/selectable-row.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

@@ -1,0 +1,30 @@
+@use '../../foundations/toolkit' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: $spacing-spacing-4;
+  padding: $spacing-spacing-1;
+  border-radius: $radius-radius-2;
+  // Holding a pointer down over text natively starts a text-selection drag,
+  // and over an image (iOS) triggers the "save image" callout — both
+  // compete with/can defeat the long-press gesture. Disabling them here
+  // means long-press works reliably anywhere in the row, not just over
+  // non-text areas.
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.#{$prefix}selectable-row__hover-checkbox {
+  opacity: 0;
+  @include transition-properties(opacity);
+}
+
+:host(:hover) .#{$prefix}selectable-row__hover-checkbox,
+:host(:focus-within) .#{$prefix}selectable-row__hover-checkbox,
+:host(:has(.#{$prefix}checkbox__input:checked)) .#{$prefix}selectable-row__hover-checkbox {
+  opacity: 1;
+}

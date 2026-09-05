@@ -37,6 +37,7 @@ export * from './toast/toast.service';
 export * from './tooltip/tooltip';
 export * from './search-select';
 export * from './select';
+export * from './selectable-row/selectable-row';
 export * from './shared/form-field';
 export * from './sidebar/sidebar';
 export * from './status/status';
